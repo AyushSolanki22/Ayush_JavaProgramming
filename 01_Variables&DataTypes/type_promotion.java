@@ -1,6 +1,6 @@
 //conversion from bigger DataType to smaller type causes error.--lossy conversion.
 
-public class Main {
+public class type_promotion {
     public static void main(String[] args) {
         char a = 'a';
         char b = 'b';

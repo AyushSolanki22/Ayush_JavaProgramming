@@ -10,7 +10,7 @@ public class if_prime_or_not {
         System.out.println("@Check- whether a number is prime or not\n");
         System.out.print("Enter number: ");
         int n = sc.nextInt();
-        for (int i=2; i<=Math.sqrt(n); ++i ) {   //Or more simple smaller nos, i<=(n-1)
+        for (int i=2; i<=Math.sqrt(n); ++i ) {   //-Simplified one ,FOr more simple smaller nos, i<=(n-1)
             if (n%i==0) {
                 Isprime=false;
                }       }    

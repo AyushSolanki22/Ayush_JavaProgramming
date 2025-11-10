@@ -1,13 +1,13 @@
 // switch (variable) {
-    // case1 : 
-    // case2 :
-    // case3 :
+    // case '': 
+    // case2 '':
+    // case3 '':
     // default :
 // }
 public class switch_operator{
     public static void main(String[] args) {
         int number =2;
-        switch (number) {
+        switch (number) {                      //switch(variable){}
             case 1 : System.out.println("1");
                break;
             case 2 : System.out.println("2");

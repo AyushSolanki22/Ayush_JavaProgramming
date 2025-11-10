@@ -1,0 +1,137 @@
+type casting                            *
+type promotion                          *
+user input                              ***
+
+#03_Conditional Statements
+1. if-else                              
+2. largest of 3
+3. even_or_odd
+4. it_calculator
+5. ternary operator                       **
+6. switch                                 *
+7. calculator                             **
+
+#04_Loops
+1.  while loop
+2. print numbers
+3. sum natura nos
+4. for loop
+5. square pattern
+6. reverse of number                     *****
+7. dowhile loop                          --
+8. break
+9. continue
+10. if prime
+
+# 05_Pattern
+1. star pattern
+2. inverted pattern
+3. half pyramid
+4. character pattern
+
+#06_Functions&Methods
+1. syntax                                   **
+2. call by value                            **
+3. product
+4. factorial
+5. bino coefficeint                         *
+6. userdefined
+7. function overloading                     *
+8. if prime or not                          
+9. primes_in range                          **
+10. scope
+11. Palindrome                              **
+
+#08_Advanced pattern
+1. hollow_rectangle
+2. inverted_rotated_half pyramid
+3. inverted_half pyramid
+4. floyd's triangle
+5. triangle
+6. butterfly pattern
+7. solid rhombus
+8. hollow rhombus
+9. diamond pattern
+
+#09_Arrays
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+copilot
+auto close
+code runner
+debugger for java, extension pack
+git extension pack, git history, git ignore, gitlens
+gradle for java, maven for java, project manager, project manager for java, test runner for java
+indent rainbow
+intellicode
+intellisense
+live server
+power mode
+prettier
+rest client
+restore terminals
+vs code icons, pets

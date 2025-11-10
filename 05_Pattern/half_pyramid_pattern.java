@@ -1,4 +1,4 @@
-public class hal_pyramid_pattern {
+public class half_pyramid_pattern {
     public static void main(String[] args) {
         for (int line=1; line<=4; ++line) {
             for (int num=1; num<=line; ++num) {

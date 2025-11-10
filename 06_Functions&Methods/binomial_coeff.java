@@ -15,7 +15,7 @@ public class binomial_coeff {
         int nf=factorial(n);      //n factorial
         int rf=factorial(r);      //r factorial
         int nmrf=factorial(n-r);   //(n-r)factorial
-        int b=((nf))/((rf)*(nrf));  //formula
+        int b=((nf))/((rf)*(nmrf));  //formula
 
         return b;
     

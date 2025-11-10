@@ -1,4 +1,4 @@
-public class Main {
+public class Data_Types {
     public static void main(String[] args) {
         byte b=8;
         short n=240;

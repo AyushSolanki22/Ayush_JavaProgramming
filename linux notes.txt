@@ -1,0 +1,48 @@
+#BASIC THINGS
+--> login screen, desktop environment, main menu: access installed tools , file system navigation , setting and customizations : change themes & keyboard shortcuts
+win+B = launch web browser
+win+shift+b= search
+Settings = win+X,   quick settings = win+S
+focus active notification : win+N , notification list : win+shift+n
+lock screen: win+l , logout: win+shift+l , shutdown: win+p, reboot : win+r 
+show all apps: win+A 
+show run command prompt : alt+f2
+launch media player: win+main
+activate window menu: alt+space
+hide all normal windows:  ctrl+win+d
+switch windows of an application: alt+f6
+switch workspaces : win+f1, win+f2
+
+shutdown -h now
+shutdown -h +10
+halt
+
+--> Terminal Basics
+List files : ls , ls -l , ls-la  
+directory : mkdir, pwd, rm -rf, cd[change directory]: only directories
+files : touch, nano: used to edit files , echo: to write text and making file, cat: show file's content
+chmod: change file permissions, chown : change file owner
+cp: copy file , mv: move file , 
+@Power Commands
+sudo apt update && sudo apt upgrade 
+whoami : check logged in user.
+ifconfig : check network info
+uname -a : system info
+history 
+
+
+#USER MANAGEMENT
+Root users(Superuser) , Standard users, Service accounts , Guest users.
+sudo su : root user,  exit: users , su ___ : change between users
+whoami
+users  adduser firstuser
+sudo killall -u ayush2 : to kill all the processes working
+passwd : set/change password
+usermod -aG sudo <username>  : give sudo access
+
+group management commands: groupadd, groupdel, 
+
+java ./ : Force normal filename autocompletion (unlike in windows, linux vscode use bash or zsh instead of cmd)
+
+
+

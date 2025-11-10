@@ -15,8 +15,8 @@ public class syntax_functions {
         //it is needed to be called explicitly called inside main function.
         
     }
-    public static void calculateSum(int a,int b) {    //Function using parameters;
-        int sum=a+b;
+    public static void calculateSum(int c,int d) {    //Function using parameters;
+        int sum=c+d;
         System.out.println("Calculated sum: "+sum);
     }
 

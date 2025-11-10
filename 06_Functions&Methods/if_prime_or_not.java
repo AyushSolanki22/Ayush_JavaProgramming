@@ -3,7 +3,7 @@
 //only for n>=2;
 public class if_prime_or_not {
     public static void main(String[] args) {
-        System.out.println(isPrime(2));
+        System.out.println(isPrime(9));
     }
     public static boolean isPrime(int n) {
         for (int i=2; i<=(n-1); ++i) {    // or to optimise , i<=math.sqrt(n)

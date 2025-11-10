@@ -2,7 +2,7 @@
 
 public class function_overloading {
     public static void main(String[] args) {
-        multiply(5,9,4);         
+        multiply(5.4f,9.3f);         
         //that function would be called aligning with the given value data type in function call.
         // Function overloading -- Functions with same name but different parameters**.
     }

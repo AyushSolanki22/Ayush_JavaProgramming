@@ -3,7 +3,7 @@
 public class ternary_operator {
     public static void main(String[] args) {
         int num = 5; 
-        int larger = (5>3)? 5:3;
+        int larger = (5>3 && 5>4)? 5:3;
         System.out.println(larger);
         String type = (num%2==0)? "even":"odd";
         System.out.println(type);

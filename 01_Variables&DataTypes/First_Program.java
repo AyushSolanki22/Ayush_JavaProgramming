@@ -1,4 +1,4 @@
-public class Main {
+public class First_Program {
     public static void main(String args[]) {
         System.out.print("Hello Ayush");     //consider java as a box, output on monitor , input to box by keyboard
         System.out.println("Hello Ayush");   //ln ---> cursor on new line after print or
