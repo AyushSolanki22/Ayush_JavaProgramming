@@ -135,3 +135,7 @@ prettier
 rest client
 restore terminals
 vs code icons, pets
+material icon theme
+Eslint - help find syntax error
+one dark pro - best themes
+project manager - to switch betweeen projects 
