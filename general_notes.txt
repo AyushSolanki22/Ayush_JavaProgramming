@@ -1,6 +1,16 @@
-type casting                            *
-type promotion                          *
-user input                              ***
+#01_Variables&DataTypes
+-Basic introduction lectures
+(creating a java file, boilerplate code, ouput in java, print a pattern- basic , variables, datatypes, sum of a&b,comments, input in java, sum thru input, prod thru input, area of circle, type conversion,type casting, type promotion in expressions, how is code running)
+1. First_Program 
+2. Variables_Literals
+3. Data_Types
+4. User_input
+5. Sum_Product_thru_input
+6. typecasting
+7. type promotion 
+
+#02 Operators 
+-5 types (arithmetic, assignment, logical, relational, bitwise)
 
 #03_Conditional Statements
 1. if-else                              
