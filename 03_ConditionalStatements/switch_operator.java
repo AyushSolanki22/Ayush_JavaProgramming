@@ -20,7 +20,7 @@ public class switch_operator{
 
         
         char ch ='a';
-        switch (ch) {
+        switch (ch) {  
             case 'c' : System.out.println("c");
                break;
             case 'a': System.out.println("a");

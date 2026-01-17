@@ -12,7 +12,7 @@
 #02 Operators 
 -5 types (arithmetic, assignment, logical, relational, bitwise)
 
-#03_Conditional Statements
+#03_Conditional Statements   (else if, largest of 2)
 1. if-else                              
 2. largest of 3
 3. even_or_odd

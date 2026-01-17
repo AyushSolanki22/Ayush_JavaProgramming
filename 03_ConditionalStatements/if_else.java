@@ -12,12 +12,12 @@ public class if_else {
         if (age>=18) {
             System.out.println("You are above 18, You can drive, vote.");
         }
-        else if (age>13 && age<18) {
+        else if (age>13 && age<18) {           
             System.out.println("Teenager");    //Listen, curly braces are not allowed incase if there is a single statement.
              
         }
         else {
-            System.out.println("You are below 18, unable to drive,vote.");
+            System.out.println("child");
         }
     }
 }

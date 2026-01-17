@@ -8,7 +8,7 @@ public class calculator {
         System.out.print("Enter b: ");
         int b = sc.nextInt();
         System.out.print("Operator: ");
-        char operator = sc.next().charAt(0);        //sc.next() for string input, sc.next().charAt(0) for single character input.
+        char operator = sc.next().charAt(0);        //sc.next() for string input, sc.next().charAt(0) for single character input basically.
 
 
         switch(operator) {
