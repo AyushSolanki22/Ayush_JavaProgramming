@@ -12,7 +12,7 @@ public class print_numbers {
         System.out.println("\n\n\n\"@Numbers Print from 1 to n.\"\n");
         int i=1;
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number: ");
+        System.out.print("Enter number n: ");
         int n = sc.nextInt();
         while (i<=n) {
             System.out.print(i+" ");

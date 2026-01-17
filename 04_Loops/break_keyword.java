@@ -8,7 +8,7 @@ public class break_keyword {
          System.out.print("Enter your number: ");
          int num=sc.nextInt();
          if (num%10 ==0) {
-            break;  //--> used to break the loop / to come out of the loop.
+            break;  //--> used to break the loop to come out of the loop- to end the program whenever a number entered is a multiple of 10
          }
          System.out.println(num);
         
