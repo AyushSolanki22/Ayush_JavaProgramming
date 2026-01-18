@@ -41,16 +41,23 @@
 
 #06_Functions&Methods
 1. syntax                                   **
-2. call by value                            **
-3. product
-4. factorial
-5. bino coefficeint                         *
-6. userdefined
-7. function overloading                     *
-8. if prime or not                          
-9. primes_in range                          **
-10. scope
-11. Palindrome                              **
+2. Non-void function
+3. call by value                            **
+4. product
+5. factorial
+6. bino coefficeint                         *
+7. userdefined
+8. function overloading                     *
+9. if prime or not                          
+10. primes_in range                          **
+11. scope
+12. Palindrome                              **
+
+#07_Binary&Decimal
+1. binary_to_decimal
+2. bin_to_dec
+3. test
+4. dec_to_bin
 
 #08_Advanced pattern
 1. hollow_rectangle
