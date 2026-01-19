@@ -5,7 +5,7 @@ public class subArrays_sum {
         int sss=Integer.MAX_VALUE;
         for (int i=0; i<num.length; ++i) {     //Three nested loops -- n^3 time complexity 
             for(int j=i; j<num.length; ++j) { 
-                int temp=0;
+                int temp=0;                       //temp=currSum
                 for (int k=i; k<=j; ++k) {   
                     //subArray sum  
                     temp+=num[k];              

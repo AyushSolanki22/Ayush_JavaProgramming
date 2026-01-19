@@ -3,14 +3,14 @@ public class trapping_rainwater {
     public static void trappedRainwater(int b[])  {   //time complexity= 0(n)
         int n=b.length;
 
-        //calculate left max boundary -- array
+        //creating left max boundary -- array
         int leftMax[]=new int[n];
         leftMax[0]=b[0];
         for (int i=1; i<n; ++i) {
             leftMax[i]=Math.max(b[i], leftMax[i-1]);
         }
 
-        //calculate right max boundary -- array
+        //creating right max boundary -- array
         int rightMax[]=new int[n];
         rightMax[n-1]=b[n-1];
         for (int i=n-2; i>=0; --i) {
@@ -26,13 +26,13 @@ public class trapping_rainwater {
 
         }
         System.out.println("Trapped rainwater: "+tr);
-        for (int i=0; i<b.length; ++i) {
-            System.out.print(leftMax[i]+" ");
-        }
-        System.out.println();
-        for (int i=0; i<b.length; ++i) {
-            System.out.print(rightMax[i]+" ");
-        }
+        // for (int i=0; i<b.length; ++i) {
+        //     System.out.print(leftMax[i]+" ");
+        // }
+        // System.out.println();
+        // for (int i=0; i<b.length; ++i) {
+        //     System.out.print(rightMax[i]+" ");
+        // }
 
 }       
     public static void main(String[] args) {

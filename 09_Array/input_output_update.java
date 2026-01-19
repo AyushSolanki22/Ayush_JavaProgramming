@@ -18,7 +18,7 @@ public class input_output_update {
         marks[2]+=5; //Math mark update -- bonus
         System.out.println("math: "+marks[2]);
 
-        float percentage= (marks[0]+marks[1]+marks[2])/3;
+        float percentage= (marks[0]+marks[1]+marks[2])/3.0f;   //float division only gives float precised values ,,,,, or cast numerator/denominator to float as Casting forces the result to be float before division
         System.out.println("percentage=: "+percentage+"%");
 
         

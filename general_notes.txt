@@ -71,7 +71,19 @@
 9. diamond pattern
 
 #09_Arrays
-
+1. array
+2. input_output_update
+3. arrays_as_arguement
+4. linear_search
+5. largestNo.
+6. binary_search
+7. arrray_reverse
+8. array_pairs
+9. array_subarrays
+10. subArrays_sum
+11. optimisticApproach_maxsum
+12. trapping_rainwater
+13. buy_sell_stocks
 
 
 

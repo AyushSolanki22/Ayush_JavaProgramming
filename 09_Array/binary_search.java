@@ -6,15 +6,14 @@ public class binary_search {
         int start=0, end=num.length-1;
         while (start<=end) {
             int mid=(start+end)/2;
-
             //comparisons
-            if (num[mid]==key) {
+            if (key==num[mid]) {
                 return mid;
             }
-            else if (num[mid]<key){  //right
+            else if (key>num[mid]){  //right
                 start =mid+1;
             }
-            else if(num[mid]>key) {  //left
+            else if(key<num[mid]) {  //left
                 end=mid-1;
             }
 

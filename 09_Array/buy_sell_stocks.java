@@ -11,7 +11,7 @@ public class buy_sell_stocks {
                 maxProfit=Math.max(maxProfit, profit);
             }
             else {
-                buyPrice=prices[i];
+                buyPrice=prices[i];     //buy day 
             }
         }
         System.out.println("Buy price= "+buyPrice);

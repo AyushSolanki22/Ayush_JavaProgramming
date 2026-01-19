@@ -3,20 +3,20 @@
 public class optimisticApproach_maxsum {
     public static void prefixSum(int num[]) {
         int prefix[]=new int[num.length];
-        int temp=0;
+        int temp=0;                        //temp=currSum
         int maxsum=Integer.MIN_VALUE;
         prefix[0]=num[0];
-        //calculate preifx array
+        //creating preifx array
         for (int i=1; i<prefix.length; ++i) {
             prefix[i]=prefix[i-1]+num[i];
 
         }
         for (int i=0; i<num.length; ++i) {
             for (int j=i ; j<num.length; ++j) {
-                temp=i==0? prefix[j] : prefix[j]-prefix[i-1]; //temp = using formula gets associate with subArray sum
+                temp=(i==0)? prefix[j] : prefix[j]-prefix[i-1]; //temp = using formula gets associate with subArray sum  //for i==0 - special condition
+                maxsum=temp>maxsum? temp:maxsum;
                 // System.out.print(temp+" ");
             }
-            maxsum=temp>maxsum? temp:maxsum;
         } 
         System.out.println("Maximum subArray sum: "+maxsum);
         //time comolexity now becomes n^2 (thus optimised approach);
@@ -30,6 +30,16 @@ public class optimisticApproach_maxsum {
             cs=cs>0? cs:0;
             ms=cs>ms? cs:ms;
         }        
+
+        if(ms==0){                    //Special condition
+            ms=Integer.MIN_VALUE;
+            for(int i=0; i<num.length; ++i){
+                if (num[i]>ms){
+                    ms=num[i];
+                }
+            }
+        }
+        
         System.out.println("Max subArray sum: "+ms);
     }
     public static void main(String[] args) {
