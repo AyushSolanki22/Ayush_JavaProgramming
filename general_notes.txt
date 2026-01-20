@@ -98,6 +98,14 @@
 3. diagonalSum
 4. search_in_sorted_matrix                                                                                      
 
+#12_Strings    (strings-immutable, Stringbuilder )
+1. strings.
+2. if_palindrome
+3. shortest path
+4. substring
+5. lexographic_largest
+-- strings-immutable, StringBuilder (written in strings.java at end)
+6. 
 
 
 

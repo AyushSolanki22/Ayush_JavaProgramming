@@ -2,7 +2,7 @@ public class if_palindrome {
     public static void main(String[] args) {
         //check if a string is a palindrome
         // "racecar","noon","madam"
-        String s="aba";
+        String s="madam";
         int i=0;
         boolean b=true;
         if (s.length()>=1) {

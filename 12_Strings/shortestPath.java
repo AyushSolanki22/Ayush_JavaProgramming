@@ -1,3 +1,6 @@
+//Consider diagram & the path travlled, the displacement is calculated for shortest path (straight line from initial point to final point), from initial(0,0) to the final destination. , using distance formula ****
+//Code Logic - inital point(0,0)--> x=0, y=0;   when north move-- ++y, when south --> --y, when east ++x, when west --x;
+
 public class shortestPath {
     public static float getShortestPath(String p) {
         int x=0,y=0;  //origin
