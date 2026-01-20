@@ -3,15 +3,15 @@
 public class insertion_sort {
     public static void insertionSort(int arr[]) {
         int n=arr.length;
-        for (int i=1; i<n; ++i) {
+        for (int i=1; i<=n-1; ++i) {
             int cur=i;
-            for (int j=i-1; j>=0; --j) {
-                if (arr[j]>arr[cur] ) {
+            for (int prev=i-1; prev>=0; --prev) {
+                if (arr[prev]>arr[cur] ) {
                     int temp=arr[cur];
-                    arr[cur]=arr[j];
-                    arr[j]=temp;
+                    arr[cur]=arr[prev];
+                    arr[prev]=temp;
                 }
-                --cur;
+                --cur;       //it is because as the current element gets swapped to i-1 th index and also  need to be compared with adjacent previous element
           }
         }
         // Arrays.sort(arr);

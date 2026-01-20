@@ -85,6 +85,16 @@
 12. trapping_rainwater
 13. buy_sell_stocks
 
+#10_Sorting
+1. bubble_sort
+2. selection_sort
+3. insertion_sort
+4. inbuilt_sort
+5. counting_sort
+
+#11_2D Arrays
+1. /
+
 
 
 

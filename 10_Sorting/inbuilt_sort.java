@@ -9,7 +9,7 @@ public class inbuilt_sort {
         //time complexity -- 0(n logn) < 0(n^2) which is of bubble, selection sort
 
         //if we want to do specified sorting like in reverse order, then we use
-        Arrays.sort(a,Collections.reverseOrder());  //it expects array in integer[] which is the wrapper class for int, not int[].
+        Arrays.sort(a,Collections.reverseOrder());  //it expects array in Integer[] which is the wrapper class for int, not int[].
         //as int[] is a primitive array, and Java's Collections.reverseOrder() needs objects that can be compared via Comparator.
 
 
