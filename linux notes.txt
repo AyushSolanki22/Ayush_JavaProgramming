@@ -6,7 +6,7 @@ Settings = win+X,   quick settings = win+S
 focus active notification : win+N , notification list : win+shift+n
 lock screen: win+l , logout: win+shift+l , shutdown: win+p, reboot : win+r 
 show all apps: win+A 
-show run command prompt : alt+f2
+show run command prompt : alt+f1
 launch media player: win+main
 activate window menu: alt+space
 hide all normal windows:  ctrl+win+d
@@ -16,6 +16,7 @@ switch workspaces : win+f1, win+f2
 shutdown -h now
 shutdown -h +10
 halt
+update-grub --> to update grub
 
 --> Terminal Basics
 List files : ls , ls -l , ls-la  
@@ -29,6 +30,8 @@ whoami : check logged in user.
 ifconfig : check network info
 uname -a : system info
 history 
+df : disk free
+
 
 
 #USER MANAGEMENT
@@ -44,5 +47,13 @@ group management commands: groupadd, groupdel,
 
 java ./ : Force normal filename autocompletion (unlike in windows, linux vscode use bash or zsh instead of cmd)
 
+--> RUN command prompt commands
+(there are many, i am writing some)
 
-
+1. r --. restart
+2. lg --> debugger (gnome)
+3. gnome-system-monitor --> task manager/system monitor
+4. htop --> advanced process viewer
+5. baobab - Disk usage analyzer
+6. gnome-disks --> disk utility
+7. wmctrl --> windows manager

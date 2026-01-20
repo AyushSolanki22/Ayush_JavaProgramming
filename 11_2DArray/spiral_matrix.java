@@ -1,8 +1,10 @@
+//Basically, Approach is like based on border, first outer boundary , then inner one 
+//First - variables initialisation, then loops based on column, rows - top ,right, bottom, left (for to print), special condition(sc==ec, sr==er)
 public class spiral_matrix {
     public static void printSpiral(int m[][]) {
         int sr=0,er=m.length-1,sc=0,ec=m[0].length-1;
 
-        while (sr<=er && sc<=ec) { //boundary
+        while (sr<=er && sc<=ec) { //boundary  //less than or equal to is much necessary to avoid errors or double time printing in case of odd order and (matrices which are not square )
             //top
             for (int j=sc; j<=ec; ++j) {
                 System.out.print(m[sr][j]+" ");
