@@ -7,7 +7,7 @@ public class uppercase_question {
         s.append(ch);
 
         for(int i=1; i<str.length(); ++i) {
-             if (str.charAt(i)==' ' && i<str.length()-1) { //i<n-1 is for ignoring space in last of the word
+             if (str.charAt(i)==' ' && i<str.length()-1) { //i<n-1 is for ignoring space in last of the word, in order to avoid "index out of bounds error"
                 s.append(str.charAt(i));
                 i++;
                 if (str.charAt(i)!=' ') {
