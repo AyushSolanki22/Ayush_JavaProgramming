@@ -104,8 +104,9 @@
 3. shortest path
 4. substring
 5. lexographic_largest
--- strings-immutable, StringBuilder (written in strings.java at end)
-6. 
+6# strings-immutable, StringBuilder (written in strings.java at end)
+7. uppercase_question
+8. string_compression
 
 
 
