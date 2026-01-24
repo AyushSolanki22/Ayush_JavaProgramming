@@ -12,9 +12,10 @@ public class classes_objects {
         //Pen ka actual mai as object banane ke liye public class mai constructor ke through create krrte hain (like we did for array, string )
         Pen p1=new Pen();//created a pen object called p1 using constructor  //by using new keyword, we create class object's space in memory(heap, not in stack) to store all properties of the class in as ohject's properties 
         //There are two types of memory : stack and neap --> objects are created in heap
-        //Even if we haven't created a constructor, java would automatically create it.
+       
+        //Even if we don't creat(define) a constructor within class, java would automatically create it when constructor is called to create a object.
         //But, by default, java creates constructor only when there is no other one.
-        
+        //By default, it doesn't take any parameters to initialise variables in the class.(give them some value)
         p1.setColor("Blue");
         System.out.println(p1.color);
         p1.setTip(10);
