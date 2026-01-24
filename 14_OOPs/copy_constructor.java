@@ -16,7 +16,7 @@ public class copy_constructor {
         System.out.println(s2.password);
         s1.marks[2]=100; //logically, as s2 is already copied, it won't change s2. 
         //But unexpectedly, s2 is also changed, it is because marks array assigned to s2 is a reference to marks array of s1
-        //Understand, shallow & deep copy.
+        //Concept/Understanding -->, shallow & deep copy.
 
         for (int i = 0; i <3; i++) {
             System.out.println(s2.marks[i]);
@@ -30,10 +30,12 @@ class Student {
     int marks[]; 
 
     Student() {
-        marks=new int[3];   //it is important to initialise as immediately after the call, value update is done. 
+        marks=new int[3];   //it is important to initialise a array as immediately after the call, values are need to be copied to a new one. 
         System.out.println("Constructor is called....");
     }
-    //shallow copy constructor
+    //copy constructor - is created by having class' own another object as a parameter 
+    
+    //shallow copy constructor -- copy having references to the object copied., as copied object's array is passed as reference to the new another object (changes reflect).
     // Student(Student s1) {
         // marks=new int[3];
         // this.name=s1.name;
@@ -41,7 +43,7 @@ class Student {
         // this.marks=s1.marks;
     // }
      
-    //deep copy constructor
+    //deep copy constructor - copy having independent values w.r.t the copied object. (changes don't reflect)
     Student (Student s1) {
         marks=new int[3];
         this.name=s1.name;
