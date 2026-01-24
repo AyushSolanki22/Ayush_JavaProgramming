@@ -1,4 +1,5 @@
-
+//If class' properties are private, then getters & setters (functions) are used to update(modify),access(return) values of the class.
+//this --> this keyword is used to refer to current object --- 
 
 public class getters_setters {
     public static void main(String[] args) {
