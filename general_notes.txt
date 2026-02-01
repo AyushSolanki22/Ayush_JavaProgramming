@@ -108,6 +108,22 @@
 7. uppercase_question
 8. string_compression
 
+#13_OOPs
+1. classes_objects -txt,java
+2. access_modifiers -java, jpg
+3. getters_setters 
+4. encapsulation
+5. constructors
+6. copy_constructor
+7. Inheritance
+8. Polymorphism
+9. Method overloading
+10. Abstraction
+11. Interfaces
+12. Static_keyword
+13. super_keyword
+14. questions
+
 
 
 

@@ -1,0 +1,7 @@
+Polymorphism --- many forms
+
+--Compile Time Polymorphism ^(static)
+* Method Overloading ((multiple functions with same name but different parameters -like in constructors with different parameters))
+
+--Run Time Polymorphism  ^(dynamic - when user oneself get to know polymorphism, not at compile time)
+* Method overriding  ((parent and child classes both contain the same function with a different definition --- whenever overriding is done then the function is called by the object of the object's ,class whichever it is , either parent or derived))

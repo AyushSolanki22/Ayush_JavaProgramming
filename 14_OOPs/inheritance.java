@@ -4,6 +4,9 @@ public class inheritance {
     public static void main(String[] args) {
         Fish shark=new Fish();
         shark.swim(); 
+        shark.eat();
+        shark.color="dark blue";
+        System.out.print(shark.color);
     }    
 }
 //base class

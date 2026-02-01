@@ -3,7 +3,7 @@
 //for example : animal, watch, pen
 
 //#Classes
-//Classes --> group of these identies (objects) - one class is a group of objects basically with similar properties snd functions (for eg: school class)
+//Classes --> group of these identies (objects) - one class is a group of objects basically with similar properties and functions (for eg: school class)
 //Class is eventually a blueprint of objects (for example : blueprint of M800: class, cars being created : objects 
 //classes has their attributes(properties) (ex: color) , and even functions(behaviours)(ex: changeColor()) for their objects to set properties and use functions according to need.
 
@@ -20,6 +20,7 @@ public class classes_objects {
         System.out.println(p1.color);
         p1.setTip(10);
         System.out.println(p1.tip);
+
     }
 }
 public class Pen {

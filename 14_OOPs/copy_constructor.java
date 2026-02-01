@@ -1,4 +1,4 @@
-public class copy_constructor {
+xpublic class copy_constructor {
     public static void main(String[] args) {
         //copy constructor -- by default in c++, but in java, we have to create it.
         //its work is to copy all properties of obj1 to obj2...... obj2= copy(obj1)
@@ -30,7 +30,7 @@ class Student {
     int marks[]; 
 
     Student() {
-        marks=new int[3];   //it is important to initialise a array as immediately after the call, values are need to be copied to a new one. 
+        marks=new int[3];   //written in every constructor calling as it's important to specify size
         System.out.println("Constructor is called....");
     }
     //copy constructor - is created by having class' own another object as a parameter 
@@ -40,12 +40,11 @@ class Student {
         // marks=new int[3];
         // this.name=s1.name;
         // this.roll=s1.roll; //to give new password , we basically don't copy password (we can copy everything)
-        // this.marks=s1.marks;
+        // this.marks=s1.marks;   //copied marks array is thus a reference 
     // }
      
     //deep copy constructor - copy having independent values w.r.t the copied object. (changes don't reflect)
     Student (Student s1) {
-        marks=new int[3];
         this.name=s1.name;
         this.roll=s1.roll;
         for (int i=0; i<marks.length; ++i) {

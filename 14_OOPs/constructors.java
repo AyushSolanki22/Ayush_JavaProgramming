@@ -7,7 +7,7 @@
 
 public class constructors {
     public static void main(String[] args) {
-        //constructor overloading -- when a programme do assign & work on passing given value itself to different constructors based on having difference in values automatically.--- polymorphism
+        //constructor overloading -- when a programme do assign & work on passing given value itself to different constructors based on having difference in parameter automatically.--- a part of concept of polymorphism
         Student s1=new Student(); 
         Student s2=new Student("Ayush");
         Student s3=new Student(20);
@@ -35,3 +35,6 @@ class Student {
     
 }
 //3 types of constructors: parametrized , non-parametrized & copy constructor.
+
+
+//Destructors-(garbage collector in java)

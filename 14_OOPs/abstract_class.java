@@ -1,3 +1,8 @@
+//Abstraction - (some similar to data hiding in encapsulation)
+//Abstraction --- (khyaal) (idea given, not implemented)
+//-- It is hiding all unnecessary details and showing only the important parts to the user.
+//-- In java, the concept of abstraction is implemented using 2 ways: abstract classes or interfaces
+
 //real life use of abstract class in java.
 public class abstract_class {
     public static void main(String[] args) {
@@ -6,8 +11,8 @@ public class abstract_class {
         Horse h=new Horse();
         h.eat();
         h.walk();
-        System.out.println(h.color); //as it hasn't changed color, it would show default.as using child class object always parent class's constructors are used firstly.(inheritance heirarchy) 
-        //as constructor initialise variables too every time whenever child class object is called/used.(work)
+        System.out.println(h.color); //as it hasn't changed color, it would show default.as using child class object , always parent class's constructors are used firstly.(inheritance heirarchy) 
+        //as constructors in parent classes gets called too every time whenever child class object is called/used.(work)
         //example 
         Third f=new Third();   
 
@@ -20,19 +25,19 @@ public class abstract_class {
     }    
 }
 //Abstract class  
-// -- cannot create an instance of abstract class.
+// -- cannot create an instance(object) of abstract class.
 // -- can have abstract/non-abstract methods(functions).
 // can have constrcutors.   -- is odd as can't create object but can create constrcutors.
 abstract class Animals {
     String color;
-    Animals(){   //constructor , by default, this construction would be always implemented whenever a derived class is called/used.(default)-- for eg. horse default color would be brown unless until changeColor function is called.
+    Animals(){   //constructor , by default, this construction would be always implemented whenever a derived class is called/used.(default)-- for eg. horse default color would be brown unless until changeColor function is called inside horse
         color="brown";
     }
 
     void eat(){
         System.out.println("animal eats");
     }
-    abstract void walk();  //as abstract thing doesn't have implementation (idea only).-- walk here doesn't have implementation in animals, it's subclasses can.
+    abstract void walk();  //as abstract thing doesn't have implementation (idea only).-- walk here doesn't have implementation in animals, it just gives idea(form base) for derived classes, it's derived classes can.
 
 }
 class Horse extends Animals {

@@ -1,4 +1,5 @@
 //If class' properties are private, then getters & setters (functions) are used to update(modify),access(return) values of the class.
+// get(to access/return the value), set(to modify the value)
 //this --> this keyword is used to refer to current object --- 
 
 public class getters_setters {
@@ -24,7 +25,7 @@ class Pen{
     }
 
     void setColor(String color) {
-        this.color=color;  //this keyword is used to refer to the current object. 
+        this.color=color;  //this keyword is used to refer to the current object. (Constructor object basically which calls a function)
     }
     void setTip(int tip) {
         this.tip=tip; 
