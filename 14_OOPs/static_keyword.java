@@ -38,3 +38,5 @@ class Student{
 
 
 }
+//Important:
+//we can access static variable simply using class name too in another class.

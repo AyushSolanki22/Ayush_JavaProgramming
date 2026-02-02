@@ -122,7 +122,7 @@
 11. Interfaces
 12. Static_keyword
 13. super_keyword
-14. questions
+14. questions  *q5,q6
 
 
 

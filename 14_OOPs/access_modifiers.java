@@ -26,3 +26,5 @@ class BankAccount{
         password=pwd;
     }
 }
+
+//private,protected keyword is not allowed in front of class as it makes class unusable (of no use) and thus the way java is made like,it don't allow it

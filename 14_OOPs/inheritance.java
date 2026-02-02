@@ -45,3 +45,10 @@ class Fish extends Animal {
 //Multi level --> Base class -- derived class -- derived class 
 //Hierarchical --> Base class -- derived 1, derived 2
 //Hybrid --> Combination of Multi level , Hierarchical 
+
+
+
+
+
+//parent reference(variable) = child obj (child obj is created on right side)
+//This is due to vehicle(x properties),car(x+y properties)--> vehicle(parent) reference is to x only so it can have car object ,,,,, whereas, car(child) reference is to x and y both so it can't have vehcile object
