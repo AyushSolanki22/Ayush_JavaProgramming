@@ -4,9 +4,9 @@ public class tiling_Problem {
         if (n==0||n==1){    //base case
             return 1;
         }
-        //kaam
+        //kaam (choices)
         //vertical choice 
-        int fnm1=tilingProblem(n-1); //choices next 
+        int fnm1=tilingProblem(n-1); //choices next (func call)
 
         //horizontal choice
         int fnm2=tilingProblem(n-2);
@@ -15,7 +15,7 @@ public class tiling_Problem {
 
     }
     public static void main(String[] args) {
-        int n=3;
+        int n=3;  
 
         System.out.println(tilingProblem(n));
     }

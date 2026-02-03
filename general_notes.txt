@@ -34,7 +34,7 @@
 10. if prime
 
 # 05_Pattern
-1. star pattern
+1. /star pattern
 2. inverted pattern
 3. half pyramid
 4. character pattern
@@ -108,7 +108,7 @@
 7. uppercase_question
 8. string_compression
 
-#13_OOPs
+#14_OOPs
 1. classes_objects -txt,java
 2. access_modifiers -java, jpg
 3. getters_setters 
@@ -125,8 +125,21 @@
 14. questions  *q5,q6
 
 
-
-
+#15_Recursion
+1. Recursion
+2. problem_1_2.java
+3. stack_overflow
+4. factorial_recursion
+5. sum_naturalNo
+6. fibonacci_recursion
+7. problem_6
+8. is_Key
+9. lastOccurence, lastoccurence2
+10. power
+11. tiling_problem
+12. problem12: remove duplicates   ,,test(another way)
+13. problem13: friends pairing
+14. problem 14: binary strings
 
 
 

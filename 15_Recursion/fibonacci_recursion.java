@@ -12,3 +12,5 @@ public class fibonacci_recursion {
         System.out.println(fibonacciRec(n));
     }
 }
+///2*n time complexity (each term on each level calls 2 functions each)
+//0th, 1st, 2nd ,....nth element

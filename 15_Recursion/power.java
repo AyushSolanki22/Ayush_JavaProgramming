@@ -1,19 +1,22 @@
 public class power {
+    //(simple approach) - unoptimised 
     public static int pow(int x,int n) {
-        if (n==1){
-            return x;
+        if (n==0){
+            return 1;
         }
         int power=x*pow(x,n-1);
         return power;
     }
+    //it's time consuming program so have to optimise
+
     //optimized;
     //time complexity = 0(logn)
     public static int optimizedPow(int x,int n) {
-        if (n==1){
-            return x;
+        if (n==0){
+            return 1;
         }
         int HalfPower=optimizedPow(x, n/2); //this, to have 0(logn) time complexity;
-        int HalfPowerSq=HalfPower*HalfPower;
+        int HalfPowerSq=HalfPower*HalfPower;    //will be executed in recursion back loop
         
         //if n is odd,             (additional)
         if (n%2!=0){

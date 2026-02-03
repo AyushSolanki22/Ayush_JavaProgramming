@@ -1,0 +1,5 @@
+//when
+//1. parameter memory is increased very much(on peak)
+//2. too many calls in recursion
+
+//There comes a condition when stack is completely filled, no space left -- stack overflow(error) -- need for base case

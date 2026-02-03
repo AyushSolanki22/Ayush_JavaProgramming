@@ -1,0 +1,9 @@
+//Recursion -- iterations, functions,,,, main use in trees, graphs, dp(dynamic programming)
+//Sometimes, for some programmes, recursion is better (like trees), for other, iteration is better.
+
+//Recursion - when a function call itself on repetition (loop)
+//example: math -- factorial
+
+//It is a method of solving a computational problem where the solution depends on solutions to smaller instances of the same problem.
+//2 directions: top to down(towards base case), down to top (combining solutions)
+// 1. Base case, 2. work, 3. inner call
