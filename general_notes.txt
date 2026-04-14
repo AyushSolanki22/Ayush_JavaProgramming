@@ -3,7 +3,7 @@
 (creating a java file, boilerplate code, ouput in java, print a pattern- basic , variables, datatypes, sum of a&b,comments, input in java, sum thru input, prod thru input, area of circle, type conversion,type casting, type promotion in expressions, how is code running)
 1. First_Program 
 2. Variables_Literals
-3. Data_Types
+3. Data_Types       *
 4. User_input
 5. Sum_Product_thru_input
 6. typecasting
@@ -17,9 +17,9 @@
 2. largest of 3
 3. even_or_odd
 4. it_calculator
-5. ternary operator                       **
-6. switch                                 *
-7. calculator                             **
+5. ternary operator                       *
+6. switch                                 
+7. calculator                             
 
 #04_Loops
 1.  while loop

@@ -21,9 +21,9 @@ public class switch_operator{
         
         char ch ='a';
         switch (ch) {  
-            case 'c' : System.out.println("c");
+            case 97 : System.out.println("a");
                break;
-            case 'a': System.out.println("a");
+            case 99: System.out.println("c");
                break;
             case 'b': System.out.println("b");
                break;    //Agar switch mai koi bhi case true hoo jata toa baad ke saare true hote irrespective of, so we use break statement to come out of switch.

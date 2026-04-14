@@ -1,5 +1,5 @@
 // ternary operator --> 3 operands
-// variable = condition? stament1:statement2;
+// variable = condition? stament1(if true):statement2(if false);
 public class ternary_operator {
     public static void main(String[] args) {
         int num = 5; 

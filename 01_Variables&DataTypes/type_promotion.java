@@ -7,8 +7,8 @@ public class type_promotion {
         System.out.println((int)a); //explicit TypeCasting
         System.out.println((int)b);
         System.out.println(a);
-        System.out.println(a-b);  //In expressions, char, byte and short are converted tp int -- type promotion
-        // char c = a-b;   --> it will cause error as int is not converted to short -- lossy conversion
+        System.out.println(a-b);  //**In expressions, char, byte and short are converted tp int -- type promotion **
+        // char c = a-b;   --> it will cause error as int cannot be converted to char -- lossy conversion
         char c = (char)(a-b); //explicit typecasting--to remove error of warning (of lossy conversion)
         System.out.println(c);
 
@@ -24,7 +24,7 @@ public class type_promotion {
 
         //Important concept below]]
         byte by =2;
-        //by=by*2;   //--> This woulg give error as it's lossy conversion from int to byte ,,#type promotion in expression makes b int.
+        //by=by*2;   //--> This woulg give error as it's lossy conversion from int(the expression result) to byte ,,#type promotion in expression makes b int.
         //logically here there would have been no error but it's lossy conversion which lead to error in java
         //Why? Even though, by is of byte,2 is an int literal. 
         //In java, arithmetic operations like *, +, -, / automatically promote smaller types (byte, short, char) to int. 

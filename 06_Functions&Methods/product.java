@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class product {
-    public static double numProduct(double  a, double b) {
+    static double numProduct(double  a, double b) {
         double prod=a*b;
         return prod;
     }

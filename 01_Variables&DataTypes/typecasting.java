@@ -3,10 +3,10 @@
 public class typecasting {
     public static void main(String[] args) {
         //type conversion is generally possible in same type of data and from smaller to larger type, implicit typecasting -- WIDENING CONVERSION --(2 conditions)
-        //but not from larger to smaller type without explicit casting -- NARROWING CONVERSION
+        //but not from larger to smaller type without explicit casting -- NARROWING CONVERSION   (as it's lossy conversion)
         
         int e=5;  //Implicit Typecasting (in same datatype, from smaller to  larger)
-        long f=e; 
+        float f=e; 
         System.out.println(f);
 
         float a = 5.5f;

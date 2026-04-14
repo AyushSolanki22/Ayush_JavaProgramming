@@ -6,7 +6,7 @@
 // }
 import java.util.*;
 public class syntax_functions {
-    public static int printHelloWorld() {         //Another function;
+    public static int printHelloWorld() {         //Another function(without parameters);
         System.out.println("Hello World - from function printHelloWorld\n");
         System.out.print("Hello ");
         System.err.println("Ayush\n\n");
