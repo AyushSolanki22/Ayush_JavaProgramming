@@ -1,0 +1,23 @@
+class Solution {
+    public int getSecondLargest(int[] arr) {
+
+            int ls2=-1;
+            int ls=Integer.MIN_VALUE;
+
+            for(int i=0; i<arr.length;++i){
+                if(arr[i]>ls) {
+                    ls2=ls;
+                    ls=arr[i];
+                }
+                else if(arr[i]>=ls2 && arr[i]<ls){      //smaller than largest and larger than 2nd largest
+                    ls2=arr[i];
+                }
+                
+            }
+            if(ls!=ls2 && ls2!=Integer.MIN_VALUE) return ls2;   //what if ls2 ho hi na , then 2 cases from my logic : either vo min value hogi ya equal to ls.
+            else return -1;
+    }
+}
+
+
+    //another method - get two loops, one for largest , second for 2nd largest (putting condition a[i]!=max)  && then print/return 2nd largest

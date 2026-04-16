@@ -1,0 +1,63 @@
+//My own second approach (optimised) //one pass solution(eek taraf se traverse)
+class Solution {
+    void segregate0and1(int[] arr) {
+        int zero=0;
+        int one=0;
+        for(int i=0; i<arr.length;++i){       //counting  no. of zeroes and ones
+            if(arr[i]==0) zero++;
+            else one++;
+        }
+        for(int i=0;i<arr.length;++i){        //putting 0s and 1s in array.
+            if(zero!=0) {
+                arr[i]=0;
+                zero--;
+            }
+            else {
+                arr[i]=1;
+                one--;
+        }
+        
+    }
+}
+}
+
+class Solution {                         //Two pointer technique;
+    void segregate0and1(int[] arr) {
+        // code here
+        int i=0; 
+        int j=arr.length-1;
+        while(i<j){
+            if(arr[i]==0) ++i;
+            else if(arr[j]==1) --j;          
+            //if(i>j) break;
+            else if(arr[i]==1 && arr[j]==0){
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+                ++i;
+                --j;
+            }
+        }
+        
+    }
+}
+
+
+
+
+
+//MY first bruteforce approach (not optimised, time limit exceeded)(bubble sort kind);   //trying to sort it.
+class Solution {
+    void segregate0and1(int[] arr) {
+        // code here
+        for(int i=0; i<arr.length-1;++i){
+            for(int j=0; j<arr.length-i-1;++j){
+                if(arr[j]>arr[j+1]){
+                    int temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+    import java.util.*;
+
+class Solution {
+    
+    public int missingNumber(int[] nums) {
+        int min=0;
+        int max=nums.length;
+        int num=0;;
+
+        for(int i=min;i<=max;++i){
+            if(search(nums,i)) continue;
+            else num=i;
+        }
+        return num;
+
+    }
+    boolean search(int arr[],int key){
+        for(int i=0; i<arr.length; ++i){
+            if(arr[i]==key){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+//Optimised Approach (less time)
+    
+import java.util.*;                 //missing number in range(size of arr) : expected numbers sum-array sum;
+
+class Solution {
+    
+    public int missingNumber(int[] nums) {
+        int n=nums.length;
+
+        int sum=(n*(n+1))/2;
+        int arrsum=0;
+        for(int ele: nums){
+            arrsum+=ele;
+        }
+        return sum-arrsum;
+    }
+
+}

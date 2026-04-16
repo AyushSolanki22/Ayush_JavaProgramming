@@ -1,0 +1,60 @@
+
+import java.util.ArrayList;
+public class test {
+    public static void main(String[] args) {
+
+            ArrayList<Integer> a= new ArrayList<>();
+            a.add(9);
+            a.add(9);
+            a.add(9);
+            
+
+            int n=a.size();
+            int carry=0;
+            if(a.get(n-1)==9) carry=1;
+            
+            for(int i=n-1; i>=0;--i){
+                if(carry==1){
+                    if(a.get(i)+carry>=10) {
+                        a.set(i,0);
+                        carry=1;
+                    }
+                    else carry=0;
+                }
+                if(i==0 && carry!=0) a.add(i,carry);   
+            }
+
+            System.out.println(a);
+        }   
+    }
+
+-->//upper is ok but the actual question was to return arraylist by adding one to the array.
+
+//*** carry is already 1 firstly as it is added; 
+
+import java.util.*;
+class Solution {
+    // Function for adding one to the number represented by the array
+    Vector<Integer> addOne(int[] arr) {
+            Vector<Integer> ans= new Vector<>();
+            int n=arr.length;
+            
+            int carry=1;
+            
+            for(int i=n-1; i>=0;--i){
+                if(arr[i]+carry>=10){
+                    ans.add(0);                            //as array ans is undeclared, u cannot specify adding at index like i, for ex: ans.add(i,0);
+                    carry=1;
+                }
+                else{
+                    ans.add(arr[i]+carry);
+                    carry=0;
+                }
+            }
+            if(carry!=0) ans.add(carry);
+
+            Collections.reverse(ans);
+            return ans;
+        
+    }
+}
