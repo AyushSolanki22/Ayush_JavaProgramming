@@ -26,3 +26,5 @@ public class array_reverse {
 
     }
 }
+
+//array reverse ke liye for loop bhi lagake kar skte , swapping elements till n/2;
