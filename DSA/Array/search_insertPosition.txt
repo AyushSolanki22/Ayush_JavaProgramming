@@ -1,0 +1,33 @@
+//My Solution
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int si =0;
+        int ei=nums.length-1;
+        // int mik=0;
+        int mid=0;
+        if(target>nums[ei] || target<nums[si]){
+            if(target>nums[ei]){
+                return ei+1;
+            }
+            return si;
+        }
+        while(si<=ei){
+            mid=si+(ei-si)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(target<nums[mid] && target>nums[mid-1]){
+                return mid;
+            }
+            else if(target<nums[mid]){
+                ei=mid-1;
+            }
+            else{
+                si=mid+1;
+            }
+
+        }
+            return -1;
+    }
+}
