@@ -1,3 +1,5 @@
+// ((concept written))
+
 package DSA.Array;
 
 class merge_sorted_arrays {

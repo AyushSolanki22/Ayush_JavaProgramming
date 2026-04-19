@@ -1,3 +1,5 @@
+//concept written
+
 class Solution {
     static void rotateArr(int arr[], int d) {
     

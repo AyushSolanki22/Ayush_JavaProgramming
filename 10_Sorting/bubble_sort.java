@@ -30,6 +30,44 @@ public class bubble_sort {
     public static void main(String[] args) {
         int num[]={5,4,1,3,2};
 
-        bubbleSort(num);
+        // bubbleSort(num);
+        optimised_bubbleSort(num);
     }
+
+
+
+//BubbleSort -- optimized   (checking each time before each pass to avoid more passes if array is already sorted) OR (check if condition became true otherwise it's clear that the array was sorted already)
+public static void optimised_bubbleSort(int a[]) {
+    int n=a.length;
+    int temp;
+    int swaps=0;
+    for(int i=0; i<=n-1;++i){
+        boolean isSorted=true;
+        // for(int k=0;k<n-1;++k){
+        //     if(a[k]>a[k+1]){
+        //         isSorted=false;
+        //         break;
+        //     }
+        // }
+        // if(isSorted==true) break;
+        for(int j=0;j<=n-2-i;++j){
+            if (a[j]>a[j+1]) {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+                ++swaps;
+                isSorted=false;
+               }
+            
+        }
+        if(isSorted==true) break;     //or if(swaps==0) break; --> but boolean takes less space than integer
+
+    }
+    System.out.print("\n Sorted Array");
+    for (int i = 0; i < n; i++) {
+        System.out.print(a[i]);
+    }
+    System.out.println("\n"+swaps);
+}
+
 }
