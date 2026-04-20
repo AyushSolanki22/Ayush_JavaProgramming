@@ -8,32 +8,32 @@ class Solution {
 
         while(i < a.length && j < b.length){
 
-            if(a[i] <= b[j]){                          //as work done is same for equal and less cases
-                if(union.size() == 0 || union.get(union.size()-1) != a[i]){
+            if(a[i] <= b[j]){                          //as work done is same for equal and less than b[j] cases
+                if(union.size() == 0 || union.get(union.size()-1) != a[i]){        //if union size ==0, or preceding element is not equal to current one( to maintain unique array)
                     union.add(a[i]);
                 }
                 i++;
             }
             else{
-                if(union.size() == 0 || union.get(union.size()-1) != b[j]){
+                if(union.size() == 0 || union.get(union.size()-1) != b[j]){      //
                     union.add(b[j]);
                 }
                 j++;
             }
         }
 
-        while(i < a.length){
+        while(i < a.length){                         //for all leftover elements
             if(union.size() == 0 || union.get(union.size()-1) != a[i]){
                 union.add(a[i]);
             }
             i++;
         }
 
-        while(j < b.length){
+        while(j < b.length){                    .//for all leftover elements
             if(union.size() == 0 || union.get(union.size()-1) != b[j]){
                 union.add(b[j]);
             }
-            j++;
+            j++; 
         }
 
         return union;
