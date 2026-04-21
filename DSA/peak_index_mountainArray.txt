@@ -1,0 +1,21 @@
+//**
+// class Solution {
+//     public int peakIndexInMountainArray(int[] arr) {
+//         int si=0,ei=arr.length-1;
+//         int mid;
+//         while(si<=ei){
+//             mid=si+(ei-si)/2;
+//             if(mid==0) ++mid;             //or do make si=1, ei=n-2 , as vese bhi starting ya ending mai peak ho hi ni skta 
+//             if(mid==arr.length-1) --mid;
+//             if(arr[mid]>arr[mid+1] && arr[mid]>arr[mid-1]) return mid;
+//             else if(arr[mid]>arr[mid-1]) si=mid+1;
+//             else ei=mid-1;;
+
+//         }
+//         return -1;
+//     }
+
+
+//     }
+
+

@@ -1,0 +1,23 @@
+
+class Solution {
+    public int findFloor(int[] arr, int x) {
+        // code here
+        int si=0, ei=arr.length-1;
+        int largest=0;
+        int mid;
+        boolean isChanged=false;
+        
+        while(si<=ei){
+            mid=si+(ei-si)/2;
+            if(arr[mid]<=x){
+                largest=(arr[mid]>=arr[largest])? mid:largest;    //>= as to also include indexes of duplicate elements if there
+                isChanged=true;
+                si=mid+1;
+            }
+            else ei=mid-1;
+        }
+        
+        if(isChanged) return largest;        //In the case where it is finded. 
+        else return -1;
+    }
+}
