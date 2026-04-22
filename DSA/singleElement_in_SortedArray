@@ -12,7 +12,7 @@ class Solution {
        while(si<=ei){
            mid=si+(ei-si)/2;
            
-           if(mid>=1 && a[mid]==a[mid-1]){
+           if(mid>=1 && a[mid]==a[mid-1]){      //mid>=1 to avoid index error(exception)      
                if((mid-1)%2==0){
                    //go right (as left all has doubles only)
                    si=mid+1;}
@@ -21,7 +21,7 @@ class Solution {
                  ei=mid-1;
                }
            }
-           else if(mid<a.length-1   && a[mid]==a[mid+1]){
+           else if(mid<a.length-1   && a[mid]==a[mid+1]){          //mid<a.length-1 for to avoid index error exception 
                if(mid%2==0){
                    //go right 
                    si=mid+1;
