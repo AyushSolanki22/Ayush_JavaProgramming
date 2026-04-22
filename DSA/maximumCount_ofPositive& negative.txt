@@ -1,0 +1,62 @@
+//In the questions, 0<n<2000, time complexity doesn't matter much so this one is simpler , more practical in this question.
+
+class Solution {
+    public int maximumCount(int[] nums) {
+        int positive=0;
+        int negative=0;
+        
+        for(int i=0;i<nums.length;++i){
+            if(nums[i]>0) positive++;
+            else if(nums[i]<0) negative ++;
+        }
+        
+        if(positive>=negative) return positive;
+        else return negative;
+    }
+}
+
+
+
+
+//Optimised Approach.(Time complexity)- For interview 
+class Solution {
+    public int maximumCount(int[] nums) {
+        int n = nums.length;
+
+        // first positive index
+        int si = 0, ei = n - 1;
+        int minidx = n;   // assume no positive
+
+        while(si <= ei){
+            int mid = si + (ei - si) / 2;
+
+            if(nums[mid] > 0){
+                minidx = mid;
+                ei = mid - 1;
+            } else {
+                si = mid + 1;
+            }
+        }
+
+        // last negative index
+        si = 0;
+        ei = n - 1;
+        int minnidx = -1;   // assume no negative
+
+        while(si <= ei){
+            int mid = si + (ei - si) / 2;
+
+            if(nums[mid] < 0){
+                minnidx = mid;
+                si = mid + 1;
+            } else {
+                ei = mid - 1;
+            }
+        }
+
+        int positivenos = n - minidx;
+        int negativenos = minnidx + 1;
+
+        return Math.max(positivenos, negativenos);
+    }
+}
