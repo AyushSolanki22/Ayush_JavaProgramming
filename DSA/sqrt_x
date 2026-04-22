@@ -3,9 +3,35 @@ class Solution {
         
         int i = 1;
         while(i <= x / i){ //here, i*i<=x, will lead to integer overflow and lead to wrong result so remember do not use things that can lead to overflow.
+//To avoid integer flow error, use i==mid/i ((MATHS ))
             i++;
         }
         return i - 1;
     }
+}
+    
+
+
+//Optimised Approach (Time complexity improved)
+class Solution {
+    public int mySqrt(int x) {
+        if(x==1) return 1;
+        int mid=0,si=1,ei=x;
+        while(si<=ei){
+            mid=si+(ei-si)/2;
+            if(mid==x/mid){
+                return mid;
+            }
+            else if(mid<x/mid){
+                si=mid+1;
+            }
+            else{
+                ei=mid-1;
+        }
+        
+        
+    }
+    return ei;
+}
 }
     
