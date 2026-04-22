@@ -1,0 +1,11 @@
+class Solution {
+    public int mySqrt(int x) {
+        
+        int i = 1;
+        while(i <= x / i){ //here, i*i<=x, will lead to integer overflow and lead to wrong result so remember do not use things that can lead to overflow.
+            i++;
+        }
+        return i - 1;
+    }
+}
+    
