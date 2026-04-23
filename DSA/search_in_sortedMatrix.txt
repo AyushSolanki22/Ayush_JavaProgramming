@@ -1,0 +1,26 @@
+class Solution {
+    public boolean searchMatrix(int[][] m, int target) {
+        int sc=0,ec=m[0]. length-1;
+        int sr=0,er=m.length-1;
+        int midr,midc;
+        
+        while(sr<=er && sc<=ec){
+            midr=sr+(er-sr)/2;
+            midc=sc+(ec-sc)/2;
+            
+            if(target==m[midr][midc]) return true;
+            else if(target<m[midr][midc]){
+                if(target>=m[midr][0]){ 
+                    ec=midc-1;   //move left
+                    
+                }
+                else er=midr-1; //move up
+            }
+            else{
+                if(target<=m[midr][ec]) sc=midc+1; //move right;
+                else sr=midr+1; //move down
+            }
+        }
+        return false;
+    }
+}
