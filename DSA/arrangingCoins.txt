@@ -19,3 +19,31 @@ class Solution {
     
     
 }
+
+
+
+//Optimised Approach ((simple and fast - binary search approach))
+
+class Solution {
+    public int arrangeCoins(int n) {
+        long si=1,ei=n;
+        long m; //mid here ,, kyunki jo k(no. of rows vo number ke half ke aaspas hi hongi so this is another approach, simple & fast )
+        long ans=0;
+        while(si<=ei){
+            m=si+(ei-si)/2;
+            long k=m*(m+1)/2;       //long everywhere to avoid integer overflow 
+            
+            if(k==n) return (int)m;
+            else if(k>n){
+                ei=m-1;
+            }
+            else{
+                ans=m;
+                si=m+1;
+                
+            }
+        }
+        return (int)ans;
+        
+    }
+}
