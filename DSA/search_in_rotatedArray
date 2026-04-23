@@ -32,3 +32,13 @@
 //         return -1;
 //     }
 // }
+
+
+
+
+
+//Another Approach --- Finding pivot element and then applying Binary Search two times.
+(one till pivot, another from pivot) 
+
+-- pivot can be found using binary search
+-- pivot (smallest)
