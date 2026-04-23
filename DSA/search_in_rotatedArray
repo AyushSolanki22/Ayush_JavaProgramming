@@ -1,5 +1,5 @@
 //*Solution     ((concept written))
-
+//Basic Intuition - find sorted half and find target easily.
 
 // Rotated sorted array
 // class Solution {
