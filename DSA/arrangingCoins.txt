@@ -1,0 +1,21 @@
+import java.util.*;
+class Solution {
+    public int arrangeCoins(int n) {
+        //Concept - Fully maths based somewhat 
+        //n lies in 1+2+3+...........
+        //b=1+2+3+.......+k;
+        
+        //k= row, to hame kth row hi to chaiye staircase ki 
+        
+        //so n=k*(k-1)/2;
+        //2n=k²+k => k²+k-2n=0;
+        //k= (-1+sqrt(1+8n))/2; //also applicable on non perfect sum of 1+2+3+..k ,,, like for 8or13
+        
+        long m=(long)n; //to avoid overflow 
+        int k=(-1+(int)Math.sqrt(1+8*m))/2; //or here we can use our square root function question which gives integer part only 
+        
+        return k;
+    }
+    
+    
+}
