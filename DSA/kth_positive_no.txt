@@ -1,0 +1,29 @@
+class Solution {
+    public int findKthPositive(int[] a, int k) {
+      
+      
+      //Concept 
+      
+      //kth missing number hum index ke based pe jo correct value hogi uski help se find krr skte 
+      //for example positive number from 1 to n=9 : {1,2,3,4,5,6,7,8,9};
+      //At 0 index: correct value is index+1 =1; 
+      //so missing numbers= value at index - correct value 
+      
+      //Find certain random mid (sorted)
+      //if(missing<=k) //go left (as missing positive  numbers will be lying within left of the mid only, so going in left will provide the desired kth positive number)
+      //if(missing>=k) //go right (as missing positive numbers will be lying within right of the mid )
+      //return lo+k or (high+1)+k ((high+1== the value at the index, +k will give kth positive no.))
+      
+        int si=0,ei=a.length-1;
+        int mid;
+        int correctValue,missnos;
+        while(si<=ei){
+          mid=si+(ei-si)/2;
+          
+          correctValue=mid+1;  //like at 0th index, element will be 1.
+          missnos=a[mid]-correctValue; //like if at 0th index, element is 2, missing nos = 2-1=1;
+          
+          if(missnos>=k) ei=mid-1; //go left 
+          else si=mid+1; //go right 
+        }
+        return ei+1+k;
