@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isPalindrome(String str) {
+        int i=0, j=str.length()-1;
+        char f1,f2;
+        while(i<=j){
+              f1=str.charAt(i);
+              f2=str.charAt(j);
+
+            // skip non-alphanumeric (only alphanumeric parts are to be seen in palindrome)
+            if(!Character.isLetterOrDigit(f1)){
+                i++;
+            }
+            else if(!Character.isLetterOrDigit(f2)){
+                j--;
+            }
+
+              else {
+                // convert to lowercase               (to avoid inequality incase of A & a)
+                f1 = Character.toLowerCase(f1);
+                f2 = Character.toLowerCase(f2);
+                if(f1!=f2) {
+                    return false;
+                }
+                i++;
+                j--;
+              }
+              
+        }
+        return true;
+    }
+
+}

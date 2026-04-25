@@ -17,12 +17,12 @@ public class strings {
 
         //input output
         Scanner sc=new Scanner(System.in);
-        String name=sc.next();   //or sc.nextLine() to input more than a word.
+        String name=sc.next();   //or sc.nextLine() to input more than a word. ///sc.next takes only a word and ignores rest part after a whitespace
         System.out.println(name);
         
         //string length
         String fullname="tony stark";
-        System.out.println(fullname.length()); //in array,length is a property(no ()) whereas in string, it is a function. 
+        System.out.println(fullname.length()); //in array,length is a property(no ()) whereas in string, it is a function. so length() is used.
 
         //concatenation
         String firstname="Ayush";
@@ -45,6 +45,9 @@ public class strings {
         }
     }
 }
+//to access element at certain index , --> str.charAt(i)    ~similar to str[4] in C,C++;
+
+
 //Strings are immutable- their value cannot be changed at it's own original memory location itself, it takes new memory lcoation when value is changed like concatenated
 //so whenever we have to make changes continously to a string, in a loop, it is a worst case- bad time complexity(0(n*m)), and slow loop in result. --- so we use a new structure, StringBuilder , similar to strings
 
