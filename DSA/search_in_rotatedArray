@@ -42,3 +42,47 @@
 
 -- pivot can be found using binary search
 -- pivot (smallest)
+
+
+
+//In case when there maybe duplicates too .
+//Solution (Search in rotated Array II)
+class Solution {
+    public boolean search(int[] nums, int target) {
+        int si=0,ei=nums.length-1;
+        int mid;
+        while(si<=ei){
+            mid=si+(ei-si)/2;
+            
+             if(nums[mid]==target) return true;
+            
+            
+            //you can't know which part is sorted as there nay be duplicates, target maybe ignored. like in case [1,0,1,1,1]
+            if(nums[si] == nums[mid] && nums[mid] == nums[ei]){
+    si++;
+    ei--;
+    continue;
+}
+          
+            //check if left part is sorted
+            if(nums[mid]>=nums[si]){
+                if(target<nums[mid] && target>=nums[si]) {
+                    ei=mid-1; //move left 
+                }
+                else{
+                    si=mid+1; //move right
+                }
+            }
+            else{
+                if(target>nums[mid] && target <=nums[ei]){
+                    si=mid+1; //move right 
+                }
+                else{ 
+                ei=mid-1; //move left 
+                }
+            }
+            
+        }
+        return false;
+    }
+} 
