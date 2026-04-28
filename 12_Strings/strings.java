@@ -46,13 +46,22 @@ public class strings {
     }
 }
 //to access element at certain index , --> str.charAt(i)    ~similar to str[4] in C,C++;
+//Strings are as character Array in C,C++ , but in java, string is also as a DataType. also having its own inbuilt functions;
+
 
 
 //Strings are immutable- their value cannot be changed at it's own original memory location itself, it takes new memory lcoation when value is changed like concatenated
 //so whenever we have to make changes continously to a string, in a loop, it is a worst case- bad time complexity(0(n*m)), and slow loop in result. --- so we use a new structure, StringBuilder , similar to strings
+//Updation of string in a loop having bad complexity as well create a new object each time after concatenation. new string is created & objects are copied each time. 
 
 //String buillder is like it can be created easily and continously modified, without unnecessary copying and new creations
 //StringBuilder sb=new StringBuilder("HW");
 //It almost have all features and functions similar to strings : append
+
+
 //sb.toString()  --> converts it to string (if required),,condition: it need to be object[int a is not object, Integer a is ; char a is not object, Character is ]
- 
+ // int a=5; a.toString() will not work
+ //or String s=Integer.toString(n);
+
+
+ //Emoji also have certain unicode (can be included in String)

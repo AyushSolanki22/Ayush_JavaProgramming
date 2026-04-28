@@ -17,8 +17,8 @@ class Solution {
               else {
                 // convert to lowercase               (to avoid inequality incase of A & a)
                 f1 = Character.toLowerCase(f1);
-                f2 = Character.toLowerCase(f2);
-                if(f1!=f2) {
+                f2 = Character.toLowerCase(f2);       //we can also have initially lower cased full string but that will be waste of memory and time(still small but)  so by character by character will avoid new string creation, only converts when needed, more efficient.
+                if(f1!=f2) { 
                     return false;
                 }
                 i++;

@@ -17,6 +17,8 @@ public class substring {
         System.out.println(subString(s, 0,7));
 
         //in-built Substring java 
-        System.out.println(s.substring(0,9));
+        System.out.println(s.substring(0,s.length()-1));      //remember, ei is exclusive    
+        
+        //or s.substring(3) //substring from 3rd index till last;
     }
 }

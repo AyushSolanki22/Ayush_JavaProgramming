@@ -16,5 +16,28 @@ public class builtIn_func{
 
         //compareTo -- lexographic largest file
         
-    }
+
+        //concat
+        String a="Ayush";
+        String b="Solanki";
+        System.out.println(a.concat(b));
+        System.out.println(a+" "+b);        //+ --> also results in concatenation.  We can add String/character/integer anything     
+        a.concat(b); 
+        System.out.println(a);  //Agaon there will be no change in result, if u need to concat it really(not temporarily), use a=a.concat(b)
+
+        System.out.println('A'+2+"Ayush");  //will print 67Ayush  //left to right associativity (A+2 --> Integer}
+
+        //int n ko input kra skte' & add krrskte (integer me 0, initial zeroes--> useless, so not printed in string) (same as for trailing zeroes in double)
+        // String s=    ""+n;   
+
+
+        //Conversion of String to Int
+        //String str="7567854";
+        //int n=Integer.parseInt(str);
+
+        //Conversion of String to Array
+        //String s="Ayush";
+        //char arr[]=s.toCharArray();
+
+    
 }
