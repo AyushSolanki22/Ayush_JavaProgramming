@@ -43,6 +43,10 @@ public class strings {
         if (s1.equals(s3)) {    //this function compares on values
             System.out.println("\nStrings are equal.");
         }
+        StringBuilder sb=new StringBuilder("ayush");
+        System.out.println(sb.capacity());
+        sb.append("solanki");
+        System.out.println(sb+" "+sb.capacity());
     }
 }
 //to access element at certain index , --> str.charAt(i)    ~similar to str[4] in C,C++;
@@ -50,13 +54,18 @@ public class strings {
 
 
 
-//Strings are immutable- their value cannot be changed at it's own original memory location itself, it takes new memory lcoation when value is changed like concatenated
+//Strings are immutable- their value cannot be changed at it's own original memory location itself, it takes new memory lcoation when value is changed like concatenated or new value is assigned (Interning concept)
+//new string will be created and variable will point to new string, each time after any updation/
 //so whenever we have to make changes continously to a string, in a loop, it is a worst case- bad time complexity(0(n*m)), and slow loop in result. --- so we use a new structure, StringBuilder , similar to strings
 //Updation of string in a loop having bad complexity as well create a new object each time after concatenation. new string is created & objects are copied each time. 
 
-//String buillder is like it can be created easily and continously modified, without unnecessary copying and new creations
-//StringBuilder sb=new StringBuilder("HW");
-//It almost have all features and functions similar to strings : append
+//String buillder is like it can be created easily and continously modified, without unnecessary copying and new creations   //we can also use ArrayLisr<Character>
+//StringBuilder sb=new StringBuilder("HW");               //Initially, it has capacity to store 16 characters, which increase with length of initialised.
+//It almost have all features and functions similar to strings : append(), setCharAt(i, " "). reverse(), deleteCharAt(i); insert(i," "), delete(i,j) //j exclusive 
+
+//to convert String builder to string : String s= sb.toString()
+
+
 
 
 //sb.toString()  --> converts it to string (if required),,condition: it need to be object[int a is not object, Integer a is ; char a is not object, Character is ]

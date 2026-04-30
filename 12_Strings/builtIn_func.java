@@ -33,7 +33,11 @@ public class builtIn_func{
 
         //Conversion of String to Int
         //String str="7567854";
-        //int n=Integer.parseInt(str);
+        //int n=Integer.parseInt(str);    //Integer.parseInt(str)
+
+        //Conversion of String to Int
+        //int n=5; 
+        //String s=Integer.toString(n);    //Integer.toString(n)
 
         //Conversion of String to Array
         //String s="Ayush";
