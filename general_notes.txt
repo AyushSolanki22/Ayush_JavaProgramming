@@ -69,6 +69,9 @@
 7. solid rhombus
 8. hollow rhombus
 9. diamond pattern
+10. question
+11.question_2
+12. number_spiral
 
 #09_Arrays
 1. array
@@ -84,6 +87,7 @@
 11. optimisticApproach_maxsum
 12. trapping_rainwater
 13. buy_sell_stocks
+14. array_list
 
 #10_Sorting
 1. bubble_sort
@@ -104,9 +108,10 @@
 3. shortest path
 4. substring
 5. lexographic_largest
-6# strings-immutable, StringBuilder (written in strings.java at end)
-7. uppercase_question
-8. string_compression
+# strings-immutable, StringBuilder (written in strings.java at end)
+6. uppercase_question
+7. string_compression
+8. builtin_func
 
 #14_OOPs
 1. classes_objects -txt,java
@@ -141,15 +146,44 @@
 13. problem13: friends pairing
 14. problem 14: binary strings
 
+#16_
+
+
+#17_Time&SpaceComplexity
 
 
 
+##DSA (LeetCode)
 
-
-
-
-
-
+1. Rotate Array
+2. Missing Number ,Optimisation
+3. Two Sum
+4. 3Sum
+5. Search in Rotated Sorted Array
+6. Median of Two Sorted Arrays
+7. Search Insert Position
+8. Intersection of Two Arrays
+9. Concatenation of Arrays 
+10. Intersection of Two Arrays II
+11. Binary Search
+12. Maximum Count of Positive & Negative Integers , Optimisation
+13. Sqrt(x)
+14. Single Element in a Sorted Array (single among doubles)
+15. Arranging Coins
+16. Search a 2D Matrix
+17. Kth Missing Positive Number
+18. Valid Palindrome (String)
+19. Search in Rotated Array II
+20. Valid Anagram
+21. Peak Index in Mountain Array
+22. Palindrome Number
+23. Remove Duplicates from Sorted Array
+24. Reverse Integer
+25. Pow(x, n)
+26. Find First and Last Occurrence
+27. Container With Most Water
+28. Remove Element
+29. Maximum Difference Between Increasing Elements
 
 
 

@@ -1,4 +1,4 @@
-// String is a data type to store texts - like sentences, paragraphs. It has many functions, features associated with it.
+// String is a specific data type in Java language (unlike char array in C,C++) to store texts - like sentences, paragraphs. It has many functions, features associated with it.
 //String also has inbuilt class named String
 import java.util.*;
 public class strings {

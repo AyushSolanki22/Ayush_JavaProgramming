@@ -22,18 +22,16 @@ public class insertion_sort {
     
     public static void main(String[] args) {
         int arr[]={5,4,1,3,2};
-        
-        insertionSort(arr);
+        int n=arr.length;
+
+        insertionSort(arr,n);
         for (int i = 0; i <n; i++) {
         System.out.println(arr[i]);   
         }
     }
 
     //correct(efficient insertion sort)
-    public static void insertionSort(int arr[]) {
-
-        int n = arr.length;
-
+    public static void insertionSort(int arr[],int n) {
         for(int i = 1; i < n; i++){
             int cur=i;
 

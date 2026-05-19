@@ -1,0 +1,171 @@
+DSA
+
+@ 13 April (Day 1)
+Finished basics Java
+Also saw if-else 1 hour
+
+@ 14 April (Day 2)
+Finished if-else
+Finished loops
+Finished patterns
+Finished methods
+Completed 1 hr of Arrays
+
+@ 15 April (Day 3)
+Completed 3 more hrs of Arrays
+2 DSA questions (on array) - rotate, missing
+Some on GeeksforGeeks
+
+@ 16 April (Day 4)
+Finished Arrays
+1 DSA Question - optimised missing, tried kth largest element
+Some questions on GeeksforGeeks
+
+@ 17 April (Day 5)
+Completed Time & Space Complexity
+1 question on LeetCode - Two Sum
+1 question on GeeksforGeeks
+
+@ 18 April (Day 6)
+Completed 1 hr 10 mins of sorting
+Done questions on LeetCode - 3Sum, Search in Rotated Array, Median, Search Insert Position
+1 question on GeeksforGeeks - Move All Zeroes to End
+
+@ 19 April (Day 7)
+Completed 1 more hour of sorting
+Done 1 question on LeetCode - Intersection of Arrays
+Done 1 & tried 2-3 questions of LeetCode - Concatenation of Arrays
+Multiple questions on GFG
+
+@ 20 April (Day 8)
+Finished sorting, completed 20 mins of Binary Search
+Done 1 question on LeetCode - Intersection of Arrays II
+Tried 1-2 questions
+Tried questions on GFG, understood Union of Arrays
+
+@ 21 April (Day 9)
+Completed 1 hr 30 mins of Binary Search
+Done 2 questions on LeetCode - Binary Search, Maximum no. of positive & negative integers
+Understood/done 2 questions - First and Last Occurrence of Element, Peak Element
+Done questions on GFG
+
+@ 22 April (Day 10)
+Completed 1 hr 8 mins
+Done 2 questions on LeetCode - Max count of positive and negative integers optimisation & sqrt
+Done 1 question - Single Element in a Sorted Array
+Tried Arranging Coins for an hour
+Done some questions on GFG
+
+@ 23 April (Day 11)
+Completed 1 hour of Binary Search
+Done 1 question on LeetCode - Arranging Coins (also optimised it)
+Done 1 question - Search in a 2D Matrix
+Understood Search in Rotated Sorted Array
+Done a question on GFG
+
+@ 24 April (Day 12)
+Finished Binary Search (1 hr 20 mins)
+Done 1 question on LeetCode - Kth Positive Number
+Done a question on GFG
+
+@ 25 April (Day 13)
+Completed 1 hr 10 mins of Strings
+Done 1 question on LeetCode - Valid Palindrome
+Done a question on GFG
+
+@ 26 April (Day 14)
+0 (Physics exam + waking late)
+Done 1 question on LeetCode - Search in Rotated Array II (duplicates)
+
+@ 27 April (Day 15)
+Completed 1 hr 2 mins of Strings
+Posted 1 question - Search in Rotated Sorted Array (EVS paper)
+
+@ 28 April (Day 16)
+0 (Electrical paper)
+Posted 1 question - Find Median (Optimised Approach)
+
+@ 29 April (Day 17)
+0 (Electrical paper)
+2 submissions:
+- Random optimised approach of sqrt
+- Made readable code of Search 2D Sorted
+
+@ 30 April (Day 18)
+Completed 1 hr 14 mins of Strings
+Done 1 question - Valid Anagram
+1-2 questions
+
+@ 1 May (Day 19)
+0 (Maths paper + semester)
+Reposted 1
+
+@ 2 May (Day 20)
+0
+Posted 1 question - Search Insert Position
+
+@ 3 May (Day 21)
+0
+Posted 1 question - Concatenation of Array
+
+@ 4 May (Day 22)
+0
+Posted 1 question - Peak Index in Mountain Array
+
+@ 5 May (Day 23)
+0
+Posted 1 question - Single Element in Sorted Array (single among doubles)
+
+@ 6 May
+0
+Posted 1 question - Palindrome Number
+
+@ 7 May
+0
+Posted 1 question - Remove Duplicate from Sorted Array
+
+@ 8 May
+0
+Posted 1 question - Reverse Integer
+
+@ 9 May
+0
+Posted 1 question - Pow(x, n)
+
+@ 10 May
+0
+Posted 1 question - Find First and Last Occurrence
+
+@ 11 May
+0
+Posted 1 question - Container With Most Water
+
+@ 12 May
+0
+Posted 1 question - Two Sum
+
+@ 13 May
+0
+Reposted 1 question - Two Sum
+
+@ 14 May
+0
+Reposted 1 question - Reverse Integer
+
+@ 15 May
+0
+Posted 1 question - Remove Element
+
+@ 16 May
+0
+Reposted 1 question - Two Sum
+
+@ 17 May
+0
+Posted 1 question - Maximum Difference Between Increasing Elements
+
+@ 18 May
+0
+Reposted - Maximum Difference Between Increasing Elements
+
+@ 19 May

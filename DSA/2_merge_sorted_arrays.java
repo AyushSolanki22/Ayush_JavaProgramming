@@ -26,14 +26,14 @@ class merge_sorted_arrays {
             if(a[i]>=b[j]) {
                 c[k]=b[j];      //or c[k++]=a[i++]  (post increment concept)
                 ++j; 
-                ++k;
 
             }
             else{
                 c[k]=a[i];
                 ++i;
-                ++k;
+
             }
+            ++k;
             
 
         }

@@ -60,7 +60,7 @@ public class selection_sort {
 public static void main(String[] args){
     int arr[]={5,-2,6,7,2,0,7,2};
     int n=arr.length;
-    for(int i=0; i<n-1; ++i){             //same no. of passes as similar to that of bubble sort(n-1)passes 
+    for(int i=0; i<n-1; ++i){             //same no. of passes as similar to that of bubble sort(n-2)passes 
         int min=Integer.MAX_VALUE;
         int minidx=-1;     //we also need minimum element index as well to have swapped elements(index is necessary for swapping)
         for(int j=0; j<n;j++){

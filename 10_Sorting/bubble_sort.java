@@ -41,7 +41,7 @@ public static void optimised_bubbleSort(int a[]) {
     int n=a.length;
     int temp;
     int swaps=0;
-    for(int i=0; i<=n-1;++i){
+    for(int i=0; i<=n-2;++i){        //n-2 passes/turns
         boolean isSorted=true;
         // for(int k=0;k<n-1;++k){
         //     if(a[k]>a[k+1]){
