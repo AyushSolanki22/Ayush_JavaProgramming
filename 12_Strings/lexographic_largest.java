@@ -1,4 +1,4 @@
-//lexographic - like as alphates occuring at same index are smaller/bigger ,,lexographic order example: alphabet-wise roll no. in classes or like in dictionary 
+//lexographic - like as alphates occuring at same index are smaller/bigger ,,lexographic order example: alphabet-wise roll no. in classes or like in dictionary ,,, technically,ASCII Values are compared.
 public class lexographic_largest {
     //Java has a compareTo function to compare string based on lexographic comparision.  
     
@@ -20,3 +20,6 @@ public class lexographic_largest {
 //>0: +ve , st1>st2
 //<0: -ve, st1<st2
 //*****remember it is case insensitive
+
+
+//Incase of unequal length and one being full substring of the larger length, the larger length one is lexographically larger

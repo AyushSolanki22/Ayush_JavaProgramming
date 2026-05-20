@@ -1,4 +1,4 @@
-// String is a specific data type in Java language (unlike char array in C,C++) to store texts - like sentences, paragraphs. It has many functions, features associated with it.
+// String is a specific data type in Java language to store texts - like sentences, paragraphs. It has many functions, features associated with it.
 //String also has inbuilt class named String
 import java.util.*;
 public class strings {
@@ -24,7 +24,7 @@ public class strings {
         String fullname="tony stark";
         System.out.println(fullname.length()); //in array,length is a property(no ()) whereas in string, it is a function. so length() is used.
 
-        //concatenation
+        //concatenation  -- anything (int,char,String be added in concatenation)
         String firstname="Ayush";
         String lastname="Solanki";
         String full_name=firstname+" "+lastname;
@@ -54,14 +54,17 @@ public class strings {
 
 
 
-//Strings are immutable- their value cannot be changed at it's own original memory location itself, it takes new memory lcoation when value is changed like concatenated or new value is assigned (Interning concept)
+//Strings are immutable- their value cannot be changed at it's own original memory location itself, it takes new memory lcoation when value is changed like concatenated or new value is assigned (Interning concept). Thus they make pass by value argument pass.
 //new string will be created and variable will point to new string, each time after any updation/
 //so whenever we have to make changes continously to a string, in a loop, it is a worst case- bad time complexity(0(n*m)), and slow loop in result. --- so we use a new structure, StringBuilder , similar to strings
-//Updation of string in a loop having bad complexity as well create a new object each time after concatenation. new string is created & objects are copied each time. 
+//Updation of string in a loop having bad complexity as well create a new object each time after concatenation. new string is created & objects are copied each time.  (bad space complexity as well )
 
 //String buillder is like it can be created easily and continously modified, without unnecessary copying and new creations   //we can also use ArrayLisr<Character>
-//StringBuilder sb=new StringBuilder("HW");               //Initially, it has capacity to store 16 characters, which increase with length of initialised.
-//It almost have all features and functions similar to strings : append(), setCharAt(i, " "). reverse(), deleteCharAt(i); insert(i," "), delete(i,j) //j exclusive 
+//StringBuilder sb=new StringBuilder("HW");               //Initially, Empty String Builder has capacity to store 16 characters, or if not empty:16+length, which increases in a multiple on updation. //sb.capacity()**
+//It almost have all features and functions similar to strings , other features(like python lists) : append(), setCharAt(i, " "). reverse(), deleteCharAt(i); insert(i," "), delete(i,j) //j exclusive    
+
+//The delete char at and insert are time taking process: whole string shift accordingly
+
 
 //to convert String builder to string : String s= sb.toString()
 
@@ -74,3 +77,5 @@ public class strings {
 
 
  //Emoji also have certain unicode (can be included in String)
+
+ //String or StringBuilder cannot be sorted basically directly . (only through conversion to charArray)

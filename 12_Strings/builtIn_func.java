@@ -12,7 +12,8 @@ public class builtIn_func{
         if(s1.startsWith("Ayush")) System.out.println(true);
 
         s1.toUpperCase();
-        System.out.println(s1);    //s1 mai koi change ni hoga , if u want to make all in upper case then either u can do is s=s1.toUpperCase()
+        System.out.println(s1);    //s1 mai koi change ni hoga by toUppercase function(only it can be printed), if u want to make all in upper case then either u can do is s=s1.toUpperCase()
+
 
         //compareTo -- lexographic largest file
         
@@ -33,7 +34,7 @@ public class builtIn_func{
 
         //Conversion of String to Int
         //String str="7567854";
-        //int n=Integer.parseInt(str);    //Integer.parseInt(str)
+        //int n=Integer.parseInt(str);    //Integer.parseInt(str) //Integer wrapper class has functions for interconversion in (string-int)
 
         //Conversion of String to Int
         //int n=5; 

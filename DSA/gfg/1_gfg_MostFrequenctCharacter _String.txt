@@ -1,0 +1,59 @@
+//Method 1 -- BruteForce approach - 2 loops (n*n) time complexity
+
+
+//Method 2 -- Using CharArray and sorting -- 0(nlogn) T.C (sorting+loop)
+import java.util.*;
+class Solution {
+    public char getMaxOccuringChar(String s) {
+        // code here
+        char arr[]=s.toCharArray();
+        int maxcount=1;
+        int count=1;
+        Arrays.sort(arr);
+        char ch=arr[0];
+        for(int i=1;i<arr.length;++i){
+            
+            if(arr[i]==arr[i-1]){
+                count++;
+                if(count>maxcount){
+                    ch=arr[i];
+                    maxcount=count;
+                }
+                
+            }
+            else{
+                count=1;
+            }
+        }
+        return ch;
+    }
+}
+
+
+//Method 3 -Frequency Array Concept (as lowercase alphabets ki string hai to it would be more easy, and not much space complexity)  A.C=0(1),T.C=0(n)   ~Acting as a hashmap
+
+//location of character at index --(char-97)
+
+import java.util.*;
+class Solution {
+    public char getMaxOccuringChar(String s) {
+        // freq count (array)
+        int freq[]=new int[26];
+        for(int i=0;i<s.length();++i){
+            int idx=s.charAt(i)-97;
+            freq[idx]++;
+        }
+        
+        //checking highest freq character;
+        char maxfreq_char='a';
+        int maxFreq=0;
+        for(int i=0; i<26;i++){
+            if(freq[i]>maxFreq) {
+                maxFreq=freq[i];
+                maxfreq_char=(char)(i+97);
+            }
+        }
+        
+        return maxfreq_char;
+    }
+}

@@ -1,0 +1,24 @@
+class Solution {
+    public char nonRepeatingChar(String s) {
+
+        int freq[] = new int[26];
+
+        // frequency count
+        for(int i = 0; i < s.length(); ++i){
+            int idx = s.charAt(i) - 'a';
+            freq[idx]++;
+        }
+
+        // check in original order
+        for(int i = 0; i < s.length(); ++i){
+
+            int idx = s.charAt(i) - 'a';
+
+            if(freq[idx] == 1){
+                return s.charAt(i);
+            }
+        }
+
+        return '$';
+    }
+}

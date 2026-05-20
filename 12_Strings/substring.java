@@ -19,6 +19,6 @@ public class substring {
         //in-built Substring java 
         System.out.println(s.substring(0,s.length()-1));      //remember, ei is exclusive    
         
-        //or s.substring(3) //substring from 3rd index till last;
+        //or s.substring(3) //substring from 3rd index till last; //by default -- starting index
     }
 }

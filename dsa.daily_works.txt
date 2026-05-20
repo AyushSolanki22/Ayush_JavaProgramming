@@ -168,4 +168,11 @@ Posted 1 question - Maximum Difference Between Increasing Elements
 0
 Reposted - Maximum Difference Between Increasing Elements
 
+
+
 @ 19 May
+4 hr 08' (full revision of whole video, concepts + 42 mins) - just 2-3 questions left to solve 
+Reposted container with most water 
+Understood various questions, newly most frequent character : did method 2, understood method 3  //sliding window concept
+
+@20 May 
