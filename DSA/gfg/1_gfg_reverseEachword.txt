@@ -1,0 +1,33 @@
+class Solution {
+
+    public String reverseWords(String s) {
+
+        int i = 0, j = 0;
+
+        StringBuilder sb = new StringBuilder();
+
+        while(j <= s.length()){
+
+            // word end
+            if(j == s.length() || s.charAt(j) == ' '){
+
+                // avoid empty substrings (like at start)
+                if(i < j){
+
+                    String stemp = s.substring(i, j);
+
+                    sb.append(new StringBuilder(stemp).reverse());
+
+                    sb.append(" ");
+                }
+
+                i = j + 1;
+            }
+
+            j++;
+        }
+
+        // remove extra trailing space
+        return sb.toString().trim();
+    }
+}

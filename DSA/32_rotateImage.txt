@@ -1,0 +1,28 @@
+class Solution {
+    public void rotate(int[][] arr) {
+
+        //tranpose at original array only
+        for(int j=0;j<arr.length;++j){
+            for(int k=j;k<arr.length;++k){
+                int temp=arr[k][j];
+                arr[k][j]=arr[j][k];
+                arr[j][k]=temp;
+            }
+
+        }
+
+        //row reverse
+        for(int i=0;i<arr.length;++i){
+            int j=0,k=arr[0].length-1;
+            while(j<k){
+                
+                int temp=arr[i][j];
+                arr[i][j]=arr[i][k];
+                arr[i][k]=temp;
+                j++;
+                k--;
+            }
+
+        }
+    }
+}

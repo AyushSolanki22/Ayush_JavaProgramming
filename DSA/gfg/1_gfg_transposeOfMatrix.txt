@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Solution {
+
+    public ArrayList<ArrayList<Integer>> transpose(int[][] arr) {
+
+        // transpose matrix
+        for(int j = 0; j < arr.length; ++j){
+
+            for(int k = j; k < arr.length; ++k){
+
+                int temp = arr[k][j];
+
+                arr[k][j] = arr[j][k];
+
+                arr[j][k] = temp;
+            }
+        }
+
+        // create answer ArrayList
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+
+        // convert 2D array → ArrayList
+        for(int a[] : arr){
+
+            ArrayList<Integer> row = new ArrayList<>();
+
+            for(int ele : a){
+                row.add(ele);
+            }
+
+            ans.add(row);
+        }
+
+        return ans;
+    }
+}

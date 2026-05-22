@@ -100,7 +100,8 @@
 1. 2D Array.java
 2. spiral_matrix                      **
 3. diagonalSum
-4. search_in_sorted_matrix                                                                                      
+4. search_in_sorted_matrix 
+5. questions                                                                                     
 
 #12_Strings    (strings-immutable, Stringbuilder )
 1. strings.
@@ -184,8 +185,9 @@
 27. Container With Most Water
 28. Remove Element
 29. Maximum Difference Between Increasing Elements
-
-
+30. String compression
+31. Transpose Matrix
+32. Rotate Image
 
 
 

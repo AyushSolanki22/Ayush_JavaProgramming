@@ -1,11 +1,11 @@
 //1D,2D,3D ,,,,,,,n-D(used for ML)
-//2D Arrays -- are like matrix (row,cols);
+//2D Arrays -- are like matrix (row,cols);   ((Simply, Array of Arrays))
 //real life example- subject wise stuents marks, RGB Matrix, 4-D(videos)
 
 //representation
 
 
-//Creation of 2D Arrays
+//Creation of 2D Arrays        
 //can also be created as nested array , int[]={{},{}}
 import java.util.*;
 public class _2D_Array {
@@ -54,3 +54,5 @@ public class _2D_Array {
 // --> not stored as like that in linear arrays (1-D).
 // It can be stored in memory as row major fashion (row1, row2, row3) or column major fashion (col1,col2,col3)
 //But java has a different system of storing it in memory -it has tree type structure(not in contigous type somewhat)
+
+

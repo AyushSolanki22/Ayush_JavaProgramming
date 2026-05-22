@@ -173,6 +173,19 @@ Reposted - Maximum Difference Between Increasing Elements
 @ 19 May
 4 hr 08' (full revision of whole video, concepts + 42 mins) - just 2-3 questions left to solve 
 Reposted container with most water 
-Understood various questions, newly most frequent character : did method 2, understood method 3  //sliding window concept
+Understood various questions(concept),did 2 ,non repeating char, frequent character : did method 2, understood method 3  //sliding window concept
 
 @20 May 
+solved some left questions, completed 54 mins of 2D Array 
+Done 1 question on Leetcode- string compression
+
+
+@21 May
+2D Array logical questions, completed 40 mins of 2D Array 
+Done 1 question on Leetcode - Transpose matrix, done 1 of leetcode - Rotate Image
+2 ques on gkg - reverse each word, transpose of matrix, rotate " "
+
+@22 May
+
+
+
