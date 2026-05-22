@@ -9,7 +9,7 @@ class Solution {
 
             int j = i;
 
-            // move j while same chars
+            // move j while same chars      //Sliding window concept
             while(j < s.length && s[i] == s[j]){
                 j++;
             }

@@ -3,7 +3,7 @@
 (creating a java file, boilerplate code, ouput in java, print a pattern- basic , variables, datatypes, sum of a&b,comments, input in java, sum thru input, prod thru input, area of circle, type conversion,type casting, type promotion in expressions, how is code running)
 1. First_Program 
 2. Variables_Literals
-3. Data_Types       *
+3. Data_Types                             *
 4. User_input
 5. Sum_Product_thru_input
 6. typecasting
@@ -26,9 +26,9 @@
 2. print numbers
 3. sum natura nos
 4. for loop
-5. square pattern
-6. reverse of number                     *****
-7. dowhile loop                          --
+5. square pattern 
+6. reverse of number                      *
+7. dowhile loop                          
 8. break
 9. continue
 10. if prime
@@ -40,18 +40,18 @@
 4. character pattern
 
 #06_Functions&Methods
-1. syntax                                   **
+1. syntax                                   
 2. Non-void function
-3. call by value                            **
+3. call by value                            *
 4. product
 5. factorial
 6. bino coefficeint                         *
 7. userdefined
 8. function overloading                     *
 9. if prime or not                          
-10. primes_in range                          **
+10. primes_in range                         
 11. scope
-12. Palindrome                              **
+12. Palindrome                              
 
 #07_Binary&Decimal
 1. binary_to_decimal
@@ -71,7 +71,7 @@
 9. diamond pattern
 10. question
 11.question_2
-12. number_spiral
+12. number_spiral                           **
 
 #09_Arrays
 1. array
@@ -84,10 +84,12 @@
 8. array_pairs
 9. array_subarrays
 10. subArrays_sum
-11. optimisticApproach_maxsum
-12. trapping_rainwater
-13. buy_sell_stocks
-14. array_list
+11. optimisticApproach_maxsum      
+12. trapping_rainwater                      ****
+13. buy_sell_stocks                         ***
+14. assignment
+15. for_each_loop                           **
+15. array_list                              ***
 
 #10_Sorting
 1. bubble_sort
@@ -98,21 +100,22 @@
 
 #11_2D Arrays
 1. 2D Array.java
-2. spiral_matrix                      **
+2. spiral_matrix                              *
 3. diagonalSum
 4. search_in_sorted_matrix 
-5. questions                                                                                     
+5. questions                                  **   
+6. 2D array_list                              ***                        
 
 #12_Strings    (strings-immutable, Stringbuilder )
-1. strings.
+1. strings.                                                              **
 2. if_palindrome
 3. shortest path
 4. substring
 5. lexographic_largest
-# strings-immutable, StringBuilder (written in strings.java at end)
+# strings-immutable, StringBuilder (written in strings.java at end)     ***
 6. uppercase_question
 7. string_compression
-8. builtin_func
+8. builtin_func                                                          **
 
 #14_OOPs
 1. classes_objects -txt,java
@@ -188,7 +191,8 @@
 30. String compression
 31. Transpose Matrix
 32. Rotate Image
-
+33. Pascal's triangle
+34. Pascal's triangle II
 
 
 

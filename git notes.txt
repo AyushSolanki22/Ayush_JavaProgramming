@@ -61,3 +61,12 @@ iii) committed changes (for many commits)
 It is a new repository that shares code and visibility settings with the original "upstream" repository
 It is a rough copy.
 
+
+
+//TO Remember things
+It only tracks folders/repositories you initialize with Git. (Git works repository-wise)
+You can have a multiple repositories, even from multiple different accounts on a single computer system. (each project is independent)
+
+Though, never add Git (initialize) in a huge parent folder, otherwise Git may track more than intended.
+
+Git only tracks files, not empty directories.

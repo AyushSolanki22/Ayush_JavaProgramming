@@ -1,0 +1,28 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<List<Integer>> finalAns = new ArrayList<>();   //ArrayList<Integer> ~ List<Integer>
+        List<Integer> rowUnused=new ArrayList<>();
+        for(int i = 0; i <=rowIndex; ++i){
+
+            List<Integer> row = new ArrayList<>();
+
+            for(int j = 0; j <= i; ++j){
+
+                if(j == 0 || j == i){
+                    row.add(1);
+                }
+
+                else{
+
+                    int m =finalAns.get(i-1).get(j)+finalAns.get(i-1).get(j-1);
+
+                    row.add(m);
+                }
+            }
+            if(i==rowIndex) return row;
+            finalAns.add(row);
+        }
+        return rowUnused;
+    }
+
+}
