@@ -1,0 +1,44 @@
+class Solution {
+    public ArrayList<Integer> spirallyTraverse(int[][] arr) {
+        
+        //in this, to avoid bottom, left value repeated , incase of single row ,single column , there is a fix
+        
+        ArrayList<Integer> ans=new ArrayList<>();
+        int sr=0,sc=0,er=arr.length-1,ec=arr[0].length-1;
+        while(sr<=er && sc<=ec){
+            //top
+            for(int j=sc;j<=ec;++j){
+                ans.add(arr[sr][j]);
+            }
+            //right
+            for(int i=sr+1;i<=er;++i){
+                ans.add(arr[i][ec]);
+            }
+
+            //bottom
+            if(sr < er){
+
+                for(int j = ec - 1; j >= sc; --j){
+                    ans.add(arr[er][j]);
+                }
+            }
+
+            // left
+            if(sc < ec){
+
+                for(int i = er - 1; i >= sr + 1; --i){
+                    ans.add(arr[i][sc]);
+                }
+            }
+
+
+            sr++;
+            sc++;
+            er--;
+            ec--;
+            
+            
+}
+return ans;
+    }
+}

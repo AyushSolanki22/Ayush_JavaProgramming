@@ -1,3 +1,4 @@
+//full sorted(can be treated as 1D Sorted- binary search applicable)
 class Solution {
     public boolean searchMatrix(int[][] m, int target) {
         int sc=0,ec=m[0]. length-1;
@@ -7,10 +8,10 @@ class Solution {
         while(sr<=er && sc<=ec){
             midr=sr+(er-sr)/2;
             midc=sc+(ec-sc)/2;
-            
+             
             if(target==m[midr][midc]) return true;
             else if(target<m[midr][midc]){
-                if(target>=m[midr][0]){ 
+                if(target>=m[midr][sc]){ 
                     ec=midc-1;   //move left
                     
                 }

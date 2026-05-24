@@ -1,0 +1,38 @@
+//Row-column sorted Matrix **Special question
+
+//Simple (unefficient) , T.C= 0(mn)
+class Solution {
+    public boolean searchMatrix(int[][] arr, int target) {
+        for(int i=0;i<arr.length;++i){             
+            for(int j=0;j<arr[0].length;++j){
+                if(arr[i][j]==target) return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+
+//Optimised, T.C=0(m+n)       //Staircase Search Approach
+class Solution {
+    public boolean searchMatrix(int[][] arr, int target) {
+        int m=arr.length-1,n=arr[0].length-1;
+        int i=0,j=n;
+
+        //from right top most ----movement in either left or down direction
+
+        //right top most is largest in its row, and smallest in its column
+
+        //concept -- all left smaller, all down are larger
+        while(i<=m && j>=0){
+            if(target==arr[i][j]) return true;   //element found
+            else if(target<arr[i][j]) j--;       //move    
+            else i++;  
+        }
+
+        return false;
+
+
+    }
+}

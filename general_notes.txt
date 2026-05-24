@@ -159,6 +159,7 @@
 
 ##DSA (LeetCode)
 
+gfg folder
 1. Rotate Array
 2. Missing Number ,Optimisation
 3. Two Sum
@@ -193,7 +194,8 @@
 32. Rotate Image
 33. Pascal's triangle
 34. Pascal's triangle II
-
+35. Search a 2D Array_II (normal, optimised)
+36. Check if Array is sorted and rotated 
 
 
 

@@ -5,22 +5,22 @@ public class spiral_matrix {
         int sr=0,er=m.length-1,sc=0,ec=m[0].length-1;
 
         while (sr<=er && sc<=ec) { //boundary  //less than or equal to is much necessary to avoid errors or double time printing in case of odd order and (matrices which are not square )
-            //top
+            //top          (row)
             for (int j=sc; j<=ec; ++j) {
                 System.out.print(m[sr][j]+" ");
             }
-            //right
+            //right         (col)
             for (int i=sr+1; i<=er; ++i) {
                 System.out.print(m[i][ec]+" ");
             }
-            //bottom
+            //bottom        (row)
             for (int j=ec-1; j>=sc; --j) {
                 if (sr==er) {
                     break; //incase of a odd rows & columns which can lead to double time printing.(similar to top)
                 }
                 System.out.print(m[er][j]+" ");
             }
-            //left
+            //left            (col)
             for (int i=er-1; i>=sr+1; --i) {
                 if (sc==ec) {
                     break; //incase of a odd rows & columns which can lead to double time printing(similar to right)

@@ -186,6 +186,14 @@ Done 1 question on Leetcode - Transpose matrix, done 1 of leetcode - Rotate Imag
 2 ques on gkg - reverse each word, transpose of matrix, rotate " "
 
 @22 May
+Completed 40 mins of 2D Array, also fully solved pascal's approach.
+Posted 1 on leetcode - rotate image, Done 2 of leetcode - pascal's triangle, pascal's triangle II
+
+@23 May
+Took much time for optimising search in 2D matrix II but failed, completed 53 mins of 2D Array , tried check if array is sorted and rotated & succeeded.
+Saw a mistake so reposted Search in 2D matrix , Done 2 on leetcode - Search in 2D matrix II (normal +optimised )., Done 1 on Leetcode - check if array is sorted and rotated 
+Gfg questions- multiplication, spiral traverse
+
 
 
 
