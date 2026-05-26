@@ -44,5 +44,8 @@ public class builtIn_func{
         //String s="Ayush";
         //char arr[]=s.toCharArray();
 
+        //Conversion of Array/variable to String
+        //String s=new String(arr);  
+
     
 }

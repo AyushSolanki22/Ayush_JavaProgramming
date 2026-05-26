@@ -1,0 +1,36 @@
+**//Based on recursion
+
+//My code
+class Solution {
+    // static int i=0,j=0;
+    public int uniquePaths(int m, int n) {
+        if(m==1 && n==1) return 1;
+        if((m==1 && n==2)||(m==2 && n==1)) return 1;
+
+        if(m>1 && n>1){
+            return uniquePaths(m-1,n)+uniquePaths(m,n-1);
+        }
+        else if(m==1) return uniquePaths(m,n-1);
+
+        else return uniquePaths(m-1,n);
+        
+    }
+}
+
+//sir code (small, understandable, core concept understanding)
+
+class Solution {
+    // static int i=0,j=0;
+    public int uniquePaths(int m, int n) {
+
+        // By unique path, u mean path, not totalWays
+
+        if(m==1 || n==1) return 1;
+        return uniquePaths(m,n-1)+uniquePaths(m-1,n);       
+
+        
+}
+}
+
+
+*******//TLE Reached on Leetcode  (Overlapping subproblems), this question needs dp  

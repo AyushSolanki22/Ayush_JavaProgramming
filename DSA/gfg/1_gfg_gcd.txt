@@ -1,0 +1,13 @@
+class Solution {
+    public static int gcd(int a, int b) {
+        // code here
+        if(a==0){     //in last, when remainder(b%a) i.e a=0 ,,return b (which was a in last call ****) 
+            
+            return b;
+        }
+        return gcd(b%a,a);  //a--> b%a ,,b-->a 
+    }
+}
+
+
+//T.C = 0(log(min(a,b)))

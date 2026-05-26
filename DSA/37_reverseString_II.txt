@@ -1,0 +1,31 @@
+class Solution {
+    public String reverseStr(String s, int k) {
+        char ch[]=s.toCharArray();  //to array
+
+        int i=0;
+        int j;
+        while(i<s.length()){
+            if((s.length()-1-i)<k) {   //to check if less than k characters are left only
+                j=s.length()-1;
+            }
+            else{
+                j=i+k-1;    //placing j at for to reverse k characters in first 2k characters
+            }
+            int i1=i;
+            while(i1<j){
+                char temp=ch[i1];
+                ch[i1]=ch[j];
+                ch[j]=temp;
+                i1++;
+                j--;
+            }
+            i+=2*k;      //will move i to after 4 characters
+
+        }
+
+        String s1 = new String(ch);
+        return s1;
+        
+        
+    }
+}

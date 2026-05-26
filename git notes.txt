@@ -27,6 +27,13 @@ git branch (to check branch)
 git branch -M main (to rename branch)
 git push origin main or git push -u origin main (when all files have to be pushed onto same branch,, work on same project alway s
 
+also git doesn't allow git operations without pat or ssh key 
+//setup of pat(personal access token) -- generate token(classic) on git
+username - github username
+password - token key
+
+
+
 6. Branch commands
 .......
 git checkout <branch name>  (to navigate)

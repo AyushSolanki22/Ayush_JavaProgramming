@@ -1,0 +1,18 @@
+//Recursion
+
+class Solution {
+    public int reverseExponentiation(int n) {
+        // code here
+        int rev;
+        if(n==10) rev=1;
+        else rev=n;
+        int powerAns=power(n,rev);
+        return powerAns;
+    }
+    
+    public static int power(int n,int rev){
+        if(rev==1) return n;
+        return (n*power(n,rev-1));
+    }
+}
+ 

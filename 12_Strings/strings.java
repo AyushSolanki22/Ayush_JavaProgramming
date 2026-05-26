@@ -79,3 +79,8 @@ public class strings {
  //Emoji also have certain unicode (can be included in String)
 
  //String or StringBuilder cannot be sorted basically directly . (only through conversion to charArray)
+
+
+
+ //Array of Strings //String arr[]={"Ayush","Solanki"},,
+ //Also, ArrayList of Strings  //ArrayList is pass by reference

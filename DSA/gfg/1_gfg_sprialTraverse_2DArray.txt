@@ -16,7 +16,7 @@ class Solution {
             }
 
             //bottom
-            if(sr < er){
+            if(sr < er){    //to avoid printing bottom row incase if there is a single row only.
 
                 for(int j = ec - 1; j >= sc; --j){
                     ans.add(arr[er][j]);
@@ -24,7 +24,7 @@ class Solution {
             }
 
             // left
-            if(sc < ec){
+            if(sc < ec){   //to avoid printing leftmost column incase if there is a single column only
 
                 for(int i = er - 1; i >= sr + 1; --i){
                     ans.add(arr[i][sc]);

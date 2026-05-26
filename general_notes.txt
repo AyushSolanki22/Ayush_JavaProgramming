@@ -115,7 +115,9 @@
 # strings-immutable, StringBuilder (written in strings.java at end)     ***
 6. uppercase_question
 7. string_compression
-8. builtin_func                                                          **
+8. builtin_func                                 **
+9. powerSet.png                                 **
+10.subsequences                                                             
 
 #14_OOPs
 1. classes_objects -txt,java
@@ -170,7 +172,7 @@ gfg folder
 8. Intersection of Two Arrays
 9. Concatenation of Arrays 
 10. Intersection of Two Arrays II
-11. Binary Search
+11. Binary Search, Binary search using recursion
 12. Maximum Count of Positive & Negative Integers , Optimisation
 13. Sqrt(x)
 14. Single Element in a Sorted Array (single among doubles)
@@ -196,8 +198,9 @@ gfg folder
 34. Pascal's triangle II
 35. Search a 2D Array_II (normal, optimised)
 36. Check if Array is sorted and rotated 
+37. Reverse String II 
 
-
+    
 
 
 

@@ -192,8 +192,17 @@ Posted 1 on leetcode - rotate image, Done 2 of leetcode - pascal's triangle, pas
 @23 May
 Took much time for optimising search in 2D matrix II but failed, completed 53 mins of 2D Array , tried check if array is sorted and rotated & succeeded.
 Saw a mistake so reposted Search in 2D matrix , Done 2 on leetcode - Search in 2D matrix II (normal +optimised )., Done 1 on Leetcode - check if array is sorted and rotated 
-Gfg questions- multiplication, spiral traverse
+Gfg questions- multiply matrices, spiral traverse
 
+@24 May
+Finished 2D Array (38 mins), Finished recursion part 1 (3 hour 58 mins)
+Done 1 on leetcode - Reverse String II
+Gfg - multiply2matrices,,, factorial , reverse exponentiation, sum, gcd, Fibonacci,
 
+@25 May
+0  (going to home)
+Posted 1 on leetcode -Pascal's Triangle;
+
+@26 May
 
 

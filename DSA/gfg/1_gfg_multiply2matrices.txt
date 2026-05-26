@@ -1,0 +1,23 @@
+class Solution {
+    public ArrayList<ArrayList<Integer>> multiply(int[][] mat1, int[][] mat2) {
+        
+        ArrayList <ArrayList<Integer>> finalAns=new ArrayList<>();
+        for(int i=0; i<mat1.length;++i){
+            ArrayList<Integer> row=new ArrayList<>(mat1.length);
+            for(int j=0;j<mat2[0].length;j++){
+                
+                int temp=0;
+                for(int k=0;k<mat1[0].length;++k){
+                    temp+=mat1[i][k]*mat2[k][j];
+                    
+                }
+                row.add(temp);
+                
+            }
+            finalAns.add(row);
+            
+        }
+        return finalAns;
+        
+    }
+}

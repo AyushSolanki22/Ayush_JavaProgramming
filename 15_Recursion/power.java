@@ -32,3 +32,8 @@ public class power {
 
     }
 }
+
+//In this question,
+//function can be called in this manner a**b=a**(b/2)*a**(b/2) -if b is even and a**b=a**(b/2)*a**(b/2)*a - if b is odd , instead of a**b=a*(a**b-1)
+//This will result into logb complexity --- optimised
+//Also in the program, there is only one call =pow(a,b/2) , if b is even--> call*call,, if odd --> call*call

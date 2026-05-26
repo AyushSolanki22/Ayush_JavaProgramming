@@ -16,7 +16,7 @@ public class problem_1_2 {
             return;
         }
         printInc(n-1);            //functionc call
-        System.out.print(n+" ");  //recursion back loop - work done in back loop, not in top to down loop
+        System.out.print(n+" ");  //recursion back loop - work done in back loop, not in top to down loop(my conceptual understanding term)
     }
     public static void main(String[] args) {
         int n=10;

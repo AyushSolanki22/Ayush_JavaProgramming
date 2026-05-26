@@ -1,9 +1,24 @@
-//Recursion -- iterations, functions,,,, main use in trees, graphs, dp(dynamic programming)
+//Recursion -- iterations, functions,,,, main use in trees, graphs, dp(dynamic programming), backtracking, merge & quick sort
 //Sometimes, for some programmes, recursion is better (like trees), for other, iteration is better.
 
 //Recursion - when a function call itself on repetition (loop)
 //example: math -- factorial
+//MAGIC
 
-//It is a method of solving a computational problem where the solution depends on solutions to smaller instances of the same problem.
+//It is a method of solving a computational problem where the solution depends on solutions to smaller instances of the same problem. (Divide & Conquer)
 //2 directions: top to down(towards base case), down to top (combining solutions)
-// 1. Base case, 2. work, 3. inner call
+//Core Concept-- 1. Base case, 2. work, 3. inner call
+
+
+
+//T.C && Space complexity
+//In recursion, time complexity is measured as Maximum no. of calls in call stack
+//Note: for loop is faster than recursion (in recursion, 2 directions + work)
+//Space complexity = No. of parameters*no. of calls
+
+
+
+//In question (a raised to the power b), 
+//function can be called in this manner a**b=a**(b/2)*a**(b/2) -if b is even and a**b=a**(b/2)*a**(b/2)*a - if b is odd , instead of a**b=a*(a**b-1)
+//This will result into logb complexity --- optimised
+//Also in the program, there is only one call =pow(a,b/2) , if b is even--> call*call,, if odd --> call*call

@@ -4,7 +4,10 @@
 // -Properties, functions, blocks and nested class can be declared static
 
 //- static property , function is shared with all object of the class basically
-// that's why class is named with static to have only one main class within the package/programme
+// that's why class is named with static to have only one main class within the package/programme. ((as static variable can only be intialised, declared once only))
+
+//scope - it is defined only outside the functions, works as global
+//life - variable defined with static type persists between different function calls.(life- until the program ends)
 
 ///-static keyword property's memory location is located differenty from the neap and the object's static property points to the static keyword property 
 //Also static enables us to avoid multiple creations of a property which is similar in all objects (ex: percentage formula),classes.
