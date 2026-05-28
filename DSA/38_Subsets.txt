@@ -1,0 +1,39 @@
+class Solution {
+
+    public List<List<Integer>> subsets(int[] nums) {
+
+        List<List<Integer>> finalAns = new ArrayList<>();
+
+        List<Integer> subset = new ArrayList<>();
+
+        helper(nums, 0, subset, finalAns);
+
+        return finalAns;
+    }
+
+    static void helper(int nums[],
+                       int idx,
+                       List<Integer> subs,
+                       List<List<Integer>> finalAns){
+
+        // base case
+        if(idx == nums.length){
+
+            finalAns.add(new ArrayList<>(subs));   //new arraylist here to add a copy, not a original reference of arrayList , otherwise all subs added in final ans will be poiting to same subs
+            //For mutable objects like:  ArrayList, StringBuilder, arrays,,, storing variable stores: reference/address
+
+            return;
+        }
+
+        // skip
+        helper(nums, idx+1, subs, finalAns);
+
+        // take
+        subs.add(nums[idx]);
+
+        helper(nums, idx+1, subs, finalAns);
+
+        // backtrack
+        subs.remove(subs.size()-1);
+    }
+}

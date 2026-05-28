@@ -36,7 +36,7 @@ public class builtIn_func{
         //String str="7567854";
         //int n=Integer.parseInt(str);    //Integer.parseInt(str) //Integer wrapper class has functions for interconversion in (string-int)
 
-        //Conversion of String to Int
+        //Conversion of Int to String
         //int n=5; 
         //String s=Integer.toString(n);    //Integer.toString(n)
 

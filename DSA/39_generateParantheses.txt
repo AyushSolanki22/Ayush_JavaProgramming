@@ -1,0 +1,28 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        
+        List<String> l=new ArrayList<>();
+        int open=0,close=0;
+        helper(n,"",l,open,close);
+        return l;
+    }
+    void helper(int n,String s,List <String> l,int o, int c){
+        if(o>=n && c>=n){
+            l.add(s);
+            return;
+        }
+
+        if(o<n) helper(n,s+"(",l,o+1,c);  //take open
+
+        //take close
+        if(c<o) helper(n,s+")",l,o,c+1);
+
+
+    }
+    
+}
+
+//keeping the core concept in mind== well formed parantheses,
+ a close bracket cannot come until a left one has been placed.
+//Full recursion dry run concept (either add open(in case o<n) or either add close (incase c<o))
+//cases ke hisaab se doo calls hongi (either one or either other or both)

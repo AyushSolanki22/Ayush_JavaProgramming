@@ -204,5 +204,12 @@ Gfg - multiply2matrices,,, factorial , reverse exponentiation, sum, gcd, Fibonac
 Posted 1 on leetcode -Pascal's Triangle;
 
 @26 May
+Tried Unique paths (TLE reached., will be efficiently solved by DP), completed 1 hr 45' mins of Recursion part 2
+Done 1 on leetcode - binary search (using recursion), Done 1 on leetcode - Subsets (included backtracking)
+Gfg - power set , tried issubsetSum(TLE reached), subsetSums,
 
+@27 May 
+((Pre In Post concept +(Euler's Tour Tree) +Tower of Hanoi concept)) , Completed 2hr 50 mins of Recursion part 2 (only 5 mins left - count and say pattern).
+Done 1 on leetcode - Generate parantheses 
+Gfg - Tower of Hanoi.
 

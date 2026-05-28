@@ -199,7 +199,9 @@ gfg folder
 35. Search a 2D Array_II (normal, optimised)
 36. Check if Array is sorted and rotated 
 37. Reverse String II 
-
+38. Subsets
+39. Generate Parantheses + image(concept)
+Recursion Identification, Tower of Hanoi program
     
 
 
