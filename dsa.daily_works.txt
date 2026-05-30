@@ -213,3 +213,12 @@ Gfg - power set , tried issubsetSum(TLE reached), subsetSums,
 Done 1 on leetcode - Generate parantheses 
 Gfg - Tower of Hanoi.
 
+@28 May 
+Finished recursion part 2, (5 mins) 
+Done 1 on leetcode - count and say 
+Gfg - " ", 
+
+@29 May 
+Completed 17 mins of Oops (Less due to course certification completion and web development) 
+Posted 1- Pascal's Triangle II
+
