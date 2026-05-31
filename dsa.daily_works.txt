@@ -222,3 +222,6 @@ Gfg - " ",
 Completed 17 mins of Oops (Less due to course certification completion and web development) 
 Posted 1- Pascal's Triangle II
 
+@30 May 
+Revised whole OOPs,newly studied-  In DSA, Concepts of Class as user defined datatype and as user defined structure concept , passing objects to methods (by reference), completed 43 mins of OOPs,
+Done 2 on Leetcode - check if All A's appears before B's , Check if array is good

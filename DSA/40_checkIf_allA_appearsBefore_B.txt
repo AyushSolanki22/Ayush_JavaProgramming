@@ -1,0 +1,45 @@
+My solution 
+class Solution {
+    public boolean checkString(String s) {
+        int idx=s.length();
+        char ch[]=s.toCharArray();
+        // Arrays.sort(ch);
+        for(int i=0;i<ch.length;++i){
+            if(ch[i]=='b'){ idx=i;
+            break;}
+        }
+
+        for(int i=idx;i<ch.length;++i){
+            if(ch[i]=='a') return false;
+        }
+
+        return true;
+    }
+}
+
+
+//Another Solution (simpler to some extent)
+class Solution {
+    public boolean checkString(String s) {
+
+        boolean foundB = false;
+
+        for(int i = 0; i < s.length(); i++){
+
+            if(s.charAt(i) == 'b'){
+                foundB = true;
+            }
+
+            if(foundB && s.charAt(i) == 'a'){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+
+//Much simpler solution (Hack)
+return !s.contains("ba");

@@ -1,5 +1,5 @@
 // Constructor is a special method which is invoked automatically at the time of object creation. It is used to initialise newly created object
-// -Constructures have the same name as class or structure. Ex: Pen()
+// -Constructurs have the same name as class or structure. Ex: Pen()
 // -Constructors don't have a return type (not even void)
 // -Constructors are only called once, at object creation.
 // -Memory allocation happens when constructor is called 

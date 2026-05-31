@@ -37,7 +37,7 @@ abstract class Animals {
     void eat(){
         System.out.println("animal eats");
     }
-    abstract void walk();  //as abstract thing doesn't have implementation (idea only).-- walk here doesn't have implementation in animals, it just gives idea(form base) for derived classes, it's derived classes can.
+    abstract void walk();  //as abstract thing doesn't have implementation (idea only).-- walk here doesn't have implementation in animals, it just gives idea(form base) for derived classes, it's derived classes can. This idea says: Every animal must have a walk() method.
 
 }
 class Horse extends Animals {

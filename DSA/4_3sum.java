@@ -1,4 +1,4 @@
-//*Approach (Solution for 3 sum)
+// *Approach (Solution for 3 sum)
 
 
 // import java.util.*;
@@ -7,11 +7,11 @@
 //     public List<List<Integer>> threeSum(int[] nums) {           
 //         Arrays.sort(nums);                                      //By Sorting, finding 3 sum becomes easier through 2 pointer approach.
 //         List<List<Integer>> result = new ArrayList<>();         //List<List<Integer>> is a type of ArrayList as a collection of elements in which elements itself are lists of int.(more flexible, preferable in interviews/companies)
-                                                                   //Here, we can also use ArrayList(but it's less flexible)
+//                                                                    Here, we can also use ArrayList(but it's less flexible)
 //         for(int i = 0; i < nums.length; i++){
 
 //             if(i > 0 && nums[i] == nums[i-1]) continue;     
-                                                                   //nums[i]==nums[i-1] conditions is because to avoid repetition of triplets incase of duplicate elements in sorted.
+//                                                                    nums[i]==nums[i-1] conditions is because to avoid repetition of triplets incase of duplicate elements in sorted.
 //             int left = i + 1;
 //             int right = nums.length - 1;
 
