@@ -29,7 +29,9 @@ git --version
 # ⚙️ 2. Configure Git
 
 ```bash
-git config --global user.name "Your Name"
+git config --global user.name "Your Name"   //this will configure author globally
+git config user.name "Your Name"            
+//(without global keyword) this will configure locally (helping in maintaining multiple users at a dekstop operating different github accounts)
 
 git config --global user.email "your_email@gmail.com"
 
@@ -227,68 +229,6 @@ git push -u origin main
 
 ---
 
-# 🔐 Authentication
-
-GitHub no longer supports password authentication for Git operations.
-
-Use:
-
-* Personal Access Token (PAT)
-  OR
-* SSH Keys
-
----
-
-## Personal Access Token (PAT)
-
-### Generate PAT
-
-GitHub → Settings → Developer Settings → Personal Access Tokens → Generate New Token (Classic)
-
-Select:
-
-```text
-repo
-```
-
-permission while generating token.
-
----
-
-## While Pushing
-
-```text
-Username → GitHub username
-
-Password → Personal Access Token
-```
-
----
-
-## Avoid Entering Username & Token Every Time
-
-Run this command once:
-
-```bash
-git config --global credential.helper store
-```
-
-After running it:
-
-* Git stores credentials locally
-* Username/token will be remembered
-* Future pushes won't ask repeatedly
-
----
-
-## Push Normally
-
-```bash
-git push origin main
-```
-
----
-
 # 🌿 6. Branch Commands
 
 ## Create & Switch Branch
@@ -414,6 +354,70 @@ Used for:
 * creating independent versions of repositories
 
 ---
+
+# 🔐 Authentication
+
+GitHub no longer supports password authentication for Git operations.
+
+Use:
+
+* Personal Access Token (PAT)
+  OR
+* SSH Keys
+
+---
+
+## Personal Access Token (PAT)
+
+### Generate PAT
+
+GitHub → Settings → Developer Settings → Personal Access Tokens → Generate New Token (Classic)
+
+Select:
+
+```text
+repo
+```
+
+permission while generating token.
+
+---
+
+## While Pushing
+
+```text
+Username → GitHub username
+
+Password → Personal Access Token
+```
+
+---
+
+## Avoid Entering Username & Token Every Time
+
+Run this command once:
+
+```bash
+git config --global credential.helper store
+```
+
+After running it:
+
+* Git stores credentials locally
+* Username/token will be remembered
+* Future pushes won't ask repeatedly
+
+---
+
+## Push Normally
+
+```bash
+git push origin main
+```
+
+---
+
+
 
 # 🔑 SSH Key Setup
 
@@ -599,6 +603,33 @@ yes
 
 ---
 
+## Contributions Not Showing on GitHub
+
+Check current email:
+
+```bash
+git config user.email
+```
+
+Check commit author:
+
+```bash
+git show --format=fuller -s HEAD
+```
+
+Ensure the email used in commits is verified on GitHub.
+
+GitHub → Settings → Emails
+
+If using multiple GitHub accounts:
+
+* Use global configuration for your primary account.
+* Use local repository configuration for secondary accounts.
+* GitHub contributions are counted using the commit email.
+* Wrong commit email may cause commits to appear in repositories but not on the GitHub contribution graph.
+
+---
+
 # 🧠 Important Notes
 
 * Git works repository-wise.
@@ -607,6 +638,9 @@ yes
 * Each project is independent.
 * Avoid initializing Git in huge parent folders.
 * Git tracks files, not empty folders/directories.
+* GitHub contributions are counted using the commit email.
+* Ensure `git config user.email` matches a verified email on your GitHub account.
+* Different repositories can use different Git identities through local configuration.
 
 ---
 
