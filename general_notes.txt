@@ -129,7 +129,7 @@
 7. Inheritance
 8. Polymorphism
 9. Method overloading
-10. Abstraction
+10. abstract_class (Abstraction)
 11. Interfaces
 12. Static_keyword
 13. super_keyword
@@ -199,7 +199,11 @@ gfg folder
 35. Search a 2D Array_II (normal, optimised)
 36. Check if Array is sorted and rotated 
 37. Reverse String II 
-
+38. Subsets
+39. Generate Parantheses + image(concept)
+Recursion Identification, Tower of Hanoi program
+40. Check if All A's appears before all B's
+41. Check if Array is good
     
 
 

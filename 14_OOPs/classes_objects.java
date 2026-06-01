@@ -45,6 +45,6 @@ class Student{
     float percentage;
 
     void calcPercentage(int phy, int chem, int math) {
-        percentage=(phy+chem+math)/3
+        percentage=(phy+chem+math)/3;
             }
 }

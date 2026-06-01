@@ -4,7 +4,7 @@ way of writing code approach
 
 @Classes & objects;
 objects- entities in yhe real world.
-classes- group of these entities. (usually a group/collection of entities inhibiting similar properties
+classes- group of these entities. (usually a group/collection of entities inhibiting similar properties)
 
 Class basically serves as a blueprint or template for creating entities. 
 It has its own attributes(properties) as well as functions(behaviour). 

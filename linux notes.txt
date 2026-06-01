@@ -19,11 +19,38 @@ halt
 update-grub --> to update grub
 
 --> Terminal Basics
-List files : ls , ls -l , ls-la  
-directory : mkdir, pwd, rm -rf, cd[change directory]: only directories
-files : touch, nano: used to edit files , echo: to write text and making file, cat: show file's content
+List files : ls , ls -l , ls-la   ,ls-lt(sort by modfication time)
+directory : mkdir, pwd (print current directory), rm,rm -rf, cd[change directory]: only directories
+files : touch: used to make new file , nano: used to edit files , echo: to write text and making file, cat: show file's content in the terminal itself, xdg-open: filename.txt (open file with default GUI application)
 chmod: change file permissions, chown : change file owner
 cp: copy file , mv: move file , 
+
+--> Zip/Unzip file 
+A ZIP file: Combines multiple files/folders into one file. Compresses them (reduces size). (like index.html, style.css, script.js into website.zip) remember: it preserves folder structure
+Basically, zip   = pack/compress files into a box 📦 ,unzip = open/extract files from the box 📂
+
+-install zip unzip 
+
+-zip a file
+zip archive.zip file.txt
+
+-zip multiple files
+zip webfiles.zip index.html style.css script.js
+
+-zip a directory
+zip -r website.zip website/
+((-r =ecursive (include all subfolders/files)))
+
+-unzip a file (extract contents in current directory)
+unzip archive.zip
+
+-unzip to specific folder
+unzip archive.zip d destination_folder
+
+-view contents without extracting
+unzip -l website.zip
+
+
 @Power Commands
 sudo apt update && sudo apt upgrade 
 whoami : check logged in user.

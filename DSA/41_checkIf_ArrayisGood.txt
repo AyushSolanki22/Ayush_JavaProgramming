@@ -1,0 +1,47 @@
+//My Solution (A optimised better solution)
+import java.util.*;
+class Solution {
+    public boolean isGood(int[] nums) {
+        int max=Integer.MIN_VALUE;
+        int count[]=new int[201];
+        for(int i=0;i<nums.length;++i){
+            count[nums[i]]++;
+            max=Math.max(max,nums[i]);
+             
+        }
+        for(int i=0;i<nums.length;++i){
+            if(count[nums[i]]>1 && nums[i]!=max) return false;
+        }
+        if(nums.length==max+1 && count[max]==2) return true;
+
+        return false;
+    }
+}
+
+
+//Another possible solution  (T.C= 0(nlogn))
+class Solution {
+
+    public boolean isGood(int[] nums) {
+
+        Arrays.sort(nums);
+
+        int max = nums[nums.length - 1];
+
+        // Length should be max + 1
+        if(nums.length != max + 1){
+            return false;
+        }
+
+        // Check pattern: 1,2,3,...,max-1,max,max
+        for(int i = 0; i < nums.length - 1; i++){
+
+            if(nums[i] != i + 1){
+                return false;
+            }
+        }
+
+        // Last element should also be max
+        return nums[nums.length - 1] == max;
+    }
+}
