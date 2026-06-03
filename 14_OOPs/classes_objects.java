@@ -23,7 +23,7 @@ public class classes_objects {
 
     }
 }
-public class Pen {
+public class Pen {     //using the classes, we indirectly make user-defined dataTypes.
     //properties+functions. - are defined within classes 
 
     //color,tip : properties,,,,,, setColor,setTip: functions 

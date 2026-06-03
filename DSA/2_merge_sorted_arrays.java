@@ -41,7 +41,7 @@ class merge_sorted_arrays {
             c[k++]=a[i++];
         }
         while(j<b.length){
-            c[k++]=b[i++];
+            c[k++]=b[j++];
         }
     }
 }
