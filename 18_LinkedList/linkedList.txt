@@ -1,0 +1,24 @@
+//Limitations of arrays 
+1) fixed size 
+2) continous memory location 
+3) hard to add/delete element in middle
+
+//Advantages -- instantly accessible elements O(1)
+
+
+//Idea of LinkedList
+particular element containing its value and way to get to next(reference- address of next element) 
+(linking of elements )
+
+Unlike Arraylist in which we have to create new arraylist when one becomes full and then copy , paste one into new, also consuming time.
+LinkedList allows add/deletion of elements anywhere(starting,middle,end) without disturbing whole list 
+
+
+//LinkedList
+Basically, LinkedList is a datatype consisting nodes and there are 2 sections of a node(element) : one of value, another of address of next element 
+
+First node --> head, Last node--> tail
+
+One Drawback --> to access/insert/delete ,we have to traverse full linkedList till the desired element -- Time consuming,,, also consumes more memory because of 2 sections.
+Another Drawback --> if at after head node , we cannot traverse(move) back to previous nodes
+

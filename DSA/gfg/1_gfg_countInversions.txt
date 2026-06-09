@@ -1,0 +1,41 @@
+class Solution {
+    static int count;
+    static int inversionCount(int arr[]) {
+        // Code Here
+        count=0;
+        mergeSort(arr);
+        return count;
+    }
+    static void mergeSort(int arr[]){
+        int n=arr.length;
+        if(n<=1) return;
+        //step1
+        int a[]=new int[n/2];
+        int b[]=new int[n-n/2];
+        
+        //step2
+        int idx=0;
+        for(int i=0;i<a.length;++i) a[i]=arr[idx++];
+        for(int i=0;i<b.length;++i) b[i]=arr[idx++];
+        
+        //step3
+        mergeSort(a);
+        mergeSort(b);
+        
+        //step4
+        merge(a,b,arr);
+    }
+    static void merge(int a[],int b[],int arr[]){
+        int i=0,j=0;
+        int idx=0;
+        while(i<a.length && j<b.length){
+            if(a[i]<=b[j]) arr[idx++]=a[i++];
+            else{
+                arr[idx++]=b[j++];
+                count+=a.length-i;
+            }
+        }
+        while(i<a.length) arr[idx++]=a[i++];
+        while(j<b.length) arr[idx++]=b[j++];
+    }
+}

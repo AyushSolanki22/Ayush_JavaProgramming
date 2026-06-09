@@ -1,0 +1,19 @@
+import java.util.*;
+class Solution {
+    public int findDuplicate(int[] arr) {
+        int i=0; 
+        while(i<arr.length){
+            if(i+1==arr[i]) i++;
+            else{
+                int idx=arr[i]-1;
+                if(arr[i]==arr[idx]) return arr[i];
+                //swap
+                int temp=arr[i];
+                arr[i]=arr[idx];
+                arr[idx]=temp;
+                
+            }
+        }
+        return arr[arr.length-1];
+}
+}

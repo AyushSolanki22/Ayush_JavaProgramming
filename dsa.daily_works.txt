@@ -225,3 +225,42 @@ Posted 1- Pascal's Triangle II
 @30 May 
 Revised whole OOPs,newly studied-  In DSA, Concepts of Class as user defined datatype and as user defined structure concept , passing objects to methods (by reference), completed 43 mins of OOPs,
 Done 2 on Leetcode - check if All A's appears before B's , Check if array is good
+
+@31 May 
+1.0
+Tried 1 on leetcode - Minimise maximum in Array ((out of reach - as did not study the core concept whose application was on the problem solving )), Posted 1 on Leetcode - 3 sum 
+  
+@1 June 
+1 hr 52' mins (very less due to less time available due to web development, health issues, exploring linkedin, git issues) 
+Reposted 1 - 3sum
+
+@2 June 
+48 mins' (again very less due to health issues - loose motions,stomach pain)
+Posted 1 - Sort Array (Merge sort concept )
+
+@3 June 
+Finished OOPs (49 mins), Merge Sort( 48 mins) ((again less due to ongoing health issue))
+Posted 1 - reverse pairs
+
+@4 June 
+0 (health issues)
+Posted 1 - count of smaller numbers after self 
+
+@5 June 
+Finished Merge Sort - 1 hr 25 mins (less due to health issue)
+Reposted 1 on leetcode - sort an array (using quick sort) 
+
+@6 June 
+0 
+Posted 1 on leetcode - kth largest element in an array (using quick select)
+
+@7 June 
+0
+Done 1 on leetcode - sum of good numbers , Done 1 of leetcode - seperate digits
+Gfg - count Inversions,.
+
+
+@8 June 
+Finished cyclic sort (1hr 54 mins'), understood core concept 
+Done 2 on leetcode - missing number (using cyclic sort algorithm), find all numbers disappeared in an Array, Done 4 of leetcode - Reverse Pairs, find the duplicate number, set mismatch, first missing positive
+Gfg - missing num (range - 1 to n), array duplicates ,  smallest positive missing

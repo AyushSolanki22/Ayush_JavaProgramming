@@ -1,0 +1,32 @@
+class Solution {
+    public ArrayList<Integer> findDuplicates(int[] arr) {
+
+        ArrayList<Integer> nums = new ArrayList<>();
+
+        int i = 0;
+
+        while(i < arr.length){
+
+            int idx = arr[i] - 1;
+
+            if(arr[i] != arr[idx]){
+
+                int temp = arr[i];
+                arr[i] = arr[idx];
+                arr[idx] = temp;
+            }
+            else{
+                i++;
+            }
+        }
+
+        for(int j = 0; j < arr.length; ++j){
+
+            if(arr[j] != j + 1){
+                nums.add(arr[j]);
+            }
+        }
+
+        return nums;
+    }
+}

@@ -153,10 +153,21 @@
 13. problem13: friends pairing
 14. problem 14: binary strings
 
-#16_
+
+#16_Time&SpaceComplexity
 
 
-#17_Time&SpaceComplexity
+#17_AdvancedSort
+1. divide&conquer
+2. mergeSort
+3. cyclicSort
+
+
+#18_LinkedList
+1. linkedList.txt
+2. linkedList.java
+3. traverse
+4. LinkedListDataStructure
 
 
 
@@ -206,7 +217,14 @@ Recursion Identification, Tower of Hanoi program
 40. Count & Say
 41. Check if All A's appears before all B's
 42. Check if Array is good
-    
+43. sumOfGoodNos
+44. seperateDigits
+45. numbersDisappeared
+46. reversePairs
+47. duplicateNumber
+48. setMismatch
+49. firstMissingPositive
+
 
 
 

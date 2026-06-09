@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        for(int i = 0; i < nums.length; i++) {
+            int number = nums[i];
+            int start = arr.size();
+
+            while(number > 0) {
+                int rem = number % 10;
+                arr.add(rem);
+                number /= 10;
+            }
+
+            reverse(arr, start, arr.size() - 1);
+        }
+
+        int[] ans = new int[arr.size()];
+        for(int i = 0; i < arr.size(); i++) {
+            ans[i] = arr.get(i);
+        }
+
+        return ans;
+    }
+
+    public void reverse(ArrayList<Integer> arr, int i, int j) {
+        while(i < j) {
+            int temp = arr.get(i);
+            arr.set(i, arr.get(j));
+            arr.set(j, temp);
+            i++;
+            j--;
+        }
+    }
+}
