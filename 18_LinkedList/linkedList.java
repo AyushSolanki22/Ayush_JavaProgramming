@@ -14,7 +14,7 @@ public class linkedList{
         c.next=d;
         d.next=e;
         System.out.println(get(a,4));
-
+        System.out.println("size: "+length(a));
 
         Node n=null;
         // System.out.println(n.val); //will lead to NullPointerException as null value is nothing, so traversing should be stopped before null (as it marks end of linkedList)
@@ -25,6 +25,16 @@ public class linkedList{
             temp=temp.next;
         }
         return temp.val;
+    }
+    //length function-- to get length of linkedList
+    static int length(Node head){
+        int size=0;
+        Node temp=head;
+        while(temp!=null){
+            temp=temp.next;
+            size++;
+        }
+        return size;
     }
 }
 
@@ -37,3 +47,7 @@ class Node{   //user defined dataType
         this.val=val;
     }
 }
+
+
+//LinkedList limitations
+//get is O(n) time ((access is not that fast as in array))
