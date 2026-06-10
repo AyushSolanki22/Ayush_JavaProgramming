@@ -1,0 +1,51 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+//One Simple Approach
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        //finding length
+        int size=0;
+        ListNode temp=head;
+        while(temp!=null){
+            temp=temp.next;
+            size++;
+        }
+        int idx=size/2;
+        
+        //get function
+        temp=head;
+        for(int i=1;i<=idx;++i){
+            temp=temp.next;
+        }
+        return temp.data;
+        //Not a one pass solution
+    }
+}
+
+// One Pass Solution (Imp. Algorithm) (Slow Fast Approach/Tortoise heir)
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        //make two nodes - slow, fast 
+        //s=s.next(slow), f=f.next.next (fast)
+        
+        //odd length case- we get middle by s when f.next=null, even length case- we get middle by s when f=null
+        ListNode s=head;
+        ListNode f=head;
+        while(f!=null && f.next!=null){  //we can't write f.next!=null fast as in even length case, when f=null,f.next will cause error (Null pointer exception)
+            s=s.next;
+            f=f.next.next;
+        }
+        return s.data;
+        
+    }
+}
+

@@ -1,0 +1,19 @@
+//Again two ways possible --> 1. using length+get , 2.Slow fast approach
+
+// Delete middle node of a LinkedList (using SlowFast approach)
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        ListNode s=head;
+        ListNode sprev=s;
+        ListNode f=head;
+        if(head.next==null) return null;
+        while(f!=null && f.next!=null){
+            sprev=s;
+            s=s.next;
+            f=f.next.next;
+        }
+        sprev.next=s.next;
+        
+        return head;
+    }
+}

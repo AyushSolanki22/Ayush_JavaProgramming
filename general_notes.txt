@@ -224,6 +224,11 @@ Recursion Identification, Tower of Hanoi program
 47. duplicateNumber
 48. setMismatch
 49. firstMissingPositive
+50. deleteNode
+51. middleNode
+52. deleteMiddleNode
+53. removeNthFromEnd
+
 
 
 

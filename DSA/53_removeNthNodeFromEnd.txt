@@ -1,0 +1,59 @@
+// One approach- using length+get adapted
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        //nth node from end of list : (length-n)th node(by idx) from start
+        //finding length
+        int size=0;
+        ListNode temp=head;
+        while(temp!=null){
+            temp=temp.next;
+            size++;
+        }
+        int idx=size-n;
+        temp=head;
+        //egde case1 -- for 1 size
+        if(size==1) return null;
+        for(int i=1;i<=idx-1;++i){  //move to idx-1 & break connections of idxth node
+            temp=temp.next;
+        }
+        //edge case2- idx==0 (at head)
+        if(idx==0){
+            temp=temp.next;
+            return temp;
+        }
+
+        temp.next=temp.next.next;
+        return head;
+    }
+}
+
+//Another Approach -- Slow & Fast Approach 
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        //slow=head, fast=head
+        //make fast lead by n+1 with a loop (n+1 to get s to n+1 from end)
+        //in a loop, till fast!=null, make them take unity increment steps 
+        //when f=null, we get s , which is previous to kth node from end so is helpful to remove next node to it
+        
+        ListNode slow=head;
+        ListNode fast=head;
+        //make fast n+1 steps ahead of slow
+        for(int i=1;i<=n+1;i++){
+            //edge case2 -- when head is to be removed(0 index)
+            if(i==n+1 && fast==null){      //[1,2] , n=2
+                head=head.next;
+                return head;
+            }
+            //edge case1-- when LinkedList of size 1
+            if(fast==null)return null;
+
+            fast=fast.next;
+        }
+        while(fast!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        slow.next=slow.next.next;
+        return head;
+    }
+}

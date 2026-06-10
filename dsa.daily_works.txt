@@ -264,3 +264,14 @@ Gfg - count Inversions,.
 Finished cyclic sort (1hr 54 mins'), understood core concept 
 Done 2 on leetcode - missing number (using cyclic sort algorithm), find all numbers disappeared in an Array, Done 4 of leetcode - Reverse Pairs, find the duplicate number, set mismatch, first missing positive
 Gfg - missing num (range - 1 to n), array duplicates ,  smallest positive missing
+
+
+@9 June 
+Completed 2 hr 50' of LinkedList -1  
+Posted 1 on Leetcode - find the duplicate number
+
+
+@10 June 
+Completed 1hr 8' mins of LinkedList-1 
+Done 3 on leetcode - delete node, middle of LinkedList (Two approaches- simple, slowfast),  delete middleNode, Done 1 of leetcode - remove nth node from end(Two approaches - simple , slow fast)
+Gfg - middle of a linkedList, delete middle of a linkedList , kth node from end,
