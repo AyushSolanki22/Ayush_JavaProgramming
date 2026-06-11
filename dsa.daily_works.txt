@@ -275,3 +275,9 @@ Posted 1 on Leetcode - find the duplicate number
 Completed 1hr 8' mins of LinkedList-1 
 Done 3 on leetcode - delete node, middle of LinkedList (Two approaches- simple, slowfast),  delete middleNode, Done 1 of leetcode - remove nth node from end(Two approaches - simple , slow fast)
 Gfg - middle of a linkedList, delete middle of a linkedList , kth node from end,
+
+
+@11 June (almost 6-7.5 hrs) 
+Finished LinkedList1 ( 2 hr 12 mins') 
+Done 2 on Leetcode - swappingLinkedList, intersection of LinkedList. Done 6 of leetcode - LinkedListCycle, LinkedListCycle_II, minswaps_MoveZeroes, removeDuplicatesSortedLinkedList, removeDuplicatesSortedLinkedList_II, rotateList
+Gfg - remove duplicate from sorted linked list

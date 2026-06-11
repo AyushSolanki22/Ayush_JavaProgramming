@@ -1,0 +1,20 @@
+class Solution {
+    static int operations;
+    public int minimumSwaps(int[] arr) {
+        //In this question, we don't need number of swaps,
+        //we just need min number of swaps to move zeroes to end
+
+        //for array, [0,1,0,3,12]
+        //we will count non-zeroes.
+        //so non-zeroes are 3, so we need first 3 positions for non-zeroes
+        //so till pos 3(idx=2), there are 2 bad zeroes , which counts for need for swaps
+        int nonzeroes=0,swaps=0;
+        for(int ele: arr){
+            if(ele!=0) nonzeroes++;
+        }
+        for(int i=0;i<nonzeroes;++i){
+            if(arr[i]==0) swaps++;
+        }
+        return swaps;
+    }
+}

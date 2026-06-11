@@ -1,0 +1,61 @@
+//One approach -- simple by natural thinking
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode temp1=headA;
+        ListNode temp2=headB;
+        
+        while(temp1!=null){
+            temp2=headB;
+            while(temp2!=null){
+                if(temp2==temp1) return temp1;
+                temp2=temp2.next;
+            }
+          temp1=temp1.next;
+        }
+        return temp1;
+    }
+}
+
+//Another approach
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        
+        //we calculate length of both and we move temp 1 or temp2 ahead by the difference in margin.
+        //by this , we make temp1 , temp2 at same distance from the intersection node.
+        //and in the loop, while(temp1!=temp2 &&temp1!=null), we make both move 1 steps ahead.
+        ListNode temp1=headA;
+        ListNode temp2=headB;
+        int length1=0,length2=0;
+        //calculating length
+        while(temp1!=null){
+          temp1=temp1.next;
+          length1++;
+        }
+        while(temp2!=null){
+          temp2=temp2.next;
+          length2++;
+        }
+        //making temp1 or temp2 ahead 
+        temp1=headA; temp2=headB;
+        int idx=length1-length2;
+        if(idx>=0){
+          for(int i=1;i<=idx;++i){
+          temp1=temp1.next;
+          }
+        }
+        else{
+          idx=length2-length1;
+          for(int i=1;i<=idx;++i){
+          temp2=temp2.next;
+          }
+        }
+        //loop, temp1,temp2 being at same distance 
+        while(temp1!=temp2 && temp1!=null){
+            temp1=temp1.next;
+            temp2=temp2.next;
+        }
+        return temp1;
+    }
+}

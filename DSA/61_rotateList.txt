@@ -1,0 +1,38 @@
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        //to rotate we do break LinkedList into parts -- imp. concept
+        //it is also easy to break linkedList as compared to array
+
+        //Concept
+        //we will use a slow fast approach , and A node for a linkedList getting breaked to have access to both linkedList
+
+        //get fast ahead by k+1 (idx=k+1)
+        //in a loop, make fast,slow takes unity steps ahead until fast becomes equal to null
+        //slow will be brough to node where to break the connection somewhat.
+        //a node will be equal to slow.next ,,,,(a - linkedList2, s-- linkedList1)
+        ListNode slow=head;
+        ListNode fast=head;
+        if(head==null) return null;
+        if(k==0) return head;
+        int length=0;
+        for(int i=1; i<=k+1;++i){ //making fast ahead by k+1
+            if(fast==null){
+                return rotateRight(head,k%length); //if length<k,, or we can make a function to calculate length, and make k=k%length in starting only
+            }
+            fast=fast.next;
+            length++;
+        }
+        while(fast!=null){   //slow will be brought to node to handle linkedList1
+            slow=slow.next;
+            fast=fast.next;
+        }
+        ListNode a=slow.next;  //a node for handling linkedList2
+        slow.next=null;
+        ListNode temp=a;
+        while(temp.next!=null){  //linking of linkedList 2 with list1
+            temp=temp.next;
+        }
+        temp.next=head;
+        return a;
+    }
+}

@@ -1,0 +1,24 @@
+// A loop/cycle in linkedList question
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        //A type of linkedlist in which last node is not connected to null, it is connected to some other node in the linkedList itself , creating a cycle in a LinkedList (a loop in a linkedList)
+        
+        //10-->20-->30-->40-->50-->60 ,, 60-->30 (a repeated cycle,30-->40-->50-->60-->30-->.....)
+        
+        //Concept: minute hand & second hand meets each other at a while, moving at significant difference in speeds
+        //So, Approach: slow fast approach
+        ListNode fast=head;
+        ListNode slow=head;
+    
+        while(fast!=null && fast.next!=null ){ //considering odd & even length case both
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow) return true;
+        }
+        return false;
+        //Remember: proof of detectCycle in linkedlist, also a base for finding first node of cycle(loop)
+        
+   
+    }
+}

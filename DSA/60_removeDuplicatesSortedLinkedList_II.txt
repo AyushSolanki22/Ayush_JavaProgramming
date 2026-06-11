@@ -1,0 +1,41 @@
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode i=head;
+        ListNode j=head;
+        ListNode prev=new ListNode(101);   //prev=dummy node at starting
+        prev.next=head;
+        int freq=0;
+        if(head==null) return null;
+        while(j!=null){
+            if(i.val==j.val){
+                freq++;
+                j=j.next;
+            }
+            else{
+                if(freq>1){
+                    if(prev.val==101){  //edge case (example: 2)
+                        head=j;
+                        i=j;
+                    }  
+                    else{
+                        prev.next=j;
+                        i=j;
+                    }
+                }
+                else{
+                    i.next=j;
+                    prev=i;
+                    i=j;
+                }
+                freq=0;
+            }
+        }
+        if(i.next!=null){
+            if(prev.val==101) return null;
+            else{
+                prev.next=null;
+            }
+        }
+        return head;
+    }
+}

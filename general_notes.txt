@@ -228,7 +228,14 @@ Recursion Identification, Tower of Hanoi program
 51. middleNode
 52. deleteMiddleNode
 53. removeNthFromEnd
-
+54. swappingLinkedList
+55. intersectionOfLinkedList
+56. linkedListCycle
+57. linkedListCycle_II
+58. minSwaps_MoveZeroesToEnd
+59. removeDuplicatesSortedLinkedList
+60. removeDuplicatesSortedLinkedList_II
+61. rotateList
 
 
 
