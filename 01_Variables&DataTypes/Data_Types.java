@@ -23,3 +23,9 @@ public class Data_Types {
 //Class
 //Object
 //Interface
+
+
+// main key difference : in python, java
+
+// In Python, variables are names bound to objects.
+// In Java, primitive variables store values directly, while object variables(string, arraylist, scanner, user-defined classes) store references to objects.

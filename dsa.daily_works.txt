@@ -279,5 +279,10 @@ Gfg - middle of a linkedList, delete middle of a linkedList , kth node from end,
 
 @11 June (almost 6-7.5 hrs) 
 Finished LinkedList1 ( 2 hr 12 mins') 
-Done 2 on Leetcode - swappingLinkedList, intersection of LinkedList. Done 6 of leetcode - LinkedListCycle, LinkedListCycle_II, minswaps_MoveZeroes, removeDuplicatesSortedLinkedList, removeDuplicatesSortedLinkedList_II, rotateList
+Done 2 on Leetcode - swappingLinkedList, intersection of LinkedList(2 approaches). Done 6 of leetcode - LinkedListCycle, LinkedListCycle_II, minswaps_MoveZeroes, removeDuplicatesSortedLinkedList(2 approaches), removeDuplicatesSortedLinkedList_II, rotateList
 Gfg - remove duplicate from sorted linked list
+
+
+@12 June 
+Finished LinkedList-2 (30 mins)
+Done 4 on Leetcode - spiralMatrix_IV (2 approaches), spiralMatrix, merge2sortedLists (2 approaches), sortList (2 approaches)

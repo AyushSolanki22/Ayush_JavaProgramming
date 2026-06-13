@@ -1,0 +1,145 @@
+// One Approach -- by natural thinking
+
+class Solution {    
+    public int[][] spiralMatrix(int m, int n, ListNode head) {
+      
+        int arr[][]=new int[m][n];
+        ListNode temp=head;
+        int i=0,j=0, sr=0,er=m-1,sc=0, ec=n-1;
+        while(temp!=null){
+            if(sr==er){   //edge case 
+                if(j==ec+1) break;
+                arr[i][j]=temp.val;
+                j++;
+            }
+            else if(sc==ec){ //edge case 
+                if(i==er+1) break;
+                arr[i][j]=temp.val;
+                i++;
+            }
+            else if(i==sr && j!=ec){  //top
+                arr[i][j]=temp.val;
+                j++;
+            }
+            else if(j==ec && i!=er){    //right
+                arr[i][j]=temp.val;
+                i++;
+            }
+            else if(i==er && j!=sc){  //bottom
+                arr[i][j]=temp.val;
+                j--;
+            }
+            else if(j==sc && i!=sr+1){ //left
+                arr[i][j]=temp.val;
+                i--;
+            }
+            else if(i==sr+1){
+                arr[i][j]=temp.val;    //turn and shrink boundaries 
+                sr++;
+                sc++;
+                er--;
+                ec--;
+                i=sr;
+                j=sc;
+   
+            }
+            temp=temp.next;   //for all
+        }
+
+
+        while(sr<=er && sc<=ec){   //for setting -1 to the void cells 
+            if(sr==er){
+                if(j==ec+1) break;
+                arr[i][j]=-1;
+                j++;
+            }
+            else if(sc==ec){
+                if(i==er+1) break;
+                arr[i][j]=-1;
+                i++;
+            }
+            else if(i==sr && j!=ec){
+                arr[i][j]=-1;
+                j++;
+            }
+            else if(j==ec && i!=er){
+                arr[i][j]=-1;
+                i++;
+            }
+            else if(i==er && j!=sc){
+                arr[i][j]=-1;
+                j--;
+            }
+            else if(j==sc && i!=sr+1){
+                arr[i][j]=-1;
+                i--;
+            }
+            else if(i==sr+1){
+                arr[i][j]=-1;
+                sr++;
+                sc++;
+                er--;
+                ec--;
+                i=sr;
+                j=sc;
+   
+            }
+        }
+        return arr;
+    }
+}
+
+
+
+
+
+//Another Approach -- 
+//1. instead of another loop to fill -1 to left cells, used Arrays.fill method directly 
+//2. && also used for loop for printing spiral sections (that i wrote in my notes) which is quite more understandable & readable
+
+import java.util.Arrays;
+class Solution {
+    public int[][] spiralMatrix(int m, int n, ListNode head) {
+      
+        int arr[][]=new int[m][n];
+        
+        for(int row[]: arr){
+            Arrays.fill(row,-1); //to set -1 in all cells of the row ((Arrays.fill function is used to fill some value to a 1D matrix))
+        }
+        
+        ListNode temp=head;
+        int sr=0,er=m-1,sc=0, ec=n-1;
+        while(temp!=null){
+
+            for(int j=sc;j<=ec;++j){    //top
+                if(temp==null) break;
+                arr[sr][j]=temp.val;
+                temp=temp.next;
+            }
+            for(int i=sr+1;i<=er;++i){  //right
+                if(temp==null) break;
+                arr[i][ec]=temp.val;
+                temp=temp.next;
+            }
+            if(sr<er){   //edge case - safer- to prevent overwriting of cells
+                for(int j=ec-1;j>=sc;--j){   //bottom
+                    if(temp==null) break;
+                    arr[er][j]=temp.val;
+                    temp=temp.next;
+            }
+            }
+            if(sc<ec){  //edge case 
+                for(int i=er-1;i>=sr+1;--i){  //left
+                    if(temp==null) break;
+                    arr[i][sc]=temp.val;
+                    temp=temp.next;
+            }
+            }
+            sr++; sc++; er--; ec--;
+        }
+        
+        
+        
+        return arr;
+    }
+}

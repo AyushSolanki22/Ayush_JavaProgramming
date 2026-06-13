@@ -1,0 +1,54 @@
+//merge sort concept - magic
+//1. create 2 list of half sizes each (this by using slow-fast approach to reach to left middle)
+//2. divide the linkedlist then into two parts, hence lists created.
+//3. recursion magic - returning sorted lists
+//4. merge sorted lists
+
+class Solution {
+    public ListNode sortList(ListNode head) {
+        //base case
+        if(head==null) return null;
+        if(head.next==null) return head;
+
+        //step 1 & step 2         
+        ListNode slow=head;
+        ListNode fast=head;
+        while(fast.next!=null && fast.next.next!=null){  //to make slow reach left middle
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        ListNode head2=slow.next;
+        slow.next=null;  //will break connection -- divided list
+
+        //step 3
+        head=sortList(head);      //to use sorted heads, we need to assign it to variable
+        head2=sortList(head2);
+
+        //step 4
+        return mergeTwoLists(head,head2);
+    }
+    ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        //create two nodes-i,j, one dummy node-k, traverse & merge
+        
+        ListNode i=list1;
+        ListNode j=list2;
+        ListNode dummy=new ListNode(0);  //this node is helping for merging linkedList 
+        ListNode k=dummy;
+        while(i!=null && j!=null){
+            if(i.val<=j.val){
+                k.next=i;
+                k=i;
+                i=i.next;
+            }
+            else{
+                k.next=j;
+                k=j;
+                j=j.next;
+            }
+        }
+        if(i==null) k.next=j;
+        else k.next=i;
+        
+        return dummy.next;
+    }
+}

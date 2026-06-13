@@ -1,0 +1,32 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int arr[][]=new int[n][n];
+
+        int sr=0,sc=0,er=n-1,ec=n-1;
+        int num=1;
+        while(sr<=er  && sc<=ec){
+            for(int j=sc;j<=ec;++j){   //top
+                arr[sr][j]=num;
+                num++;
+            }
+            for(int i=sr+1;i<=er;++i){   //right
+                arr[i][ec]=num;
+                num++;
+            }
+            if(sc<ec){  //edge case- to prevent overwriting of cells 
+                for(int j=ec-1;j>=sc;--j){   //down
+                 arr[er][j]=num;
+                 num++;
+                }
+            }
+            if(sr<er){
+                for(int i=er-1;i>=sr+1;--i){  //left
+                 arr[i][sc]=num;
+                 num++;
+            }
+            }
+            sr++; sc++; er--; ec--;
+        }
+        return arr;
+    }
+}

@@ -1,0 +1,42 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] arr) {
+        int i=0,j=0;
+        int sr=0,sc=0,er=arr.length-1,ec=arr[0].length-1;
+
+        List<Integer> ans=new ArrayList<>();
+        while(sr<=er && sc<=ec){
+            if(sr==er){   //edge case
+                if(j==ec+1) break;
+                ans.add(arr[i][j]);
+                j++;
+            }
+            else if(sc==ec){  //edge case
+                if(i==er+1) break;
+                ans.add(arr[i][j]);
+                i++;
+            }
+            else if(i==sr && j!=ec){    //top
+                ans.add(arr[i][j]);
+                j++;
+            }
+            else if(j==ec && i!=er){   //right
+                ans.add(arr[i][j]);
+                i++;
+            }
+            else if(i==er && j!=sc){   //bottom
+                ans.add(arr[i][j]);
+                j--;
+            }
+            else if(j==sc && i!=sr+1){   //left
+                ans.add(arr[i][j]);
+                i--;
+            }
+            else{
+                ans.add(arr[i][j]);  //add a[sr+1][j]
+                sr++; sc++; er--; ec--;   //turn and shrink boundaries
+                i=sr; j=sc;
+            }
+        }
+        return ans;
+    }
+}

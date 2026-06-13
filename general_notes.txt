@@ -236,6 +236,12 @@ Recursion Identification, Tower of Hanoi program
 59. removeDuplicatesSortedLinkedList
 60. removeDuplicatesSortedLinkedList_II
 61. rotateList
+62. spiralMatrix_IV
+63. spiralMatrix
+64. merge2SortedLists
+65. SortList
+66. spiralMatrix_II
+
 
 
 
