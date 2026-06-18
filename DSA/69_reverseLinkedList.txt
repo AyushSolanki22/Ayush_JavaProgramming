@@ -1,0 +1,71 @@
+//Bruteforce approach -- simple
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        //simple approach (Bruteforce)-- as we can't travel backward, we can store nodes in ArrayList somewhat
+        ListNode temp=head;
+        if(head==null) return null;  //edge case
+        ArrayList<ListNode> arr=new ArrayList<>();
+        while(temp!=null){
+            arr.add(temp);
+            temp=temp.next;
+        }
+        int n=arr.size();
+        for(int i=n-1;i>=1;--i){    //i>=1 because for as to include null at next
+            arr.get(i).next=arr.get(i-1);
+        }
+        arr.get(0).next=null;
+        return arr.get(n-1);
+    }
+}
+
+//Another approach - using 3 temp nodes
+//efficient 0(n) T.C , no extra space
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        //concept- we need to make three temps to reverse linkedlist
+
+        //current, prev, forward  
+        
+        //initially c at head, prev,f at null
+        //to preserve connection with ahead elements, f=c.next;
+        //c.next=prev;
+        //now, have to move all ahead, //to not lose connection, first move prev (prev=c), then current(c=f).   (in next iteration, f=c.next & by this way , linkedlist is reversed)    
+   
+        ListNode c=head; ListNode p=null; ListNode f=null;
+        while(c!=null){
+            f=c.next;   //save the next node
+            c.next=p;   //reverse connection 
+            p=c;   //forward move
+            c=f;
+        }
+        return p; 
+    }
+}
+
+
+//Another approach also -- recursive way (iterative)
+
+class Solution {
+    public ListNode reverseList(ListNode h) {
+        //recursive concept- we need to make three temps to reverse linkedlist
+
+        //create one node only, a=h.next; 
+        //h.next=null(connect head with null)
+        //make all nodes seperate and after getting reverse (recursion magic), connect a with h --reverse order connect
+        //now get linkedList starting with a reversed,,,  b=reverse(a)  //recursion magic  //b--> reversed linkedlist head
+        //a.next=h,,, 
+        //return b;    
+
+        //base case -- if single node, return it
+
+        //main yahi h ki in recursion, eek ko disconnect reversely, and do on ahead leftover
+        if(h==null||h.next==null) return h;
+        ListNode a=h.next;
+        h.next=null;
+        ListNode b=reverseList(a);
+        a.next=h;       
+        return b;
+    }
+}

@@ -241,6 +241,13 @@ Recursion Identification, Tower of Hanoi program
 64. merge2SortedLists
 65. SortList
 66. spiralMatrix_II
+67. partitionList
+68. oddEvenLinkedList
+69. reverseList
+70. swapNodes_inPairs
+71. palindromeLinkedList
+72. maxTwinSum_LinkedList
+73. reorderList
 
 
 

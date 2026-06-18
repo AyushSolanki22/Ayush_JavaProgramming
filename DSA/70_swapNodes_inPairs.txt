@@ -1,0 +1,90 @@
+//One approach -- using odd even linkedList , merge sort like algorithm,
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        //using odd nodes and even nodes linkedlist concept 
+        //and merging both in alternating pattern will lead to swap nodes in pairs
+
+        if(head==null||head.next==null) return head;   //edge case
+        ListNode dummy1=new ListNode(0); ListNode temp1=dummy1;  //for odd nodes linkedlist  //first node--> odd, second--> even
+        ListNode dummy2=new ListNode(0); ListNode temp2=dummy2;  //for even nodes linkedlist
+        int idx=0;
+        ListNode temp=head;
+        while(temp!=null){
+            if(idx%2==0){
+                temp1.next=temp;
+                temp1=temp1.next;
+            }
+            else{
+                temp2.next=temp;
+                temp2=temp2.next;
+            }
+            temp=temp.next;
+            idx++;
+        }
+        temp1.next=null; temp2.next=null;   //to break connections with ahead elements incase- otherwise if connections maintain, we would not get correct odd nodes , even nodes linkedlist
+
+        //ans linkedlist -- temp (by alternate merging of odd even incides linkedlist)
+        temp1=dummy1.next; temp2=dummy2.next;                   //i,j
+        ListNode ans=new ListNode(0);   //dummy node for ans    //k
+        ListNode ansTemp=ans; 
+
+        //as both linkedList in length can be unequal, //eg- 2 even nodes, 1 odd node
+        //so merging will be accordingly
+        int i=0;
+        while(temp1!=null && temp2!=null){
+                if(i%2==0){
+                    ansTemp.next=temp2;
+                    temp2=temp2.next;
+                }
+                else{
+                    ansTemp.next=temp1;
+                    temp1=temp1.next;
+                }
+                ansTemp=ansTemp.next;
+                i++;
+        }
+        while(temp1!=null){ //add leftover nodes from both linkedList
+            ansTemp.next=temp1;
+            temp1=temp1.next;
+            ansTemp=ansTemp.next;
+        }
+        while(temp2!=null){
+            ansTemp.next=temp2;
+            temp2=temp2.next;
+            ansTemp=ansTemp.next;
+        }
+        ansTemp.next=null;
+        return ans.next;
+
+    }
+}
+
+
+//Another approach -- using 3 pointers
+    initially, c at dummy node, a at head, b next to A
+
+    //c.next=b;
+    //a.next=b.next;     //to maintain, preserve connection, as b.next will be =a
+    //b.next=a;
+    //c=a;             //for to faciliate connectionn from this node
+    //a=a.next; b=a.next;
+
+class Solution{
+    public ListNode swapPairs(ListNode head){
+        if(head==null||head.next==null) return head;
+
+        ListNode dummy=new ListNode(0);
+        ListNode a=head; ListNode b=head.next; ListNode c=dummy;
+
+        while(a!=null && b!=null){
+            c.next=b;
+            a.next=b.next;
+            b.next=a;
+            c=a;
+            a=a.next;
+            if(a!=null) b=a.next;
+        }
+        return dummy.next;
+
+    }
+}

@@ -1,0 +1,26 @@
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        //concept -- we have to make two linkedlists (partition) ,,one with smaller elements, one with equal or larger elements
+
+        //we have to create two dummy nodes for two linkedlists and traverse & add nodes accordingly 
+        //at last, connect the smaller one with larger elements ,and last of larger elements linkedlist to null
+
+        ListNode dummy1=new ListNode(0); ListNode temp1=dummy1;
+        ListNode dummy2=new ListNode(0); ListNode temp2=dummy2;
+        ListNode temp=head;
+        while(temp!=null){
+            if(temp.val<x){
+                temp1.next=temp;
+                temp1=temp1.next;   //move temp1
+            }
+            else{
+                temp2.next=temp;
+                temp2=temp2.next;   //move temp2
+            }
+            temp=temp.next;
+        }
+        temp1.next=dummy2.next;
+        temp2.next=null;
+        return dummy1.next;
+    }
+}

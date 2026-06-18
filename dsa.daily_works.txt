@@ -286,3 +286,29 @@ Gfg - remove duplicate from sorted linked list
 @12 June 
 Finished LinkedList-2 (30 mins)
 Done 4 on Leetcode - spiralMatrix_IV (2 approaches), spiralMatrix, merge2sortedLists (2 approaches), sortList (2 approaches)
+
+
+@13 June 
+0(health problems, relative family dispute, web development)
+Done 1 on leetcode - spiral matrix II
+
+
+@14 June 
+Completed 30 mins of LinkedList-2 
+Done 3 on Leetcode - Partition list, odd even linkedList, reverse LinkedList(1 approach)
+Gfg - partition list(3 cases), segregate even and odds .
+
+
+@15 June 
+Completed 1 hr 18' (linkedList),,, reverse LinkedList -2 approaches, 
+Done 3+1 on Leetcode - swap nodes in pairs, reverse LinkedList ,(2 other approaches ), palindrome linkedList, Maximum twin sum
+
+
+@16 June 
+0 (severe pain - health issue)
+Posted 1 on leetcode - LinkedListCycle
+
+
+@17 June 
+5 mins (very very less due to some acute health issue (some improvement),, kirtan, ) 
+Done 1 on leetcode

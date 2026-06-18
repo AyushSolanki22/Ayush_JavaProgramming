@@ -1,0 +1,38 @@
+//One approach -- using ArrayList 
+
+//just remember, while comparing element at ith index and jth index
+// don't do direct comparision as arraylist holds boxed integer values, if compared, it will be comparing object reference, not value
+
+//use if(!arr.get(i).equals)
+
+
+//Another approach
+    //reverse another half of linkedlist and then compare to first half
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ListNode slow=head; ListNode fast=head;  
+        while(fast!=null && fast.next!=null){  //to make slow reach another half first node
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+
+        ListNode b=reverseList(slow);
+        while(head!=null && b!=null){
+            if(head.val!=b.val) return false;
+            head=head.next;
+            b=b.next;
+        }
+        return true;
+    }
+    public ListNode reverseList(ListNode h) {
+        if(h==null) return null;
+
+        if(h.next==null) return h;
+        ListNode a=h.next;
+        h.next=null;
+        ListNode b=reverseList(a);
+        a.next=h;
+        return b;
+    }
+}

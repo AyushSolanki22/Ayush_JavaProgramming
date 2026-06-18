@@ -1,0 +1,31 @@
+
+class Solution {
+    public int pairSum(ListNode head) {
+        //it is of like can use palindrome code , instead of using equal operator, we can add the pairs
+        
+        ListNode slow=head; ListNode fast=head;  
+        while(fast!=null && fast.next!=null){  //to make slow reach another half first node
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        int maxSum=0;
+        ListNode b=reverseList(slow);
+        while(head!=null && b!=null){
+            int twinSum=head.val+b.val;
+            maxSum=(twinSum>maxSum)? twinSum:maxSum;
+            head=head.next;
+            b=b.next;
+        }
+        return maxSum;
+    }
+    public ListNode reverseList(ListNode h) {
+        if(h==null) return null;
+
+        if(h.next==null) return h;
+        ListNode a=h.next;
+        h.next=null;
+        ListNode b=reverseList(a);
+        a.next=h;
+        return b;
+    }
+}

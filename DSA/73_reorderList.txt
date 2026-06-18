@@ -1,0 +1,46 @@
+class Solution {
+    public void reorderList(ListNode head) {
+        //concept -- alternate adding of nodes, 0th node, nth node, 1st node, n-1th & SO ON. 
+        //what we can do is. till middle elements would likely be same, but after middle-- we can see nodes are reversed in reordered list
+        //So, till middle same, after middle , reversed in alternate manner
+        ListNode slow=head;
+        ListNode fast=head;
+
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        
+        ListNode head2 = slow.next;
+        slow.next = null;
+        ListNode b = reverseList(head2);
+
+        ListNode temp=head;
+        int idx=0;
+        while(temp!=null && b!=null){
+            ListNode next=temp.next;   //to preserve connection to the node next to temp
+            if(idx%2==0){
+                temp.next=b;
+                b=b.next;
+                temp=temp.next;
+                idx++;
+            }
+            if(idx%2!=0){
+                temp.next=next;
+                idx++;
+            }
+            temp=next;
+        }
+    }
+    
+    public ListNode reverseList(ListNode h){
+        if(h==null||h.next==null) return h;
+
+        ListNode a=h.next;
+        h.next=null;
+        ListNode b=reverseList(a);
+        a.next=h;
+        return b;
+
+    }
+}
