@@ -1,0 +1,136 @@
+//One Approach
+Class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        //merge 2 and merge that merged with another list continously in a loop
+        
+        //we make a arrayList with all heads, so as we can access/remove element easily --> more flexible
+
+        // Think of lists as an array storing references (addresses) to the heads:
+        // Suppose,
+        // 0     ----> head of (1->4->5)
+        // 1     ----> head of (1->3->4)
+        // 2     ----> head of (2->6)
+        if(lists.length==0) return null;
+        ArrayList <ListNode> arr=new ArrayList<>();
+        for(ListNode n:lists) arr.add(n);    
+        //this loop--> makes arr[0] --> 1->4->5, arr[1] --> 1->3->4
+        //No linkedlist is copied, only reference is copied
+
+        while(arr.size()>1){
+            ListNode a=arr.get(arr.size()-1);
+            arr.remove(arr.size()-1);
+            ListNode b=arr.get(arr.size()-1);
+            arr.remove(arr.size()-1);
+            ListNode c=merge(a,b);
+            arr.add(c);
+        }
+        return arr.get(0);
+    }
+    ListNode merge(ListNode h1, ListNode h2){
+        ListNode i=h1;
+        ListNode j=h2;
+        ListNode dummy=new ListNode(0); ListNode k=dummy;
+        while(i!=null && j!=null){
+            if(i.val<=j.val){
+                k.next=i;
+                i=i.next;
+            }
+            else{
+                k.next=j;
+                j=j.next;
+            }
+            k=k.next;
+        }
+        //add leftover
+        while(i!=null){
+            k.next=i;
+            i=i.next;   
+            k=k.next;
+        }
+        while(j!=null){
+            k.next=j;
+            j=j.next;
+            k=k.next;
+        }
+        return dummy.next;
+    }
+}
+
+T.C = n(k^2)
+
+
+
+//Another Approach 
+//-- using Divide and conquer technique
+
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        //merge all 2lists and merge 2 merged and so on. //for this we would be having 2 arraylist, at one storing merged in one array_list and at another time, in another arraylist
+
+        //T.C = kn time complexity(total operations) at all levels (eg: 8n T.C in 8 heads list)
+        //simply, k/2 pairs, 2n time to merge a pair, T.c = 2n*k/2
+        //Now, total no. of levels = logk 
+        //Total T.C = O(knlogk)
+        if(lists.length==0) return null;
+        ArrayList<ListNode> arr=new ArrayList<>();
+        for(ListNode n: lists) arr.add(n);
+        ArrayList<ListNode> next=new ArrayList<>();
+        while(arr.size()+next.size()>1){
+            while(arr.size()>0){
+                if(arr.size()==1) {
+                    next.add(arr.get(0));  //for odd case
+                    arr.remove(arr.size()-1);
+                    break;
+                }               
+                ListNode a=arr.get(arr.size()-1);
+                arr.remove(arr.size()-1);
+                ListNode b=arr.get(arr.size()-1);
+                arr.remove(arr.size()-1);
+                next.add(merge(a,b));
+            }
+            while(next.size()>0){
+                if(next.size()==1) {
+                    arr.add(next.get(0));
+                    next.remove(next.size()-1);
+                    break;
+                }
+                ListNode a=next.get(next.size()-1);
+                next.remove(next.size()-1);
+                ListNode b=next.get(next.size()-1);
+                next.remove(next.size()-1);
+                arr.add(merge(a,b));
+            }
+        }
+        if(arr.size()==0) return next.get(0);
+        else return arr.get(0);
+    }
+    ListNode merge(ListNode h1, ListNode h2){
+        ListNode i=h1;
+        ListNode j=h2;
+        ListNode dummy=new ListNode(0); ListNode k=dummy;
+        while(i!=null && j!=null){
+            if(i.val<=j.val){
+                k.next=i;
+                i=i.next;
+            }
+            else{
+                k.next=j;
+                j=j.next;
+            }
+            k=k.next;
+        }
+        //add leftover
+        while(i!=null){
+            k.next=i;
+            i=i.next;   
+            k=k.next;
+        }
+        while(j!=null){
+            k.next=j;
+            j=j.next;
+            k=k.next;
+        }
+        return dummy.next;
+ 
+    }
+}

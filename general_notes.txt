@@ -168,7 +168,7 @@
 2. linkedList.java
 3. traverse
 4. LinkedListDataStructure
-
+5. doublyLinkedList
 
 
 ##DSA (LeetCode)

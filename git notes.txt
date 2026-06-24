@@ -77,3 +77,4 @@ You can have a multiple repositories, even from multiple different accounts on a
 Though, never add Git (initialize) in a huge parent folder, otherwise Git may track more than intended.
 
 Git only tracks files, not empty directories.
+

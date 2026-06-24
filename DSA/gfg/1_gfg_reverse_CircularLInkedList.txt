@@ -1,0 +1,32 @@
+class Solution {
+    public Node reverseCircular(Node head) {
+        //simple, just make the temp reach to tail in linkedlist, and make the linkedlist simple(straight)
+        
+        //Now, reverse the linkedlist as we have done till now - 3 approaches
+        
+        //connect head node of original linkedlist to the tail 
+        
+        Node temp=head;
+        while(temp.next!=head){
+            temp=temp.next;
+        }
+        temp.next=null; // to make the linkedlist simple
+        
+        Node prev=null; Node f=null;
+        Node curr=head;
+        
+        while(curr!=null){
+            f=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=f;
+        }
+        
+        head.next=prev;  //connect head node to the tail - linkedlist reversed
+        
+        return prev;
+        
+        
+        
+    }
+}

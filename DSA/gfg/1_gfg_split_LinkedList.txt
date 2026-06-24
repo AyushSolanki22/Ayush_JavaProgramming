@@ -1,0 +1,26 @@
+class Solution {
+    public Pair<Node, Node> splitList(Node head) {
+        Node slow=head;
+        Node fast=head;
+        while(fast.next!=head && fast.next.next!=head){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        Node head2 = slow.next;
+        if(fast==slow) {  //edge case - 2 node case
+            fast=head2;  
+            slow.next=head;
+            fast.next=head2;
+            return new Pair<>(head, head2);
+        }
+        slow.next=head;
+        
+        
+        if(fast.next.next==head){  //incase of even length to make fast occur at last
+            fast=fast.next;
+        }
+        fast.next=head2;
+        
+        return new Pair<>(head, head2);
+    }
+}

@@ -1,0 +1,41 @@
+//One approach
+
+class Solution {
+    public Node reverse(Node head) {
+        
+        //using 3 pointers
+        Node c=head; Node f=null; Node prev=null;
+        
+        while(c!=null){
+            f=c.next;
+            c.next=prev;  c.prev=f;
+            prev=c;
+            c=f;
+        }
+        
+        return prev;
+        
+        
+    }
+}
+
+
+//Another approach
+
+class Solution {
+    public Node reverse(Node head) {
+        if(head==null||head.next==null) return head;
+        //using 2 pointers
+        Node c=head; Node t=null;
+        while(c!=null){
+            t=c.prev;   //temp variable for like as in swapping required here
+            c.prev=c.next;
+            c.next=t;
+            c=c.prev;
+        }
+        
+        return t.prev;
+        
+        
+    }
+}

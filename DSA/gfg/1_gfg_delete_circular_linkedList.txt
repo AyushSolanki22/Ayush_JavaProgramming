@@ -1,0 +1,71 @@
+//One Approach -- by natural thinking
+
+class Solution {
+    Node deleteNode(Node head, int key) {
+        // code here
+        Node ans=new Node(0); Node prev=ans;
+        Node temp=head;
+        boolean isHead=false;
+        if(temp.data==key){   //deletion of head node
+            temp=temp.next;
+            isHead=true;
+        }
+        if(isHead!=true ){  //adding head node to ans linkedlist incase if head is not key
+            prev.next=temp;
+            temp=temp.next;
+            prev=prev.next;
+        }
+        while(temp!=head){
+            if(temp.data==key){
+                prev.next=temp.next;  
+                prev=temp.next;
+                temp=temp.next.next;
+                break;   //we have to delete first occurence only
+            }
+            else{
+                prev.next=temp;
+                temp=temp.next;
+                prev=prev.next;
+            }
+        }
+        if(isHead){
+            prev.next=temp.next;
+        }
+        
+        return ans.next;
+    }
+}
+
+
+//Another approach -- we can make the linkedlist simple (straight) like as in we did for reverse reverseCircular
+
+class Solution {
+    Node deleteNode(Node head, int key) {
+       Node tail=head;
+       
+       while(tail.next!=head) tail=tail.next;
+    
+       tail.next=null;   //simple linkedlist
+       
+       if(head.data==key){
+           head=head.next;
+           tail.next=head;
+           return head;
+       }
+       
+       Node temp=head; Node k=temp.next;  //k for traversing to delete node   //much easier basically
+       while(k!=null){
+           if(k.data==key){
+               if(k==tail) tail=temp;    //edge case-- tail deletion
+               temp.next=k.next;
+               break;
+           }
+           else{
+               temp=temp.next;  k=k.next;
+           }
+       }
+       
+       tail.next=head;
+       return head; 
+    }
+}

@@ -1,0 +1,69 @@
+//Add two linkedList
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        //to add, we have to traverse through in reverse direction so as to add meaningfully
+        //so we will reverse both lists
+
+        //and add both lists to a dummy node list, using carry variable
+        //do dummy node list reverse too
+        ListNode a=reverse(l1);
+        ListNode b=reverse(l2);
+        ListNode ans=new ListNode(0); ListNode temp=ans;
+        int carry=0;
+        while(a!=null && b!=null){
+            int add=carry+a.val+b.val;
+            if(add>=10) {
+                carry=add/10;
+                add%=10;
+            }
+            else{      //to remove value of carry kept same once initialised everywhere
+                carry=0;
+            }
+            temp.next=new ListNode(add);
+            temp=temp.next;
+            a=a.next;
+            b=b.next;
+        }
+        //add leftover if incase
+        while(a!=null){
+            int add=carry+a.val;
+            if(add>=10) {
+                carry=add/10;
+                add%=10;
+            }
+            else{
+                carry=0;
+            }
+            temp.next=new ListNode(add);
+            temp=temp.next;
+            a=a.next;
+        }
+        while(b!=null){
+            int add=carry+b.val;
+            if(add>=10) {
+                carry=add/10;
+                add%=10;
+            }
+            else{
+                carry=0;
+            }
+            temp.next=new ListNode(add);
+            temp=temp.next;
+            b=b.next;
+        }
+        if(carry>0){
+            temp.next=new ListNode(carry);
+        }
+        // ListNode finalAns=reverse(ans.next);
+        return reverse(ans.next);
+    }
+    public ListNode reverse(ListNode h){
+        if(h==null||h.next==null) return h;
+        ListNode a=h.next;
+        h.next=null;
+        ListNode b=reverse(a);
+        a.next=h;       
+        return b;
+    }
+}

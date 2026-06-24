@@ -1,0 +1,67 @@
+//recursion magic
+//node temp , let temp get through to the node whose child is not null, and save next node by creating a node next to it.
+//by recursion, we get the temp.child flattened fully.
+
+// Find node with child
+// Save next
+// Flatten child recursively
+// Insert child list
+// Connect tail to saved next
+// Start scanning from head node (for another child list nodes)
+
+class Solution {
+    public Node flatten(Node head) {
+        Node temp=head; Node a=temp;
+        while(temp!=null && temp.child==null){  //keep moving till temp.child has some list
+             temp=temp.next;
+        }
+        if(temp==null) return head;    //this will return head finally incase if list has fully become flattened
+        else a=temp.next;  //save
+
+        temp.child=flatten(temp.child);
+        temp.next=temp.child;  //create connections
+        temp.child.prev=temp;
+
+        Node c=temp.child;  //to connect last node of flattened to a -- traverse c to last
+        while(c.next!=null){
+            c=c.next;
+        }
+
+        c.next=a;
+        if(a!=null) a.prev=c;
+        temp.child=null;   //clear childs -- flattened must have all child==null
+        
+        
+        return flatten(head);   //because now there may still be nodes later having children.
+
+    }
+}
+
+
+//More efficient(slightly) approach-- core concept similar , but it just not start from head each time 
+//single pass solution +recursive approach 
+
+class Solution{
+    public Node flatten(Node head){
+        if(head==null) return head;
+        Node curr=head;
+
+        while(curr!=null){
+            if(curr.child==null) curr=curr.next;
+            else{
+                    Node f=curr.next;
+                    Node c=flatten(curr.child);
+                    curr.child=null;
+                    curr.next=c;
+                    c.prev=curr;
+                    Node temp=c;
+                    while(temp.next!=null) temp=temp.next;
+                    temp.next=fwd;
+                    if(fwd!=null) fwd.prev=temp;
+                    curr=fwd;
+            }
+        }
+        return head;
+
+    }
+}
