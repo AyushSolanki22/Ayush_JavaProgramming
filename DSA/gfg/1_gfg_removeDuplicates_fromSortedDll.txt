@@ -1,0 +1,40 @@
+/* Structure of a link list node
+class Node {
+    int data;  // value stored in node
+    Node next;
+    Node prev;
+
+    Node(int value) {
+        data = value;
+        next = null;
+        prev = null;
+    }
+}
+*/
+class Solution {
+    Node removeDuplicates(Node headRef) {
+        Node i=headRef;
+        Node j=headRef;
+        while(i!=null && j!=null){
+            Node temp=i;
+            while(j!=null && j.data==i.data){
+                j=j.next;
+                
+            }
+            if(j!=null){
+                temp.next=j;
+                j.prev=temp;
+                i=j;
+            }
+            else{
+                temp.next=j;
+                i=j;
+            }
+            
+        }
+        
+        return headRef;
+        
+        
+    }
+}
