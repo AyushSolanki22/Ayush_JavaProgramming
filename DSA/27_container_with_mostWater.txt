@@ -1,3 +1,8 @@
+//Two pointer approach -- most famous problem
+
+//core concept -- Current Area = Shorter Height × Width
+
+
 import java.util.*;
 class Solution {
     public int maxArea(int[] height) {
@@ -6,12 +11,14 @@ class Solution {
         int right = height.length - 1;
 
         while (left < right) {
-            int h = Math.min(height[left], height[right]);
-            int w = right - left;
-            int area = h * w;
-            max = Math.max(max, area);
+            int h = Math.min(height[left], height[right]);  //because water spills over the shorter wall.
+            int w = right - left;      //width measurement
+            int area = h * w;       //Area calculation
+            max = Math.max(max, area);     
 
-            if (height[left] < height[right]) {
+            //On analysis, as we move shorter height, we see improvement in getting max area
+            //So , we thus move shorter height wall   (in moving taller wall, height still stays same, area decreases, impossible to improve)
+            if (height[left] < height[right]) {  
                 left++;
             } else {
                 right--;

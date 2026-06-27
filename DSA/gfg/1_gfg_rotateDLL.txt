@@ -1,0 +1,43 @@
+class Solution {
+    public Node rotateDLL(Node head, int k) {
+        // if(head.next==null) return head;
+        Node prev=head; 
+        for(int i=1;i<=k-1;++i){  //to get to k-1th idx
+            if(prev==null) return head;
+            prev=prev.next;
+        }
+        if(prev.next==null) return head;   //base case -- when k>length
+        Node next=prev.next;
+        prev.next=null;   next.prev=null;  //making both lists seperate
+        
+        Node a=reverseDLL(head);  
+        Node b=reverseDLL(next);
+        Node c=reverseDLL(a);
+        Node d=reverseDLL(b);
+        
+        Node temp=d;    //attach at last to reverse of b -- concept for rotating
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=c;
+        c.prev=temp;
+        return d;
+        
+        
+        
+        
+    }
+    public Node reverseDLL(Node head){
+        if(head==null||head.next==null) return head;
+        //using 2 pointers
+        Node c=head; Node t=null;
+        while(c!=null){
+            t=c.prev;   //temp variable for like as in swapping required here
+            c.prev=c.next;
+            c.next=t;
+            c=c.prev;
+        }
+        
+        return t.prev;
+    }
+}
