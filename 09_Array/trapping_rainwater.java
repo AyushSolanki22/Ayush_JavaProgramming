@@ -18,11 +18,12 @@ public class trapping_rainwater {
         }
 
         int tr=0;
-        int w=0;
+        // int w=0;
+        
         //loop
         for (int i=0; i<n; ++i) {
-            w=Math.min(leftMax[i],rightMax[i]);   //waterlevel = w=  min(right max,left max);
-            tr+=(w-b[i])<0? 0:(w-b[i])*1;         ////trapped rainwater= (water level-building height)*width 
+            int w=Math.min(leftMax[i],rightMax[i]);   //waterlevel = w=  min(right max,left max);
+            tr+=w-b[i];       ////trapped rainwater= (water level-building height)*width 
 
         }
         System.out.println("Trapped rainwater: "+tr);
@@ -42,3 +43,6 @@ public class trapping_rainwater {
 
     }    
 }
+
+//core concept
+//water trapped at a index depends on highest wall on left, highest wall on right
