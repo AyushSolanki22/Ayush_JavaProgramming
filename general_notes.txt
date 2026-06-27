@@ -248,7 +248,11 @@ Recursion Identification, Tower of Hanoi program
 71. palindromeLinkedList
 72. maxTwinSum_LinkedList
 73. reorderList
-
+74. mergeKSortedLists
+75. reverseLinkedList_II
+76. highestAltitude
+77. addTwoNumbers_II
+78. flatten_multilevel_dll
 
 
 

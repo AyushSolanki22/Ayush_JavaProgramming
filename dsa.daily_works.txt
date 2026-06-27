@@ -311,4 +311,53 @@ Posted 1 on leetcode - LinkedListCycle
 
 @17 June 
 5 mins (very very less due to some acute health issue (some improvement),, kirtan, ) 
-Done 1 on leetcode
+Done 1 on leetcode -- Reorde List
+
+
+@18 June 
+Completed 1 hr 30 mins ' (linkedList part-2) 
+Done 2 on leetcode - merge  k sorted lists (2 approaches), reverse LinkedList II (2 approaches)
+
+
+@19 June 
+Completed 22' mins (linkedList part-2) 
+Done 2 on leetcode - highest altitude, add two numbers II .
+gfg - circular linkedList traversal, split a linkedList into two halves, deletion in circular linkedList 
+
+
+@20 June 
+0 (due to health being as priority, play and all, one dsa question try , did some web development though)
+Tried 1 on leetcode - maximum building height
+
+
+@21 June 
+Completed 29 mins' (linkedList part-2)
+Posted 1 on leetcode - LinkedListCycle_II
+gfg - reverse in circular linkedList, deletition in circular linkedList (another approach)
+
+
+@22 June 
+0 
+Posted 1 on leetcode - remove nth node from end of list
+
+@23 June 
+Completed 35 mins' (linkedList part-2 )
+Posted 1 on leetcode - minimum Swaps to move zeroes 
+
+
+@24 June 
+Completed 49 mins'-  linkedList part-2 
+Posted 1 on leetcode - remove duplicate from sorted list , Done 1 on leetcode - flatten multilevel Dll 
+gfg - reverse doubly linked list
+
+@25 June 
+0 (sneha di's home, health issue)
+Posted 1 on leetcode -- remove Duplicates from sorted list II
+
+@26 June 
+0 (market, health issue)
+Posted 1 on leetcode - rotate List 
+Gfg - remove duplicates from sorted Dll , did rotate dll partially
+
+
+@27 June
