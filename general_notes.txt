@@ -254,6 +254,9 @@ Recursion Identification, Tower of Hanoi program
 77. addTwoNumbers_II
 78. flatten_multilevel_dll
 79. trappedRainwater
+80. minNo_MaxNo_ofNodes_between_criticalPts
+81. copyList_withRandomPointer
+
 
 
 
