@@ -1,0 +1,10 @@
+// Implementation of Stack via LinkedList
+
+stack-top  -->   linkedList - head
+stack-bottom --> linkedList - tail
+
+
+//push() --> AddAtHead
+//pop()  --> removeAtHead
+//peek() --> Head.val
+//size() --> size
