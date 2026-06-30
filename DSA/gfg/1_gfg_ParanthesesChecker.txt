@@ -1,0 +1,49 @@
+class Solution {
+    public boolean isBalanced(String s) {
+        //balanced hona chaiye -- incase outer, inner case hai to, outer brackets ke andar balanced hone chaiye
+        //not necessary-- of the condition of no. of opening being equal to closing brackets
+        
+        //optimised at once checking -- if s.length=odd, balanced is not possible
+        if(s.length()%2!=0) return false;
+        
+        //concept
+        //in a loop traversing through string, 
+        //opening brackets,parantheses ko direct stack mai push krrdenge //edge condition -- incase of empty stack, if closing tag return false
+        //closing bracket agar jese hi jab aaye, check krro stack mai uska counterpart present hai ya ni(peek),if yes to we will get the pair out.()
+        //remove peek if counterpart matches &&& then traverse to the next character
+        //repeat process
+        
+        //concept
+        //if(opening) push   //if(closing) check & pop
+        
+        //Note: incase of empty stack, we will be doing push only
+        
+        
+        Stack<Character> st = new Stack<>();
+        for(int i=0; i<s.length();++i){
+            if(st.size()==0) st.push(s.charAt(i));
+            else if((s.charAt(i)=='{')||(s.charAt(i)=='(')||(s.charAt(i)=='[')){
+                st.push(s.charAt(i));
+            } 
+            else if(s.charAt(i)=='}'){       //we can use sameStyle(s.charAt(i),top) to check if both are pairs
+                char top=st.peek();
+                if(top=='{') st.pop();
+                else return false;
+            }
+            else if(s.charAt(i)==')'){
+                char top=st.peek();
+                if(top=='(') st.pop();
+                else return false;
+            }
+            else if(s.charAt(i)==']'){
+                char top=st.peek();
+                if(top=='[') st.pop();
+                else return false;
+            }
+            
+        }
+        
+        if(st.size()==0) return true;
+        else return false;
+    }
+}

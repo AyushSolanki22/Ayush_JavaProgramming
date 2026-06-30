@@ -171,6 +171,15 @@
 5. doublyLinkedList
 
 
+#19_Stacks
+1. stacks
+2. stacksTraverse
+3. pushAtBottom
+4. reverseRecursively
+5. implementationOfStacks.txt
+6. LLImplementationOfStacks.java
+
+
 ##DSA (LeetCode)
 
 gfg folder
