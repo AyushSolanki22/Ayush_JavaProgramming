@@ -1,0 +1,42 @@
+class Solution {
+    public ArrayList<Integer> nextLargerElement(int[] arr) {
+       
+       //concept
+       //we will traverse through array in reverse (from last to start)
+       //we will insert to stack, add lge=-1 at starting only(0th index) (by default)
+       
+       //note: we will be adding lge also from last only as lge should be corresponding to array elements only
+       
+       //in loop , from n-2th index to starting, 
+       //we will pick element, and till we get smaller peek elements than element, we will remove them(pop)
+       //note: if element is added to empty stack, lge=-1;
+       
+       
+       ArrayList <Integer> nge=new ArrayList<>();
+       
+       Stack <Integer> st=new Stack<>();
+       
+       //at starting (by default)
+       int n=arr.length;
+       nge.add(0,-1);   st.push(arr[n-1]);
+       
+       //in loop
+       for(int i=n-2; i>=0;--i){
+           if(arr[i]>=st.peek()){ 
+               while(st.size()>0 && st.peek()<=arr[i]){
+                   st.pop();
+               }
+               if(st.size()==0)  nge.add(0,-1);
+               else nge.add(0,st.peek());
+               st.push(arr[i]);
+           }
+           else{
+               nge.add(0,st.peek());
+               st.push(arr[i]);
+               
+           }
+       }
+        
+        return nge;
+    }
+}

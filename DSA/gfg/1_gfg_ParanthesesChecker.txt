@@ -1,3 +1,5 @@
+T.C =O(N)   A.S=O(n)
+
 class Solution {
     public boolean isBalanced(String s) {
         //balanced hona chaiye -- incase outer, inner case hai to, outer brackets ke andar balanced hone chaiye
@@ -25,9 +27,10 @@ class Solution {
             else if((s.charAt(i)=='{')||(s.charAt(i)=='(')||(s.charAt(i)=='[')){
                 st.push(s.charAt(i));
             } 
-            else if(s.charAt(i)=='}'){       //we can use sameStyle(s.charAt(i),top) to check if both are pairs
+            else if(s.charAt(i)=='}'){    //can like make sameStyle function for handling check of if it is pair or not (opening+closing)
+            
                 char top=st.peek();
-                if(top=='{') st.pop();
+                if(top=='{') st.pop();      
                 else return false;
             }
             else if(s.charAt(i)==')'){
