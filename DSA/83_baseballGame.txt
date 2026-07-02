@@ -1,0 +1,86 @@
+//One approach -- using stack
+
+class Solution {
+    public int calPoints(String[] op) {
+        Stack <Integer> st=new Stack<>();
+        int sum=0;   //for tracking sum of scores (record)
+        
+        for(int i=0; i<op.length;++i){
+            if(st.isEmpty()) {
+                st.push(Integer.parseInt(op[i]));   //adding to record
+                sum+=st.peek();    //add no.
+            }
+            else{
+                if(op[i].equals("+")){
+                    int add=st.peek();
+                    op[i]=Integer.toString(st.peek()); st.pop();     //using op[i] to store peak to make access possible of last 2nd Element
+                    
+                    add+=st.peek();   st.push(Integer.parseInt(op[i]));
+
+                    sum+=add; 
+                    st.push(add);
+
+                }
+                else if(op[i].equals("C")){
+                    sum-=st.pop();
+                }
+                else if(op[i].equals("D")){
+                    int add=st.peek()*2;
+                    sum+=add;
+                    st.push(add);
+
+                }
+                else{   //a integer case
+                 int num=Integer.parseInt(op[i]);  
+                 sum+=num;
+                  st.push(num);
+                }
+            }
+        }
+        return sum;
+
+    }
+}
+
+
+
+
+
+
+
+
+//Another approach -- 
+
+class Solution {
+    public int calPoints(String[] op) {
+        ArrayList<Integer> record=new ArrayList<>();
+        int idx=0; 
+        int sum=0;
+        for(int i=0; i<op.length;++i){
+            if(op[i].equals("+")){
+                record.add(record.get(idx-1)+record.get(idx-2));
+                sum+=record.get(idx-1)+record.get(idx-2);
+                idx++;
+            }
+            else if(op[i].equals("C")){
+                sum-=record.get(record.size()-1);
+                record.remove(record.size()-1);
+                idx--;
+            }
+            else if(op[i].equals("D")){
+                record.add(record.get(idx-1)*2);
+                sum+=record.get(idx-1)*2;
+                idx++;
+            }
+            else{   //a integer case
+                int num=Integer.parseInt(op[i]);  //explicit typecast
+                record.add(num);
+                sum+=num;
+                idx++;
+            }
+        }
+
+        return sum;
+
+    }
+}

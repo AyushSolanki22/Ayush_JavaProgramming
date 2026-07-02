@@ -1,0 +1,52 @@
+class Solution {
+    public ListNode removeNodes(ListNode head) {
+
+        //concept -- har node jake check krta hai if curr node is larger than prev -- it remove all prev smaller nodes in a loop ((()))
+        //reconstruction of linkedlist -- to return ll in descending order
+
+        Stack <ListNode> st=new Stack<>();
+        ListNode temp=head;
+        int prev=temp.val;
+        while(temp!=null){
+            
+            if(temp.val>prev) {      
+                while(st.size()>=1){      //remove all nodes lesser than curr node in stack -- right should not have larger element.
+                    if(st.peek().val<temp.val){
+                        st.pop();
+                    }
+                    else{
+                        break;
+                    }
+                } 
+                st.push(temp);     //add the curr 
+            }
+            else st.push(temp);
+
+            prev=temp.val;         //upgrade max each time for all node
+            temp=temp.next;
+        }
+
+        if(st.size()==0) return null;
+
+
+        //reconstruction of linkedList-- to return in descending order
+
+        ListNode ans=new ListNode(0);
+
+        temp=st.peek();   //edge case -- for 1 size
+        st.peek().next=null;   //making last node point to null
+        while(st.size()!=1){
+            ListNode top=st.pop();
+            
+            temp=st.peek();  temp.next=top;
+        }
+        return temp;
+    }
+}
+
+
+//instead of prev , we can directly use st.peek() to access previous 
+
+
+
+//2nd approach -- 1. reverse 2. nodes selection (larger nodes)  3. again, reverse 4. return 

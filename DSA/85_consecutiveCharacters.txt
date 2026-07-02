@@ -1,0 +1,25 @@
+class Solution {
+    public int maxPower(String s) {
+        int i=0,j=0;  
+        int max=0;
+        while(i<s.length()){
+
+            while(j<s.length() && s.charAt(i)==s.charAt(j)){
+                j++;
+                int count=j-i;
+                max=count>max?count:max;
+
+            }
+            if(j==s.length()){
+                int count=j-i;
+                max=count>max?count:max;
+            }
+
+            i=j;
+        }
+
+        return max;
+
+        
+    }
+}
