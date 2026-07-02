@@ -1,0 +1,45 @@
+//Solution,,, excellent concept,, approach --- 
+https://chatgpt.com/s/t_6a45f0762d488191af70d31eb068e697
+https://chatgpt.com/s/t_6a45f0762d488191af70d31eb068e697
+https://chatgpt.com/s/t_6a45f7dd31c88191ae5260b2ac7dc3bc
+
+
+//duplicating array virtuallly (no memory wastage even)
+//123 | 123            //traverse from (2*n-1 to 0 ) , use nums[i%n]  ,,, we fill stack by using copy indexes -- serving as right elements circularly (till i>=n)
+//two passes -- one to have fill the stack accordingly ,,,  another answers the actual indices
+
+
+
+
+class Solution {
+    public int[] nextGreaterElements(int[] nums) {
+
+        int n = nums.length;
+
+        int nge[] = new int[n];=
+        Stack<Integer> st = new Stack<>();
+
+
+        for (int i = 2 * n - 1; i >= 0; --i) {
+            int curr = nums[i % n];
+
+            // Remove all smaller or equal elements  --- general filling of stack using index elements 2*n-1 to n (duplicates)   ----reverse traverse --5,4,3(copy-- to fill stack) 2,1,0 (--to give answer to next elemnts)
+            while (!st.isEmpty() && st.peek() <= curr) {
+                st.pop();
+            }
+
+            // Store answer only in the second pass   (original array)
+            if (i < n) {
+                if (st.isEmpty())
+                    nge[i] = -1;
+                else
+                    nge[i] = st.peek();
+            }
+
+            // Push current element
+            st.push(curr);
+        }
+
+        return nge;
+    }
+}

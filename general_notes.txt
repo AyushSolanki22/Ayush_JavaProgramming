@@ -265,6 +265,12 @@ Recursion Identification, Tower of Hanoi program
 79. trappedRainwater
 80. minNo_MaxNo_ofNodes_between_criticalPts
 81. copyList_withRandomPointer
+82. removeAllAdjacentDuplicates_String
+83. baseballGame
+84. removeNodesFromLL
+85. consecutiveCharacters
+86. nextGreaterElement_I
+87. nextGreaterElement_II
 
 
 
