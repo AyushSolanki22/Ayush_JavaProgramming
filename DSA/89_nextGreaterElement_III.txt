@@ -7,9 +7,8 @@ the same digits. In other words, we need the "next permutation" of the digits.
 To make the number just slightly larger, we should avoid changing digits on the
 left because they contribute more to the overall value (huge change --like changing '1' in 123456). Therefore, we scan from
 the right and find the first digit that can still be increased (pivot), i.e.,
-the first position where digit[i] < digit[i + 1].   ---- as there should be larger number on right side so as there can be greater permutation , otherwise only smaller  ((like '4' if swapping with 5 or 6)).
+the first position where digit[i] < digit[i + 1].   ---- to find a certain index number as there should be larger number on right side so as there can be greater permutation (smallest greater) on swapping, otherwise only smaller numbers are formed. ((like '4' if swapping with 5 or 6)).
 
-((my observation ---Traversing through right to left, we find smaller element -- to be pivot. --using this condition digit[i]<digit[i+1] ))
 
 Everything to the right of the pivot is already in decreasing order, which means
 it is the largest possible arrangement of those digits. Hence, changing only the
