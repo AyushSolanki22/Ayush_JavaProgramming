@@ -27,3 +27,11 @@ class Solution {
         return span;
     }
 }
+
+
+//we can, in Solution, use Pair (pair class)--user defined ,,, and Solution would be like above soln only, but just storing val, idx both in Stack
+
+//Pair class
+//Stack <Pair> st=new Stack
+//st.push(new Pair .....)
+
