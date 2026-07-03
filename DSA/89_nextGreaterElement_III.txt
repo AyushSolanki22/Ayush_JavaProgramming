@@ -1,0 +1,159 @@
+/*
+INTUITION:
+
+We need to find the smallest number greater than the given number using exactly
+the same digits. In other words, we need the "next permutation" of the digits.
+
+To make the number just slightly larger, we should avoid changing digits on the
+left because they contribute more to the overall value (huge change --like changing '1' in 123456). Therefore, we scan from
+the right and find the first digit that can still be increased (pivot), i.e.,
+the first position where digit[i] < digit[i + 1].   ---- as there should be larger number on right side so as there can be greater permutation , otherwise only smaller  ((like '4' if swapping with 5 or 6)).
+
+((my observation ---Traversing through right to left, we find smaller element -- to be pivot. --using this condition digit[i]<digit[i+1] ))
+
+Everything to the right of the pivot is already in decreasing order, which means
+it is the largest possible arrangement of those digits. Hence, changing only the
+suffix cannot produce a larger number—we must increase the pivot.
+
+To get the next greater number (and not just any greater number), we swap the
+pivot with the smallest digit greater than it in the suffix. This gives the
+minimum possible increase.
+
+Finally, after the swap, the suffix is still in decreasing order. Since we want
+the smallest possible number after increasing the pivot, we reverse the suffix
+to make it ascending (minimum arrangement).
+
+If no pivot exists, the digits are already in descending order (e.g., 54321),
+which is the largest permutation possible, so the answer is -1.
+*/
+
+
+//big applicable example --- 13542
+
+
+//My code 
+
+
+class Solution {
+    public int nextGreaterElement(int n) {
+        StringBuilder sb=new StringBuilder(""+n);
+
+        int right=sb.length()-1;
+        char rightmost=sb.charAt(right);
+
+        int pivotIdx=-1;
+        for(int i=right-1; i>=0; --i){
+            if(sb.charAt(i)<sb.charAt(i+1)) {
+                pivotIdx=i;
+                swap(sb,pivotIdx);
+                reverse(sb, i+1, right);
+                break;
+            }
+
+        }
+
+        if(pivotIdx==-1) return -1;
+        
+        //edge case--- ans>Integer.MAX_VALUE
+        long ans = Long.parseLong(sb.toString());
+
+        if(ans > Integer.MAX_VALUE)
+            return -1;
+
+        return (int) ans;
+
+    }
+    public void reverse (StringBuilder sb, int si, int ei){
+        while(si<ei){
+            char temp=sb.charAt(si);
+            sb.setCharAt(si, sb.charAt(ei));
+            sb.setCharAt(ei, temp);
+            si++;
+            ei--;
+        }
+    }
+
+    public void swap(StringBuilder sb, int pivotIdx){
+        int sge=Integer.MAX_VALUE;
+
+        int idx=-1;
+        for(int i=pivotIdx+1; i<sb.length(); ++i){
+            if(sb.charAt(i)>sb.charAt(pivotIdx)) {
+                sge=Math.min(sge,sb.charAt(i));
+                idx=i;
+            }
+            
+        }
+
+        char temp=sb.charAt(idx);
+        sb.setCharAt(idx, sb.charAt(pivotIdx));
+        sb.setCharAt(pivotIdx, temp);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Another Approach
+
+class Solution {
+    public int nextGreaterElement(int n) {
+
+        char[] arr = String.valueOf(n).toCharArray();
+
+        // Step 1: Find the pivot
+        int pivot = -1;
+        for (int i = arr.length - 2; i >= 0; --i) {
+            if (arr[i] < arr[i + 1]) {
+                pivot = i;
+                break;
+            }
+        }
+
+        if (pivot == -1)
+            return -1;
+
+        // Step 2: Find the smallest digit greater than pivot
+        // Since suffix is decreasing, first greater from right is correct.
+        for (int i = arr.length - 1; i > pivot; --i) {
+            if (arr[i] > arr[pivot]) {
+
+                char temp = arr[i];
+                arr[i] = arr[pivot];
+                arr[pivot] = temp;
+                break;
+            }
+        }
+
+        // Step 3: Reverse the suffix
+        int left = pivot + 1;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+
+        // Step 4: Check overflow
+        long ans = Long.parseLong(new String(arr));
+
+        if (ans > Integer.MAX_VALUE)
+            return -1;
+
+        return (int) ans;
+    }
+}
+
