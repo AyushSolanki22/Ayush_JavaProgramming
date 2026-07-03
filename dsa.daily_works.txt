@@ -365,23 +365,32 @@ Understood container with most water completely , also trapping rainwater too,,,
 Done 1 on leetcode - trapping rainwater 
 Gfg - rotate dll
 
+
 @28 June 
 Finished LinkedList part-2 (1 hr 30 mins') 
 Done 1 on leetcode - max, min no. of nodes between critical points , Done 1 of leetcode - copy List with random pointer 
 
+
 @29 June 
 0. (Health issue, jyoti di, react) 
 Posted 1 on leetcode -- Copy list with random pointer 
+
 
 @30 June 
 Completed (2 hr 12 mins') of Stacks 
 Posted 1 on leetcode -  first missing positive 
 Gfg - parantheses checker 
 
+
 @1 July 
 Completed (1hr 12 mins') of Stacks 
 Done 2 on leetcode - remove all adjacent Duplicates in string, basketball game ,,, Done 2 of leetcode - remove nodes from ll, consecutive characters 
 Gfg- replace consecutive two same with one,, next greater element
 
+
+@2 July 
+Completed 51 mins' of Stacks, gave time on next Greater Element II 
+Done 2 on leetcode - nextGreaterElement_I, nextGreaterElement_II (2 approaches),,, Done 1 on leetcode -- adding spaces to string 
+gfg -- stock span problem
 
 
