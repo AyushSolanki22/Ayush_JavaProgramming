@@ -1,0 +1,96 @@
+//One Approach -- by natural thinking
+
+class Solution {
+    public int celebrity(int mat[][]) {
+    
+        int list[]=new int[mat[0].length];  //managing list for keeping list[idx]=1 only if it is 1 at the idx for all person
+        
+        //default value to array 
+        Arrays.fill(list,1);
+        
+
+        for(int i=0; i<mat.length;++i){
+            for(int j=0; j<mat[0].length;++j){
+                if(mat[i][j]==0) list[j]=0;
+            }
+        }
+        
+        //knowing celebrity by list ,,, if more than 1 are known by everyone , return -1;
+        int celebrity=-1;
+        for(int idx=0; idx<list.length;idx++){
+            if(list[idx]==1 && celebrity!=-1) return -1;
+            if(list[idx]==1) celebrity=idx;
+        }
+        
+        // checking if celeb know anyone  ----to return -1 incase -----edge case
+        int count=0;
+        if(celebrity!=-1){
+            for(int j=0; j<mat[0].length; ++j){
+            
+                if(mat[celebrity][j]==1) count++;
+                if(count>1) return -1;
+             }
+        }
+        
+        return celebrity;
+        
+    }
+}
+
+
+//Another Approach
+
+    class Solution {
+        public int celebrity(int mat[][]) {
+            //concept -- using stack --- push 0,1,2,3 ...
+            //it is more easier to find a non-celebrity 
+            
+            //we will at once think of 2 people
+            //we will be applying simple concept --that there cannot be 2 celebrities
+            //compare 2 --- if one knows other , then it may not be celebrity,,, if other knows one ,, then it may also not be celebrity- so pop who knows, 
+            // and doesn't pop one(keep one in stack only if it doesn't knpw anyone -- maybe a celebrity )
+            
+            Stack<Integer> st=new Stack<>();
+            for(int i=0;i<mat.length; ++i){
+                st.push(i);
+            }
+            
+            //edge case
+            if(st.size()==1) return 0;
+            
+            
+            while(st.size()>1){
+                
+                //two people
+                
+                int a=st.pop();   int b=st.peek();
+                
+                //see if one knows other
+                if((mat[a][b]==1 && mat[b][a]==1) || (mat[a][b]==0 && mat[b][a]==0) ) {   //if both knows each other or if both dont know each other
+                    st.pop();
+                    
+                }
+                else if(mat[a][b]==0 && mat[b][a]==1){   //if b knows, and a don't
+                    st.pop();      st.push(a);
+                    }
+                
+            }
+            
+            
+            
+            if(st.size()==0) return -1;
+            else{    //the element left may not always be celebrity --- checking potential celebrity -- if it's celebrity resally or not
+                int count=0;   boolean everyoneKnow=true;
+                for(int i=0; i<mat.length;++i){  //count for row check,, everyoneKnow for col check
+                    if(mat[st.peek()][i]==1) count++;
+                    if(mat[i][st.peek()]==0) everyoneKnow=false;
+                }
+                
+                if(count==1 && everyoneKnow==true) return st.peek();
+                else return -1;
+                
+            }
+            
+            
+        }
+    }
