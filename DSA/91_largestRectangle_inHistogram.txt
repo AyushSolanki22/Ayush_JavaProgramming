@@ -1,0 +1,118 @@
+//passed 64/99 testcases ,,, fault in INTUITION -- this code is essentially solving largest rectange among all suffixes 
+
+class Solution {
+    public int largestRectangleArea(int[] h) {
+        int n=h.length;
+
+        Stack <Integer> st=new Stack<>();
+        int minH=h[n-1];
+        int maxArea=h[n-1];
+        int count=1;
+        st.push(h[n-1]);
+
+        for(int i=n-2; i>=0; --i){
+            int ele=h[i];
+            count++;
+            maxArea=Math.max(maxArea, ele);  //considering indiviudual heights 
+            minH=Math.min(h[i],minH);
+
+            maxArea=Math.max(minH*count, maxArea);
+            if(ele>st.peek()){   //nge needs to be changed now 
+                st.pop();  
+                st.push(ele);
+                minH=ele;
+                count=1;
+            }
+            
+        }
+
+        return maxArea; 
+    }
+}
+
+
+
+// Correct approaches 
+
+//concept-- "For each bar, how far can this bar extend left and right before hitting a smaller bar?"  --- gives possible rectangles
+//((rectangle forming w.r.t the top of each bar))
+//for each bar, the biggest rectange formed is the rectange in between prev smaller, and next smaller
+//width of rectange -- nextSmaller idx-prevSmaller idx-1    //nextSmaller idx for last=7,, prevSmaller idx for first=-1
+
+
+//--Bruteforce Approach-- TLE Reached
+
+class Solution {
+    public int largestRectangleArea(int[] h) {
+        int n=h.length;
+        int maxArea=0; 
+
+        for(int i=n-1; i>=0; --i){
+            int area=0; 
+            int ele=h[i];
+            int count=1; 
+
+            for(int j=i-1;j>=0;--j){
+                if(h[j]>=ele) count++;
+                else break;    
+            }
+            for(int j=i+1; j<n; ++j){
+                if(h[j]>=ele) count++;
+                else break;
+            }
+
+            area=ele*count;
+            maxArea=Math.max(area,maxArea);
+        }
+
+        return maxArea; 
+    }
+}
+
+
+//Optimised -- o(n) T.C
+
+class Solution {
+    public int largestRectangleArea(int[] h) {
+        int maxArea=0;  int nse[]=new int[h.length];  int pse[]=new int[h.length];
+
+        //nextSmaller
+        int n=h.length; 
+        Stack <Integer> st=new Stack<>();
+        nse[n-1]=n; st.push(n-1);       //keeping indexes, storing indexes in array, stack
+
+        for(int i=n-2; i>=0; --i){
+            while(st.size()>0 && h[st.peek()]>=h[i]){  //remove all greaters 
+                st.pop();
+            }
+            if(st.isEmpty()) nse[i]=n; 
+            else nse[i]=st.peek();
+            st.push(i);
+        }
+
+        //prevSmaller
+        Stack <Integer> st2=new Stack<>();
+        pse[0]=-1; st2.push(0);  
+
+        for(int i=1; i<n; ++i){
+            while(st2.size()>0 && h[st2.peek()]>=h[i]){
+                st2.pop();
+            }
+            if(st2.isEmpty())  pse[i]=-1;
+            else pse[i]=st2.peek();
+            st2.push(i);
+        }
+
+
+        //largest rectangle
+        for(int i=0; i<n;++i){
+            int width=nse[i]-pse[i]-1;
+            int area=h[i]*width;
+
+            maxArea=Math.max(area,maxArea);
+        }
+
+        return maxArea;
+    }
+}
+

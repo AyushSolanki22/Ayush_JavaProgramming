@@ -1,0 +1,35 @@
+class Solution {
+    public int[] canSeePersonsCount(int[] heights) {
+        //understanding -- one person is seeing others in one direction only,,,,, one person can see straight or downwards only -- visible people for a person  ,,,
+        
+        
+        
+        //solution possible using nextGreater concept 
+        //last person -- 0 people visible (default)
+        //run loop in backward dirn- right-1 to left 
+        //we will use count variable to know the no. of people visible 
+        int ans[]=new int[heights.length];  int idx=ans.length-1;
+        
+        
+        Stack<Integer>st=new Stack<>();   
+        st.push(heights[idx]); ans[idx]=0;  idx--;
+        
+        
+        while(idx>=0){
+            //whole solution concept of approach of solution is using stack as based on that one can see smaller , and nextGreater elements only
+           int count=0;
+           while(st.size()>0 && heights[idx]>st.peek()){
+                st.pop();
+                count++;
+            }
+            if(st.size()>0 && heights[idx]<st.peek()){
+                count++;
+            }
+            ans[idx]=count;
+            st.push(heights[idx]);
+            idx--;
+        }
+        
+        return ans;
+    }
+}
