@@ -116,3 +116,4 @@ class Solution {
     }
 }
 
+//can be done using 1 stack only 

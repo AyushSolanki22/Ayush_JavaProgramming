@@ -273,6 +273,9 @@ Recursion Identification, Tower of Hanoi program
 87. nextGreaterElement_II
 88. addingSpaces_String
 89. nextGreaterElement_III
+90. noOfVisiblePople_inQueue
+91. largestRectangle_inHistogram
+92. minStack
 
 
 

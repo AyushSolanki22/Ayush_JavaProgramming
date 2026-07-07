@@ -1,0 +1,104 @@
+//One approach -- using O(n) space  -- minStack
+
+class MinStack {
+    //concept -- maintain another stack -- minStack for getting min in O(1) T.C --- 
+    
+    //each element push will also lead a min no. push (if element is larger than min , copy of last min will be pushed (or ele itself incase of empty minstack), 
+    //these copies is to balance number of elements in both stacks to ensure correct minimum always considering both ops being there -- push, pop
+    //,, each pop will lead to pop from both stack too )
+
+    Stack <Integer> st;
+    Stack <Integer> minSt;
+    public MinStack() {
+        st=new Stack<>();
+        minSt=new Stack<>();
+    }
+    
+    public void push(int value) {
+        st.push(value);
+        if(minSt.isEmpty()) minSt.push(value);
+        else{
+            if(value>minSt.peek())  minSt.push(minSt.peek()) ;
+            else minSt.push(value);
+        }
+    
+    }
+    public void pop() {
+        st.pop();  minSt.pop();
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+        return minSt.peek();
+    }
+} 
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(value);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
+
+//Another approach --- without using minStack -- hard
+
+class MinStack {
+    //Without minStack--- uisng min variable, special/fake number
+
+    //when we push => whenever, val<min -- we are entitled to update min ,,,but just before updating,,, we will push a special fake number, instead of original val itself to stack -- val+(val-min) = a no. lesser than the value ((here, as val-min<0)) 
+    //(2*val-min)
+
+    //when we pop => whenever, if(st.peek()<min),, we know its a fake value,, (i.e. it led to min updation), so for rolling back to prev min, --- min=2*min-st.peek()
+
+    //everything in long due to integer overflow error due to testcases involving +,- int max values 
+    Stack <Long> st;
+    long min=Long.MAX_VALUE;    
+    public MinStack() {
+        st=new Stack<>();
+        
+    }
+     
+    public void push(int value) {
+        if(st.isEmpty()) min= (long)value;
+
+        if((long)value<min){   //put fake value in stack 
+            st.push((long)value+((long)value-min));
+            min=(long)value;
+        }
+        else st.push((long)value);
+    
+    }
+    public void pop() {
+        if(st.peek()<min){  //no. is a special fake no.
+            min=min+(min-st.peek());  //min ko rollback 
+        }
+        st.pop();
+    }
+    
+    public int top() {
+        if(st.peek()<min){  //no. is a special fake no.
+            return (int) min;
+        }
+        else return (int)(long) (st.peek());    //as st.peek() returns a Long object, not a primitive lomg
+    }
+    
+    public int getMin() {
+        return (int)min;
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(value);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+

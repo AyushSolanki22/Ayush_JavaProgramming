@@ -1,0 +1,66 @@
+class Solution {
+    static int maxArea(int matrix[][]) {
+        //concept ---- largest rectangles forming possible w.r.t to each row 1D array -- starting from base
+        
+        //make 2D Array into prefix sum 2D Array --,,,  will find largest area of each horizontal/row 1D array of matrix (largest rectangle of histogram forming) ---will get maxArea from one of the row array 
+        //---prefix sum ==>  column wise, from 1th index, we will increment the current index with 1 w.rt. prev (if prev>0 )
+
+        for(int j=0; j<matrix[0].length; ++j){
+            for(int i=1; i<matrix.length; ++i){
+                if(matrix[i][j] == 1)  matrix[i][j] = matrix[i-1][j] + 1;
+                else matrix[i][j] = 0;
+            }
+        }
+
+        int maxArea=0;
+        for(int i=0; i<matrix.length; ++i){
+            int area=largestRectangleArea(matrix[i]);
+            maxArea=Math.max(area, maxArea);
+        }
+
+        return maxArea;
+
+    }
+    
+     static int largestRectangleArea(int[] h) {
+        int maxArea=0;  int nse[]=new int[h.length];  int pse[]=new int[h.length];
+
+        //nextSmaller
+        int n=h.length; 
+        Stack <Integer> st=new Stack<>();
+        nse[n-1]=n; st.push(n-1);       //keeping indexes, storing indexes in array, stack
+
+        for(int i=n-2; i>=0; --i){
+            while(st.size()>0 && h[st.peek()]>=h[i]){  //remove all greaters 
+                st.pop();
+            }
+            if(st.isEmpty()) nse[i]=n; 
+            else nse[i]=st.peek();
+            st.push(i);
+        }
+
+        //prevSmaller
+        Stack <Integer> st2=new Stack<>();
+        pse[0]=-1; st2.push(0);  
+
+        for(int i=1; i<n; ++i){
+            while(st2.size()>0 && h[st2.peek()]>=h[i]){
+                st2.pop();
+            }
+            if(st2.isEmpty())  pse[i]=-1;
+            else pse[i]=st2.peek();
+            st2.push(i);
+        }
+
+
+        //largest rectangle
+        for(int i=0; i<n;++i){
+            int width=nse[i]-pse[i]-1;
+            int area=h[i]*width;
+
+            maxArea=Math.max(area,maxArea);
+        }
+
+        return maxArea;
+    }
+}

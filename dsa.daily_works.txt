@@ -394,3 +394,28 @@ Done 2 on leetcode - nextGreaterElement_I, nextGreaterElement_II (2 approaches),
 gfg -- stock span problem
 
 
+@3 July 
+Completed 17 mins' of Stacks, gave a lot of time on 1 question -- nextGreaterElement_II (2 hr 15-30 mins')
+Done 1 on leetcode - nextGreaterElement_III
+
+
+@4 July 
+Completed 37 mins of Stacks,,,  gave time on celebrity problem 
+Posted 1 on leetcode - adding spaces to string 
+gfg -- celebrity problem
+
+
+@5 July 
+Completed 25 mins' of Stacks 
+Done 1 on leetcode -  No. Of visible people in a queue
+
+
+@6 July 
+Completed 27 mins' of Stacks, gave time on largest rectangle 
+Done 1 on leetcode - largest rectangle in histogram
+
+
+@7 July 
+Finished Stacks (1 hr 34 mins') 
+Done 1 on leetcode - Min stack, tried 1 -- maximal rectangle 
+Gfg - max rectangle
