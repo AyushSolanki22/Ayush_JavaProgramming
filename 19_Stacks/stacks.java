@@ -1,7 +1,8 @@
 //FILO/LIFO concept ,,, 1. unlimited size  2. discpline ,,, stacks is a super data structure
 
-//Stack operations -- peek, insert, remove ((all possible only on last element/top element of stack))    --- can't access any other element.. i.e. operations can be performed on only last/top element
+//Stack operations -- peek, push, pop ((all possible only on last element/top element of stack))    --- can't access any other element.. i.e. operations can be performed on only last/top element
 
+//size() --> for to return size of stack
 
 // Stack<Integer> st=new Stack<>();
 //Stack Operations  --- 
@@ -11,7 +12,7 @@
 
   //Each have T.C= O(1)
 
-  // we can print whole stack tho directly, similar to arraylist
+  // we can print whole stack tho directly, similar to arraylist (just, T.C= O(n))
 
 import java.util.Stack;
 
@@ -25,7 +26,7 @@ public class stacks{
       st.push("preet");
       st.push("ayush");
       System.out.println(st.size());
-      System.out.print(st);   //built-in function   //A.S=O(n)
+      System.out.println(st);   //built-in function   //A.S=O(n)
       st.pop();
       System.out.println(st+" "+st.size());
       System.out.println(st.peek());
