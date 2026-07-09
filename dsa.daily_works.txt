@@ -419,3 +419,7 @@ Done 1 on leetcode - largest rectangle in histogram
 Finished Stacks (1 hr 34 mins') 
 Done 1 on leetcode - Min stack, tried 1 -- maximal rectangle 
 Gfg - max rectangle
+
+@8 July 
+0 ( due to phone condition worsening -- backups, saving files)
+Posted 1 on Leetcode -- Consecutive Characters
