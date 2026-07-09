@@ -423,3 +423,8 @@ Gfg - max rectangle
 @8 July 
 0 ( due to phone condition worsening -- backups, saving files)
 Posted 1 on Leetcode -- Consecutive Characters
+
+
+@9 July
+Completed 54 mins'  of Queue
+Posted 1 on Leetcode -- remove Nodes from ll
