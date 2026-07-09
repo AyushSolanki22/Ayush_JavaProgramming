@@ -1,0 +1,10 @@
+//Note: 0th based indexing
+
+//To add at any kth index. store original size =n
+//Step 1 --> traverse- remove & add k elements, Step 2--> add desired element, Step 3--> remove & add n-k elements to get original order
+
+//Peek any index  //peek(k)
+//1--> remove & add k elements, 2--> return peek() , 3--> remove & add n-k elements
+
+//To remove at any index,,, keep , n=original size-1
+//1--> remove & add k elements, 2--> remove element, 3--> remove & add q.size()-k times
