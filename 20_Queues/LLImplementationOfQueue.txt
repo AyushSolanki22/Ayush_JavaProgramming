@@ -1,0 +1,6 @@
+//Queue Implementation via LinkedList
+
+//just treat head of ll--> front of queue,,,, tail of ll --> rear of queue
+
+
+//Queue is like a proper linkedList

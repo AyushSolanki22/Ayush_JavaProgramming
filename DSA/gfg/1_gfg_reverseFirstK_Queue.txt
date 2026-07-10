@@ -1,0 +1,27 @@
+class Solution {
+    public Queue<Integer> reverseFirstK(Queue<Integer> q, int k) {
+        
+        //remove & add k elements to stack 
+        //add all elements of stack to queue-- we will get reverse of first k elements in the last
+        //remove & add n-k elements to get the reversed part in beginning (maintaining relative order)
+        
+        int n=q.size();
+        if(k>n) return q;
+        Stack <Integer> st=new Stack<>();
+        for(int i=1; i<=k;++i){
+            st.add(q.remove());
+        }
+        
+        while(st.size()>0){
+            q.add(st.pop());
+        }
+        
+        for(int i=1;i<=n-k;++i ){
+            q.add(q.remove());
+        }
+        
+        return q;
+        
+        
+    }
+}
