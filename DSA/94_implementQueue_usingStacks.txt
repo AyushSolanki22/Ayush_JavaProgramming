@@ -1,0 +1,50 @@
+//need 2 stacks ,,, one stack -- normal, second -- helper --> to get bottom eleement for remove function
+
+class MyQueue {
+    Stack<Integer> st=new Stack<>();  //main  stack
+
+    public MyQueue() {
+        
+    }
+    
+    public void push(int x) {
+        st.push(x);
+    }
+    
+    public int pop() {
+        Stack<Integer> helper=new Stack<>();   //helper stack 
+        while(st.size()>1){
+            helper.add(st.pop());
+        }
+        int popVal=st.pop();
+        while(helper.size()>0){
+            st.push(helper.pop());
+        }
+        return popVal;
+    }
+    
+    public int peek() {
+        Stack<Integer> helper=new Stack<>();   //helper stack 
+        while(st.size()>1){
+            helper.add(st.pop());
+        }
+        int popVal=st.peek();
+        while(helper.size()>0){
+            st.push(helper.pop());
+        }
+        return popVal;
+    }
+    
+    public boolean empty() {
+        return (st.size()==0);
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
