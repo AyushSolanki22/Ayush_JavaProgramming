@@ -428,3 +428,27 @@ Posted 1 on Leetcode -- Consecutive Characters
 @9 July
 Completed 54 mins'  of Queue
 Posted 1 on Leetcode -- remove Nodes from ll
+
+
+@10 July
+Completed 56 mins' of Queue
+Done 1 on leetcode -- find the winner of the circular game
+gfg -- reverse first k of a queue,, queue reversal
+
+
+@11 July 
+0 (due to family fight, web development)
+Posted 1 on leetcode - winner of the circular game - another solution 
+
+@12 July 
+0 (due to noida visit for hostel) 
+Posted 1 on leetcode - time taken to buy tickets 
+
+@13 July 
+0- due to Laptop issue, backup done
+Posted 1 on leetcode - time taken 2nd solution ..
+
+
+@14 July 
+Completed 41 mins -- of Queue 
+Done 1 on leetcode - Implementation of Queue using Stack

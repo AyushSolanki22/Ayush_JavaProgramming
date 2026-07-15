@@ -276,7 +276,9 @@ Recursion Identification, Tower of Hanoi program
 90. noOfVisiblePople_inQueue
 91. largestRectangle_inHistogram
 92. minStack
-
+93. findWinner_CircularGame
+94. implentQueue_usingStack
+95. implentStack_usingQueue
 
 
 
