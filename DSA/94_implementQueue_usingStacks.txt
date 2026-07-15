@@ -1,5 +1,5 @@
 //need 2 stacks ,,, one stack -- normal, second -- helper --> to get bottom eleement for remove function
-
+//add efficient approach
 class MyQueue {
     Stack<Integer> st=new Stack<>();  //main  stack
 
@@ -48,3 +48,8 @@ class MyQueue {
  * int param_3 = obj.peek();
  * boolean param_4 = obj.empty();
  */
+
+
+
+ //Another Approach   -- pop, peek efficient approach and thus overall more optimised , efficient
+ //Just, add--> push at bottom of stack  
