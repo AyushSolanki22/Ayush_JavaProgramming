@@ -1,0 +1,75 @@
+//One approach -- using 1 additional queu -- simple
+
+
+class Solution {
+    public void rearrangeQueue(Queue<Integer> q) {
+        //concept --- take one extra queue ,,,, work done
+        
+        //take first half stored in helper queue, 
+        //while helper size>0 ==> add one from helper, and add one from q (remove)
+        
+        Queue<Integer> helper=new LinkedList<>();
+        
+        int n=q.size();
+        for(int i=0; i<n/2; i++){
+            helper.add(q.remove());
+        }
+        
+        while(helper.size()>0){
+            q.add(helper.remove());      q.add(q.remove());
+        }
+                                
+        
+        
+    }
+}
+
+
+
+//Another Approach -- using stack only  -- Interview Question
+
+
+class Solution {
+    public void rearrangeQueue(Queue<Integer> q) {
+        //using stack only
+        
+        //concept
+        //step 1 : add first half to stack ,, add stack back to queue 
+        //step 2 : add first half to stack again.
+        //step 3 : in a loop, add one from stack, remove & add in queue 
+        //step 4 : reverse the queue -- got the answer
+        
+        
+        int n=q.size();
+        Stack<Integer> st=new Stack<>() ;
+        
+        //step 1
+        for(int i=0; i<n/2; ++i){
+           st.push(q.remove());
+        }
+        while(st.size()>0){
+            q.add(st.pop());
+        }
+        
+        //step 2
+        for(int i=0; i<n/2; ++i){
+           st.push(q.remove());
+        }
+        
+        //step 3
+        while(st.size()>0){
+            q.add(st.pop());
+            q.add(q.remove());
+        }
+        
+        //step 4
+        while(q.size()>0){
+            st.push(q.remove());
+        }
+        while(st.size()>0) {
+            q.add(st.pop());
+        }
+        
+        
+    }
+}

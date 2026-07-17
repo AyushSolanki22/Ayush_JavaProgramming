@@ -1,0 +1,30 @@
+//Famous question possible using queue
+
+class Solution {
+    static List<Integer> firstNegInt(int arr[], int k) {
+        // total windows = arr.length-k+1
+        
+        //traverse through array --> add indexes of negative integers to a queue
+        //in a loop, see a window of i to i+k-1 ,,,
+        //if queue.peek() lies within a window, add value to the list,, otherwise in a loop remove all smaller indexes which doesn't lie in window, 
+        //if q.size==0 or q.peek() >i+k-1, add 0 to list 
+        
+        List<Integer> ans=new ArrayList<>();
+        int n=arr.length;
+        Queue <Integer> q=new LinkedList<>();
+        
+        for(int i=0;i<n;++i){
+            if(arr[i]<0) q.add(i);
+        }
+        
+        for(int i=0; i<n-k+1; ++i){
+            int si=i,ei=i+k-1;
+            while(q.size()>0 && q.peek()<i)  q.remove();
+            
+            if(q.size()==0 || q.peek()>ei)  ans.add(0);
+            else ans.add(arr[q.peek()]);
+        }
+        
+        return ans;
+    }
+}
