@@ -1,0 +1,30 @@
+# Prerequisites for Trees 
+
+1) -- Recursion  -- 2 calls to one method by itself
+(preInPost)
+
+2) -- LinkedList -- Node class, null
+
+
+# TREE
+-- heirarchial dataStructure
+-- has nodes like LL, just difference being that trees have multiple nexts
+-- root node,  child nodes (w.r.t) , leaf nodes(child-->null) , siblings  ,,,, subTrees 
+-- size = no. of nodes ,, level = no. of family levels ,, height = levels-1 ,, egdes = size-1 (edges = connections)
+
+
+# Binary Tree
+-- Any node having 0,1,2 child nodes (2 or less)
+-- logically each & every node have 2 child nodes --- (leaf node has two null child nodes,,, node with one appropriate child node, and one null node)
+
+
+# Node Class --- Binary tree
+class Node{
+  int val;
+  Node left; 
+  Node right;
+  //two next nodes -- difference to linkedList (LL)
+}
+
+
+
