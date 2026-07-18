@@ -180,6 +180,16 @@
 6. LLImplementationOfStacks.java
 
 
+#20_Queues
+1. queue
+2. queueTraverse
+3. add_remove_peek_AtAnyIndex
+4. queueReversal
+5. LLImplementationOfQueue
+6. ArrayImplementationOfQueue
+
+
+
 ##DSA (LeetCode)
 
 gfg folder
