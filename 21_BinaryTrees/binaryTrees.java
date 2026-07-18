@@ -29,7 +29,8 @@ public class binaryTrees {
       if(root==null){
         return;
       }
-    
+      
+      //preOrder
       System.out.print(root.val+" ");
       display(root.left);  //left subtree will be printed as a whole 
       display(root.right); //right subtree will be printed as a whole 
