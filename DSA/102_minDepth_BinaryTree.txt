@@ -1,0 +1,37 @@
+// Minimum depth means shortest path from root to a LEAF node.
+//
+// If node is null -> depth = 0.
+//
+// If node is a leaf -> depth = 1.
+//
+// If only one child exists,
+// we must go through that child.
+//
+// If both children exist,
+// choose the smaller depth.
+//
+// We cannot directly take Math.min(left,right)
+// because a missing child (depth 0) is NOT a valid
+// path to a leaf.
+
+
+class Solution {
+
+    public int minDepth(TreeNode root) {
+
+        if(root == null)
+            return 0;
+
+        if(root.left == null && root.right == null)
+            return 1;
+
+        if(root.left == null)
+            return 1 + minDepth(root.right);
+
+        if(root.right == null)
+            return 1 + minDepth(root.left);
+
+        return 1 + Math.min(minDepth(root.left),
+                            minDepth(root.right));
+    }
+}

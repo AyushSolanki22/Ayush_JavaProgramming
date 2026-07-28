@@ -1,0 +1,72 @@
+//One approach -- solution
+
+// Intuition:
+//
+// Maintain the sum of the current root-to-node path using a global variable.
+//
+// While traversing:
+// 1. Add the current node's value to the running sum.
+// 2. If the current node is a leaf and the running sum equals
+//    the target, then a valid root-to-leaf path exists.
+// 3. Recursively explore the left and right subtrees.
+// 4. Before returning to the parent, remove the current node's
+//    value from the running sum (Backtracking) so that the sum
+//    represents the parent's path again.
+
+
+class Solution{
+    static int sum;
+    static boolean ans;
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        sum=0;
+        ans=false;
+        traversal(root, targetSum);
+        return ans;
+        
+    }
+    public void traversal(TreeNode root, int targetSum) {
+        if(root==null){
+            return;
+        }
+        
+        sum+=root.val;
+        if(sum==targetSum && root.left==null && root.right==null ) ans=true;
+        
+        traversal(root.left,targetSum);
+        traversal(root.right, targetSum);
+        sum-=root.val;
+        
+    }
+}
+
+
+//another approach -- 
+
+// Instead of maintaining the current path sum,
+// keep reducing the target by the current node value.
+//
+// At every node, ask:
+// "How much sum is still needed to reach the target?"
+//
+// If we reach a leaf and the remaining target becomes 0,
+// a valid root-to-leaf path exists.
+//
+// Otherwise, recursively check the left and right subtrees.
+
+
+class Solution {
+
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+
+        if(root == null)
+            return false;
+
+        targetSum -= root.val;
+
+        if(root.left == null && root.right == null)
+            return targetSum == 0;
+
+        return hasPathSum(root.left, targetSum)
+            || hasPathSum(root.right, targetSum);
+    }
+}

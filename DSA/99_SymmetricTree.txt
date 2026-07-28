@@ -13,7 +13,7 @@
  *     }
  * }
  */
- 
+
 class Solution {
     public boolean isSymmetric(TreeNode root) {
         if(root==null) return true;
@@ -34,4 +34,17 @@ class Solution {
 
 
 
-    
+// Symmetric means left subtree should be a mirror of right subtree.
+//
+// Compare two trees simultaneously.
+//
+// 1. Both null -> symmetric.
+// 2. One null -> not symmetric.
+// 3. Values differ -> not symmetric.
+//
+// Otherwise,
+// compare:
+// left.left with right.right
+// left.right with right.left
+//
+// (Cross comparison because we are checking mirror images.)
