@@ -1,0 +1,196 @@
+# Types of Binary Trees
+
+---
+
+## 1. Full Binary Tree (Strict/Proper Binary Tree)
+
+### Definition
+A binary tree in which every node has either:
+- **0 children (Leaf Node)**, or
+- **2 children**
+
+No node has exactly **1 child**.
+
+### Example
+
+        1
+      /   \
+     2     3
+    / \
+   4   5
+
+✔ Full Binary Tree
+
+---
+
+## 2. Perfect Binary Tree
+
+### Definition
+A binary tree is **Perfect** if:
+- Every internal node has exactly **2 children**.
+- All leaf nodes are present at the **same level**.
+
+### Example
+
+          1
+       /     \
+      2       3
+     / \     / \
+    4   5   6   7
+
+✔ Perfect Binary Tree
+
+### Properties
+
+If height = **h**
+
+- Total Nodes = `2^(h+1) - 1`
+- Leaf Nodes = `2^h`
+
+---
+
+## 3. Complete Binary Tree
+
+### Definition
+- Every level is completely filled except possibly the **last level**.
+- The last level is filled **from left to right**.
+
+### Example
+
+        1
+      /   \
+     2     3
+    / \   /
+   4   5 6
+
+✔ Complete Binary Tree
+
+### Not Complete
+
+        1
+      /   \
+     2     3
+      \   /
+       5 6
+
+✖ Not Complete (Left child missing before right child.)
+
+---
+
+## 4. Balanced Binary Tree
+
+### Definition
+
+For every node,
+
+```
+| Height(Left) - Height(Right) | ≤ 1
+```
+
+### Example
+
+       1
+      / \
+     2   3
+    /
+   4
+
+✔ Balanced Binary Tree
+
+### Unbalanced
+
+      1
+     /
+    2
+   /
+  3
+ /
+4
+
+✖ Not Balanced
+
+---
+
+## 5. Degenerate (Skewed) Binary Tree
+
+### Definition
+
+Every node has only **one child**.
+
+Looks like a **Linked List**.
+
+### Left Skewed
+
+      1
+     /
+    2
+   /
+  3
+ /
+4
+
+### Right Skewed
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+
+### Property
+
+- Height = Number of Nodes
+- Worst-case Time Complexity = **O(n)**
+
+---
+
+## 6. Binary Search Tree (BST)
+
+### Definition
+
+For every node,
+
+```
+All nodes in Left Subtree  < Root
+
+All nodes in Right Subtree > Root
+```
+
+This property must hold for **every node**, not just its immediate children.
+
+### Example
+
+          40
+         /  \
+       20    60
+      / \    / \
+    10 30  50 70
+
+✔ Binary Search Tree
+
+### Invalid BST
+
+          40
+         /  \
+       20    60
+      / \    / \
+    10 50  30 70
+
+✖ Not BST
+
+Reason:
+- 50 is in the left subtree of 40 but `50 > 40`.
+- 30 is in the right subtree of 40 but `30 < 40`.
+
+---
+
+# Quick Revision
+
+- **Full Binary Tree** → Every node has **0 or 2 children**.
+- **Perfect Binary Tree** → Full + All leaf nodes at the same level.
+- **Complete Binary Tree** → Last level filled from **left to right**.
+- **Balanced Binary Tree** → Height difference at every node ≤ **1**.
+- **Degenerate Tree** → Every node has only **one child**.
+- **Left Skewed
