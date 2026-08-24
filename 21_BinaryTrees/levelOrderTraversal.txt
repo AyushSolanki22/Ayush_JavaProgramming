@@ -1,0 +1,335 @@
+# Level Order Traversal (BFS - Breadth First Search)
+
+---
+
+## Definition
+
+**Level Order Traversal** means visiting the tree **level by level**, from **left to right**.
+
+It is implemented using a **Queue (FIFO)**.
+
+BFS = **Breadth First Search**
+
+---
+
+## Why Queue?
+
+Queue follows **FIFO (First In, First Out)**.
+
+The node that is discovered first should be processed first.
+
+This naturally matches level-by-level traversal.
+
+---
+
+## Intuition
+
+Think of people standing in a queue.
+
+- First person comes out.
+- Then his children join the queue.
+- Again, the first person in the queue comes out.
+- His children join the queue.
+
+Repeat until the queue becomes empty.
+
+---
+
+## Algorithm
+
+1. Create an empty Queue.
+2. Insert the root node into the queue.
+3. While the queue is not empty:
+   - Remove (poll) the front node.
+   - Process/Print it.
+   - Insert its left child (if present).
+   - Insert its right child (if present).
+4. Continue until the queue becomes empty.
+
+---
+
+## Example
+
+```
+           3
+         /   \
+        4     2
+       / \   / \
+     -1   1 7   9
+         /
+        6
+```
+
+### Initial Queue
+
+```
+Queue
+
+Front -> [3] <- Rear
+```
+
+---
+
+### Step 1
+
+Remove 3
+
+Print
+
+```
+3
+```
+
+Insert left and right children
+
+```
+Queue
+
+Front -> [4, 2] <- Rear
+```
+
+---
+
+### Step 2
+
+Remove 4
+
+Print
+
+```
+3 4
+```
+
+Insert
+
+```
+-1
+1
+```
+
+Queue
+
+```
+Front -> [2, -1, 1] <- Rear
+```
+
+---
+
+### Step 3
+
+Remove 2
+
+Print
+
+```
+3 4 2
+```
+
+Insert
+
+```
+7
+9
+```
+
+Queue
+
+```
+Front -> [-1, 1, 7, 9] <- Rear
+```
+
+---
+
+### Step 4
+
+Remove -1
+
+Print
+
+```
+3 4 2 -1
+```
+
+No children
+
+Queue
+
+```
+Front -> [1, 7, 9] <- Rear
+```
+
+---
+
+### Step 5
+
+Remove 1
+
+Print
+
+```
+3 4 2 -1 1
+```
+
+Insert
+
+```
+6
+```
+
+Queue
+
+```
+Front -> [7, 9, 6] <- Rear
+```
+
+---
+
+### Step 6
+
+Remove 7
+
+Print
+
+```
+3 4 2 -1 1 7
+```
+
+Queue
+
+```
+Front -> [9, 6] <- Rear
+```
+
+---
+
+### Step 7
+
+Remove 9
+
+Print
+
+```
+3 4 2 -1 1 7 9
+```
+
+Queue
+
+```
+Front -> [6] <- Rear
+```
+
+---
+
+### Step 8
+
+Remove 6
+
+Print
+
+```
+3 4 2 -1 1 7 9 6
+```
+
+Queue becomes empty.
+
+Traversal completed.
+
+---
+
+## Final BFS Traversal
+
+```
+3 4 2 -1 1 7 9 6
+```
+
+---
+
+# Time Complexity
+
+Every node is visited exactly once.
+
+```
+O(n)
+```
+
+---
+
+# Space Complexity
+
+Queue may store one complete level.
+
+Worst Case:
+
+```
+O(n)
+```
+
+---
+
+# Important Queue Operations
+
+```
+Queue<TreeNode> q = new LinkedList<>();
+
+q.offer(node);     // Insert
+q.poll();          // Remove front
+q.peek();          // Front element
+q.isEmpty();       // Check empty
+q.size();          // Number of elements
+```
+
+---
+
+# Level Order Traversal Template
+
+```java
+Queue<TreeNode> q = new LinkedList<>();
+
+q.offer(root);
+
+while(!q.isEmpty()){
+
+    TreeNode curr = q.poll();
+
+    // Process current node
+
+    if(curr.left != null)
+        q.offer(curr.left);
+
+    if(curr.right != null)
+        q.offer(curr.right);
+}
+```
+
+---
+
+# Level-wise BFS Template (Most Important)
+
+Used in:
+- Right Side View
+- Zigzag Traversal
+- Average of Levels
+- Largest Value in Each Row
+- Maximum Level Sum
+- Many Tree Problems
+
+
+
+# Intuition (Comment Style)
+
+```
+// Queue helps us visit nodes level by level.
+//
+// Initially insert the root.
+//
+// Repeatedly:
+// 1. Remove the front node.
+// 2. Process it.
+// 3. Insert its left child
+// 4. Insert its right child.
+//
+// Since Queue follows FIFO,
+// nodes are processed in the same order
+// they are discovered, resulting in
+// Level Order (BFS) Traversal.
+```
