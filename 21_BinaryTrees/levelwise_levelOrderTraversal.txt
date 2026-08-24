@@ -1,0 +1,361 @@
+# Level Order Traversal (Level-wise BFS)
+
+---
+
+## Definition
+
+In **Level Order Traversal**, we traverse the binary tree **level by level**, from **left to right**.
+
+Unlike normal BFS (which prints nodes continuously), here we print **each level separately**.
+
+Example Output:
+
+```
+3
+4 2
+-1 1 7 9
+6
+```
+
+---
+
+## Intuition
+
+The normal BFS queue already stores nodes in level order.
+
+The only problem is:
+
+> **How do we know where one level ends and the next begins?**
+
+Answer:
+
+Before processing a level, store
+
+```java
+int currLevel = q.size();
+```
+
+The queue size tells us **exactly how many nodes belong to the current level**.
+
+Process only these `currLevel` nodes.
+
+While processing them, their children get added to the queue.
+
+These children automatically become the next level.
+
+---
+
+## Algorithm
+
+1. Insert root into Queue.
+2. While Queue is not empty:
+   - Store current queue size.
+   - This is the number of nodes in the current level.
+3. Run a loop from `1` to `currLevel`.
+   - Remove one node.
+   - Print/process it.
+   - Insert its left child.
+   - Insert its right child.
+4. After the loop ends,
+   one complete level has been processed.
+5. Move to the next iteration.
+
+---
+
+## Example
+
+Tree
+
+```
+            3
+          /   \
+         4     2
+        / \   / \
+      -1   1 7   9
+          /
+         6
+```
+
+---
+
+### Initially
+
+Queue
+
+```
+[3]
+```
+
+Current Level
+
+```
+currLevel = 1
+```
+
+Process one node
+
+Output
+
+```
+3
+```
+
+Queue becomes
+
+```
+[4, 2]
+```
+
+---
+
+### Second Level
+
+Current Queue
+
+```
+[4, 2]
+```
+
+Current Level
+
+```
+currLevel = 2
+```
+
+Process 2 nodes
+
+Output
+
+```
+4 2
+```
+
+Queue becomes
+
+```
+[-1, 1, 7, 9]
+```
+
+---
+
+### Third Level
+
+Current Queue
+
+```
+[-1, 1, 7, 9]
+```
+
+Current Level
+
+```
+currLevel = 4
+```
+
+Process four nodes
+
+Output
+
+```
+-1 1 7 9
+```
+
+Queue becomes
+
+```
+[6]
+```
+
+---
+
+### Fourth Level
+
+Current Queue
+
+```
+[6]
+```
+
+Current Level
+
+```
+currLevel = 1
+```
+
+Output
+
+```
+6
+```
+
+Queue becomes empty.
+
+Traversal completed.
+
+---
+
+## Queue Visualization
+
+```
+Level 1
+
+Queue
+
+[3]
+
+↓
+
+Level 2
+
+[4,2]
+
+↓
+
+Level 3
+
+[-1,1,7,9]
+
+↓
+
+Level 4
+
+[6]
+
+↓
+
+Empty
+```
+
+---
+
+# Java Code
+
+```java
+import java.util.*;
+
+class Node{
+    int data;
+    Node left, right;
+
+    Node(int data){
+        this.data = data;
+    }
+}
+
+class LevelOrder{
+
+    static void levelOrder(Node root){
+
+        if(root == null)
+            return;
+
+        Queue<Node> q = new LinkedList<>();
+
+        q.add(root);
+
+        while(!q.isEmpty()){
+
+            int currLevel = q.size();
+
+            for(int i = 1; i <= currLevel; i++){
+
+                Node curr = q.remove();
+
+                System.out.print(curr.data + " ");
+
+                if(curr.left != null)
+                    q.add(curr.left);
+
+                if(curr.right != null)
+                    q.add(curr.right);
+            }
+
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args){
+
+        Node root = new Node(3);
+
+        root.left = new Node(4);
+        root.right = new Node(2);
+
+        root.left.left = new Node(-1);
+        root.left.right = new Node(1);
+
+        root.right.left = new Node(7);
+        root.right.right = new Node(9);
+
+        root.left.right.left = new Node(6);
+
+        levelOrder(root);
+    }
+}
+```
+
+---
+
+## Output
+
+```
+3
+4 2
+-1 1 7 9
+6
+```
+
+---
+
+# Time Complexity
+
+```
+O(n)
+```
+
+Each node is visited exactly once.
+
+---
+
+# Space Complexity
+
+```
+O(n)
+```
+
+Queue may contain one complete level in the worst case.
+
+---
+
+# Intuition (Comment Style)
+
+```java
+// Queue already stores nodes level by level.
+//
+// Before processing a level,
+// store queue size.
+//
+// Queue size = Number of nodes in current level.
+//
+// Process exactly those many nodes.
+//
+// While processing, insert their children.
+// Those children automatically become
+// the next level.
+//
+// Repeat until queue becomes empty.
+```
+
+---
+
+# Applications
+
+- Level Order Traversal
+- Binary Tree Right Side View
+- Zigzag Level Order Traversal
+- Average of Levels
+- Largest Value in Each Level
+- Maximum Level Sum
+- Minimum Depth of Binary Tree (BFS approach)
+```
+
