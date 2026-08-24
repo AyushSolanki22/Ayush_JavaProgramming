@@ -452,3 +452,72 @@ Posted 1 on leetcode - time taken 2nd solution ..
 @14 July 
 Completed 41 mins -- of Queue 
 Done 1 on leetcode - Implementation of Queue using Stack
+ 
+
+@15 July 
+Completed 
+Done 1 on leetcode - Implementation of Stacks using Queue
+gfg - interleave the first half of the queue with second half (rearrange queue)
+
+@16 July 
+0 - due to full hectic day -- web development 
+Posted 1 on leetcode -- Design circular queue (using Queue)
+
+@17 July 
+Finished Stacks (47 mins' )
+Posted 1 on leetcode - best time to buy and sell stocks (using Arraya) 
+gfg - rearrange queue (2nd approach), first negative in window
+
+@18 July 
+Completed 1 hr of Binary Tree 
+Posted 1 on leetcode - best time to buy and sell stocks (using Greedy)
+
+@19 July
+0 (due to hostel shifting)
+Posted 1 on leetcode - Maximum depth of binary tree  
+
+@20 July 
+0 (college)
+RePosted 1 on leetcode - Maximum depth of binary tree 
+
+@21 July 
+0
+Done 1 on leetcode - same tree 
+
+@22 July 
+0,  Understood maximum depth, same tree and the questions done on 22 July 
+Done 2 on leetcode - invert binary tree, symmetric tree 
+
+@23 July 
+Completed 46 mins' of Binary Tree 
+Submissions 
+Gkg - size, sum, min & max
+
+@24 July 
+0 mins ( mathura)
+Posted 1 on leetcode - Lowest Common Ancestor of binary tree (using binary tree)
+
+@25 July 
+0 mins (mathura) 
+Posted 1 on leetcode - Binary Tree right side view (using binary tree)
+
+@26 July 
+0 mins (mathura, sih)
+Posted 1 on leetcode - Path sum II (using binary tree)
+
+@27 July 
+Completed 1 hr 10 mins' of Binary Tree 
+Redone 1 on leetcode - Same Tree (2nd way)
+Gfg -  preorder traversal, inorder traversal, postorder traversal, mirror tree 
+
+@28 July 
+Completed 25 mins' of Binary Tree, understood min depth concept 
+Done 3 on Leetcode - path sum, binary tree path, minimum depth 
+
+@29 July 
+Completed 51 mins' of Binary Tree 
+0 (streak lost) 
+
+@30 July 
+0 mins (due to less wanting due to no laptop , kalesh, hectic college schedule) 
+0
