@@ -189,6 +189,16 @@
 6. ArrayImplementationOfQueue
 
 
+#21_BinaryTrees
+1. binaryTree
+2. binaryTrees 
+3. binaryTreeQuestions
+4. binaryTreeTypes
+5. levelOrderTraversal - .txt, .java
+6. levelwise_levelOrderTraversal - .txt, .java
+
+
+
 
 ##DSA (LeetCode)
 
@@ -289,7 +299,13 @@ Recursion Identification, Tower of Hanoi program
 93. findWinner_CircularGame
 94. implentQueue_usingStack
 95. implentStack_usingQueue
-
+96. maximumDepth_BinaryTree
+97. sameTree
+98. invertBinaryTree
+99. symmetricTree
+100. PathSum
+101. BinaryTreePaths
+102. minDepth_BinaryTree
 
 
 
