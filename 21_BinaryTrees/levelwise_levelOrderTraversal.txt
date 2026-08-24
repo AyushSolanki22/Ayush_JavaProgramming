@@ -1,5 +1,5 @@
 # Level Order Traversal (Level-wise BFS)
-
+///using prev level, curr level, q.size
 ---
 
 ## Definition
@@ -359,3 +359,1081 @@ Queue may contain one complete level in the worst case.
 - Minimum Depth of Binary Tree (BFS approach)
 ```
 
+
+
+
+
+
+
+//Another approach
+
+# Level Order Traversal — Level-Wise Printing Using Pair (BFS)
+
+---
+
+## 1. Concept
+
+Level Order Traversal means traversing a Binary Tree:
+
+- Level by level
+- From left to right
+- Using a Queue
+
+It is based on BFS (Breadth First Search).
+
+In this approach, along with every Node, we also store its level.
+
+Therefore, the Queue stores:
+
+(Node, Level)
+
+For storing these two values together, we create a Pair class.
+
+---
+
+## 2. Why Queue?
+
+Queue follows:
+
+FIFO → First In, First Out
+
+This makes Queue suitable for BFS because the Node which is discovered first is processed first.
+
+Example:
+
+        1
+       / \
+      2   3
+     / \
+    4   5
+
+Initially:
+
+Queue = [1]
+
+After processing 1:
+
+Queue = [2, 3]
+
+After processing 2:
+
+Queue = [3, 4, 5]
+
+Therefore, Nodes are naturally processed level by level.
+
+---
+
+## 3. Why Pair?
+
+Normally, Queue stores only:
+
+Node
+
+But for level-wise printing, we also want to know:
+
+"Which level does this Node belong to?"
+
+Therefore, instead of storing only Node, we store:
+
+(Node, Level)
+
+Example:
+
+(3,1)
+
+(4,2) (2,2)
+
+(-1,3) (1,3) (7,3) (9,3)
+
+(6,4)
+
+Here:
+
+First value  → Node
+Second value → Level
+
+So every Node carries its own level information.
+
+---
+
+## 4. Pair Class
+
+Java does not provide a simple Pair class for this DSA implementation, so we create our own.
+
+class Pair {
+
+    Node node;
+    int level;
+
+    Pair(Node node, int level) {
+        this.node = node;
+        this.level = level;
+    }
+}
+
+Here:
+
+node  → stores the Binary Tree Node
+level → stores the level of that Node
+
+For example:
+
+new Pair(root, 1)
+
+means:
+
+Store the root Node along with Level 1.
+
+---
+
+## 5. Main Intuition
+
+We perform normal BFS using a Queue.
+
+But instead of storing only Nodes, we store:
+
+(Node, Level)
+
+Whenever we remove a Pair from the Queue:
+
+1. Get the current Node.
+2. Get its Level.
+3. Compare its Level with the previous Node's Level.
+4. If the Level changes, print a new line.
+5. Print the current Node.
+6. Add its left child with level + 1.
+7. Add its right child with level + 1.
+8. Update prevLevel.
+
+Important relation:
+
+Parent Level = L
+
+Child Level = L + 1
+
+Therefore:
+
+q.add(new Pair(curr.left, level + 1));
+
+q.add(new Pair(curr.right, level + 1));
+
+---
+
+## 6. Example Tree
+
+            3
+          /   \
+         4     2
+        / \   / \
+      -1   1 7   9
+          /
+         6
+
+Levels:
+
+Level 1 → 3
+
+Level 2 → 4 2
+
+Level 3 → -1 1 7 9
+
+Level 4 → 6
+
+Therefore, output:
+
+3
+4 2
+-1 1 7 9
+6
+
+---
+
+## 7. Pair Representation of Tree
+
+                 (3,1)
+                /     \
+            (4,2)     (2,2)
+            /   \     /   \
+       (-1,3) (1,3) (7,3) (9,3)
+                  /
+                (6,4)
+
+Here:
+
+(Node, Level)
+
+Example:
+
+(4,2)
+
+means:
+
+Node = 4
+Level = 2
+
+---
+
+## 8. Creating the Queue
+
+Queue<Pair> q = new LinkedList<>();
+
+The Queue stores Pair objects instead of directly storing Node objects.
+
+Then we add the root:
+
+q.add(new Pair(root, 1));
+
+Since root is at Level 1:
+
+Queue:
+
+[(3,1)]
+
+---
+
+## 9. prevLevel Variable
+
+We maintain:
+
+int prevLevel = 1;
+
+This stores the Level of the previously processed Node.
+
+It is used to detect when we move from one level to another.
+
+Example:
+
+prevLevel = 2
+current level = 3
+
+Since:
+
+3 != 2
+
+we know that Level 2 has finished and Level 3 has started.
+
+Therefore, we print a new line.
+
+---
+
+## 10. Removing Pair From Queue
+
+Inside the while loop:
+
+Pair p = q.remove();
+
+This removes the front Pair from the Queue.
+
+Then:
+
+Node curr = p.node;
+int level = p.level;
+
+We extract:
+
+curr  → Current Node
+level → Current Node's Level
+
+---
+
+## 11. Detecting Level Change
+
+We use:
+
+if(level != prevLevel)
+    System.out.println();
+
+Suppose:
+
+prevLevel = 2
+level = 3
+
+Since:
+
+3 != 2
+
+the Level has changed.
+
+Therefore:
+
+System.out.println();
+
+moves the cursor to the next line.
+
+This allows us to print:
+
+3
+4 2
+-1 1 7 9
+6
+
+instead of:
+
+3 4 2 -1 1 7 9 6
+
+---
+
+## 12. Printing Current Node
+
+System.out.print(curr.data + " ");
+
+We use print() instead of println() because Nodes belonging to the same Level should be printed on the same line.
+
+For example:
+
+Level 2:
+
+4 2
+
+Both Nodes are printed using print().
+
+A new line is created only when:
+
+level != prevLevel
+
+---
+
+## 13. Adding Children
+
+Left Child:
+
+if(curr.left != null)
+    q.add(new Pair(curr.left, level + 1));
+
+Right Child:
+
+if(curr.right != null)
+    q.add(new Pair(curr.right, level + 1));
+
+If current Node is:
+
+(4,2)
+
+then its children belong to:
+
+Level = 2 + 1 = 3
+
+Therefore:
+
+-1 becomes (-1,3)
+
+1 becomes (1,3)
+
+---
+
+## 14. Updating Previous Level
+
+At the end of every iteration:
+
+prevLevel = level;
+
+This makes the current Node's Level the previous Level for the next iteration.
+
+Example:
+
+Current:
+
+level = 3
+
+After:
+
+prevLevel = level;
+
+Now:
+
+prevLevel = 3
+
+If the next Node is also at Level 3, no new line is printed.
+
+---
+
+## 15. Complete Java Code
+
+import java.util.*;
+
+class LevelOrder {
+
+    public static void main(String[] args) {
+
+        /*
+                    3
+                  /   \
+                 4     2
+                / \   / \
+              -1   1 7   9
+                  /
+                 6
+        */
+
+        Node root = new Node(3);
+
+        root.left = new Node(4);
+        root.right = new Node(2);
+
+        root.left.left = new Node(-1);
+        root.left.right = new Node(1);
+
+        root.right.left = new Node(7);
+        root.right.right = new Node(9);
+
+        root.left.right.left = new Node(6);
+
+        levelOrder(root);
+    }
+
+    static void levelOrder(Node root) {
+
+        if(root == null)
+            return;
+
+        Queue<Pair> q = new LinkedList<>();
+
+        // Root is at Level 1
+        q.add(new Pair(root, 1));
+
+        int prevLevel = 1;
+
+        while(!q.isEmpty()) {
+
+            Pair p = q.remove();
+
+            Node curr = p.node;
+            int level = p.level;
+
+            // Level changed -> move to next line
+            if(level != prevLevel)
+                System.out.println();
+
+            // Print current Node
+            System.out.print(curr.data + " ");
+
+            // Add children with next level
+            if(curr.left != null)
+                q.add(new Pair(curr.left, level + 1));
+
+            if(curr.right != null)
+                q.add(new Pair(curr.right, level + 1));
+
+            prevLevel = level;
+        }
+    }
+}
+
+
+class Node {
+
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+
+class Pair {
+
+    Node node;
+    int level;
+
+    Pair(Node node, int level) {
+        this.node = node;
+        this.level = level;
+    }
+}
+
+---
+
+## 16. Output
+
+3
+4 2
+-1 1 7 9
+6
+
+---
+
+## 17. Dry Run
+
+Initial:
+
+Queue = [(3,1)]
+
+prevLevel = 1
+
+
+### Step 1
+
+Remove:
+
+(3,1)
+
+So:
+
+curr = 3
+level = 1
+prevLevel = 1
+
+Since:
+
+level == prevLevel
+
+No new line.
+
+Print:
+
+3
+
+Add children:
+
+(4,2)
+(2,2)
+
+Queue:
+
+[(4,2), (2,2)]
+
+Update:
+
+prevLevel = 1
+
+
+### Step 2
+
+Remove:
+
+(4,2)
+
+Now:
+
+curr = 4
+level = 2
+prevLevel = 1
+
+Since:
+
+2 != 1
+
+Level changed.
+
+Print a new line.
+
+Then print:
+
+4
+
+Add:
+
+(-1,3)
+(1,3)
+
+Queue:
+
+[(2,2), (-1,3), (1,3)]
+
+Update:
+
+prevLevel = 2
+
+
+### Step 3
+
+Remove:
+
+(2,2)
+
+Now:
+
+level = 2
+prevLevel = 2
+
+No new line.
+
+Print:
+
+4 2
+
+Add:
+
+(7,3)
+(9,3)
+
+Queue:
+
+[(-1,3), (1,3), (7,3), (9,3)]
+
+
+### Step 4
+
+Remove:
+
+(-1,3)
+
+Now:
+
+level = 3
+prevLevel = 2
+
+Since:
+
+3 != 2
+
+Level changed.
+
+Print a new line.
+
+Then print:
+
+-1
+
+
+### Step 5
+
+Remove:
+
+(1,3)
+
+Now:
+
+level = 3
+prevLevel = 3
+
+No new line.
+
+Print:
+
+-1 1
+
+Node 1 has left child 6.
+
+Add:
+
+(6,4)
+
+
+### Step 6
+
+Remove:
+
+(7,3)
+
+Same Level.
+
+Print:
+
+-1 1 7
+
+
+### Step 7
+
+Remove:
+
+(9,3)
+
+Same Level.
+
+Print:
+
+-1 1 7 9
+
+
+### Step 8
+
+Remove:
+
+(6,4)
+
+Now:
+
+level = 4
+prevLevel = 3
+
+Since:
+
+4 != 3
+
+Level changed.
+
+Print new line.
+
+Then print:
+
+6
+
+Queue becomes empty.
+
+Traversal ends.
+
+---
+
+## 18. Final Output After Dry Run
+
+3
+4 2
+-1 1 7 9
+6
+
+---
+
+## 19. Queue Flow
+
+Initially:
+
+[(3,1)]
+
+After processing 3:
+
+[(4,2), (2,2)]
+
+After processing 4:
+
+[(2,2), (-1,3), (1,3)]
+
+After processing 2:
+
+[(-1,3), (1,3), (7,3), (9,3)]
+
+While processing Level 3, 6 is added:
+
+[(6,4)]
+
+Finally:
+
+[]
+
+Queue becomes empty.
+
+---
+
+## 20. Important Syntax
+
+Create Queue:
+
+Queue<Pair> q = new LinkedList<>();
+
+Add root:
+
+q.add(new Pair(root, 1));
+
+Remove Pair:
+
+Pair p = q.remove();
+
+Get Node:
+
+Node curr = p.node;
+
+Get Level:
+
+int level = p.level;
+
+Check Queue:
+
+q.isEmpty();
+
+Add left child:
+
+q.add(new Pair(curr.left, level + 1));
+
+Add right child:
+
+q.add(new Pair(curr.right, level + 1));
+
+---
+
+## 21. Core Code Pattern
+
+Queue<Pair> q = new LinkedList<>();
+
+q.add(new Pair(root, 1));
+
+int prevLevel = 1;
+
+while(!q.isEmpty()) {
+
+    Pair p = q.remove();
+
+    Node curr = p.node;
+    int level = p.level;
+
+    if(level != prevLevel)
+        System.out.println();
+
+    System.out.print(curr.data + " ");
+
+    if(curr.left != null)
+        q.add(new Pair(curr.left, level + 1));
+
+    if(curr.right != null)
+        q.add(new Pair(curr.right, level + 1));
+
+    prevLevel = level;
+}
+
+---
+
+## 22. Why Pair is Useful
+
+Pair is useful when we want to store:
+
+Object + Extra Information
+
+In this problem:
+
+Node + Level
+
+Therefore:
+
+Pair = (Node, Level)
+
+In other Tree problems, Pair may store:
+
+(Node, Horizontal Distance)
+
+(Node, Parent)
+
+(Node, State)
+
+(Node, Distance)
+
+So Pair is useful whenever a Node alone is not enough and some additional information must travel with that Node.
+
+---
+
+## 23. Pair vs q.size() Approach
+
+There are two common approaches for Level-Wise BFS.
+
+
+### Approach 1: Using q.size()
+
+int size = q.size();
+
+Here, Queue size tells us:
+
+"How many Nodes belong to the current Level?"
+
+We process exactly those many Nodes.
+
+
+### Approach 2: Using Pair
+
+(Node, Level)
+
+Here, every Node explicitly carries its Level.
+
+Therefore:
+
+q.size() approach
+→ Level information is determined using the number of Nodes currently in Queue.
+
+Pair approach
+→ Level information is explicitly stored with every Node.
+
+Both approaches are valid.
+
+---
+
+## 24. Applications
+
+Level-Wise BFS is useful in many Binary Tree problems:
+
+1. Level Order Traversal
+   → Traverse Nodes Level by Level.
+
+2. Binary Tree Right Side View
+   → Take the last/rightmost Node of every Level.
+
+3. Average of Levels
+   → Calculate average of all Nodes at each Level.
+
+4. Largest Value in Each Row
+   → Find maximum value at every Level.
+
+5. Maximum Level Sum
+   → Find which Level has the maximum sum.
+
+6. Zigzag Level Order Traversal
+   → Traverse alternate Levels in opposite directions.
+
+7. Minimum Depth
+   → BFS can find the first nearest leaf.
+
+Pair concept is also useful in:
+
+8. Vertical Order Traversal
+   → Store Node + Horizontal Distance.
+
+9. Top View / Bottom View
+   → Horizontal distance can be stored with every Node.
+
+---
+
+## 25. Time Complexity
+
+Suppose there are n Nodes.
+
+Every Node is:
+
+- Added to Queue once.
+- Removed from Queue once.
+- Processed once.
+
+Therefore:
+
+Time Complexity = O(n)
+
+---
+
+## 26. Space Complexity
+
+Queue stores Nodes/Pairs waiting to be processed.
+
+In the worst case, Queue can contain O(n) Nodes.
+
+Therefore:
+
+Space Complexity = O(n)
+
+---
+
+## 27. Edge Cases
+
+### Empty Tree
+
+root = null
+
+Handled using:
+
+if(root == null)
+    return;
+
+No output.
+
+
+### Single Node
+
+Tree:
+
+5
+
+Output:
+
+5
+
+
+### Skewed Tree
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+
+Output:
+
+1
+2
+3
+4
+
+Every Node belongs to a different Level.
+
+---
+
+## 28. Short Intuition
+
+// Use Queue for BFS.
+//
+// Along with every Node, store its Level using a Pair.
+//
+// When a Pair is removed:
+// 1. Get the current Node and Level.
+// 2. Compare current Level with previous Level.
+// 3. If Level changes, start a new line.
+// 4. Print the current Node.
+// 5. Add its children with Level + 1.
+// 6. Update prevLevel.
+//
+// Thus, whenever the Level changes,
+// we start printing on a new line.
+
+---
+
+## 29. One-Line Intuition
+
+Queue maintains BFS order, Pair stores Node + Level, and whenever the Level changes, we start a new line.
+
+---
+
+## 30. Overall Flow
+
+Binary Tree
+     ↓
+Queue<Pair>
+     ↓
+Add (Root, 1)
+     ↓
+Remove Pair
+     ↓
+Get Node + Level
+     ↓
+Compare Level with prevLevel
+     ↓
+Level Changed?
+     ↓
+If Yes → New Line
+     ↓
+Print Current Node
+     ↓
+Add Left Child with Level + 1
+     ↓
+Add Right Child with Level + 1
+     ↓
+Update prevLevel
+     ↓
+Repeat Until Queue is Empty
+
+---
+
+## Final Summary
+
+Level Order Traversal
+        ↓
+       BFS
+        ↓
+      Queue
+        ↓
+  Pair(Node, Level)
+        ↓
+   Remove Pair
+        ↓
+ Get Node + Level
+        ↓
+Compare with prevLevel
+        ↓
+ Level changed?
+        ↓
+   Print New Line
+        ↓
+   Print Node
+        ↓
+Add Children with Level + 1
+        ↓
+      Repeat
+
+
+Core Idea:
+
+Queue → Maintains BFS order
+
+Pair → Stores Node + Level
+
+prevLevel → Remembers previous Node's Level
+
+level != prevLevel → New Level has started
+
+New Level → Print a new line
