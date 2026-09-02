@@ -92,3 +92,25 @@ class Pair {
         this.level = level;
     }
 }
+
+
+
+//Second approach (((without using concept of Pair)))
+
+// while(!q.isEmpty()) {
+
+//     int currLevel = q.size();
+
+//     for(int i = 0; i < currLevel; i++) {
+
+//         Node curr = q.remove();
+
+//         // process curr
+
+//         if(curr.left != null)
+//             q.add(curr.left);
+
+//         if(curr.right != null)
+//             q.add(curr.right);
+//     }
+// }
