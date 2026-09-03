@@ -196,7 +196,8 @@
 4. binaryTreeTypes
 5. levelOrderTraversal - .txt, .java
 6. levelwise_levelOrderTraversal - .txt, .java
-
+7. zigzagTraversal
+8. nthLevel
 
 
 

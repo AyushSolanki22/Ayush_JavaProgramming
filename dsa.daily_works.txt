@@ -521,3 +521,15 @@ Completed 51 mins' of Binary Tree
 @30 July 
 0 mins (due to less wanting due to no laptop , kalesh, hectic college schedule) 
 0
+
+
+
+@2 Sept 
+some mins (good revision, questions)
+Done 2 on leetcode - Binary Tree level order traversal, " " II 
+gfg - levelOrderTraversal
+
+
+@3 Sept 
+11 mins (some revision, analyis)
+Done 1 on leetcode - Binary Tree level order traversal 
