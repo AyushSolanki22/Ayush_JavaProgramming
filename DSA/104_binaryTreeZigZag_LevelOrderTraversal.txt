@@ -1,0 +1,43 @@
+//all concept same as binary tree level order traversal
+//Just, when level is even --- make the level arraylist reverse
+
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> ans=new ArrayList<>();
+
+        if(root==null) return ans;
+
+        Queue<TreeNode> q=new LinkedList<>();
+        q.add(root);
+        int levelNo=1;
+        while(!q.isEmpty()){
+            List<Integer> level=new ArrayList<>();
+
+            int levelSize=q.size();
+
+            for(int i=1; i<=levelSize; ++i){
+                TreeNode curr=q.remove();
+
+                level.add(curr.val);
+
+                if(curr.left!=null){
+                q.add(curr.left);
+                }
+                if(curr.right!=null){
+                q.add(curr.right);
+                }
+
+                if(i==levelSize) {
+                if(levelNo%2==0){
+                    Collections.reverse(level);
+                }
+
+                ans.add(level);
+                levelNo++;
+            }
+        }
+
+        }
+        return ans;
+        }
+}
