@@ -532,4 +532,14 @@ gfg - levelOrderTraversal
 
 @3 Sept 
 11 mins (some revision, analyis)
-Done 1 on leetcode - Binary Tree level order traversal 
+Done 1 on leetcode - Binary Tree level order traversal
+
+@4 Sept
+0 mins 
+Posted 1 on leetcode - Binary Tree preorder traversal
+
+@5 Sept
+Finished Binary Tree 1 (25 mins)
+Done 1 on leetcode - Binary tree inorder traversal
+gfg- root to leaf paths
+

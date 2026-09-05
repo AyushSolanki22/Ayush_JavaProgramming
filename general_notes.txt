@@ -198,7 +198,7 @@
 6. levelwise_levelOrderTraversal - .txt, .java
 7. zigzagTraversal
 8. nthLevel
-
+9. Path
 
 
 ##DSA (LeetCode)
@@ -307,9 +307,11 @@ Recursion Identification, Tower of Hanoi program
 100. PathSum
 101. BinaryTreePaths
 102. minDepth_BinaryTree
-
-
-
+103. binaryTreeLevelOrderTraversal
+104. binaryTreeLevelOrderTraversal_II
+105. binaryTreeZigZag_LevelOrderTraversal
+106. binaryTreePreOrderTraversal
+107. binaryTreeInOrderTraversal
 
 
 
