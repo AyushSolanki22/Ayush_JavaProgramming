@@ -1,0 +1,58 @@
+//Root to leaf paths 
+
+// ans.add(path) --> stores reference basically   ((also as path is pass by reference so will create logical error))
+//so, ans.add(copy(path))
+
+
+class Solution {
+    public ArrayList<ArrayList<Integer>> paths(Node root) {
+        // code here
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        ArrayList<Integer> path=new ArrayList<>();
+        if(root==null) return ans;
+        
+        path(root, ans, path);
+        
+        return ans;
+    }
+    
+    public void path(Node root, ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> path){
+        if(root==null) return;
+        
+        path.add(root.data);
+        if(root.left==null && root.right==null){
+            ans.add(new ArrayList<>(path));
+            return; 
+        }
+        
+        path(root.left, ans, path);
+        if(root.left!=null) path.remove(path.size() - 1);   //to remove because, arraylist are pass by reference  //backtracking
+        path(root.right, ans, path);
+        if(root.right!=null) path.remove(path.size() - 1);   
+        
+
+    }
+}
+
+
+
+
+//or backtracking using within the code
+//Inside path function
+
+if(root==null) return;
+        
+path.add(root.data);
+if(root.left==null && root.right==null){
+    ans.add(new ArrayList<>(path));
+    return; 
+}
+
+path(root.left, ans, path);
+
+path(root.right, ans, path);
+path.remove(path.size() - 1);   //to remove because, arraylist are pass by reference  //backtracking
+
+//add 
+//left, right
+//remove
