@@ -543,3 +543,27 @@ Finished Binary Tree 1 (25 mins)
 Done 1 on leetcode - Binary tree inorder traversal
 gfg- root to leaf paths
 
+@6 Sept 
+some mins 
+Posted 1 on leetcode - Binary Tree postorder traversal
+
+@7 Sept 
+0 mins (laptop issue)
+Posted 1 on leetcode - Balanced Binary Tree 
+
+@8 Sept 
+0 mins(laptop issues)
+Posted 1 on leetcode -  populating next right pointers in each node
+
+
+@9 Sept, @10 Sept, @11 Sept ---- nothing (laptop issues)
+
+
+
+@12 Sept 
+0mins (1 question concept understanding , practice only)
+Done 1 on leetcode - Balanced Binary Tree 
+gfg- balanced tree 
+
+
+
