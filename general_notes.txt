@@ -310,9 +310,10 @@ Recursion Identification, Tower of Hanoi program
 103. binaryTreeLevelOrderTraversal
 104. binaryTreeLevelOrderTraversal_II
 105. binaryTreeZigZag_LevelOrderTraversal
-106. binaryTreePreOrderTraversal
-107. binaryTreeInOrderTraversal
-
+106. binaryTree_PreOrderTraversal
+107. binaryTree_InOrderTraversal
+108. binaryTree_PostOrderTraversal 
+109. balancedBinaryTree
 
 
 
