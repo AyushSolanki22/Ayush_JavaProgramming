@@ -1,3 +1,5 @@
+//First Approach -- Height separately
+
 class Solution {
     public boolean isBalanced(TreeNode root) {
         if(root==null) return true; 
@@ -19,3 +21,100 @@ class Solution {
         return 1+Math.max(height(root.left), height(root.right));
     }
 }
+
+
+//Concept & Another approach -- using post order traversal 
+
+
+// Balanced Binary Tree:
+//
+// A binary tree is height-balanced if, for every node,
+// abs(height(left subtree) - height(right subtree)) <= 1.
+//
+// Important:
+// The condition must be checked at EVERY node,
+// not only at the root.
+//
+// Height:
+// height(null) = 0
+// height(leaf) = 1
+// height(root) = 1 + max(height(root.left), height(root.right))
+//
+// Do not use:
+// 1 + height(left) + height(right)
+//
+// That calculates a sum, not height.
+//
+// Basic approach:
+// For every node:
+// 1. Calculate left subtree height.
+// 2. Calculate right subtree height.
+// 3. Check their difference.
+// 4. Recursively check left and right subtrees.
+//
+// Basic approach time complexity:
+// O(n^2) worst case because heights are repeatedly recalculated.
+//
+// Optimized approach:
+// Use postorder traversal: LEFT -> RIGHT -> ROOT.
+//
+// The recursive function returns:
+// valid height -> subtree is balanced
+// -1           -> subtree is unbalanced
+//
+// Why -1?
+// Valid heights are never negative,
+// so -1 can be used as a special invalid signal.
+//
+// Steps:
+// 1. If root is null, return 0.
+// 2. Find leftHeight recursively.
+// 3. If leftHeight == -1, return -1.
+// 4. Find rightHeight recursively.
+// 5. If rightHeight == -1, return -1.
+// 6. If abs(leftHeight - rightHeight) > 1, return -1.
+// 7. Otherwise return 1 + max(leftHeight, rightHeight).
+//
+// Code:
+//
+// class Solution {
+//
+//     public boolean isBalanced(Node root) {
+//         return checkHeight(root) != -1;
+//     }
+//
+//     public int checkHeight(Node root) {
+//
+//         if(root == null) return 0;
+//
+//         int leftHeight = checkHeight(root.left);
+//
+//         if(leftHeight == -1) return -1;
+//
+//         int rightHeight = checkHeight(root.right);
+//
+//         if(rightHeight == -1) return -1;
+//
+//         if(Math.abs(leftHeight - rightHeight) > 1) {
+//             return -1;
+//         }
+//
+//         return 1 + Math.max(leftHeight, rightHeight);  //returning valid height basically 
+//     }
+// }
+//
+// Time Complexity:
+// O(n), because every node is visited once.
+//
+// Space Complexity:
+// O(h), because of recursion stack.
+//
+// Balanced tree:
+// h = log n -> O(log n) space.
+//
+// Skewed tree:
+// h = n -> O(n) space.
+//
+// Main interview intuition:
+// Instead of calculating height separately and repeatedly,
+// calculate height and balance together in one postorder traversal.

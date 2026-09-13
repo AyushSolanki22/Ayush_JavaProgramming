@@ -565,5 +565,8 @@ Posted 1 on leetcode -  populating next right pointers in each node
 Done 1 on leetcode - Balanced Binary Tree 
 gfg- balanced tree 
 
+@13 Sept 
 
+
+gfg- isFullTree
 
