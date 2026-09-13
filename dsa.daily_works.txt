@@ -562,11 +562,11 @@ Posted 1 on leetcode -  populating next right pointers in each node
 
 @12 Sept 
 0mins (1 question concept understanding , practice only)
-Done 1 on leetcode - Balanced Binary Tree 
+Done 1 on leetcode - Balanced Binary Tree (2 approaches)
 gfg- balanced tree 
 
 @13 Sept 
-
-
-gfg- isFullTree
+Completed 43 mins' of Binary Tree 2 
+Done 1 on leetcode - Diameter of a Binary Tree (2 approaches)
+gfg- isFullTree, perfectBinaryTree
 
