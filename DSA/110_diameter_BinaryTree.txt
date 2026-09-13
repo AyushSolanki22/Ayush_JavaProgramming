@@ -1,0 +1,49 @@
+//One Approach  
+
+// diameter can be calculated through edge nodes directly 
+
+// diameter = leftLevels/height + rightLevels/height   --- here calculating it for every node to find maxDiameter (as it's not necessary for to include root)
+//recursion inside recursion approach 
+
+class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root==null) return 0;
+        int leftHeight=height(root.left); 
+        int rightHeight=height(root.right);
+
+        int a= leftHeight+rightHeight;
+
+        return Math.max(a, Math.max(diameterOfBinaryTree(root.left), diameterOfBinaryTree(root.right)) );
+    }
+
+    public int height(TreeNode root){
+        if(root==null) return 0;
+        
+        return 1+ Math.max(height(root.left), height(root.right));
+    }
+}
+
+
+
+//Another Approach 
+
+//in a single dfs approach, use static global max variable to keep track on getting maxDiameter ((((like in perfect binary tree second approach)))) --- post order traversal 
+
+
+class Solution {
+    static int max; 
+    public int diameterOfBinaryTree(TreeNode root) {
+        max=0; 
+        height(root);
+        return max; 
+    }
+
+    public int height(TreeNode root){
+        if(root==null) return 0;
+        int leftHeight=height(root.left);
+        int rightHeight=height(root.right);
+        int dia=leftHeight+rightHeight;
+        max=Math.max(max, dia);
+        return 1+ Math.max(leftHeight, rightHeight);
+    }
+}

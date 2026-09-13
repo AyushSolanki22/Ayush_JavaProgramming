@@ -1,0 +1,84 @@
+// One Approach -- using concept that in perfect tree, 2^levels-1 == size 
+
+
+class Solution {
+    boolean isPerfect(Node root) {
+        if(root==null) return true; 
+        
+        Queue<Node> q=new LinkedList<>();
+        int levels=levels(root,q); 
+        int size= size(root);
+        
+        int perfectSize=(int)Math.pow(2,levels)-1; 
+        if(perfectSize==size) return true;
+        else return false; 
+        
+    }
+    
+    
+    int levels(Node root, Queue<Node> q){
+        q.add(root);
+        int levels=1; 
+        while(!q.isEmpty()){
+            int currSize=q.size();
+            
+            for(int i=1; i<=currSize; ++i){
+                Node p=q.remove(); 
+                if(p.left!=null) q.add(p.left); 
+                if(p.right!=null) q.add(p.right);
+            }
+            if(q.size()!=0) levels++;
+        }
+        return levels; 
+    
+    }
+    
+    int size(Node root){
+        if(root==null) return 0;
+        
+        return 1+size(root.left)+size(root.right);
+        
+    }
+  
+};
+
+
+//Another Approach --- Find the height of the tree, then check whether every node exists at the expected depth.'
+
+
+class Solution {
+
+    boolean isPerfect(Node root) {
+
+        if(root == null) return true;
+
+        int levels = height(root);
+
+        return check(root, 1, levels);
+    }
+
+    int height(Node root) {
+
+        if(root == null) return 0;
+
+        return 1 + Math.max(height(root.left), height(root.right));
+    }
+
+    boolean check(Node root, int level, int totalLevels) {
+
+        if(root == null) return true;
+
+        // Leaf node must be at the last level
+        if(root.left == null && root.right == null) {
+            return level == totalLevels;
+        }
+
+        // An internal node must have both children
+        if(root.left == null || root.right == null) {
+            return false;
+        }
+
+        return check(root.left, level + 1, totalLevels)
+            && check(root.right, level + 1, totalLevels);
+    }
+}

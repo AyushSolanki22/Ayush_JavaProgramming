@@ -118,3 +118,6 @@ class Solution {
 // Main interview intuition:
 // Instead of calculating height separately and repeatedly,
 // calculate height and balance together in one postorder traversal.
+
+
+//in 2nd approach, we can just also simply use a global variable flag too to return true or false 
