@@ -566,7 +566,11 @@ Done 1 on leetcode - Balanced Binary Tree (2 approaches)
 gfg- balanced tree 
 
 @13 Sept 
-Completed 43 mins' of Binary Tree 2 
+Completed 43 mins' of Binary Tree II
 Done 1 on leetcode - Diameter of a Binary Tree (2 approaches)
-gfg- isFullTree, perfectBinaryTree
+gfg- isFullTree, perfectBinaryTree, diameterOfBinaryTree
 
+@14 Sept 
+Completed 1 hr of Binary Tree II 
+Done 2 on leetcode - right view Binary Tree (2 approaches- dfs, bfs), sum of left leaves
+gfg - leftView_BinaryTree, lca (1 approach)
