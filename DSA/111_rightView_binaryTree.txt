@@ -1,0 +1,73 @@
+//One Approach 
+//Using DFS --- in preorder traversal , just passing levels too in function,,,, and updating when we reach node, to the arraylist at level'th' index. (if level =1 , ans.set(1, root.data))
+
+
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+
+        int levels=levels(root);
+        for(int i=1; i<=levels; ++i)  ans.add(root.val);  //for setting default values to avoid index error
+
+        traversal(root, ans, 0);
+        return ans; 
+    }
+
+    public static int levels(TreeNode root){
+      if(root==null) return 0;
+
+      return 1+Math.max(levels(root.left), levels(root.right));
+
+  }
+
+    public static void traversal(TreeNode root, List<Integer> ans, int level) {
+
+        if (root == null) return;
+        
+
+        ans.set(level, root.val);
+        traversal(root.left, ans, level+1);
+        traversal(root.right, ans, level+1);
+  }
+}
+
+
+
+
+
+
+//Another Approach 
+//Using BFS -(currSize, for loop),,, ----- right view of binary tree 
+
+
+class Solution {
+
+    public List<Integer> rightSideView(TreeNode root) {
+
+        List<Integer> ans = new ArrayList<>();
+
+        if(root == null) return ans;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+
+        while(!q.isEmpty()){
+
+            int currSize = q.size();
+
+            for(int i = 1; i <= currSize; i++){
+                TreeNode curr = q.remove();
+
+                if(i == currSize) ans.add(curr.val);
+
+                if(curr.left != null)
+                    q.add(curr.left);
+
+                if(curr.right != null)
+                    q.add(curr.right);
+            }
+        }
+
+        return ans;
+    }
+}
