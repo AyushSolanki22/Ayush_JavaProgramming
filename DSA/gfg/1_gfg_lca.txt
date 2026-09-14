@@ -1,0 +1,56 @@
+//Concept --- 2 nodes, 1 lowest common ancestor
+//Root, left subtree, right subtree
+
+//If both nodes in left subtree, move to root.left; 
+//If both nodes in right subtree, move to root.right; 
+//If one in left, and one in right, root is the lowest common ancestor 
+//If one is root itself, then root is the lowest common ancestor 
+
+// code is interesting----- due to finding if certain node exist in the tree
+
+
+//T.C = 0(n) (Best case)  (in case of balanced tree),,,,
+// worst & avg case - 0(n^2) (eg- skewed tree )
+
+
+class Solution {
+    Node lca(Node root, int n1, int n2) {
+        if(root == null) return null;
+
+        boolean leftN1 = exists(root.left, n1);
+        boolean leftN2 = exists(root.left, n2);
+
+        boolean rightN1 = exists(root.right, n1);
+        boolean rightN2 = exists(root.right, n2);
+
+        // n1 is in the left subtree and n2 is in the right subtree or vice-versa
+        if((leftN1 && rightN2) || (leftN2 && rightN1)) {
+            return root;
+        }
+
+        // Both nodes are present in the left subtree
+        if(leftN1 && leftN2) {
+            return lca(root.left, n1, n2);
+        }
+
+        // Both nodes are present in the right subtree
+        if(rightN1 && rightN2) {
+            return lca(root.right, n1, n2);
+        }
+
+        // One of the nodes may be the current root
+        if(root.data == n1 || root.data == n2) {
+            return root;
+        }
+
+        return null;
+    }
+
+    static boolean exists(Node root, int n) {
+        if(root == null) return false;
+
+        if(root.data == n) return true;
+
+        return exists(root.left, n) || exists(root.right, n);
+    }
+}

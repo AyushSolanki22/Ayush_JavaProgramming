@@ -1,0 +1,27 @@
+//using similar approach like right view 
+
+class Solution {
+    public ArrayList<Integer> leftView(Node root) {
+        ArrayList<Integer> ans =new ArrayList<>();
+        
+        if(root==null) return ans;   //edge case
+        
+        Queue<Node> q=new LinkedList<>();
+        q.add(root);
+        
+        while(!q.isEmpty()){
+            int currSize=q.size();
+            
+            for(int i=1; i<=currSize; ++i){
+                Node curr=q.remove();
+                
+                if(i==1) ans.add(curr.data);
+                
+                if(curr.left!=null) q.add(curr.left);
+                if(curr.right!=null) q.add(curr.right);
+            }
+        }
+        
+        return ans; 
+    }
+}

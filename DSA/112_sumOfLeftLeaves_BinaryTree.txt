@@ -1,0 +1,29 @@
+// Approach 
+// using global left variable to track whether node is left , and global sum variable to count sum of left leaves thereby to return 
+
+
+class Solution {
+    static boolean left;
+    static int sum;
+    public int sumOfLeftLeaves(TreeNode root) {
+        if(root==null) return 0; 
+        sum=0; 
+        left=false;
+        traversal(root);
+        return sum;
+    }
+    public void traversal(TreeNode root){
+        if(root==null) return;
+        
+        if(root.left==null && root.right==null) {
+            if(left==true){
+                sum+=root.val;
+            }
+        }
+        left=true; 
+        traversal(root.left);
+        left=false; 
+        traversal(root.right);
+
+    }
+}
