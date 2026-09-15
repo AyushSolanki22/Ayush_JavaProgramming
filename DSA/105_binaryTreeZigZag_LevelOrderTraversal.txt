@@ -21,19 +21,19 @@ class Solution {
                 level.add(curr.val);
 
                 if(curr.left!=null){
-                q.add(curr.left);
+                  q.add(curr.left);   
                 }
                 if(curr.right!=null){
-                q.add(curr.right);
+                   q.add(curr.right);
                 }
 
                 if(i==levelSize) {
-                if(levelNo%2==0){
-                    Collections.reverse(level);
-                }
+                    if(levelNo%2==0){
+                        Collections.reverse(level);
+                    }
 
-                ans.add(level);
-                levelNo++;
+                    ans.add(level);
+                    levelNo++;
             }
         }
 

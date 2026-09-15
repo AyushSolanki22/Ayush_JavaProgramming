@@ -1,0 +1,348 @@
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null) return null; 
+
+        if(root.val==p.val || root.val==q.val) return root;  //returning root , as p or q is root itself
+
+        TreeNode left=lowestCommonAncestor(root.left,p,q);    //getting node if either any exists in left subtree (if not found, null)
+
+        TreeNode right=lowestCommonAncestor(root.right,p,q);   //getting node if either any exists in right subtree  (if not found, null)
+
+
+        if(left!=null && right!=null) return root;    //if nodes exists in left and right subtrees both 
+
+        if(left==null) return right; 
+        //if nodes doesn't exists in left subtree,,, so we return right which would be the possible lca then 
+
+        else return left;   
+        //if nodes doesn't exists in right subtree,,, so we return left which would be the possible lca then (as left gets the lca only --- dry run and see yourself)
+
+
+    }
+}
+
+
+
+
+
+// LOWEST COMMON ANCESTOR (LCA)
+//
+// LCA means the lowest/deepest node in the binary tree
+// which is an ancestor of both p and q.
+//
+// Example:
+//
+//          3
+//         / \
+//        5   1
+//       / \ / \
+//      6  2 0  8
+//        / \
+//       7   4
+//
+// For p = 5 and q = 1:
+// LCA = 3
+//
+// For p = 5 and q = 4:
+// LCA = 5
+//
+// ------------------------------------------------------------
+//
+// APPROACH: RECURSION / POSTORDER TRAVERSAL
+//
+// We solve the problem from bottom to top:
+//
+// 1. Check the current root.
+// 2. Search for p or q in the left subtree.
+// 3. Search for p or q in the right subtree.
+// 4. Use the returned values to decide the LCA.
+//
+// ------------------------------------------------------------
+//
+// CODE:
+//
+// class Solution {
+//     public TreeNode lowestCommonAncestor(TreeNode root,
+//                                           TreeNode p,
+//                                           TreeNode q) {
+//
+//         if(root == null) return null;
+//
+//         if(root.val == p.val || root.val == q.val) return root;
+//
+//         TreeNode left = lowestCommonAncestor(root.left, p, q);
+//         TreeNode right = lowestCommonAncestor(root.right, p, q);
+//
+//         if(left != null && right != null) return root;
+//
+//         if(left == null) return right;
+//         else return left;
+//     }
+// }
+//
+// ------------------------------------------------------------
+//
+// FULL INTUITION:
+//
+// 1. BASE CASE:
+//
+//    if(root == null) return null;
+//
+//    If the current subtree is empty,
+//    then neither p nor q can be found here.
+//
+//    So we return null to the parent call.
+//
+// ------------------------------------------------------------
+//
+// 2. IF CURRENT ROOT IS p OR q:
+//
+//    if(root.val == p.val || root.val == q.val) return root;
+//
+//    If the current root itself is p or q,
+//    return this root.
+//
+//    Why?
+//
+//    Suppose p is an ancestor of q:
+//
+//             5
+//            / \
+//           6   2
+//              / \
+//             7   4
+//
+//    If p = 5 and q = 4,
+//    then 5 is the LCA.
+//
+//    Once we reach node 5,
+//    we immediately return node 5.
+//
+//    This also handles the case where one target node
+//    is the ancestor of the other target node.
+//
+// ------------------------------------------------------------
+//
+// 3. SEARCH IN LEFT SUBTREE:
+//
+//    TreeNode left = lowestCommonAncestor(root.left, p, q);
+//
+//    This recursively searches the left subtree.
+//
+//    The returned value can be:
+//
+//    - null       -> no target node found in left subtree
+//    - a node     -> p or q, or the LCA was found there
+//
+//    Important:
+//    We do not only search for p or q manually.
+//    The recursive call itself returns useful information.
+//
+// ------------------------------------------------------------
+//
+// 4. SEARCH IN RIGHT SUBTREE:
+//
+//    TreeNode right = lowestCommonAncestor(root.right, p, q);
+//
+//    This does the same work for the right subtree.
+//
+//    After these two calls:
+//
+//    left  = answer/information from left subtree
+//    right = answer/information from right subtree
+//
+// ------------------------------------------------------------
+//
+// 5. BOTH SIDES RETURN NON-NULL:
+//
+//    if(left != null && right != null) return root;
+//
+//    This is the most important condition.
+//
+//    If left is not null,
+//    one target node was found in the left subtree.
+//
+//    If right is not null,
+//    one target node was found in the right subtree.
+//
+//    Therefore, p and q are located in different subtrees.
+//
+//    So the current root is their Lowest Common Ancestor.
+//
+//    Example:
+//
+//             3
+//            / \
+//           5   1
+//
+//    For p = 5 and q = 1:
+//
+//    At node 3:
+//
+//    left  = node 5
+//    right = node 1
+//
+//    Both are non-null,
+//    therefore return node 3.
+//
+// ------------------------------------------------------------
+//
+// 6. ONLY RIGHT SIDE RETURNS NON-NULL:
+//
+//    if(left == null) return right;
+//
+//    If the left side returned null,
+//    but the right side returned a node,
+//    then the answer must be in the right subtree.
+//
+//    So we return right.
+//
+//    This returned value goes to the parent call.
+//
+// ------------------------------------------------------------
+//
+// 7. ONLY LEFT SIDE RETURNS NON-NULL:
+//
+//    else return left;
+//
+//    If the left side contains the answer,
+//    return left.
+//
+//    If the right side is null,
+//    there is no useful answer on the right.
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT IDEA:
+//
+// The recursive function does not always return only p or q.
+//
+// It can return:
+//
+// 1. null
+// 2. p
+// 3. q
+// 4. the actual LCA
+//
+// This is why the parent call can use the returned value
+// to decide whether the current root is the LCA.
+//
+// ------------------------------------------------------------
+//
+// DRY RUN:
+//
+// Tree:
+//
+//             3
+//            / \
+//           5   1
+//          / \ / \
+//         6  2 0  8
+//
+// p = 5, q = 1
+//
+// At root 3:
+//
+//    root is not p or q.
+//
+//    Search left subtree:
+//        returns node 5
+//
+//    Search right subtree:
+//        returns node 1
+//
+//    left != null and right != null
+//
+//    Therefore return node 3.
+//
+// Answer = 3
+//
+// ------------------------------------------------------------
+//
+// ANOTHER DRY RUN:
+//
+// p = 5, q = 4
+//
+// At root 3:
+//
+//    Search left subtree.
+//    Search right subtree.
+//
+//    The right subtree does not contain p or q,
+//    so right = null.
+//
+//    The left subtree returns node 5.
+//
+//    Therefore root 3 returns node 5.
+//
+// At node 5:
+//
+//    root itself is p.
+//
+//    So return node 5 immediately.
+//
+// Answer = 5
+//
+// ------------------------------------------------------------
+//
+// WHY POSTORDER STYLE?
+//
+// We first solve:
+//
+//    left subtree
+//    right subtree
+//
+// Then we use both results to decide the current root.
+//
+// Therefore, the logical order is:
+//
+//    LEFT -> RIGHT -> ROOT
+//
+// This is postorder-style recursion.
+//
+// ------------------------------------------------------------
+//
+// TIME COMPLEXITY:
+//
+// Every node is visited at most once.
+//
+// Therefore:
+//
+//    Time Complexity = O(n)
+//
+// where n is the number of nodes.
+//
+// ------------------------------------------------------------
+//
+// SPACE COMPLEXITY:
+//
+// Recursive calls use the call stack.
+//
+//    Space Complexity = O(h)
+//
+// where h is the height of the tree.
+//
+// For a balanced tree:
+//
+//    O(h) = O(log n)
+//
+// For a skewed tree:
+//
+//    O(h) = O(n)
+//
+// ------------------------------------------------------------
+//
+// SHORT SUMMARY:
+//
+// - null subtree returns null.
+// - If root is p or q, return root.
+// - Search both left and right subtrees.
+// - If both sides return non-null, current root is LCA.
+// - If only one side returns non-null, return that side.
+// - If both sides return null, return null.
+//
+// FINAL PATTERN:
+//
+//    find answer in left
+//    find answer in right
+//    combine both answers at current root

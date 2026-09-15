@@ -6,12 +6,9 @@
 //
 // While traversing:
 // 1. Add the current node's value to the running sum.
-// 2. If the current node is a leaf and the running sum equals
-//    the target, then a valid root-to-leaf path exists.
+// 2. If the current node is a leaf and the running sum equals the target, then a valid root-to-leaf path exists.
 // 3. Recursively explore the left and right subtrees.
-// 4. Before returning to the parent, remove the current node's
-//    value from the running sum (Backtracking) so that the sum
-//    represents the parent's path again.
+// 4. Before returning to the parent, remove the current node's value from the running sum (Backtracking) so that the sum represents the parent's path again.
 
 
 class Solution{
