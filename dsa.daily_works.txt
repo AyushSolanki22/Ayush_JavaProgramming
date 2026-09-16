@@ -573,4 +573,14 @@ gfg- isFullTree, perfectBinaryTree, diameterOfBinaryTree
 @14 Sept 
 Completed 1 hr of Binary Tree II 
 Done 2 on leetcode - right view Binary Tree (2 approaches- dfs, bfs), sum of left leaves
-gfg - leftView_BinaryTree, lca (1 approach)
+gfg - leftView_BinaryTree, lca (one approach)
+
+@15 Sept 
+Completed 20 mins' of Binary Tree II 
+Done 1 on leetcode - lowest common ancestor 
+gfg- lca(2nd approach), min distance between two_ Binary Tree
+
+@16 Sept
+Completed 52 mins' of Binary Tree II 
+Done 1 on leetcode - flatten binary tree to linkedlist (2 approaches)
+gfg - flatten binary tree, path from root with sum
