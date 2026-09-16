@@ -1,0 +1,1167 @@
+class Solution {
+    public ArrayList<ArrayList<Integer>> printPaths(Node root, int sum) {
+        ArrayList<ArrayList<Integer>> ans =new ArrayList<>();
+        ArrayList<Integer> path=new ArrayList<>();
+        if(root==null) return ans;
+        
+        traversal(root, ans, path, sum);
+        return ans; 
+    }
+    
+    public void traversal(Node root,ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> path, int sum ){
+        if(root==null) return; 
+        
+        path.add(root.data);
+        sum-=root.data;
+        if(sum==0) {
+            ans.add(new ArrayList<>(path));
+        }
+        
+        traversal(root.left, ans, path, sum); 
+        traversal(root.right, ans, path, sum);
+        sum+=root.data;
+        path.remove(path.size()-1);
+        
+    }
+}
+
+
+
+
+// INTUITION: ROOT-TO-NODE PATHS WITH GIVEN SUM
+//
+// This code finds all root-to-node paths
+// whose sum of values is equal to the given sum.
+//
+// IMPORTANT:
+// The path does not necessarily need to end at a leaf.
+// Whenever the remaining sum becomes 0,
+// the current path is stored in the answer.
+//
+// ------------------------------------------------------------
+//
+// EXAMPLE:
+//
+//              1
+//             / \
+//            2   3
+//           / \   \
+//          4   5   6
+//
+// Given sum = 3
+//
+// Possible path:
+//
+//     1 -> 2
+//
+// Sum:
+//
+//     1 + 2 = 3
+//
+// So answer:
+//
+//     [1, 2]
+//
+// Another possible path:
+//
+//     3
+//
+// Sum:
+//
+//     3 = 3
+//
+// So answer:
+//
+//     [3]
+//
+// Therefore:
+//
+//     [[1, 2], [3]]
+//
+// ------------------------------------------------------------
+//
+// MAIN IDEA:
+//
+// We maintain two things:
+//
+// 1. path
+//    Stores the current root-to-current-node path.
+//
+// 2. sum
+//    Stores the remaining sum required.
+//
+// Initially:
+//
+//     path = []
+//     sum = target sum
+//
+// Whenever we visit a node:
+//
+//     1. Add node value to path.
+//     2. Subtract node value from sum.
+//     3. If sum becomes 0, store a copy of path.
+//     4. Explore left subtree.
+//     5. Explore right subtree.
+//     6. Remove current node from path while backtracking.
+//
+// ------------------------------------------------------------
+//
+// 1. CREATE ANSWER AND CURRENT PATH:
+//
+//     ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+//     ArrayList<Integer> path = new ArrayList<>();
+//
+// ans stores all valid paths.
+//
+// path stores the current path being explored.
+//
+// We use one shared path list during recursion
+// instead of creating a new list for every node.
+//
+// ------------------------------------------------------------
+//
+// 2. NULL ROOT:
+//
+//     if(root == null) return ans;
+//
+// If the tree is empty,
+// no path can be formed.
+//
+// Therefore return an empty answer list.
+//
+// ------------------------------------------------------------
+//
+// 3. ADD CURRENT NODE:
+//
+//     path.add(root.data);
+//
+// This means:
+//
+//     We have entered the current node,
+//     so include it in the current root-to-node path.
+//
+// Example:
+//
+//     Before visiting node 2:
+//
+//         path = [1]
+//
+//     After visiting node 2:
+//
+//         path = [1, 2]
+//
+// ------------------------------------------------------------
+//
+// 4. UPDATE REMAINING SUM:
+//
+//     sum -= root.data;
+//
+// Suppose target sum is 7.
+//
+// At node 1:
+//
+//     sum = 7 - 1 = 6
+//
+// At node 2:
+//
+//     sum = 6 - 2 = 4
+//
+// At node 4:
+//
+//     sum = 4 - 4 = 0
+//
+// So path [1, 2, 4] has sum 7.
+//
+// The variable sum now means:
+//
+//     How much more value is required
+//     to reach the original target.
+//
+// ------------------------------------------------------------
+//
+// 5. CHECK WHETHER SUM BECAME ZERO:
+//
+//     if(sum == 0) {
+//         ans.add(new ArrayList<>(path));
+//     }
+//
+// If remaining sum is zero,
+// the current path has exactly the required sum.
+//
+// We store that path in ans.
+//
+// IMPORTANT:
+//
+//     new ArrayList<>(path)
+//
+// creates a copy of the current path.
+//
+// We must not write:
+//
+//     ans.add(path);
+//
+// because path is a shared mutable list.
+//
+// Later backtracking changes path,
+// and all stored answers would be affected.
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT DIFFERENCE FROM ROOT-TO-LEAF PATHS:
+//
+// In root-to-leaf path problems,
+// we usually check:
+//
+//     root.left == null && root.right == null
+//
+// Here, we do not check for a leaf.
+//
+// Why?
+//
+// Because the question allows a path to end
+// at any node when its sum becomes zero.
+//
+// Example:
+//
+//          1
+//         /
+//        2
+//       /
+//      4
+//
+// Target sum = 3
+//
+// At node 2:
+//
+//     1 + 2 = 3
+//
+// The path [1, 2] is valid,
+// even though node 2 is not a leaf.
+//
+// ------------------------------------------------------------
+//
+// 6. EXPLORE LEFT SUBTREE:
+//
+//     traversal(root.left, ans, path, sum);
+//
+// We continue searching from the left child.
+//
+// The current path and remaining sum are passed
+// to the child.
+//
+// ------------------------------------------------------------
+//
+// 7. EXPLORE RIGHT SUBTREE:
+//
+//     traversal(root.right, ans, path, sum);
+//
+// We also search the right child.
+//
+// This ensures that all possible root-to-node paths
+// are checked.
+//
+// ------------------------------------------------------------
+//
+// 8. BACKTRACK THE SUM:
+//
+//     sum += root.data;
+//
+// We previously subtracted root.data:
+//
+//     sum -= root.data;
+//
+// After finishing both subtrees,
+// we restore the old sum.
+//
+// Example:
+//
+// Before visiting node 2:
+//
+//     sum = 6
+//
+// After visiting node 2:
+//
+//     sum = 6 - 2 = 4
+//
+// After exploring node 2:
+//
+//     sum = 4 + 2 = 6
+//
+// This restores the remaining sum
+// for the parent node's other branch.
+//
+// IMPORTANT:
+//
+// In Java, int is passed by value.
+//
+// So this restoration is not strictly required
+// for correctness of the sum variable,
+// because each recursive call has its own local copy.
+//
+// However, it clearly represents the backtracking idea:
+//
+//     subtract while going down
+//     restore while coming back
+//
+// ------------------------------------------------------------
+//
+// 9. BACKTRACK THE PATH:
+//
+//     path.remove(path.size() - 1);
+//
+// We remove the current node from path
+// before returning to the parent.
+//
+// Example:
+//
+// Current path:
+//
+//     [1, 2, 4]
+//
+// After finishing node 4:
+//
+//     [1, 2]
+//
+// After finishing node 2:
+//
+//     [1]
+//
+// This allows the recursion to explore
+// a different branch correctly.
+//
+// ------------------------------------------------------------
+//
+// COMPLETE FLOW:
+//
+//     path.add(root.data);
+//
+//     sum -= root.data;
+//
+//     if(sum == 0) {
+//         ans.add(new ArrayList<>(path));
+//     }
+//
+//     traversal(root.left, ans, path, sum);
+//
+//     traversal(root.right, ans, path, sum);
+//
+//     sum += root.data;
+//
+//     path.remove(path.size() - 1);
+//
+// The pattern is:
+//
+//     ADD
+//     UPDATE SUM
+//     CHECK
+//     EXPLORE LEFT
+//     EXPLORE RIGHT
+//     REMOVE / BACKTRACK
+//
+// ------------------------------------------------------------
+//
+// DRY RUN:
+//
+// Tree:
+//
+//              1
+//             / \
+//            2   3
+//           / \   \
+//          4   5   6
+//
+// Target sum = 7
+//
+// Start at node 1:
+//
+//     path = [1]
+//     sum = 7 - 1 = 6
+//
+// Go to node 2:
+//
+//     path = [1, 2]
+//     sum = 6 - 2 = 4
+//
+// Go to node 4:
+//
+//     path = [1, 2, 4]
+//     sum = 4 - 4 = 0
+//
+// sum == 0:
+//
+//     ans = [[1, 2, 4]]
+//
+// Backtrack node 4:
+//
+//     path = [1, 2]
+//
+// Go to node 5:
+//
+//     path = [1, 2, 5]
+//     sum = 4 - 5 = -1
+//
+// sum is not zero.
+//
+// Backtrack node 5:
+//
+//     path = [1, 2]
+//
+// Backtrack node 2:
+//
+//     path = [1]
+//
+// Go to node 3:
+//
+//     path = [1, 3]
+//     sum = 6 - 3 = 3
+//
+// Go to node 6:
+//
+//     path = [1, 3, 6]
+//     sum = 3 - 6 = -3
+//
+// No valid path here.
+//
+// Final answer:
+//
+//     [[1, 2, 4]]
+//
+// ------------------------------------------------------------
+//
+// WHY DO WE USE THE SAME path LIST?
+//
+// Because recursion represents one current path.
+//
+// When going down:
+//
+//     Add the node.
+//
+// When coming back:
+//
+//     Remove the node.
+//
+// This is called BACKTRACKING.
+//
+// Example:
+//
+//     Visit left branch:
+//
+//         [1, 2, 4]
+//
+//     Return from left branch:
+//
+//         [1, 2]
+//
+//     Visit right branch:
+//
+//         [1, 2, 5]
+//
+// The same path list is reused safely
+// because we remove nodes after processing them.
+//
+// ------------------------------------------------------------
+//
+// WHY DO WE COPY path INTO ans?
+//
+// We write:
+//
+//     ans.add(new ArrayList<>(path));
+//
+// because ans must store the path as it exists
+// at the moment when sum becomes zero.
+//
+// If we write:
+//
+//     ans.add(path);
+//
+// then ans stores the same list reference.
+//
+// Later:
+//
+//     path.remove(...)
+//
+// changes that same list,
+// which can change previously stored answers.
+//
+// Therefore:
+//
+//     new ArrayList<>(path) = independent copy
+//
+// ------------------------------------------------------------
+//
+// TIME COMPLEXITY:
+//
+// Every node is visited once.
+//
+// At each node:
+//
+//     - add to path       -> O(1)
+//     - update sum        -> O(1)
+//     - check sum         -> O(1)
+//     - remove from path  -> O(1)
+//
+// Therefore traversal takes:
+//
+//     O(n)
+//
+// However, when sum becomes zero,
+// copying the path takes O(h) time,
+// where h is the height of the tree.
+//
+// If there are k valid paths,
+// copying all paths takes O(k * h).
+//
+// Total time complexity:
+//
+//     O(n + k * h)
+//
+// In the usual simplified analysis:
+//
+//     O(n * h) worst case
+//
+// ------------------------------------------------------------
+//
+// SPACE COMPLEXITY:
+//
+// Current path stores at most h nodes:
+//
+//     O(h)
+//
+// Recursion stack stores at most h calls:
+//
+//     O(h)
+//
+// Answer list stores all valid paths:
+//
+//     O(k * h)
+//
+// Auxiliary space excluding output:
+//
+//     O(h)
+//
+// Space including output:
+//
+//     O(k * h)
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT NOTE ABOUT NEGATIVE VALUES:
+//
+// This code does not stop when:
+//
+//     sum < 0
+//
+// because tree nodes may contain negative values.
+//
+// Example:
+//
+//     target = 5
+//     current remaining sum = -2
+//
+// A later node with value -7 can make:
+//
+//     -2 - (-7) = 5
+//
+// Therefore, we must continue exploring
+// even when the remaining sum becomes negative.
+//
+// ------------------------------------------------------------
+//
+// FINAL SUMMARY:
+//
+// This code finds every root-to-node path
+// whose sum equals the target sum.
+//
+// It uses:
+//
+//     DFS + Backtracking + Remaining Sum
+//
+// At every node:
+//
+//     1. Add node value to path.
+//     2. Subtract node value from remaining sum.
+//     3. If remaining sum is zero, save a copy of path.
+//     4. Recursively explore left and right.
+//     5. Remove current node while backtracking.
+//
+// CORE PATTERN:
+//
+//     path.add(root.data);
+//     sum -= root.data;
+//
+//     if(sum == 0) {
+//         ans.add(new ArrayList<>(path));
+//     }
+//
+//     traversal(root.left, ...);
+//     traversal(root.right, ...);
+//
+//     path.remove(path.size() - 1);// INTUITION: ROOT-TO-NODE PATHS WITH GIVEN SUM
+//
+// This code finds all root-to-node paths
+// whose sum of values is equal to the given sum.
+//
+// IMPORTANT:
+// The path does not necessarily need to end at a leaf.
+// Whenever the remaining sum becomes 0,
+// the current path is stored in the answer.
+//
+// ------------------------------------------------------------
+//
+// EXAMPLE:
+//
+//              1
+//             / \
+//            2   3
+//           / \   \
+//          4   5   6
+//
+// Given sum = 3
+//
+// Possible path:
+//
+//     1 -> 2
+//
+// Sum:
+//
+//     1 + 2 = 3
+//
+// So answer:
+//
+//     [1, 2]
+//
+// Another possible path:
+//
+//     3
+//
+// Sum:
+//
+//     3 = 3
+//
+// So answer:
+//
+//     [3]
+//
+// Therefore:
+//
+//     [[1, 2], [3]]
+//
+// ------------------------------------------------------------
+//
+// MAIN IDEA:
+//
+// We maintain two things:
+//
+// 1. path
+//    Stores the current root-to-current-node path.
+//
+// 2. sum
+//    Stores the remaining sum required.
+//
+// Initially:
+//
+//     path = []
+//     sum = target sum
+//
+// Whenever we visit a node:
+//
+//     1. Add node value to path.
+//     2. Subtract node value from sum.
+//     3. If sum becomes 0, store a copy of path.
+//     4. Explore left subtree.
+//     5. Explore right subtree.
+//     6. Remove current node from path while backtracking.
+//
+// ------------------------------------------------------------
+//
+// 1. CREATE ANSWER AND CURRENT PATH:
+//
+//     ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+//     ArrayList<Integer> path = new ArrayList<>();
+//
+// ans stores all valid paths.
+//
+// path stores the current path being explored.
+//
+// We use one shared path list during recursion
+// instead of creating a new list for every node.
+//
+// ------------------------------------------------------------
+//
+// 2. NULL ROOT:
+//
+//     if(root == null) return ans;
+//
+// If the tree is empty,
+// no path can be formed.
+//
+// Therefore return an empty answer list.
+//
+// ------------------------------------------------------------
+//
+// 3. ADD CURRENT NODE:
+//
+//     path.add(root.data);
+//
+// This means:
+//
+//     We have entered the current node,
+//     so include it in the current root-to-node path.
+//
+// Example:
+//
+//     Before visiting node 2:
+//
+//         path = [1]
+//
+//     After visiting node 2:
+//
+//         path = [1, 2]
+//
+// ------------------------------------------------------------
+//
+// 4. UPDATE REMAINING SUM:
+//
+//     sum -= root.data;
+//
+// Suppose target sum is 7.
+//
+// At node 1:
+//
+//     sum = 7 - 1 = 6
+//
+// At node 2:
+//
+//     sum = 6 - 2 = 4
+//
+// At node 4:
+//
+//     sum = 4 - 4 = 0
+//
+// So path [1, 2, 4] has sum 7.
+//
+// The variable sum now means:
+//
+//     How much more value is required
+//     to reach the original target.
+//
+// ------------------------------------------------------------
+//
+// 5. CHECK WHETHER SUM BECAME ZERO:
+//
+//     if(sum == 0) {
+//         ans.add(new ArrayList<>(path));
+//     }
+//
+// If remaining sum is zero,
+// the current path has exactly the required sum.
+//
+// We store that path in ans.
+//
+// IMPORTANT:
+//
+//     new ArrayList<>(path)
+//
+// creates a copy of the current path.
+//
+// We must not write:
+//
+//     ans.add(path);
+//
+// because path is a shared mutable list.
+//
+// Later backtracking changes path,
+// and all stored answers would be affected.
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT DIFFERENCE FROM ROOT-TO-LEAF PATHS:
+//
+// In root-to-leaf path problems,
+// we usually check:
+//
+//     root.left == null && root.right == null
+//
+// Here, we do not check for a leaf.
+//
+// Why?
+//
+// Because the question allows a path to end
+// at any node when its sum becomes zero.
+//
+// Example:
+//
+//          1
+//         /
+//        2
+//       /
+//      4
+//
+// Target sum = 3
+//
+// At node 2:
+//
+//     1 + 2 = 3
+//
+// The path [1, 2] is valid,
+// even though node 2 is not a leaf.
+//
+// ------------------------------------------------------------
+//
+// 6. EXPLORE LEFT SUBTREE:
+//
+//     traversal(root.left, ans, path, sum);
+//
+// We continue searching from the left child.
+//
+// The current path and remaining sum are passed
+// to the child.
+//
+// ------------------------------------------------------------
+//
+// 7. EXPLORE RIGHT SUBTREE:
+//
+//     traversal(root.right, ans, path, sum);
+//
+// We also search the right child.
+//
+// This ensures that all possible root-to-node paths
+// are checked.
+//
+// ------------------------------------------------------------
+//
+// 8. BACKTRACK THE SUM:
+//
+//     sum += root.data;
+//
+// We previously subtracted root.data:
+//
+//     sum -= root.data;
+//
+// After finishing both subtrees,
+// we restore the old sum.
+//
+// Example:
+//
+// Before visiting node 2:
+//
+//     sum = 6
+//
+// After visiting node 2:
+//
+//     sum = 6 - 2 = 4
+//
+// After exploring node 2:
+//
+//     sum = 4 + 2 = 6
+//
+// This restores the remaining sum
+// for the parent node's other branch.
+//
+// IMPORTANT:
+//
+// In Java, int is passed by value.
+//
+// So this restoration is not strictly required
+// for correctness of the sum variable,
+// because each recursive call has its own local copy.
+//
+// However, it clearly represents the backtracking idea:
+//
+//     subtract while going down
+//     restore while coming back
+//
+// ------------------------------------------------------------
+//
+// 9. BACKTRACK THE PATH:
+//
+//     path.remove(path.size() - 1);
+//
+// We remove the current node from path
+// before returning to the parent.
+//
+// Example:
+//
+// Current path:
+//
+//     [1, 2, 4]
+//
+// After finishing node 4:
+//
+//     [1, 2]
+//
+// After finishing node 2:
+//
+//     [1]
+//
+// This allows the recursion to explore
+// a different branch correctly.
+//
+// ------------------------------------------------------------
+//
+// COMPLETE FLOW:
+//
+//     path.add(root.data);
+//
+//     sum -= root.data;
+//
+//     if(sum == 0) {
+//         ans.add(new ArrayList<>(path));
+//     }
+//
+//     traversal(root.left, ans, path, sum);
+//
+//     traversal(root.right, ans, path, sum);
+//
+//     sum += root.data;
+//
+//     path.remove(path.size() - 1);
+//
+// The pattern is:
+//
+//     ADD
+//     UPDATE SUM
+//     CHECK
+//     EXPLORE LEFT
+//     EXPLORE RIGHT
+//     REMOVE / BACKTRACK
+//
+// ------------------------------------------------------------
+//
+// DRY RUN:
+//
+// Tree:
+//
+//              1
+//             / \
+//            2   3
+//           / \   \
+//          4   5   6
+//
+// Target sum = 7
+//
+// Start at node 1:
+//
+//     path = [1]
+//     sum = 7 - 1 = 6
+//
+// Go to node 2:
+//
+//     path = [1, 2]
+//     sum = 6 - 2 = 4
+//
+// Go to node 4:
+//
+//     path = [1, 2, 4]
+//     sum = 4 - 4 = 0
+//
+// sum == 0:
+//
+//     ans = [[1, 2, 4]]
+//
+// Backtrack node 4:
+//
+//     path = [1, 2]
+//
+// Go to node 5:
+//
+//     path = [1, 2, 5]
+//     sum = 4 - 5 = -1
+//
+// sum is not zero.
+//
+// Backtrack node 5:
+//
+//     path = [1, 2]
+//
+// Backtrack node 2:
+//
+//     path = [1]
+//
+// Go to node 3:
+//
+//     path = [1, 3]
+//     sum = 6 - 3 = 3
+//
+// Go to node 6:
+//
+//     path = [1, 3, 6]
+//     sum = 3 - 6 = -3
+//
+// No valid path here.
+//
+// Final answer:
+//
+//     [[1, 2, 4]]
+//
+// ------------------------------------------------------------
+//
+// WHY DO WE USE THE SAME path LIST?
+//
+// Because recursion represents one current path.
+//
+// When going down:
+//
+//     Add the node.
+//
+// When coming back:
+//
+//     Remove the node.
+//
+// This is called BACKTRACKING.
+//
+// Example:
+//
+//     Visit left branch:
+//
+//         [1, 2, 4]
+//
+//     Return from left branch:
+//
+//         [1, 2]
+//
+//     Visit right branch:
+//
+//         [1, 2, 5]
+//
+// The same path list is reused safely
+// because we remove nodes after processing them.
+//
+// ------------------------------------------------------------
+//
+// WHY DO WE COPY path INTO ans?
+//
+// We write:
+//
+//     ans.add(new ArrayList<>(path));
+//
+// because ans must store the path as it exists
+// at the moment when sum becomes zero.
+//
+// If we write:
+//
+//     ans.add(path);
+//
+// then ans stores the same list reference.
+//
+// Later:
+//
+//     path.remove(...)
+//
+// changes that same list,
+// which can change previously stored answers.
+//
+// Therefore:
+//
+//     new ArrayList<>(path) = independent copy
+//
+// ------------------------------------------------------------
+//
+// TIME COMPLEXITY:
+//
+// Every node is visited once.
+//
+// At each node:
+//
+//     - add to path       -> O(1)
+//     - update sum        -> O(1)
+//     - check sum         -> O(1)
+//     - remove from path  -> O(1)
+//
+// Therefore traversal takes:
+//
+//     O(n)
+//
+// However, when sum becomes zero,
+// copying the path takes O(h) time,
+// where h is the height of the tree.
+//
+// If there are k valid paths,
+// copying all paths takes O(k * h).
+//
+// Total time complexity:
+//
+//     O(n + k * h)
+//
+// In the usual simplified analysis:
+//
+//     O(n * h) worst case
+//
+// ------------------------------------------------------------
+//
+// SPACE COMPLEXITY:
+//
+// Current path stores at most h nodes:
+//
+//     O(h)
+//
+// Recursion stack stores at most h calls:
+//
+//     O(h)
+//
+// Answer list stores all valid paths:
+//
+//     O(k * h)
+//
+// Auxiliary space excluding output:
+//
+//     O(h)
+//
+// Space including output:
+//
+//     O(k * h)
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT NOTE ABOUT NEGATIVE VALUES:
+//
+// This code does not stop when:
+//
+//     sum < 0
+//
+// because tree nodes may contain negative values.
+//
+// Example:
+//
+//     target = 5
+//     current remaining sum = -2
+//
+// A later node with value -7 can make:
+//
+//     -2 - (-7) = 5
+//
+// Therefore, we must continue exploring
+// even when the remaining sum becomes negative.
+//
+// ------------------------------------------------------------
+//
+// FINAL SUMMARY:
+//
+// This code finds every root-to-node path
+// whose sum equals the target sum.
+//
+// It uses:
+//
+//     DFS + Backtracking + Remaining Sum
+//
+// At every node:
+//
+//     1. Add node value to path.
+//     2. Subtract node value from remaining sum.
+//     3. If remaining sum is zero, save a copy of path.
+//     4. Recursively explore left and right.
+//     5. Remove current node while backtracking.
+//
+// CORE PATTERN:
+//
+//     path.add(root.data);
+//     sum -= root.data;
+//
+//     if(sum == 0) {
+//         ans.add(new ArrayList<>(path));
+//     }
+//
+//     traversal(root.left, ...);
+//     traversal(root.right, ...);
+//
+//     path.remove(path.size() - 1);
