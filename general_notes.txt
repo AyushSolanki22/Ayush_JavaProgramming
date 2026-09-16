@@ -317,6 +317,8 @@ Recursion Identification, Tower of Hanoi program
 110. diameter_BinaryTree
 111. rightView_binaryTree 
 112. sumOfLeftLeaves_BinaryTree
+113. lowestCommonAncestor_BinaryTree
+114. flattenBinaryTree
 
 
 
