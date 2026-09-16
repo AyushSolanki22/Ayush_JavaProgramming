@@ -1,0 +1,36 @@
+class Solution {
+    // finding min dist ,,, we have to go through lca only, in the path between two (minDist path from one node to another)
+
+    public int findDist(Node root, int a, int b) {
+        Node lca=lca(root,a,b);  //returns lca
+        int dist[]={0,0};
+        dfs(lca, a, b, 0, dist);   //do dfs from lca as root and find distance and give ans; 
+        return dist[0]+dist[1];
+        
+    }
+    
+    Node lca(Node root, int n1, int n2) {
+            if(root==null) return null; 
+
+            if(root.data==n1 || root.data==n2) return root; 
+
+            Node leftExists=lca(root.left,n1,n2); //checking if either any exists in left subtree 
+            Node rightExists=lca(root.right,n1,n2); ////checking if either any exists in right subtree 
+
+            if(leftExists!=null && rightExists!=null) return root; 
+
+            if(leftExists==null) return rightExists;
+
+            else return leftExists;
+        }
+        
+    void dfs(Node root, int n1, int n2, int depth, int dist[]){
+        if(root==null) return; 
+        
+        if(root.data==n1) dist[0]=depth;
+        if(root.data==n2) dist[1]=depth;
+        dfs(root.left, n1, n2, depth+1, dist);
+        dfs(root.right, n1, n2, depth+1, dist);
+        
+    }
+}

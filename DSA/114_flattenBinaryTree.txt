@@ -1,0 +1,48 @@
+//First Approach --- get arraylist with all nodes from traversal and make right skewed tree through arraylist
+
+class Solution {
+    public void flatten(TreeNode root) {
+        ArrayList<TreeNode> nodes=new ArrayList<>();
+        traversal(root, nodes);
+        
+        for(int i=0; i<=nodes.size()-2; ++i){
+            TreeNode curr=nodes.get(i);
+            curr.right=nodes.get(i+1);
+        }
+    }
+
+    public static void traversal(TreeNode root, ArrayList<TreeNode> nodes) {
+        if(root==null) return; 
+
+        nodes.add(root);
+        traversal(root.left, nodes);
+        traversal(root.right, nodes);
+        root.left=null; root.right=null; 
+    }
+
+
+}
+
+
+//Second approach --- disconnect left , right subtrees, flatten left, right in recursion,,, connect in a way of linkedlist (right skewed tree)
+
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root==null) return; 
+
+        TreeNode lst=root.left; 
+        TreeNode rst=root.right; 
+        root.left=null; root.right=null; 
+
+        flatten(lst);
+        flatten(rst);
+
+        TreeNode last= root; 
+        if(lst!=null){
+            root.right=lst; 
+            while(last.right!=null) last=last.right; 
+        }
+        
+        last.right=rst;
+    }
+}

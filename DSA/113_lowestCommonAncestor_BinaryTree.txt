@@ -1,3 +1,5 @@
+//First Approach -- see intuition below (till line 350)
+
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==null) return null; 
@@ -346,3 +348,449 @@ class Solution {
 //    find answer in left
 //    find answer in right
 //    combine both answers at current root
+
+
+
+
+
+
+
+
+
+
+// Second Approach -- using root to node paths 
+
+
+// LOWEST COMMON ANCESTOR USING ROOT-TO-NODE PATHS
+//
+// ------------------------------------------------------------
+//
+// BASIC IDEA:
+//
+// The root-to-node path contains all ancestors of a node.
+//
+// If we find:
+//
+//     path from root to p
+//     path from root to q
+//
+// then the LCA is the LAST COMMON NODE
+// present in both paths.
+//
+// ------------------------------------------------------------
+//
+// EXAMPLE:
+//
+//              3
+//             / \
+//            5   1
+//           / \ / \
+//          6  2 0  8
+//            / \
+//           7   4
+//
+// Let:
+//
+//     p = 7
+//     q = 4
+//
+// Root-to-p path:
+//
+//     3 -> 5 -> 2 -> 7
+//
+// Root-to-q path:
+//
+//     3 -> 5 -> 2 -> 4
+//
+// Common nodes:
+//
+//     3, 5, 2
+//
+// The LAST common node is 2.
+//
+// Therefore:
+//
+//     LCA = 2
+//
+// ------------------------------------------------------------
+//
+// FULL APPROACH:
+//
+// STEP 1:
+//
+// Create two lists:
+//
+//     path1 = root-to-p path
+//     path2 = root-to-q path
+//
+// Initially both lists are empty.
+//
+// ------------------------------------------------------------
+//
+// STEP 2:
+//
+// Find the path from root to p.
+//
+// We use DFS/backtracking.
+//
+// At every node:
+//
+//     1. Add current node to path.
+//     2. If current node is the target, return true.
+//     3. Search left subtree.
+//     4. Search right subtree.
+//     5. If target is not found, remove current node.
+//        This is backtracking.
+//
+// ------------------------------------------------------------
+//
+// STEP 3:
+//
+// Find the path from root to q.
+//
+// Use the same DFS/backtracking method.
+//
+// ------------------------------------------------------------
+//
+// STEP 4:
+//
+// Compare both paths from the beginning.
+//
+// Example:
+//
+//     path1 = [3, 5, 2, 7]
+//     path2 = [3, 5, 2, 4]
+//
+// Compare:
+//
+//     path1[0] == path2[0] -> 3  common
+//     path1[1] == path2[1] -> 5  common
+//     path1[2] == path2[2] -> 2  common
+//     path1[3] != path2[3] -> stop
+//
+// The last common node is 2.
+//
+// Return node 2.
+//
+// ------------------------------------------------------------
+//
+// WHY DOES THIS WORK?
+//
+// Both paths start from the same root.
+//
+// They remain common until the point where p and q
+// move into different branches.
+//
+// The last node before they separate is the lowest
+// common ancestor.
+//
+// ------------------------------------------------------------
+//
+// JAVA CODE:
+//
+// class Solution {
+//
+//     public TreeNode lowestCommonAncestor(TreeNode root,
+//                                           TreeNode p,
+//                                           TreeNode q) {
+//
+//         List<TreeNode> path1 = new ArrayList<>();
+//         List<TreeNode> path2 = new ArrayList<>();
+//
+//         findPath(root, p, path1);
+//         findPath(root, q, path2);
+//
+//         int i = 0;
+//
+//         while(i < path1.size() && i < path2.size()
+//                 && path1.get(i) == path2.get(i)) {
+//
+//             i++;
+//         }
+//
+//         return path1.get(i - 1);
+//     }
+//
+//     boolean findPath(TreeNode root,
+//                      TreeNode target,
+//                      List<TreeNode> path) {
+//
+//         if(root == null) return false;
+//
+//         path.add(root);
+//
+//         if(root == target) return true;
+//
+//         if(findPath(root.left, target, path)
+//                 || findPath(root.right, target, path)) {
+//
+//             return true;
+//         }
+//
+//         // Target was not found in this subtree,
+//         // so remove current node while backtracking.
+//
+//         path.remove(path.size() - 1);
+//
+//         return false;
+//     }
+// }
+//
+// ------------------------------------------------------------
+//
+// FINDPATH() INTUITION:
+//
+// Suppose we want to find node 7:
+//
+//              3
+//             / \
+//            5   1
+//           / \
+//          6   2
+//             / \
+//            7   4
+//
+// Start at 3:
+//
+//     path = [3]
+//
+// Go to 5:
+//
+//     path = [3, 5]
+//
+// Go to 6:
+//
+//     path = [3, 5, 6]
+//
+// Node 7 is not found in subtree of 6.
+//
+// Remove 6:
+//
+//     path = [3, 5]
+//
+// Now go to 2:
+//
+//     path = [3, 5, 2]
+//
+// Go to 7:
+//
+//     path = [3, 5, 2, 7]
+//
+// Target found.
+//
+// Return true.
+//
+// The final path contains only the nodes
+// from root to the target.
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT BACKTRACKING PATTERN:
+//
+//     path.add(root);
+//
+//     if(root == target) return true;
+//
+//     if(left search || right search) return true;
+//
+//     path.remove(path.size() - 1);
+//
+//     return false;
+//
+// We remove the node only when the target
+// does not exist in that subtree.
+//
+// If the target is found, we do not remove the nodes,
+// because we want to preserve the complete path.
+//
+// ------------------------------------------------------------
+//
+// WHY USE root == target?
+//
+// In this LeetCode problem, p and q are TreeNode objects.
+//
+// So we compare references:
+//
+//     root == target
+//
+// This checks whether both variables refer to
+// the exact same tree node.
+//
+// Do not use:
+//
+//     root.val == target.val
+//
+// because two different nodes can have the same value.
+//
+// ------------------------------------------------------------
+//
+// DRY RUN:
+//
+// Tree:
+//
+//              3
+//             / \
+//            5   1
+//           / \ / \
+//          6  2 0  8
+//            / \
+//           7   4
+//
+// p = 7
+// q = 4
+//
+// First path:
+//
+//     findPath(root, 7, path1)
+//
+//     path1 = [3, 5, 2, 7]
+//
+// Second path:
+//
+//     findPath(root, 4, path2)
+//
+//     path2 = [3, 5, 2, 4]
+//
+// Compare:
+//
+//     3 == 3 -> common
+//     5 == 5 -> common
+//     2 == 2 -> common
+//     7 != 4 -> stop
+//
+// Last common node = 2.
+//
+// Answer = node 2.
+//
+// ------------------------------------------------------------
+//
+// EDGE CASE 1: ROOT IS p
+//
+//              3
+//             / \
+//            5   1
+//
+// p = 3
+// q = 5
+//
+// path1 = [3]
+// path2 = [3, 5]
+//
+// Common node = 3.
+//
+// Answer = 3.
+//
+// ------------------------------------------------------------
+//
+// EDGE CASE 2: p AND q ARE DIRECT CHILDREN
+//
+//              3
+//             / \
+//            5   1
+//
+// p = 5
+// q = 1
+//
+// path1 = [3, 5]
+// path2 = [3, 1]
+//
+// Last common node = 3.
+//
+// Answer = 3.
+//
+// ------------------------------------------------------------
+//
+// EDGE CASE 3: p AND q ARE THE SAME NODE
+//
+// If p == q,
+// both paths are identical.
+//
+// The last common node will be that node itself.
+//
+// ------------------------------------------------------------
+//
+// TIME COMPLEXITY:
+//
+// Finding path to p:
+//
+//     O(n)
+//
+// Finding path to q:
+//
+//     O(n)
+//
+// Comparing both paths:
+//
+//     O(h)
+//
+// Total:
+//
+//     O(n) + O(n) + O(h)
+//
+//     = O(n)
+//
+// Therefore:
+//
+//     Time Complexity = O(n)
+//
+// ------------------------------------------------------------
+//
+// SPACE COMPLEXITY:
+//
+// Two paths store at most h nodes each:
+//
+//     path1 = O(h)
+//     path2 = O(h)
+//
+// Recursive DFS call stack:
+//
+//     O(h)
+//
+// Therefore:
+//
+//     Space Complexity = O(h)
+//
+// For a balanced tree:
+//
+//     O(h) = O(log n)
+//
+// For a skewed tree:
+//
+//     O(h) = O(n)
+//
+// ------------------------------------------------------------
+//
+// MAIN DIFFERENCE FROM THE DIRECT RECURSIVE APPROACH:
+//
+// ROOT-TO-PATH APPROACH:
+//
+//     1. Find path to p.
+//     2. Find path to q.
+//     3. Compare paths.
+//     4. Return last common node.
+//
+// DIRECT RECURSIVE APPROACH:
+//
+//     1. Search left subtree.
+//     2. Search right subtree.
+//     3. Combine returned answers.
+//
+// Both approaches take O(n) time.
+//
+// The path approach is easier to visualize
+// because we explicitly see all ancestors.
+//
+// ------------------------------------------------------------
+//
+// SHORT SUMMARY:
+//
+// LCA using root-to-node paths means:
+//
+//     Find root -> p path.
+//     Find root -> q path.
+//     Compare both paths from the root.
+//     The last common node is the LCA.
+//
+// CORE FORMULA:
+//
+//     LCA = last common node in both root-to-node paths
