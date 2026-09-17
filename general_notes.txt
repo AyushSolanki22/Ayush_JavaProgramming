@@ -199,6 +199,7 @@
 7. zigzagTraversal
 8. nthLevel
 9. Path
+10. iterative_traversal
 
 
 ##DSA (LeetCode)
@@ -319,8 +320,7 @@ Recursion Identification, Tower of Hanoi program
 112. sumOfLeftLeaves_BinaryTree
 113. lowestCommonAncestor_BinaryTree
 114. flattenBinaryTree
-
-
+115. constructBinaryTree_inorderPreorder
 
 
 
