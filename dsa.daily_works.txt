@@ -584,3 +584,8 @@ gfg- lca(2nd approach), min distance between two_ Binary Tree
 Completed 52 mins' of Binary Tree II 
 Done 1 on leetcode - flatten binary tree to linkedlist (2 approaches)
 gfg - flatten binary tree, path from root with sum
+
+@17 Sept 
+Completed 2 hr of Binary Tree II
+Done 1 on leetcode - Construct Binary Tree from inorder, preorder
+gfg - preorder iterative, postorder iterative, inorder iterative , tree boundary traversal, construct tree from inorder & preorder
