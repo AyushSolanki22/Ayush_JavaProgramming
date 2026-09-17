@@ -1,0 +1,721 @@
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+      
+        //when given preorder only , there are multiple possible structures and hence multiple possible binary trees
+        //with given preorder, inorder, ---- unique binary tree is possible
+
+        //Approach
+        //Step 1. In preorder[] , first is root, then lst,then rst. In inorder[], first is lst, then root, then rst. 
+        //Step 2. root=preorder[0], locate index of root in order[], left elements are lst, right to it are part of rst ,, we thus get count of lst elements, and rst elements.
+        //Step 3. (magic) recursively send left subtree elements , and right subtree elements (indexes)  ---- part of array, not full array 
+        //Step 4. connect rst, lst with root
+
+        //as indexes will be different in preorder, inorder for lst, rst elements, we will be using preLo, preHi, inLo, inHi , 
+        int n=inorder.length;
+        return build(0,n-1, 0, n-1, inorder, preorder); 
+    }
+
+    public static TreeNode build(int preLo, int preHi, int inLo, int inHi, int inorder[], int preorder[]){
+        if(preLo>preHi || inLo>inHi) return null;    //base case ****
+
+        int val=preorder[preLo];
+        TreeNode root=new TreeNode(val);
+
+        int r=-1;
+        for(int i=0; i<=inHi; ++i){   //locating root in inorder array
+            if(inorder[i]==val) {
+                r=i; 
+                break; 
+            }
+        }
+
+        int count=r-inLo;  //no. of elements in lst
+        
+        root.left=build(preLo+1, preLo+count, inLo, r-1, inorder, preorder); //lst call 
+        root.right=build(preLo+count+1, preHi, r+1, inHi, inorder, preorder); //rst call
+        //for lst, call ---- (preLo+1, preLo+count, inLo, r-1)
+        //for rst, call ---- (preLo+count+1, preHi, r+1, inHi)
+        return root; 
+    }
+}
+
+
+
+//INTUITION
+
+
+// BUILD BINARY TREE FROM PREORDER AND INORDER
+//
+// Main intuition:
+//
+// Preorder tells us:
+//
+//     ROOT -> LEFT SUBTREE -> RIGHT SUBTREE
+//
+// Inorder tells us:
+//
+//     LEFT SUBTREE -> ROOT -> RIGHT SUBTREE
+//
+// Using both traversals together,
+// we can identify the root and divide the tree
+// into its left and right subtrees.
+//
+// ------------------------------------------------------------
+//
+// EXAMPLE:
+//
+// preorder = [3, 9, 20, 15, 7]
+// inorder  = [9, 3, 15, 20, 7]
+//
+// PREORDER:
+//
+//     3 -> 9 -> 20 -> 15 -> 7
+//     ^
+//     First element is always the root.
+//
+// INORDER:
+//
+//     9 -> 3 -> 15 -> 20 -> 7
+//         ^
+//         Root divides left and right subtrees.
+//
+// Tree:
+//
+//          3
+//         / \
+//        9   20
+//           /  \
+//          15   7
+//
+// ------------------------------------------------------------
+//
+// STEP 1: SELECT ROOT FROM PREORDER
+//
+//     int val = preorder[preLo];
+//
+// In preorder, the first element of the current range
+// is always the root of the current subtree.
+//
+// Initially:
+//
+//     preLo = 0
+//
+// Therefore:
+//
+//     val = preorder[0] = 3
+//
+// Create the root:
+//
+//     TreeNode root = new TreeNode(val);
+//
+// ------------------------------------------------------------
+//
+// STEP 2: FIND ROOT IN INORDER
+//
+// In inorder:
+//
+//     LEFT SUBTREE -> ROOT -> RIGHT SUBTREE
+//
+// So, after locating the root:
+//
+//     Elements before root = left subtree
+//     Elements after root  = right subtree
+//
+// For root 3:
+//
+//     inorder = [9, 3, 15, 20, 7]
+//                  ^
+//
+// Left subtree:
+//
+//     [9]
+//
+// Right subtree:
+//
+//     [15, 20, 7]
+//
+// Your code finds the root index:
+//
+//     int r = -1;
+//
+//     for(int i = 0; i <= inHi; ++i) {
+//
+//         if(inorder[i] == val) {
+//             r = i;
+//             break;
+//         }
+//     }
+//
+// Here:
+//
+//     r = 1
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT BUG IN YOUR SEARCH LOOP:
+//
+// You wrote:
+//
+//     for(int i = 0; i <= inHi; ++i)
+//
+// It should preferably start from inLo:
+//
+//     for(int i = inLo; i <= inHi; ++i)
+//
+// Why?
+//
+// Each recursive call works on only a part of inorder[].
+// We should search for the current root only inside
+// the current inorder range.
+//
+// Correct idea:
+//
+//     Search from inLo to inHi.
+//
+// ------------------------------------------------------------
+//
+// STEP 3: COUNT LEFT SUBTREE NODES
+//
+//     int count = r - inLo;
+//
+// `r` is the root index in inorder.
+//
+// `inLo` is the beginning of the current inorder range.
+//
+// Therefore:
+//
+//     count = number of elements before root
+//
+// Example:
+//
+//     inorder range = [9, 3, 15, 20, 7]
+//     inLo = 0
+//     r = 1
+//
+//     count = 1 - 0 = 1
+//
+// So the left subtree contains 1 node.
+//
+// ------------------------------------------------------------
+//
+// WHY DO WE NEED count?
+//
+// Preorder does not have a separator between left and right.
+//
+// Example:
+//
+//     preorder = [3, 9, 20, 15, 7]
+//
+// We know:
+//
+//     3 = root
+//
+// But after root:
+//
+//     [9, 20, 15, 7]
+//
+// Which elements belong to the left subtree?
+// Which belong to the right subtree?
+//
+// Inorder tells us that the left subtree has `count` nodes.
+//
+// Since preorder places the left subtree immediately
+// after the root:
+//
+//     Left preorder range:
+//
+//         preLo + 1  to  preLo + count
+//
+//     Right preorder range:
+//
+//         preLo + count + 1  to  preHi
+//
+// ------------------------------------------------------------
+//
+// STEP 4: BUILD LEFT SUBTREE
+//
+//     root.left = build(
+//         preLo + 1,
+//         preLo + count,
+//         inLo,
+//         r - 1,
+//         inorder,
+//         preorder
+//     );
+//
+// Meaning:
+//
+//     Use the next `count` elements of preorder
+//     to construct the left subtree.
+//
+// For the first call:
+//
+//     preLo = 0
+//     preHi = 4
+//     inLo = 0
+//     inHi = 4
+//     r = 1
+//     count = 1
+//
+// Left call:
+//
+//     build(1, 1, 0, 0, inorder, preorder)
+//
+// Preorder part:
+//
+//     [9]
+//
+// Inorder part:
+//
+//     [9]
+//
+// Therefore, node 9 becomes the left child of 3.
+//
+// ------------------------------------------------------------
+//
+// STEP 5: BUILD RIGHT SUBTREE
+//
+//     root.right = build(
+//         preLo + count + 1,
+//         preHi,
+//         r + 1,
+//         inHi,
+//         inorder,
+//         preorder
+//     );
+//
+// Meaning:
+//
+//     Use the remaining preorder and inorder ranges
+//     to construct the right subtree.
+//
+// For the first call:
+//
+//     preLo = 0
+//     count = 1
+//     preHi = 4
+//     r = 1
+//     inHi = 4
+//
+// Right call:
+//
+//     build(2, 4, 2, 4, inorder, preorder)
+//
+// Preorder part:
+//
+//     [20, 15, 7]
+//
+// Inorder part:
+//
+//     [15, 20, 7]
+//
+// The first preorder element is 20,
+// so 20 becomes the right child of 3.
+//
+// ------------------------------------------------------------
+//
+// STEP 6: RECURSION CONTINUES
+//
+// For subtree rooted at 20:
+//
+// preorder range:
+//
+//     [20, 15, 7]
+//
+// inorder range:
+//
+//     [15, 20, 7]
+//
+// Root:
+//
+//     20
+//
+// Root index in inorder:
+//
+//     r = 3
+//
+// Left subtree:
+//
+//     [15]
+//
+// Right subtree:
+//
+//     [7]
+//
+// Therefore:
+//
+//          20
+//         /  \
+//        15   7
+//
+// ------------------------------------------------------------
+//
+// STEP 7: CONNECT CHILDREN
+//
+//     root.left = build(...);
+//
+// This recursively creates and attaches the left subtree.
+//
+//     root.right = build(...);
+//
+// This recursively creates and attaches the right subtree.
+//
+// Finally:
+//
+//     return root;
+//
+// The returned root is attached to the parent node.
+//
+// ------------------------------------------------------------
+//
+// ROLE OF THE FOUR INDEXES:
+//
+//     preLo = starting index of preorder range
+//     preHi = ending index of preorder range
+//     inLo  = starting index of inorder range
+//     inHi  = ending index of inorder range
+//
+// They represent the current subtree.
+//
+// We do not create new arrays for every recursive call.
+// We only send the correct index ranges.
+//
+// This is why the comment says:
+//
+//     part of array, not full array
+//
+// ------------------------------------------------------------
+//
+// WHY IS THE BASE CASE NECESSARY?
+//
+//     if(preLo > preHi || inLo > inHi) return null;
+//
+// This means that the current subtree has no elements.
+//
+// Example:
+//
+//     preLo = 2
+//     preHi = 1
+//
+// Since:
+//
+//     preLo > preHi
+//
+// There is no valid preorder range,
+// so the subtree is empty.
+//
+// Return null.
+//
+// This null gets assigned to:
+//
+//     root.left
+//
+// or:
+//
+//     root.right
+//
+// Therefore, leaf nodes automatically get:
+//
+//     left = null
+//     right = null
+//
+// ------------------------------------------------------------
+//
+// COMPLETE DRY RUN:
+//
+// preorder = [3, 9, 20, 15, 7]
+// inorder  = [9, 3, 15, 20, 7]
+//
+// CALL 1:
+//
+//     build(0, 4, 0, 4)
+//
+// Root:
+//
+//     preorder[0] = 3
+//
+// Inorder root index:
+//
+//     r = 1
+//
+// Left count:
+//
+//     count = 1
+//
+// Left call:
+//
+//     build(1, 1, 0, 0)
+//
+// Right call:
+//
+//     build(2, 4, 2, 4)
+//
+// ------------------------------------------------------------
+//
+// LEFT CALL:
+//
+//     build(1, 1, 0, 0)
+//
+// Root:
+//
+//     preorder[1] = 9
+//
+// Inorder range:
+//
+//     [9]
+//
+// Root index:
+//
+//     r = 0
+//
+// count:
+//
+//     count = 0
+//
+// Left call:
+//
+//     build(2, 1, 0, -1)
+//
+// Returns null.
+//
+// Right call:
+//
+//     build(2, 1, 1, 0)
+//
+// Returns null.
+//
+// Return node 9.
+//
+// Therefore:
+//
+//     root 3.left = node 9
+//
+// ------------------------------------------------------------
+//
+// RIGHT CALL:
+//
+//     build(2, 4, 2, 4)
+//
+// Root:
+//
+//     preorder[2] = 20
+//
+// Inorder range:
+//
+//     [15, 20, 7]
+//
+// Root index:
+//
+//     r = 3
+//
+// count:
+//
+//     count = 3 - 2 = 1
+//
+// Left call:
+//
+//     build(3, 3, 2, 2)
+//
+// Creates node 15.
+//
+// Right call:
+//
+//     build(4, 4, 4, 4)
+//
+// Creates node 7.
+//
+// Therefore:
+//
+//     root 20.left = 15
+//     root 20.right = 7
+//
+// Return node 20.
+//
+// Therefore:
+//
+//     root 3.right = 20
+//
+// ------------------------------------------------------------
+//
+// FINAL TREE:
+//
+//          3
+//         / \
+//        9   20
+//           /  \
+//          15   7
+//
+// ------------------------------------------------------------
+//
+// WHY PREORDER INDEX FORMULAS WORK:
+//
+// Suppose the current root is at preorder index preLo.
+//
+// The root occupies one position:
+//
+//     preorder[preLo]
+//
+// The left subtree contains `count` nodes.
+//
+// Since preorder stores the left subtree immediately
+// after the root:
+//
+//     Left subtree starts at:
+//
+//         preLo + 1
+//
+//     Left subtree ends at:
+//
+//         preLo + count
+//
+// After these count nodes,
+// the right subtree begins:
+//
+//     preLo + count + 1
+//
+// Therefore:
+//
+//     LEFT:
+//
+//         preLo + 1  to  preLo + count
+//
+//     RIGHT:
+//
+//         preLo + count + 1  to  preHi
+//
+// ------------------------------------------------------------
+//
+// WHY INORDER INDEX FORMULAS WORK:
+//
+// Inorder is:
+//
+//     LEFT -> ROOT -> RIGHT
+//
+// If root is at index r:
+//
+//     Left subtree:
+//
+//         inLo to r - 1
+//
+//     Right subtree:
+//
+//         r + 1 to inHi
+//
+// The root itself is excluded from both ranges.
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT CORRECTION:
+//
+// Your root-search loop:
+//
+//     for(int i = 0; i <= inHi; ++i)
+//
+// should be:
+//
+//     for(int i = inLo; i <= inHi; ++i)
+//
+// Because the recursive call may represent only a part
+// of the inorder array.
+//
+// Searching from 0 can accidentally find a value
+// outside the current subtree range.
+//
+// For the usual problem constraints,
+// values are generally unique, so the result may still work,
+// but the correct range-based logic is from inLo to inHi.
+//
+// ------------------------------------------------------------
+//
+// ANOTHER IMPORTANT CONDITION:
+//
+// Your code assumes that all values are unique.
+//
+// Why?
+//
+// You locate the root using:
+//
+//     inorder[i] == val
+//
+// If duplicate values exist,
+// the same value may occur at multiple positions,
+// and the tree may not be uniquely reconstructable
+// using this method.
+//
+// ------------------------------------------------------------
+//
+// TIME COMPLEXITY OF YOUR CURRENT CODE:
+//
+// At every recursive call,
+// you search for the root in inorder using a loop.
+//
+// In the worst case:
+//
+//     O(n) search at many recursive levels
+//
+// Therefore, worst-case time complexity:
+//
+//     O(n^2)
+//
+// Auxiliary recursion space:
+//
+//     O(h)
+//
+// where h is the height of the tree.
+//
+// In a skewed tree:
+//
+//     h = n
+//
+// So worst-case auxiliary space:
+//
+//     O(n)
+//
+// ------------------------------------------------------------
+//
+// OPTIMIZED IDEA:
+//
+// Store every inorder value and its index in a HashMap.
+//
+// Then root index can be found in O(1) average time.
+//
+// This reduces construction time to:
+//
+//     O(n)
+//
+// But your current approach is easier to understand first.
+//
+// ------------------------------------------------------------
+//
+// FINAL ONE-LINE INTUITION:
+//
+// For every subtree:
+//
+//     1. Take the first preorder element as root.
+//     2. Find that root in inorder.
+//     3. Count nodes on its left.
+//     4. Use that count to divide preorder into left and right.
+//     5. Recursively build both subtrees.
+//     6. Attach them to root and return root.
+//
+// CORE FORMULA:
+//
+//     preorder:
+//
+//         ROOT -> LEFT -> RIGHT
+//
+//     inorder:
+//
+//         LEFT -> ROOT -> RIGHT
+//
+//     count of left subtree:
+//
+//         r - inLo
+//
+//     left subtree:
+//
+//         build(preLo + 1, preLo + count, inLo, r - 1)
+//
+//     right subtree:
+//
+//         build(preLo + count + 1, preHi, r + 1, inHi)

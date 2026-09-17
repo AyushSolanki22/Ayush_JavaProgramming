@@ -1,0 +1,713 @@
+class Solution {
+    public ArrayList<Integer> boundaryTraversal(Node root) {
+        ArrayList<Integer> ans= new ArrayList<>();
+         
+        if(root.left==null && root.right==null) {   //edge case 2 -- only root 
+            ans.add(root.data);
+            return ans; 
+        }
+        
+        //Left Boundary 
+        Node curr=root;
+        if(root.left!=null){
+            while(curr.left!=null || curr.right!=null){  //will not add any leaf
+                ans.add(curr.data);
+                if(curr.left!=null) curr=curr.left;
+                else curr=curr.right; 
+            }
+        }
+        else ans.add(root.data);          //edge case 1  -- when left is null
+        
+        
+        //All leaf nodes through pre order traversal 
+        traversal(root, ans);
+        
+        //Right Boundary 
+        ArrayList<Integer> right=new ArrayList<>();
+        // curr=root;
+        if(root.right!=null){
+            curr=root.right;
+            while(curr.right!=null || curr.left!=null){  //will not add any lea
+                right.add(curr.data);
+                if(curr.right!=null) curr=curr.right;
+                else curr=curr.left; 
+            }
+        }
+        Collections.reverse(right);
+        ans.addAll(right);
+        
+        return ans; 
+        
+        }
+        
+    
+    public void traversal(Node root, ArrayList<Integer> ans) {
+        if(root==null) return;
+        
+        if(root.left==null && root.right==null) ans.add(root.data);
+        
+        traversal(root.left ,ans);
+        traversal(root.right ,ans);
+    }
+}
+
+
+
+//INTUITION
+
+// BOUNDARY TRAVERSAL — INTUITION OF YOUR CODE
+//
+// Boundary traversal means printing the outer boundary
+// of a binary tree in anticlockwise order.
+//
+// The boundary is divided into 4 parts:
+//
+//     1. Left boundary
+//     2. Leaf nodes
+//     3. Right boundary in reverse
+//
+// Your code also handles the root separately
+// through two edge cases.
+//
+// ------------------------------------------------------------
+//
+// EXAMPLE TREE:
+//
+//              1
+//             / \
+//            2   3
+//           / \   \
+//          4   5   6
+//             / \
+//            7   8
+//
+// Expected boundary:
+//
+//     1 -> 2 -> 4 -> 5 -> 7 -> 8 -> 6 -> 3
+//
+// Explanation:
+//
+// Left boundary:
+//
+//     1 -> 2
+//
+// Leaf nodes:
+//
+//     4 -> 5 -> 7 -> 8 -> 6
+//
+// Right boundary:
+//
+//     3
+//
+// Final answer:
+//
+//     [1, 2, 4, 5, 7, 8, 6, 3]
+//
+// ------------------------------------------------------------
+//
+// PART 1: CREATE ANSWER LIST
+//
+//     ArrayList<Integer> ans = new ArrayList<>();
+//
+// This list stores the final boundary traversal.
+//
+// ------------------------------------------------------------
+//
+// PART 2: EDGE CASE — ONLY ROOT EXISTS
+//
+//     if(root.left == null && root.right == null) {
+//
+//         ans.add(root.data);
+//         return ans;
+//     }
+//
+// If the root has no left and no right child,
+// then the root itself is a leaf.
+//
+// There is no separate left or right boundary.
+//
+// Therefore, simply add the root and return.
+//
+// Example:
+//
+//          5
+//
+// Answer:
+//
+//     [5]
+//
+// ------------------------------------------------------------
+//
+// PART 3: LEFT BOUNDARY
+//
+//     Node curr = root;
+//
+//     if(root.left != null) {
+//
+//         while(curr.left != null || curr.right != null) {
+//
+//             ans.add(curr.data);
+//
+//             if(curr.left != null) curr = curr.left;
+//             else curr = curr.right;
+//         }
+//     }
+//
+// The purpose of this loop is to move down
+// along the left side of the tree.
+//
+// At every node:
+//
+//     1. Add the current node.
+//     2. Prefer the left child.
+//     3. If left child is absent, move to right child.
+//
+// ------------------------------------------------------------
+//
+// WHY THIS CONDITION?
+//
+//     while(curr.left != null || curr.right != null)
+//
+// This means:
+//
+//     Continue while curr is not a leaf.
+//
+// A leaf has:
+//
+//     curr.left == null
+//     curr.right == null
+//
+// So the loop stops before adding a leaf.
+//
+// This is important because leaves will be added separately
+// by the traversal() method.
+//
+// ------------------------------------------------------------
+//
+// WHY PREFER LEFT CHILD?
+//
+//     if(curr.left != null) curr = curr.left;
+//     else curr = curr.right;
+//
+// The boundary should follow the outermost path.
+//
+// If a left child exists,
+// it is chosen because it belongs to the left boundary.
+//
+// If there is no left child,
+// the right child is used to continue the boundary.
+//
+// Example:
+//
+//          1
+//         /
+//        2
+//         \
+//          4
+//
+// At node 2:
+//
+//     left child does not exist,
+//     so move to right child 4.
+//
+// But 4 is a leaf,
+// so it is not added in the left-boundary loop.
+//
+// It will be added by traversal().
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT OBSERVATION ABOUT YOUR CODE:
+//
+//     Node curr = root;
+//
+// Because curr starts from root,
+// your left-boundary loop adds the root first.
+//
+// Example:
+//
+//     ans = [1]
+//
+// Then it moves to node 2 and adds it.
+//
+// This is why you do not separately add root
+// when root.left is not null.
+//
+// ------------------------------------------------------------
+//
+// PART 4: EDGE CASE — ROOT HAS NO LEFT CHILD
+//
+//     else ans.add(root.data);
+//
+// If root.left is null,
+// your code does not run the left-boundary loop.
+//
+// Instead, it adds the root manually.
+//
+// Example:
+//
+//          1
+//           \
+//            2
+//             \
+//              3
+//
+// Since root.left is null:
+//
+//     ans = [1]
+//
+// Then traversal() adds leaf 3:
+//
+//     ans = [1, 3]
+//
+// Then right boundary adds node 2:
+//
+//     ans = [1, 3, 2]
+//
+// Final boundary:
+//
+//     [1, 3, 2]
+//
+// This is the correct anticlockwise boundary.
+//
+// ------------------------------------------------------------
+//
+// PART 5: ADD LEAF NODES
+//
+//     traversal(root, ans);
+//
+// Your traversal() method visits the complete tree
+// using DFS.
+//
+//     public void traversal(Node root,
+//                           ArrayList<Integer> ans) {
+//
+//         if(root == null) return;
+//
+//         if(root.left == null && root.right == null) {
+//             ans.add(root.data);
+//         }
+//
+//         traversal(root.left, ans);
+//         traversal(root.right, ans);
+//     }
+//
+// ------------------------------------------------------------
+//
+// INTUITION OF traversal():
+//
+// If root is null:
+//
+//     return
+//
+// If root is a leaf:
+//
+//     add root.data
+//
+// Then recursively visit:
+//
+//     left subtree
+//     right subtree
+//
+// Since DFS visits the left subtree first,
+// leaves are added from left to right.
+//
+// ------------------------------------------------------------
+//
+// EXAMPLE:
+//
+//              1
+//             / \
+//            2   3
+//           / \   \
+//          4   5   6
+//
+// traversal() adds:
+//
+//     4 -> 5 -> 6
+//
+// It does not add non-leaf nodes
+// such as 1, 2, or 3.
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT:
+//
+// Your traversal() does not use return after adding a leaf:
+//
+//     if(root.left == null && root.right == null) {
+//         ans.add(root.data);
+//     }
+//
+// It still calls:
+//
+//     traversal(root.left, ans);
+//     traversal(root.right, ans);
+//
+// This is safe because both children of a leaf are null,
+// and the next calls immediately return.
+//
+// You could add return after adding a leaf
+// to avoid unnecessary calls:
+//
+//     if(root.left == null && root.right == null) {
+//         ans.add(root.data);
+//         return;
+//     }
+//
+// ------------------------------------------------------------
+//
+// PART 6: RIGHT BOUNDARY
+//
+//     ArrayList<Integer> right = new ArrayList<>();
+//
+//     if(root.right != null) {
+//
+//         curr = root.right;
+//
+//         while(curr.right != null || curr.left != null) {
+//
+//             right.add(curr.data);
+//
+//             if(curr.right != null) curr = curr.right;
+//             else curr = curr.left;
+//         }
+//     }
+//
+// The right boundary is collected separately
+// because it must be printed in reverse order.
+//
+// ------------------------------------------------------------
+//
+// WHY START FROM root.right?
+//
+// The root has already been added
+// either by the left-boundary loop
+// or by your special else condition.
+//
+// Therefore, starting from root again
+// would duplicate the root.
+//
+// So the right boundary starts at:
+//
+//     root.right
+//
+// ------------------------------------------------------------
+//
+// WHY PREFER RIGHT CHILD?
+//
+//     if(curr.right != null) curr = curr.right;
+//     else curr = curr.left;
+//
+// For the right boundary:
+//
+//     1. Prefer the right child.
+//     2. If right child is absent, use left child.
+//
+// This follows the outermost right side.
+//
+// Example:
+//
+//          1
+//           \
+//            3
+//           /
+//          6
+//
+// At node 3:
+//
+//     right child is absent,
+//     so move to left child 6.
+//
+// Node 6 is a leaf,
+// so it is not added to the right boundary.
+//
+// It will be added by traversal().
+//
+// ------------------------------------------------------------
+//
+// WHY EXCLUDE LEAF NODES FROM RIGHT BOUNDARY?
+//
+// Your condition:
+//
+//     while(curr.right != null || curr.left != null)
+//
+// continues only for non-leaf nodes.
+//
+// Therefore, leaf nodes are not added here.
+//
+// This prevents duplicate leaves.
+//
+// ------------------------------------------------------------
+//
+// PART 7: REVERSE RIGHT BOUNDARY
+//
+//     Collections.reverse(right);
+//
+//     ans.addAll(right);
+//
+// The right boundary is collected from top to bottom.
+//
+// Example:
+//
+//     right = [3, 8, 9]
+//
+// But boundary traversal requires the right boundary
+// from bottom to top:
+//
+//     [9, 8, 3]
+//
+// Therefore, reverse the list before adding it.
+//
+// ------------------------------------------------------------
+//
+// COMPLETE DRY RUN:
+//
+// Tree:
+//
+//              1
+//             / \
+//            2   3
+//           / \   \
+//          4   5   6
+//             / \
+//            7   8
+//
+// ------------------------------------------------------------
+//
+// STEP 1: LEFT BOUNDARY
+//
+// curr = 1
+//
+// 1 is not a leaf:
+//
+//     ans = [1]
+//
+// Move left to 2.
+//
+// curr = 2
+//
+// 2 is not a leaf:
+//
+//     ans = [1, 2]
+//
+// Move left to 4.
+//
+// curr = 4
+//
+// 4 is a leaf,
+// so loop stops.
+//
+// Left boundary result:
+//
+//     [1, 2]
+//
+// ------------------------------------------------------------
+//
+// STEP 2: LEAVES
+//
+// traversal(root, ans) visits leaves:
+//
+//     4 -> 5 -> 7 -> 8 -> 6
+//
+// Current answer:
+//
+//     [1, 2, 4, 5, 7, 8, 6]
+//
+// ------------------------------------------------------------
+//
+// STEP 3: RIGHT BOUNDARY
+//
+// Start from root.right:
+//
+//     curr = 3
+//
+// 3 is not a leaf:
+//
+//     right = [3]
+//
+// Move right to 6.
+//
+// Node 6 is a leaf,
+// so loop stops.
+//
+// Reverse right:
+//
+//     [3]
+//
+// Add to answer:
+//
+//     [1, 2, 4, 5, 7, 8, 6, 3]
+//
+// ------------------------------------------------------------
+//
+// WHY THE ORDER IS CORRECT:
+//
+// Your code follows:
+//
+//     LEFT BOUNDARY
+//     LEAVES
+//     RIGHT BOUNDARY REVERSED
+//
+// This produces anticlockwise boundary traversal.
+//
+// ------------------------------------------------------------
+//
+// IMPORTANT EDGE CASES:
+//
+// 1. Empty tree:
+//
+//     root == null
+//
+// Your code currently does not handle this.
+//
+// You should add:
+//
+//     if(root == null) return ans;
+//
+// before accessing root.left or root.right.
+//
+// Otherwise, root.left causes NullPointerException.
+//
+// ------------------------------------------------------------
+//
+// 2. Only root:
+//
+//          1
+//
+// Answer:
+//
+//     [1]
+//
+// Your first condition handles this.
+//
+// ------------------------------------------------------------
+//
+// 3. Only right-skewed tree:
+//
+//          1
+//           \
+//            2
+//             \
+//              3
+//
+// Result:
+//
+//     [1, 3, 2]
+//
+// Root is added first,
+// leaf 3 is added by traversal(),
+// right boundary node 2 is added in reverse.
+//
+// ------------------------------------------------------------
+//
+// 4. Only left-skewed tree:
+//
+//          1
+//         /
+//        2
+//       /
+//      3
+//
+// Result:
+//
+//     [1, 2, 3]
+//
+// Left boundary adds 1 and 2,
+// traversal adds leaf 3,
+// right boundary is empty.
+//
+// ------------------------------------------------------------
+//
+// TIME COMPLEXITY:
+//
+// Left boundary loop:
+//
+//     O(h)
+//
+// Leaf traversal:
+//
+//     O(n)
+//
+// Right boundary loop:
+//
+//     O(h)
+//
+// Reversing right boundary:
+//
+//     O(h)
+//
+// Total:
+//
+//     O(h + n + h + h)
+//
+// Since h <= n:
+//
+//     Time Complexity = O(n)
+//
+// ------------------------------------------------------------
+//
+// SPACE COMPLEXITY:
+//
+// Leaf traversal recursion stack:
+//
+//     O(h)
+//
+// Right boundary list:
+//
+//     O(h)
+//
+// Answer list:
+//
+//     O(n)
+//
+// Auxiliary space excluding answer:
+//
+//     O(h)
+//
+// Space including output:
+//
+//     O(n)
+//
+// ------------------------------------------------------------
+//
+// FINAL INTUITION:
+//
+// Your code is using 3 different operations:
+//
+// 1. Left boundary:
+//
+//     Start from root.
+//     Move left whenever possible.
+//     Otherwise move right.
+//     Add only non-leaf nodes.
+//
+// 2. Leaf traversal:
+//
+//     Visit the complete tree using DFS.
+//     Add every leaf from left to right.
+//
+// 3. Right boundary:
+//
+//     Start from root.right.
+//     Move right whenever possible.
+//     Otherwise move left.
+//     Add only non-leaf nodes.
+//     Reverse the collected nodes.
+//
+// CORE FORMULA:
+//
+//     Boundary Traversal
+//         = Left Boundary
+//         + Leaf Nodes
+//         + Reversed Right Boundary
+//
+// Your main idea is correct,
+// but add this at the beginning:
+//
+//     if(root == null) return ans;
+//
+// Also, adding root separately and starting curr from root
+// makes the left-boundary logic more complicated.
+// A cleaner approach starts the left boundary from root.left,
+// but your current approach can work with proper edge handling.
