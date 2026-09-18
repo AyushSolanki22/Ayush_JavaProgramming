@@ -589,3 +589,8 @@ gfg - flatten binary tree, path from root with sum
 Completed 2 hr of Binary Tree II
 Done 1 on leetcode - Construct Binary Tree from inorder, preorder
 gfg - preorder iterative, postorder iterative, inorder iterative , tree boundary traversal, construct tree from inorder & preorder
+
+@18 Sept 
+Finished Binary Tree II (12 mins')
+Done 1 on leetcode - sortedArrayToBST , Done 1 of leetcode - Construct Binary Search Tree from preorder
+gfg - sortedArrayToBST, preorder to bst
