@@ -321,7 +321,8 @@ Recursion Identification, Tower of Hanoi program
 113. lowestCommonAncestor_BinaryTree
 114. flattenBinaryTree
 115. constructBinaryTree_inorderPreorder
-
+116. sortedArray_ToBST
+117. constructBinarySearchTree_Preorder
 
 
 
