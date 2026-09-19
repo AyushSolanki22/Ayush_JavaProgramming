@@ -1,0 +1,76 @@
+//Similar like 115
+
+//constructBinaryTree_inorderPostorder
+
+
+class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        int n=inorder.length;
+        return build(0, n-1, 0, n-1, inorder, postorder);
+    }
+
+    public TreeNode build(int inLo, int inHi, int postLo,int postHi, int inorder[], int post[]){
+        if(postLo>postHi || inLo>inHi) return null;
+
+        int val=post[postHi];
+        TreeNode root=new TreeNode(val);
+
+        //find root in inorder 
+        int r=inLo;
+        for(int i=inLo; i<=inHi; ++i){
+            if(inorder[i]==val){
+                r=i; 
+                break;   //once we find root, we don;t want further searching 
+            }
+        }
+
+        int leftSize = r - inLo;  //The number of nodes in the left subtree is:
+    
+        //we have to use leftSize for in postLo, postHi, otherwise using r directly in postLo, postHi will lead to logical errors
+        // The problem is that r is an absolute index in the inorder array.
+        // r is an inorder index, so we cannot directly use it as a postorder offset.
+
+        
+        root.left=build(inLo, r-1, postLo, postLo+leftSize-1, inorder, post);
+        root.right=build(r+1, inHi, postLo+leftSize, postHi-1, inorder, post);
+        return root;
+    
+    }
+}
+
+
+
+
+// Inorder:
+// LEFT -> ROOT -> RIGHT
+//
+// Postorder:
+// LEFT -> RIGHT -> ROOT
+//
+// 1. Last element of postorder is the root.
+// 2. Find this root in inorder.
+// 3. Everything before root in inorder = left subtree.
+// 4. Everything after root in inorder = right subtree.
+// 5. leftSize = r - inLo.
+// 6. Use leftSize to divide the postorder array.
+// 7. Recursively build left and right.
+// 8. postHi is excluded from both subtree ranges because
+//    postorder[postHi] is the current root.
+//
+// Main pattern:
+//
+// root = postorder[postHi]
+//
+// r = root's index in inorder
+//
+// leftSize = r - inLo
+//
+// left:
+// inorder  = inLo ... r-1
+// postorder = postLo ... postLo+leftSize-1
+//
+// right:
+// inorder  = r+1 ... inHi
+// postorder = postLo+leftSize ... postHi-1
+//
+// This same process repeats recursively for every subtree.
