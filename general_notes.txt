@@ -200,6 +200,7 @@
 8. nthLevel
 9. Path
 10. iterative_traversal
+11. conceptBuilder
 
 
 ##DSA (LeetCode)
@@ -324,7 +325,10 @@ Recursion Identification, Tower of Hanoi program
 116. sortedArray_ToBST
 117. constructBinarySearchTree_Preorder
 118. constructBinaryTree_inorderPostorder
-
+119. searchInBinaryTree
+120. rangeSumOfBST
+121. insertIntoBST
+122. kthSmallestElement_inBST
 
 
 
