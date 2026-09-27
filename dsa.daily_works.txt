@@ -598,3 +598,30 @@ gfg - sortedArrayToBST, preorder to bst
 @19 Sept 
 0 mins(due to Maths' Exam)
 Done 1 on leetcode - Construct Binary Tree from inorder, postorder
+
+@20 Sept 
+0 mins
+
+@21 Sept
+0 mins
+Posted 1 on leetcode - Construct Binary Search Tree from preorder
+
+@22 Sept 
+0 mins
+Done 1 on leetcode - Insert into BST
+
+@23 Sept 
+0 mins
+Reposted 1 on leetcode - Insert into BST
+
+@24 Sept
+0 mins
+Posted 1 on leetcode -- kth smallest element in binary tree
+
+@25 Sept
+0 mins
+Reposted 1 on leetcode -- kth smallest element in binary tree
+
+@26 Sept
+0 mins
+Reposted 1 on leetcode -- kth smallest element in binary tree
