@@ -1,0 +1,40 @@
+//One Approach -- using auxiliary function, global variable count;
+
+class Solution {
+    int count; 
+    int getCount(Node root, int l, int h) {
+        
+        count(root, l, h);
+        return count; 
+    }
+    
+    void count(Node root, int lo, int hi){
+        if(root==null) return; 
+        
+        if(root.data>=lo && root.data<=hi) count++;
+
+        if(lo<root.data && hi<root.data) count(root.left, lo, hi);
+        else if(lo>root.data && hi>root.data) count(root.right, lo, hi);
+        else {
+            count(root.left, lo, hi);
+            count(root.right, lo, hi);
+        }
+    }
+}
+
+
+//Another Approach -- simplified  ((comparing with root.data))
+
+class Solution {
+    int getCount(Node root, int l, int h) {
+        if(root==null) return 0;
+
+        if(root.data>h) return getCount(root.left, l, h);
+        else if(root.data<l) return getCount(root.right, l, h);
+        else {      // l<=root.data<=h
+            return 1+getCount(root.left, l, h)+getCount(root.right, l, h);
+        }
+    }
+    
+}
+

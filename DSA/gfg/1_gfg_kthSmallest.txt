@@ -1,0 +1,18 @@
+class Solution {
+    public int kthSmallest(Node root, int k) {
+        // code here
+        ArrayList<Integer> arr=new ArrayList<>();
+        traversal(root, arr);
+        if(k>arr.size()) return -1;
+        return arr.get(k-1);
+    }
+    
+    public void traversal(Node root, ArrayList<Integer> arr){
+        if(root==null) return;
+        
+        traversal(root.left, arr);
+        arr.add(root.data);
+        traversal(root.right, arr);
+    }
+    
+}

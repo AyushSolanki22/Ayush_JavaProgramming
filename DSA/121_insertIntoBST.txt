@@ -1,0 +1,625 @@
+//One Approach -- using auxiliary function to traverse and put the val node at its correct place
+
+class Solution {
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+        if(root==null){   //edge case -- when root is null
+            root=new TreeNode(val);
+            return root; 
+        }
+
+        attach(root, val);
+        return root;
+    }
+
+    public void attach(TreeNode root, int val){
+        if(root==null) return; 
+
+        if(root.left==null && val<root.val) root.left=new TreeNode(val);
+        if(root.right==null && val>root.val) root.right=new TreeNode(val);
+
+        if(root.val>val) attach(root.left, val);
+        if(root.val<val) attach(root.right, val);
+    }
+}
+
+
+
+//Another Approach -- (simplified) -- using pure recursion, backtracking
+
+class Solution {
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+
+        // If there is no node here,
+        // this is where the new value should be inserted.
+        if(root == null) {
+            return new TreeNode(val);
+        }
+
+        // If val is smaller,
+        // insert it somewhere in the left subtree.
+        if(val < root.val) {
+            root.left = insertIntoBST(root.left, val);
+        }
+
+        // If val is greater,
+        // insert it somewhere in the right subtree.
+        else {
+            root.right = insertIntoBST(root.right, val);
+        }
+
+        // Return the root of this subtree.
+        return root;
+    }
+}
+
+
+//START
+  ↓
+//Keep recursively going down
+  ↓
+//Eventually reach NULL
+  ↓
+//Create node
+  ↓
+//Return it upward
+
+//Intution of second approach 
+
+
+// Full intuition: Insert into a Binary Search Tree
+//
+// Problem:
+// Given the root of a BST and a value `val`,
+// insert `val` into the BST and return the root.
+//
+// The main idea is very simple:
+//
+// BST property tells us WHERE to go.
+// Recursion takes us there.
+// Base case creates the new node.
+// root.left / root.right reconnects the modified subtree.
+// return root sends the subtree back to the parent.
+//
+//
+// --------------------------------------------------
+// 1. Start at root
+// --------------------------------------------------
+//
+// We begin from the root of the BST.
+//
+// Example:
+//
+//             8
+//            / \
+//           5   10
+//          / \    \
+//         2   7    12
+//
+// Suppose:
+//
+// val = 6
+//
+// We start at:
+//
+// root = 8
+//
+//
+// --------------------------------------------------
+// 2. Use the BST property to decide where to go
+// --------------------------------------------------
+//
+// In a BST:
+//
+// smaller value -> LEFT
+// greater value -> RIGHT
+//
+// We want to insert 6.
+//
+// At node 8:
+//
+// 6 < 8
+//
+// Therefore, 6 must be somewhere in the LEFT subtree.
+//
+// So we recursively call:
+//
+// insertIntoBST(root.left, 6)
+//
+// In other words:
+//
+// "I don't need to search the whole tree.
+// Since 6 is smaller than 8,
+// I only need to search the left subtree."
+//
+//
+// --------------------------------------------------
+// 3. Recursion takes us to the correct subtree
+// --------------------------------------------------
+//
+// Now we are at node 5:
+//
+//             8
+//            /
+//           5
+//
+// Current node = 5
+// val = 6
+//
+// Check:
+//
+// 6 < 5 ?  NO
+//
+// Therefore:
+//
+// 6 > 5
+//
+// So 6 must be in the RIGHT subtree of 5.
+//
+// Again recursively call:
+//
+// insertIntoBST(root.right, 6)
+//
+// Now we reach:
+//
+//             5
+//            / \
+//           2   7
+//
+// Current node = 7
+//
+// Check:
+//
+// 6 < 7
+//
+// Therefore:
+//
+// 6 must be in the LEFT subtree of 7.
+//
+// So:
+//
+// insertIntoBST(root.left, 6)
+//
+//
+// --------------------------------------------------
+// 4. Eventually we reach null
+// --------------------------------------------------
+//
+// We reach:
+//
+//             7
+//            /
+//          null
+//
+// So the recursive call becomes:
+//
+// insertIntoBST(null, 6)
+//
+// Now:
+//
+// root == null
+//
+// This means:
+//
+// "There is no node at this position,
+// so this is exactly where the new node should be inserted."
+//
+// Therefore:
+//
+// return new TreeNode(6);
+//
+// The base case creates the new node.
+//
+//
+// --------------------------------------------------
+// 5. Why do we RETURN the new node?
+// --------------------------------------------------
+//
+// Suppose:
+//
+// 7.left == null
+//
+// We call:
+//
+// insertIntoBST(7.left, 6)
+//
+// which means:
+//
+// insertIntoBST(null, 6)
+//
+// It creates:
+//
+//     6
+//
+// and returns that node.
+//
+// So the parent statement:
+//
+// root.left = insertIntoBST(root.left, val);
+//
+// becomes:
+//
+// 7.left = new TreeNode(6);
+//
+// Therefore:
+//
+//       7
+//      /
+//     6
+//
+// The returned node gets connected to its parent.
+//
+//
+// --------------------------------------------------
+// 6. The most important idea:
+//    root.left = recursiveCall()
+// --------------------------------------------------
+//
+// This line:
+//
+// root.left = insertIntoBST(root.left, val);
+//
+// means:
+//
+// "Go inside my left subtree,
+// insert the value,
+// and give me back the root of the modified subtree.
+//
+// I will connect that returned subtree to my left."
+//
+// Similarly:
+//
+// root.right = insertIntoBST(root.right, val);
+//
+// means:
+//
+// "Go inside my right subtree,
+// insert the value,
+// and give me back the root of the modified subtree.
+//
+// I will connect that returned subtree to my right."
+//
+//
+// This is why we cannot simply write:
+//
+// insertIntoBST(root.left, val);
+//
+// because then the recursive function may create a new node,
+// but we would not connect the returned node/subtree to root.left.
+//
+//
+// --------------------------------------------------
+// 7. Why do we return root at the end?
+// --------------------------------------------------
+//
+// After inserting the value,
+// we need to return the root of the current subtree.
+//
+// For example:
+//
+//             5
+//            / \
+//           2   7
+//              /
+//             6
+//
+// The subtree rooted at 5 is now modified.
+//
+// Its root is still 5.
+//
+// So we do:
+//
+// return root;
+//
+// This sends the modified subtree back to its parent.
+//
+//
+// --------------------------------------------------
+// 8. Think about recursion as a chain
+// --------------------------------------------------
+//
+// For val = 6:
+//
+// Start:
+//
+// 8
+// ↓
+// 5
+// ↓
+// 7
+// ↓
+// null
+//
+// Going DOWN:
+//
+// We are searching for the correct position.
+//
+// At every node:
+//
+// if val < root.val:
+//     go LEFT
+//
+// else:
+//     go RIGHT
+//
+//
+// Once we reach null:
+//
+// Going DOWN stops.
+//
+// We create the new node.
+//
+// Then recursion starts GOING BACK UP:
+//
+// null
+// ↑
+// 7
+// ↑
+// 5
+// ↑
+// 8
+//
+// During this return journey,
+// every parent reconnects its modified subtree.
+//
+//
+// --------------------------------------------------
+// 9. Understand the complete code through this flow
+// --------------------------------------------------
+//
+// class Solution {
+//     public TreeNode insertIntoBST(TreeNode root, int val) {
+//
+//         // BASE CASE
+//         // We found an empty position.
+//         // Create the new node and return it.
+//         if(root == null) {
+//             return new TreeNode(val);
+//         }
+//
+//         // If val is smaller,
+//         // it belongs somewhere in the left subtree.
+//         if(val < root.val) {
+//
+//             // Recursively insert into the left subtree.
+//             // The recursive call returns the modified
+//             // left subtree, so attach it back to root.left.
+//             root.left = insertIntoBST(root.left, val);
+//         }
+//
+//         // If val is greater,
+//         // it belongs somewhere in the right subtree.
+//         else {
+//
+//             // Recursively insert into the right subtree.
+//             // Attach the returned modified subtree to root.right.
+//             root.right = insertIntoBST(root.right, val);
+//         }
+//
+//         // Return the root of this subtree.
+//         return root;
+//     }
+// }
+//
+//
+// --------------------------------------------------
+// 10. Complete dry run
+// --------------------------------------------------
+//
+// Tree:
+//
+//             8
+//            / \
+//           5   10
+//          / \    \
+//         2   7    12
+//
+// Insert:
+//
+// val = 6
+//
+//
+// CALL 1:
+//
+// insertIntoBST(8, 6)
+//
+// 6 < 8
+//
+// Therefore:
+//
+// 8.left = insertIntoBST(5, 6)
+//
+//
+// CALL 2:
+//
+// insertIntoBST(5, 6)
+//
+// 6 > 5
+//
+// Therefore:
+//
+// 5.right = insertIntoBST(7, 6)
+//
+//
+// CALL 3:
+//
+// insertIntoBST(7, 6)
+//
+// 6 < 7
+//
+// Therefore:
+//
+// 7.left = insertIntoBST(null, 6)
+//
+//
+// CALL 4:
+//
+// insertIntoBST(null, 6)
+//
+// root == null
+//
+// return new TreeNode(6)
+//
+//
+// Now CALL 3 continues:
+//
+// 7.left = returned node 6
+//
+// Tree becomes:
+//
+//       7
+//      /
+//     6
+//
+// Then:
+//
+// return 7
+//
+//
+// CALL 2 receives the returned subtree:
+//
+// 5.right = returned subtree rooted at 7
+//
+// Tree becomes:
+//
+//       5
+//      / \
+//     2   7
+//        /
+//       6
+//
+// Then:
+//
+// return 5
+//
+//
+// CALL 1 receives the returned subtree:
+//
+// 8.left = returned subtree rooted at 5
+//
+// Final tree:
+//
+//             8
+//            / \
+//           5   10
+//          / \    \
+//         2   7    12
+//            /
+//           6
+//
+// Then:
+//
+// return 8
+//
+//
+// --------------------------------------------------
+// 11. The most important thing to understand
+// --------------------------------------------------
+//
+// There are TWO different jobs happening:
+//
+// JOB 1: Finding the position
+//
+// BST property does this:
+//
+// val < root.val
+//     -> LEFT
+//
+// val > root.val
+//     -> RIGHT
+//
+// Recursion keeps moving down until root == null.
+//
+//
+// JOB 2: Connecting the new node
+//
+// The base case creates and RETURNS the new node.
+//
+// Then:
+//
+// root.left = recursiveCall()
+//
+// or:
+//
+// root.right = recursiveCall()
+//
+// connects that returned node/subtree to its parent.
+//
+// Finally:
+//
+// return root;
+//
+// sends the current subtree back to its parent.
+//
+//
+// --------------------------------------------------
+// 12. Simple mental model
+// --------------------------------------------------
+//
+// Imagine every node saying:
+//
+// "I will decide whether you should go left or right.
+//
+// If you need to go left,
+// I will send you to my left subtree.
+//
+// If you need to go right,
+// I will send you to my right subtree.
+//
+// When you find an empty position,
+// create the new node and give it back to me.
+//
+// I will connect it to myself.
+//
+// Then I will give my whole subtree back to my parent."
+//
+//
+// --------------------------------------------------
+// 13. Final algorithm
+// --------------------------------------------------
+//
+// 1. Start at the root.
+//
+// 2. If root == null:
+//       We found the insertion position.
+//       Create and return the new node.
+//
+// 3. If val < root.val:
+//       val belongs to the left subtree.
+//       Recursively insert into root.left.
+//       Attach the returned subtree to root.left.
+//
+// 4. Otherwise:
+//       val belongs to the right subtree.
+//       Recursively insert into root.right.
+//       Attach the returned subtree to root.right.
+//
+// 5. Return root.
+//
+//
+// Main idea:
+//
+// BST property tells us WHERE to go.
+//
+// Recursion takes us there.
+//
+// Base case CREATES the node.
+//
+// root.left = / root.right =
+// RECONNECTS the modified subtree.
+//
+// return root =
+// SENDS the current subtree back to its parent.
+//
+//
+// The key recursive pattern is:
+//
+// root.left = function(root.left);
+//
+// or:
+//
+// root.right = function(root.right);
+//
+// Meaning:
+//
+// "Modify my child subtree and give me the modified
+// subtree back so I can reconnect it."

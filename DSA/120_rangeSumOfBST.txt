@@ -1,0 +1,78 @@
+//One Approach -- using auxiliary function, global variable count;
+
+class Solution {
+    int sum;
+    
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        if(root==null) return 0;
+        sum=0;
+
+        rangeSum(root, low, high);
+        return sum;
+    }
+
+    public void rangeSum(TreeNode root, int lo, int hi){
+        if(root==null) return; 
+
+        if(root.val>=lo && root.val<=hi) sum+=root.val;
+
+        if(lo<root.val && hi<root.val) rangeSum(root.left, lo, hi);
+        else if(lo>root.val && hi>root.val) rangeSum(root.right, lo, hi);
+        else {
+            rangeSum(root.left, lo, hi);
+            rangeSum(root.right, lo, hi);
+        } 
+    }
+}
+
+
+//Another Approach -- simplified  ((comparing with root.data))
+
+//dividing into 3 parts ---- number can be only within range : <l, between l and h, >h 
+
+
+class Solution {
+    public int rangeSumBST(TreeNode root, int low, int high) {
+
+        // No node exists here.
+        // Therefore this subtree contributes 0.
+
+        if(root == null)
+            return 0;
+
+        // Current node is greater than the maximum allowed value.
+        // Since this is a BST, everything in the right subtree
+        // is even greater.
+        // Therefore ignore the right subtree and only search left.
+
+        if(root.val > high)  return rangeSumBST(root.left, low, high);
+
+
+        // Current node is smaller than the minimum allowed value.
+        // Since this is a BST, everything in the left subtree
+        // is even smaller.
+        // Therefore ignore the left subtree and only search right.
+
+        else if(root.val < low) return rangeSumBST(root.right, low, high);
+
+        // If we reach here:
+        // low <= root.val <= high
+        //
+        // So current node is valid.
+        // Include its value and search BOTH subtrees.
+        
+        else {
+            return root.val
+                + rangeSumBST(root.left, low, high)
+                + rangeSumBST(root.right, low, high);
+        }
+    }
+}
+
+
+
+
+
+
+//intuition of second approach 
+
