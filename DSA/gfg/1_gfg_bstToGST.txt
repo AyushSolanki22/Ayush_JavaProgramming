@@ -1,0 +1,23 @@
+//variation ----- root contain sum of greater nodes only (doesn't include its original value in the sum)
+
+
+class Solution {
+    int sum; 
+    public void transformTree(Node root) {
+        sum=0; 
+        reverseInorder(root);
+        
+    }
+    
+    public void reverseInorder(Node root){
+        if(root==null) return;
+
+        reverseInorder(root.right);
+        
+        int temp=root.data;
+        root.data=sum;
+        sum+=temp;
+        
+        reverseInorder(root.left);
+    }
+}

@@ -1,0 +1,33 @@
+//root is lca incase if it lies in middle of n1, n2. (in BST)
+
+//otherwise, move to left or right case considering conditions
+
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null) return null;
+        
+        if(root.val==p.val || root.val==q.val) return root;    //root==p or root==q
+        
+        if(root.val>p.val && root.val<q.val) return root;     //lca lying between p, q
+        if(root.val>q.val && root.val<p.val) return root;    //lca lying between p, q
+        
+        if(root.val>p.val && root.val>q.val) return lowestCommonAncestor(root.left, p, q);      
+        else return lowestCommonAncestor(root.right, p, q);
+    }
+}
+
+
+
+
+//Simplified
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null) return null;
+        
+        if(root.val>p.val && root.val>q.val) return lowestCommonAncestor(root.left, p, q);
+        if(root.val<p.val && root.val<q.val) return lowestCommonAncestor(root.right, p, q);
+        else return root;    //includes all base cases 
+    }
+}

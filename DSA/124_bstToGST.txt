@@ -1,0 +1,28 @@
+class Solution {
+    static int sum; 
+    public TreeNode bstToGst(TreeNode root) {
+        sum=0; 
+        reverseInorder(root);
+        return root; 
+    }
+
+    public void reverseInorder(TreeNode root){
+        if(root==null) return;
+
+        reverseInorder(root.right);
+        sum+=root.val;
+        root.val=sum;
+        
+        reverseInorder(root.left);
+    }
+}
+
+
+//BST → reverse inorder gives descending order
+//    → keep a shared running sum
+//    → replace each node with that running sum
+
+
+
+
+//another approach --- using arraylist, reversed inorder arraylist
