@@ -629,4 +629,9 @@ Reposted 1 on leetcode -- kth smallest element in binary tree
 @27 Sept
 Completed 1 hr 33 mins' of Binary Search Tree 01
 Done 2 on leetcode - Search in a Binary Tree, Range Sum Of BST, Done 2 of leetcode - insert into BST, kth smallest element in BST
-gfg - minimum in BST, sum of nodes in BST range, countBSTNodes_inRange, BST insert, kthSmallest  
+gfg - minimum in BST, sum of nodes in BST range, countBSTNodes_inRange, BST insert, kthSmallest  \
+
+@28 Sept
+Finished Binary Search Tree 1 (1 hr 10 mins')
+Done 3 on leetcode - isValidBST, bstToGST, LCA in BST
+gfg - check for BST, bstToGST (variation), LCA in BST

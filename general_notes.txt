@@ -329,8 +329,9 @@ Recursion Identification, Tower of Hanoi program
 120. rangeSumOfBST
 121. insertIntoBST
 122. kthSmallestElement_inBST
-
-
+123. isValidBST
+124. bstToGST
+125. lcaInBST
 
 
 
