@@ -1,0 +1,783 @@
+class Quad{
+    long max; 
+    long min; 
+    long sum;
+    boolean isBST;
+    Quad(long max, long min,long sum, boolean isBST){
+        this.max=max;
+        this.min=min;
+        this.sum=sum; 
+        this.isBST=isBST;
+    }
+}
+
+class Solution {
+    static long maxSum;
+    public int maxSumBST(TreeNode root) {
+        maxSum=0;
+        helper(root);
+        return (int)maxSum;
+    }
+
+    Quad helper(TreeNode root){
+        if(root==null) return new Quad(Long.MIN_VALUE, Long.MAX_VALUE, 0, true);
+
+        Quad lst=helper(root.left);
+        Quad rst=helper(root.right);
+        long max=Math.max(root.val, Math.max(lst.max,rst.max));
+        long min=Math.min(root.val, Math.min(lst.min, rst.min));
+        long sum=root.val+lst.sum+rst.sum;
+        boolean isBST= (lst.isBST && rst.isBST && lst.max<root.val && rst.min>root.val);
+
+        if(isBST) maxSum=Math.max(sum, maxSum);
+        return new Quad(max, min,sum, isBST);
+    }
+}
+
+
+
+// Quad = "Can my parent determine everything about me?"
+//
+// max     -> largest value
+// min     -> smallest value
+// sum     -> total sum
+// isBST   -> whether I am a valid BST
+
+
+
+
+// ============================================================
+// LeetCode 1373 - Maximum Sum BST in Binary Tree
+// ============================================================
+//
+// We have to find the maximum sum of any subtree
+// which itself forms a valid BST.
+//
+// The important word is SUBTREE.
+//
+// For every node, we need to know:
+//
+// 1. Is its left subtree a BST?
+// 2. Is its right subtree a BST?
+// 3. Is every value in the left subtree smaller than root?
+// 4. Is every value in the right subtree greater than root?
+// 5. What is the sum of this subtree?
+//
+// To answer all of these efficiently, every recursive call
+// returns 4 pieces of information.
+//
+//
+//
+// ============================================================
+// Quad
+// ============================================================
+//
+// class Quad {
+//
+//     long max;
+//     long min;
+//     long sum;
+//     boolean isBST;
+//
+// }
+//
+// Meaning:
+//
+// max   = maximum value in current subtree
+// min   = minimum value in current subtree
+// sum   = sum of all nodes in current subtree
+// isBST = whether current subtree is a valid BST
+//
+//
+//
+// ============================================================
+// Why do we need MAX and MIN?
+// ============================================================
+//
+// Consider:
+//
+//             10
+//            /  \
+//           5    15
+//               /
+//              6
+//
+// At node 15:
+//
+//        15
+//       /
+//      6
+//
+// 6 < 15, so this subtree is a valid BST.
+//
+// Therefore it can return:
+//
+// max = 15
+// min = 6
+// isBST = true
+//
+// Now its parent is 10.
+//
+// The right subtree of 10 has:
+//
+// min = 6
+//
+// But for a BST:
+//
+// every value in the right subtree must be > 10.
+//
+// We check:
+//
+// right.min > root.val
+//
+// 6 > 10
+//
+// false
+//
+// Therefore the subtree rooted at 10 is NOT a BST.
+//
+// This is why simply checking the direct children is not enough.
+//
+//
+//
+// ============================================================
+// Why do we need SUM?
+// ============================================================
+//
+// The question is not simply:
+//
+// "What is the largest BST?"
+//
+// It asks for:
+//
+// "What is the maximum SUM of a BST subtree?"
+//
+// So whenever a subtree is a valid BST:
+//
+// sum = root.val + left.sum + right.sum
+//
+// Then:
+//
+// maxSum = Math.max(maxSum, sum)
+//
+//
+//
+// ============================================================
+// Why do we need isBST?
+// ============================================================
+//
+// Suppose:
+//
+// left subtree is NOT a BST.
+//
+// Then the current subtree cannot possibly be a BST.
+//
+// Therefore:
+//
+// left.isBST
+// AND
+// right.isBST
+//
+// must both be true.
+//
+//
+//
+// ============================================================
+// Condition for current subtree to be a BST
+// ============================================================
+//
+// Suppose current node is:
+//
+//             root
+//            /    \
+//          left   right
+//
+// For current subtree to be a BST:
+//
+// 1. Left subtree must be BST
+//
+// left.isBST == true
+//
+// 2. Right subtree must be BST
+//
+// right.isBST == true
+//
+// 3. Largest value in left subtree must be < root
+//
+// left.max < root.val
+//
+// 4. Smallest value in right subtree must be > root
+//
+// right.min > root.val
+//
+// Therefore:
+//
+// isBST =
+//     left.isBST
+//     && right.isBST
+//     && left.max < root.val
+//     && right.min > root.val
+//
+// This is exactly what your code does.
+//
+//
+//
+// ============================================================
+// Why use POSTORDER?
+// ============================================================
+//
+// We need information from both children BEFORE
+// deciding whether the current node's subtree is a BST.
+//
+// Therefore:
+//
+// LEFT
+// RIGHT
+// ROOT
+//
+// This is postorder traversal.
+//
+// First:
+//
+// Quad lst = helper(root.left);
+//
+// Then:
+//
+// Quad rst = helper(root.right);
+//
+// Only after receiving both Quad objects
+// can we determine the current subtree.
+//
+//
+//
+// ============================================================
+// Base case
+// ============================================================
+//
+// if(root == null)
+//
+// There is no node.
+//
+// We return:
+//
+// max = Long.MIN_VALUE
+// min = Long.MAX_VALUE
+// sum = 0
+// isBST = true
+//
+// Therefore:
+//
+// new Quad(
+//     Long.MIN_VALUE,
+//     Long.MAX_VALUE,
+//     0,
+//     true
+// )
+//
+//
+//
+// Why these values?
+//
+//
+// Empty subtree should not interfere with MAX.
+//
+// Suppose:
+//
+// root = 5
+// left is null
+//
+// left.max = Long.MIN_VALUE
+//
+// Then:
+//
+// max = Math.max(
+//     5,
+//     Math.max(Long.MIN_VALUE, right.max)
+// )
+//
+// The empty subtree cannot incorrectly become the maximum.
+//
+//
+//
+// Similarly, empty subtree should not interfere with MIN.
+//
+// left.min = Long.MAX_VALUE
+//
+// Therefore:
+//
+// min = Math.min(
+//     5,
+//     Math.min(Long.MAX_VALUE, right.min)
+// )
+//
+// The empty subtree cannot incorrectly become the minimum.
+//
+//
+//
+// sum:
+//
+// empty subtree contributes:
+//
+// 0
+//
+// So:
+//
+// sum = root.val + left.sum + right.sum
+//
+// works naturally.
+//
+//
+//
+// isBST:
+//
+// An empty tree is considered a valid BST.
+//
+// Therefore:
+//
+// isBST = true
+//
+//
+//
+// ============================================================
+// Calculate MAX
+// ============================================================
+//
+// Your code:
+//
+// long max = Math.max(
+//     root.val,
+//     Math.max(lst.max, rst.max)
+// );
+//
+// We are finding the largest value among:
+//
+// current root
+// left subtree
+// right subtree
+//
+// So:
+//
+// current max = max(root.val, left.max, right.max)
+//
+//
+//
+// ============================================================
+// Calculate MIN
+// ============================================================
+//
+// Your code:
+//
+// long min = Math.min(
+//     root.val,
+//     Math.min(lst.min, rst.min)
+// );
+//
+// We are finding the smallest value among:
+//
+// current root
+// left subtree
+// right subtree
+//
+// So:
+//
+// current min = min(root.val, left.min, right.min)
+//
+//
+//
+// ============================================================
+// Calculate SUM
+// ============================================================
+//
+// Your code:
+//
+// long sum = root.val + lst.sum + rst.sum;
+//
+// This is simply:
+//
+// current subtree sum
+//
+// = current node
+// + left subtree sum
+// + right subtree sum
+//
+//
+//
+// ============================================================
+// Calculate isBST
+// ============================================================
+//
+// Your code:
+//
+// boolean isBST =
+//     lst.isBST
+//     && rst.isBST
+//     && lst.max < root.val
+//     && rst.min > root.val;
+//
+// Meaning:
+//
+// left subtree must be BST
+//
+// AND
+//
+// right subtree must be BST
+//
+// AND
+//
+// largest value on left < current root
+//
+// AND
+//
+// smallest value on right > current root
+//
+// If all four conditions are true:
+//
+// current subtree is a BST.
+//
+//
+//
+// ============================================================
+// Updating maxSum
+// ============================================================
+//
+// If current subtree is a BST:
+//
+// if(isBST) {
+//
+//     maxSum = Math.max(sum, maxSum);
+//
+// }
+//
+// We don't update maxSum when the current subtree
+// is not a BST.
+//
+// Because only valid BST subtrees are allowed.
+//
+//
+//
+// ============================================================
+// Dry Run
+// ============================================================
+//
+// Consider:
+//
+//             10
+//            /  \
+//           5    15
+//               /  \
+//              12   20
+//
+// The entire tree is a valid BST.
+//
+//
+//
+// Start from leaf 5:
+//
+// left = empty
+// right = empty
+//
+// max = 5
+// min = 5
+// sum = 5
+// isBST = true
+//
+// Return:
+//
+// Quad(5, 5, 5, true)
+//
+//
+//
+// Leaf 12:
+//
+// return:
+//
+// Quad(12, 12, 12, true)
+//
+//
+//
+// Leaf 20:
+//
+// return:
+//
+// Quad(20, 20, 20, true)
+//
+//
+//
+// Now node 15:
+//
+// left = Quad(12,12,12,true)
+// right = Quad(20,20,20,true)
+//
+// Check:
+//
+// left.max < 15
+//
+// 12 < 15 -> true
+//
+// right.min > 15
+//
+// 20 > 15 -> true
+//
+// left.isBST = true
+// right.isBST = true
+//
+// Therefore:
+//
+// isBST = true
+//
+// sum:
+//
+// 15 + 12 + 20
+//
+// = 47
+//
+// max = 20
+//
+// min = 12
+//
+// Return:
+//
+// Quad(20, 12, 47, true)
+//
+// maxSum becomes:
+//
+// 47
+//
+//
+//
+// Now root 10:
+//
+// left = Quad(5,5,5,true)
+//
+// right = Quad(20,12,47,true)
+//
+// Check:
+//
+// left.max < 10
+//
+// 5 < 10 -> true
+//
+// right.min > 10
+//
+// 12 > 10 -> true
+//
+// Both subtrees are BSTs.
+//
+// Therefore entire tree is BST.
+//
+// sum:
+//
+// 10 + 5 + 47
+//
+// = 62
+//
+// maxSum:
+//
+// max(47,62)
+//
+// = 62
+//
+// Final answer:
+//
+// 62
+//
+//
+// ============================================================
+// Example where current subtree is NOT a BST
+// ============================================================
+//
+//             10
+//            /  \
+//           5    15
+//               /
+//              6
+//
+// Node 15:
+//
+// left = 6
+//
+// 6 < 15
+//
+// So node 15 forms a valid BST.
+//
+// It returns:
+//
+// max = 15
+// min = 6
+// sum = 21
+// isBST = true
+//
+//
+//
+// Now node 10:
+//
+// left.max = 5
+// right.min = 6
+//
+// Check:
+//
+// 5 < 10 -> true
+//
+// 6 > 10 -> FALSE
+//
+// Therefore:
+//
+// isBST = false
+//
+// We DO NOT update maxSum with the sum of the whole
+// subtree rooted at 10.
+//
+// However, the valid BST subtree rooted at 15
+// has already been considered.
+//
+//
+//
+// ============================================================
+// Why we calculate max/min even for invalid BSTs
+// ============================================================
+//
+// Even if the current subtree is invalid,
+// we still return its:
+//
+// max
+// min
+// sum
+//
+// Why?
+//
+// Because the parent still needs information about
+// this subtree to determine whether the parent subtree
+// is valid.
+//
+// For example:
+//
+//       10
+//         \
+//          15
+//         /
+//        6
+//
+// The subtree rooted at 15 is valid,
+// but when combined with 10 it becomes invalid.
+//
+// The parent needs:
+//
+// right.min = 6
+//
+// to discover:
+//
+// 6 <= 10
+//
+// Therefore we must continue returning information.
+//
+//
+//
+// ============================================================
+// Why LONG is used
+// ============================================================
+//
+// You used:
+//
+// long max
+// long min
+// long sum
+//
+// This is a good choice.
+//
+// sum can become larger than the range of int
+// depending on the constraints.
+//
+// Also:
+//
+// Long.MIN_VALUE
+// Long.MAX_VALUE
+//
+// are used safely as sentinel values.
+//
+//
+//
+// ============================================================
+// Complete code
+// ============================================================
+
+class Quad {
+    long max;
+    long min;
+    long sum;
+    boolean isBST;
+
+    Quad(long max, long min, long sum, boolean isBST) {
+        this.max = max;
+        this.min = min;
+        this.sum = sum;
+        this.isBST = isBST;
+    }
+}
+
+class Solution {
+
+    static long maxSum;
+
+    public int maxSumBST(TreeNode root) {
+
+        maxSum = 0;
+
+        helper(root);
+
+        return (int) maxSum;
+    }
+
+    public Quad helper(TreeNode root) {
+
+        // Empty subtree
+        if(root == null) {
+            return new Quad(
+                Long.MIN_VALUE,
+                Long.MAX_VALUE,
+                0,
+                true
+            );
+        }
+
+        // Get information from left subtree
+        Quad lst = helper(root.left);
+
+        // Get information from right subtree
+        Quad rst = helper(root.right);
+
+        // Maximum value in current subtree
+        long max = Math.max(
+            root.val,
+            Math.max(lst.max, rst.max)
+        );
+
+        // Minimum value in current subtree
+        long min = Math.min(
+            root.val,
+            Math.min(lst.min, rst.min)
+        );
+
+        // Sum of current subtree
+        long sum = root.val + lst.sum + rst.sum;
+
+        // Check whether current subtree is a BST
+        boolean isBST =
+            lst.isBST &&
+            rst.isBST &&
+            lst.max < root.val &&
+            rst.min > root.val;
+
+        // Only valid BST subtrees can contribute
+        if(isBST) {
+            maxSum = Math.max(maxSum, sum);
+        }
+
+        // Return information to parent
+        return new Quad(
+            max,
+            min,
+            sum,
+            isBST
+        );
+    }
+}

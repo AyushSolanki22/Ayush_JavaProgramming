@@ -1,3 +1,5 @@
+//One Approach -- storing inorder in arraylist
+
 class Solution {
     public boolean isValidBST(TreeNode root) {
         ArrayList<Integer> arr=new ArrayList<>();
@@ -16,5 +18,120 @@ class Solution {
         inorder(root.left, arr);
         arr.add(root.val);
         inorder(root.right, arr);
+    }
+}
+
+
+//Second approach -- using max, min pair return at every traversal call
+//T.C= 0(n), S.C=0(levels)
+
+//here, long is used to avoid boundary error (as node val can be int max too or int min)
+
+class Pair{
+    long max; 
+    long min; 
+    Pair(long max, long min){
+        this.max=max;
+        this.min=min;
+    }
+}
+
+class Solution {
+    static boolean flag;
+    public boolean isValidBST(TreeNode root) {
+        flag=true;    
+        maxMin(root);
+        return flag;
+    }
+
+    Pair maxMin(TreeNode root){
+        if(root==null) return new Pair(Long.MIN_VALUE, Long.MAX_VALUE);
+
+        Pair lst=maxMin(root.left);
+        Pair rst=maxMin(root.right);
+        long max=Math.max(root.val, Math.max(lst.max,rst.max));
+        long min=Math.min(root.val, Math.min(lst.min, rst.min));
+        if(lst.max>=root.val || rst.min<=root.val) flag=false;
+        return new Pair(max, min);
+    }
+}
+
+
+
+
+
+//Third possible approach --- using triplet -- max, min, isBST boolean variable to avoid flag variable and easiness
+
+class Triplet{
+    long max; 
+    long min; 
+    boolean isBST;
+    Triplet(long max, long min, boolean isBST){
+        this.max=max;
+        this.min=min;
+        this.isBST=isBST;
+    }
+}
+
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return maxMin(root).isBST;
+    }
+
+    Triplet maxMin(TreeNode root){
+        if(root==null) return new Triplet(Long.MIN_VALUE, Long.MAX_VALUE, true);
+
+        Triplet lst=maxMin(root.left);
+        Triplet rst=maxMin(root.right);
+        long max=Math.max(root.val, Math.max(lst.max,rst.max));
+        long min=Math.min(root.val, Math.min(lst.min, rst.min));
+        boolean isBST= (lst.isBST && rst.isBST && lst.max<root.val && rst.min>root.val);
+        return new Triplet(max, min, isBST);
+    }
+}
+
+
+
+
+
+//Another Approach -- using Morris Traversal
+
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        TreeNode curr=root; 
+        long prev=Long.MIN_VALUE; 
+        while(curr!=null){
+          if(curr.left!=null){
+            //(((find pred, link, unlink & print)))
+
+            //find predecessor
+            //pred.right=curr   (as there is no right to prev earlier)
+            //curr=curr.left
+
+            //((fake connections' work is to not get the curr to null, and traverse inorder))
+            //check for fake connection, if pred.right==curr , destroy fake connection, print curr, curr=curr.right ((similar to else statements))
+            TreeNode pred=curr.left;   
+            while(pred.right!=null && pred.right!=curr) pred=pred.right; 
+
+            if(pred.right!=curr){   //link
+              pred.right=curr;
+              curr=curr.left;
+            }
+            else{  
+              pred.right=null;
+              if(prev>=curr.val) return false; 
+              prev=curr.val;
+              curr=curr.right;
+            }
+
+          }
+          else{
+            if(prev>=curr.val) return false; 
+            prev=curr.val;
+            curr=curr.right;
+          }
+        }
+
+        return true;
     }
 }

@@ -1,0 +1,31 @@
+class Solution {
+    public TreeNode deleteNode(TreeNode root, int key) {
+        if(root==null) return null; 
+        if(root.val>key){  //go left
+            root.left=deleteNode(root.left, key);
+        }
+        else if(root.val<key){ //go right
+            root.right=deleteNode(root.right, key);
+        } 
+        else {     //element found
+            if(root.left==null && root.right==null) return null;  //0 child node
+
+            if(root.right==null) return root.left;  //1 child nodes
+            if(root.left==null) return root.right;
+
+            //2 child nodes case -- using predecessor
+            //1) find predecessor, store it and delete from LST
+            //2) pred.left=root.left,  pred.right=root.right; 
+            //3) return pred
+            TreeNode pred=root.left; 
+            while(pred.right!=null) pred=pred.right; 
+            deleteNode(root, pred.val);
+
+            pred.left=root.left; 
+            pred.right=root.right;
+            return pred; 
+        } 
+
+        return root; 
+    }
+}

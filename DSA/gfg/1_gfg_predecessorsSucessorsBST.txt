@@ -1,0 +1,108 @@
+class Solution {
+    public ArrayList<Node> findPreSuc(Node root, int key) {
+
+        ArrayList<Node> ans = new ArrayList<>();
+
+        Node pre = null;
+        Node suc = null;
+
+        Node curr = root;
+
+        // Find predecessor
+        while(curr != null) {
+
+            if(curr.data < key)
+            {
+                pre = curr;
+                curr = curr.right;
+            }
+            else {
+                curr = curr.left;
+            }
+        }
+
+
+        //or simple, if(curr.left!=null) pre=curr.left; 
+        //while(pre.right!=null) pre=pre.right; 
+
+        curr = root;
+
+        // Find successor
+        while(curr != null) {
+
+            if(curr.data > key) {
+                suc = curr;
+                curr = curr.left;
+            }
+            else {
+                curr = curr.right;
+            }
+        }
+
+        ans.add(pre);
+        ans.add(suc);
+
+        return ans;
+    }
+}
+
+
+
+// PREDECESSOR:
+//
+// We want the largest value smaller than key.
+//
+// If:
+//
+// curr.data < key
+//
+// curr can be a possible predecessor.
+//
+// But there might be a larger value that is still < key.
+//
+// Therefore:
+//
+// pre = curr
+// curr = curr.right
+//
+// We try to find a bigger candidate.
+//
+//
+// If:
+//
+// curr.data >= key
+//
+// curr cannot be predecessor.
+//
+// Since curr is too large,
+// go LEFT to find smaller values.
+//
+//
+//
+// SUCCESSOR:
+//
+// We want the smallest value greater than key.
+//
+// If:
+//
+// curr.data > key
+//
+// curr can be a possible successor.
+//
+// But there might be a smaller value that is still > key.
+//
+// Therefore:
+//
+// suc = curr
+// curr = curr.left
+//
+// We try to find a smaller candidate.
+//
+//
+// If:
+//
+// curr.data <= key
+//
+// curr cannot be successor.
+//
+// Go RIGHT to find larger values.

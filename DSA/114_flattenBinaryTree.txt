@@ -46,3 +46,39 @@ class Solution {
         last.right=rst;
     }
 }
+
+
+
+
+//Third Approach --- using Modified Morris traversal
+
+
+class Solution {
+    public void flatten(TreeNode root) {
+        TreeNode curr=root; 
+        while(curr!=null){
+            if(curr.left!=null){
+                //(((find pred, link, unlink)))
+
+                //1) find pred
+                //2) here, we will link pred to curr.right && curr.right to curr.left; (fake connection)   
+                //3) unlink --> curr.left=null ,,, curr=curr.right
+
+            
+                TreeNode pred=curr.left;
+                while(pred.right!=null && pred.right!=curr) pred=pred.right; 
+                
+                pred.right=curr.right; 
+                curr.right=curr.left; 
+                curr.left=null;
+                curr=curr.right; 
+
+            }
+            else{     //if pred not being able to found --- c=c.right
+                curr=curr.right;
+            }
+        } 
+         
+    }
+
+}
