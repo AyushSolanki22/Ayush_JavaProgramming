@@ -201,7 +201,7 @@
 9. Path
 10. iterative_traversal
 11. conceptBuilder
-
+12. morrisTraversal
 
 ##DSA (LeetCode)
 
@@ -332,7 +332,8 @@ Recursion Identification, Tower of Hanoi program
 123. isValidBST
 124. bstToGST
 125. lcaInBST
-
+126. maxSumBST
+127. delNodeBST
 
 
 

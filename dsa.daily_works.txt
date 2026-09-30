@@ -635,3 +635,13 @@ gfg - minimum in BST, sum of nodes in BST range, countBSTNodes_inRange, BST inse
 Finished Binary Search Tree 1 (1 hr 10 mins')
 Done 3 on leetcode - isValidBST, bstToGST, LCA in BST
 gfg - check for BST, bstToGST (variation), LCA in BST
+
+@29 Sept
+Completed 23 mins' of Binary Search Tree 2
+Posted 1 on leetcode - isValidBST(using Pair of min, max approach)
+gfg- check for BST (using pair - min, max)
+
+@30 Sept
+Finished Binary Search Tree 2 (2 hr 20 mins') 
+Done 2 on leetcode - maxSumBST,delNodeBST ..... Done 2 of leetcode - isValidBST(pair- min, max approach, triplet approach, morris traversal approach ), flattenBinaryTree (modified morris traversal)
+gfg- largestBST(**), predecessorsSucessorsBST, iterative inorder (morris traversal), check for BST(using multiple approaches) 

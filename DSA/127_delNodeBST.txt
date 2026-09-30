@@ -29,3 +29,299 @@ class Solution {
         return root; 
     }
 }
+
+
+
+
+
+// BST deletion:
+//
+// We first search for the node using the BST property.
+//
+// If key < root.val:
+//     key must be in the LEFT subtree.
+//
+// If key > root.val:
+//     key must be in the RIGHT subtree.
+//
+// If key == root.val:
+//     we found the node that needs to be deleted.
+//
+//
+//
+// Once the node is found, there are 3 cases:
+//
+// 1. 0 children
+// 2. 1 child
+// 3. 2 children
+//
+//
+// ==========================================================
+// CASE 1: 0 CHILDREN
+// ==========================================================
+//
+// Example:
+//
+//      10
+//     /  \
+//    5    15
+//
+// Delete 5.
+//
+// 5 is a leaf, so simply remove it.
+//
+// Therefore:
+//
+// return null;
+//
+// The parent's link:
+//
+// root.left = deleteNode(root.left, key);
+//
+// automatically becomes:
+//
+// root.left = null;
+//
+//
+//
+// ==========================================================
+// CASE 2: 1 CHILD
+// ==========================================================
+//
+// Example:
+//
+//       10
+//       /
+//      5
+//     /
+//    2
+//
+// Delete 5.
+//
+// 5 has only one child: 2.
+//
+// We don't need 5 anymore.
+//
+// We can directly connect its parent to 2.
+//
+// Therefore:
+//
+// if(root.right == null)
+//     return root.left;
+//
+// Similarly:
+//
+// if(root.left == null)
+//     return root.right;
+//
+//
+//
+// ==========================================================
+// CASE 3: 2 CHILDREN
+// ==========================================================
+//
+// Example:
+//
+//          10
+//         /  \
+//        5    15
+//       / \
+//      2   7
+//
+// Suppose we delete 10.
+//
+// We cannot simply return 5 or 15,
+// because we need to preserve the BST structure.
+//
+// We need a replacement value.
+//
+//
+// We can use either:
+//
+// INORDER PREDECESSOR
+//
+// or:
+//
+// INORDER SUCCESSOR
+//
+// You are using PREDECESSOR.
+//
+//
+//
+// ==========================================================
+// What is predecessor?
+// ==========================================================
+//
+// In a BST:
+//
+// predecessor = largest value smaller than current node.
+//
+// For 10:
+//
+// Left subtree:
+//
+//        5
+//       / \
+//      2   7
+//
+// Largest value here = 7.
+//
+// Therefore:
+//
+// predecessor of 10 = 7.
+//
+//
+//
+// How do we find it?
+//
+// Go to the LEFT once:
+//
+// root.left
+//
+// Then keep going RIGHT:
+//
+// while(pred.right != null)
+//     pred = pred.right;
+//
+//
+//
+// ==========================================================
+// Why is predecessor safe as replacement?
+// ==========================================================
+//
+// Suppose:
+//
+//          10
+//         /  \
+//        5    15
+//       / \
+//      2   7
+//
+// Predecessor = 7.
+//
+// Everything in the left subtree is <= 7,
+// and 7 is the largest value there.
+//
+// Everything in the right subtree is > 10.
+//
+// Therefore, replacing 10 with 7 gives:
+//
+//           7
+//          / \
+//         5   15
+//        / \
+//       2   ...
+//
+// This still preserves the BST property.
+//
+//
+//
+// ==========================================================
+// Your approach
+// ==========================================================
+//
+// You do:
+//
+// TreeNode pred = root.left;
+//
+// while(pred.right != null)
+//     pred = pred.right;
+//
+// This correctly finds the predecessor.
+//
+// Then you want to:
+//
+// 1. Remove predecessor from its old position.
+// 2. Make predecessor the new root of this subtree.
+// 3. Attach the old left subtree.
+// 4. Attach the old right subtree.
+//
+// This is a valid structural approach.
+//
+//
+//
+// ==========================================================
+// IMPORTANT BUG IN YOUR CODE
+// ==========================================================
+//
+// You wrote:
+//
+// deleteNode(root, pred.val);
+//
+// This is WRONG.
+//
+// Why?
+//
+// `root` is the node we are currently deleting.
+//
+// For example:
+//
+//          10
+//         /  \
+//        5    15
+//       / \
+//      2   7
+//
+// pred = 7
+//
+// You should delete 7 from the LEFT SUBTREE:
+//
+// deleteNode(root.left, pred.val);
+//
+// NOT:
+//
+// deleteNode(root, pred.val);
+//
+//
+//
+// ==========================================================
+// Why?
+// ==========================================================
+//
+// The predecessor is located somewhere inside:
+//
+// root.left
+//
+// So we must remove it from that subtree.
+//
+// If we call:
+//
+// deleteNode(root, pred.val)
+//
+// we're asking the deletion function to search
+// for 7 starting from 10.
+//
+// It can eventually find it,
+// but more importantly, we aren't reconnecting the
+// modified left subtree to root.
+//
+// We need:
+//
+// root.left = deleteNode(root.left, pred.val);
+//
+//
+//
+// ==========================================================
+// Another important reason for assignment
+// ==========================================================
+//
+// Your original code:
+//
+// deleteNode(root, pred.val);
+//
+// ignores the returned subtree.
+//
+// But deleteNode() returns the new root of the subtree.
+//
+// When deleting a node, its parent may need to change
+// its child reference.
+//
+// Therefore we need:
+//
+// root.left = deleteNode(root.left, pred.val);
+//
+//
+//
+// ==========================================================
+// Correct version using YOUR structural approach
+// ==========================================================
