@@ -1,0 +1,91 @@
+//Using minHeap, comparator concept
+//Comparator concept -- deep understanding --((here, as objects are string, we use defined comparator ---- as java uses integers comparator by default))
+
+class Solution {
+    public String kthLargestNumber(String[] nums, int k) {
+
+        PriorityQueue<String> p = new PriorityQueue<>(
+            (a, b) -> {
+                if(a.length() != b.length()) {
+                    return a.length() - b.length();
+                }
+                return a.compareTo(b);
+            }
+        );
+
+        for(int i = 0; i < nums.length; ++i) {
+            p.add(nums[i]);
+            if(p.size()>k) p.remove();
+        }
+
+        return p.peek();
+    }
+}
+
+
+
+// Comparator inside PriorityQueue:
+//
+// Comparator tells PriorityQueue:
+//
+// "Between a and b, which one should have higher priority?"
+//
+// General form:
+//
+// (a, b) -> comparison
+//
+// Result:
+//
+// result < 0
+//     -> a comes before b
+//
+// result > 0
+//     -> b comes before a
+//
+// result == 0
+//     -> equal priority
+//
+//
+// Min-heap:
+//
+// PriorityQueue<Integer> pq =
+//     new PriorityQueue<>(
+//         (a, b) -> Integer.compare(a, b)
+//     );
+//
+// Smaller value gets higher priority.
+//
+//
+//
+// Max-heap:
+//
+// PriorityQueue<Integer> pq =
+//     new PriorityQueue<>(
+//         (a, b) -> Integer.compare(b, a)
+//     );
+//
+// Larger value gets higher priority.
+//
+//
+//
+// For custom objects:
+//
+// PriorityQueue<Student> pq =
+//     new PriorityQueue<>(
+//         (a, b) -> Integer.compare(a.marks, b.marks)
+//     );
+//
+// Java compares marks instead of the whole Student object.
+//
+//
+//
+// Important:
+//
+// Comparator does NOT mean "sort the whole PriorityQueue".
+//
+// It defines the priority rule used by the PriorityQueue
+// to decide which element should come first.
+//
+// Think:
+//
+// Comparator = "Who gets priority?"
