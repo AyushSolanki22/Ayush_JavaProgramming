@@ -645,3 +645,8 @@ gfg- check for BST (using pair - min, max)
 Finished Binary Search Tree 2 (2 hr 20 mins') 
 Done 2 on leetcode - maxSumBST,delNodeBST ..... Done 2 of leetcode - isValidBST(pair- min, max approach, triplet approach, morris traversal approach ), flattenBinaryTree (modified morris traversal)
 gfg- largestBST(**), predecessorsSucessorsBST, iterative inorder (morris traversal), check for BST(using multiple approaches) 
+
+@1 Oct
+Completed 1 hr 3 mins' of heap 1 
+Done 2 on leetcode - validParantheses(daily challenge), kthLargestInteger (minheap, comparator concept)
+gfg - kth smallest(heap approach), kth largest

@@ -203,6 +203,13 @@
 11. conceptBuilder
 12. morrisTraversal
 
+
+#22_Heap
+1. heap
+2. PriorityQueueSTL
+3. kthSmallest
+
+
 ##DSA (LeetCode)
 
 gfg folder
@@ -334,7 +341,8 @@ Recursion Identification, Tower of Hanoi program
 125. lcaInBST
 126. maxSumBST
 127. delNodeBST
-
+128. validParantheses
+129. kthLargestInteger
 
 
 
