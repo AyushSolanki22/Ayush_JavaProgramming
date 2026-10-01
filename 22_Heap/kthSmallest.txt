@@ -1,0 +1,50 @@
+//Approach 1
+//using minHeap,,, all insertions --> nlogn,  k removals --> klogn , total time ->  (n+k)logn
+((less efficient, no benefit))
+
+class Solution {
+    public int kthSmallest(int[] arr, int k) {
+        //nlogk time complexity approach
+        
+        PriorityQueue<Integer> p=new PriorityQueue<>();
+        
+        for(int i=0; i<arr.length; ++i){
+            p.add(arr[i]);
+        }
+        
+        for(int i=1; i<k; ++i){
+            p.remove();
+        }
+        
+        return p.peek();
+        
+    }
+}
+
+
+//Approach 2
+//using maxHeap, algorithm
+
+//will keep the heap's size to k only ,, we will ultimately get the kth smallest after adding all elements   ((when size>k remove top))
+
+//Intuition : we are removing n-k largest elements ,, which is in turn making sure that kth smallest element stays
+
+//all insertions --> nlogk , all removals --> (n-k)logk , total time --> (2n-k)logk = 0(nlogk)  ( << 0(nlogn)  )
+ 
+
+class Solution {
+    public int kthSmallest(int[] arr, int k) {
+        //nlogk time complexity approach
+        
+        PriorityQueue<Integer> p=new PriorityQueue<>(Collections.reverseOrder());
+        
+        for(int i=0; i<arr.length; ++i){   //nlogk
+            p.add(arr[i]);  //logk
+            if(p.size()>k) p.remove();  //logk
+        }
+        
+        return p.peek();
+        
+    }
+}
+ 

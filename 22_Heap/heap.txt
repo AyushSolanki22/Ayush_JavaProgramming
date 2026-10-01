@@ -1,0 +1,31 @@
+//Heap
+
+A Heap is a complete binary tree data structure that satisfies the heap property:  ((visualised via binary tree (CBT) ))
+ in a min-heap, the value of each child is greater than or equal to its parent, and in a max-heap, the value of each child is less than or equal to its parent.  (minheap is by default)
+
+Heaps are commonly used to implement priority queues, where the smallest (or largest) element is always at the root.
+ 
+//when printing the whole priority queue, it will print the heap in level order traversal
+
+
+
+//Simplied Time complexity using this data structure 
+  0(1) -- getting min/max ele,,, 0(logn)-insertion,,, 0(logn)-removal    ((removal is of min/max ele only, insertion is of any ele))
+
+  understand insertion, deletion in healp (using visualisation of cbt) 
+  insertion -- one node is created and its value is rearranges(moves upward until parent node is larger than value incase of min heap)
+  removal -- delete bottom rightmost node and replace its value to on the specified node, and now rearrange (move downwards until either child is smaller than the value)
+  //rearrange process in insertion, deletion takes 0(logn) actually, adding, deleting takes only 0(1)
+
+
+
+//How to know whether it's a heap question
+1. kth smallest/largest/closest/most occuring
+2. Continous sorting (when we are doing continous sorting, like when adding , removing elements - rearrangement happens)
+
+
+
+//Use maxheap for kth smallest, and minheap for kth largest ((more efficient)) -- irony
+
+//using minHeap,,, all insertions --> nlogn,  k removals --> klogn , total time ->  (n+k)logn
+
