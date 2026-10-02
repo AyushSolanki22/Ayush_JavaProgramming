@@ -27,5 +27,8 @@ Heaps are commonly used to implement priority queues, where the smallest (or lar
 
 //Use maxheap for kth smallest, and minheap for kth largest ((more efficient)) -- irony
 
-//using minHeap,,, all insertions --> nlogn,  k removals --> klogn , total time ->  (n+k)logn
 
+//Example
+  using minHeap for kth smallest,,, all insertions --> nlogn,  k removals --> klogn , total time ->  (n+k)logn
+
+  using maxHeap,,, all insertions --> nlogk , all removals --> (n-k)logk , total time --> (2n-k)logk = 0(nlogk)  ( << 0(nlogn)  )
