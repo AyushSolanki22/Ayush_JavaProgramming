@@ -650,3 +650,8 @@ gfg- largestBST(**), predecessorsSucessorsBST, iterative inorder (morris travers
 Completed 1 hr 3 mins' of heap 1 
 Done 2 on leetcode - validParantheses(daily challenge), kthLargestInteger (minheap, comparator concept)
 gfg - kth smallest(heap approach), kth largest
+
+@2 Oct
+Completed 1 hr 26 mins' of heap 1
+Done 3 on leetcode - Last Stone Weight, minimum cost of buying candles with discount, k closest points to origin, Done 1 of leetcode - Find K closest elements
+gfg- nearlySorted, min cost to connect ropes (minCostRopes)

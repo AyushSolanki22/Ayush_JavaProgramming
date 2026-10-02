@@ -208,6 +208,7 @@
 1. heap
 2. PriorityQueueSTL
 3. kthSmallest
+4. customComparator
 
 
 ##DSA (LeetCode)
@@ -343,8 +344,10 @@ Recursion Identification, Tower of Hanoi program
 127. delNodeBST
 128. validParantheses
 129. kthLargestInteger
-
-
+130. lastStoneWeight
+131. minCostCandles
+132. kClosestPoints
+133. findKClosestElements
 
 
 
