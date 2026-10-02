@@ -1,0 +1,46 @@
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        PriorityQueue<Integer> p = new PriorityQueue<>((a,b) -> {
+            int da = Math.abs(a-x);
+            int db = Math.abs(b-x);
+
+            if(da != db) return Integer.compare(db, da);
+        
+           return Integer.compare(b, a);  
+        });
+
+        for(int i=0; i<arr.length; ++i){
+            p.add(arr[i]);
+            if(p.size()>k) p.remove();
+        }
+
+        ArrayList<Integer> ans=new ArrayList<>();
+
+        while(p.size()>0)  ans.add(p.remove());
+
+        Collections.sort(ans);  //result should also be sorted in ascending order
+        return ans;
+    }
+}
+
+
+// Need K SMALLEST elements according to some property
+//                     ↓
+// Use MAX HEAP
+//                     ↓
+// Keep only K elements
+//                     ↓
+// When size > K, remove the WORST/LARGEST element
+
+
+//property = distance from x
+
+//smallest distance = best
+//largest distance  = worst
+
+//Therefore:
+
+//MAX HEAP
+//→ farthest element at top
+//→ remove farthest when size > k
+//→ k closest remain

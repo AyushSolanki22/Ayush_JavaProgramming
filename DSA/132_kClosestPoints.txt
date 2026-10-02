@@ -1,0 +1,89 @@
+class Triplet {
+    long dist;
+    int x;
+    int y;
+
+    Triplet(long dist, int x, int y) {
+        this.dist = dist;
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Solution {
+    public int[][] kClosest(int[][] points, int k) {
+
+        // we want k smallest distances
+        // so keep a MAX HEAP
+
+        //for getting k smallest distances --> we can simply use squares of distances too for comparision --- simplified
+        //we here insert triplet object in heap for solving this problem -- consisting of square of dist, x, y,,,,, so for this , we need to make custom comparator in heap
+
+
+        // largest distance will remain at top
+
+        PriorityQueue<Triplet> pq = new PriorityQueue<>(
+            (a, b) -> Long.compare(b.dist, a.dist)
+        );
+
+        for(int i=0; i<points.length; ++i) {
+
+            int x = points[i][0];
+            int y = points[i][1];
+
+            long dist = 1L * x * x + 1L * y * y;
+
+            pq.add(new Triplet(dist, x, y));
+
+            // keep only k closest points
+            if(pq.size() > k) {
+                pq.remove();
+            }
+        }
+
+        int[][] ans = new int[k][2];
+
+        for(int i=0; i<k; ++i) {
+            Triplet p = pq.remove();
+
+            ans[i][0] = p.x;
+            ans[i][1] = p.y;
+        }
+
+        return ans;
+    }
+}
+
+
+
+Need K SMALLEST distances
+            ↓
+Keep a MAX HEAP
+            ↓
+Largest/farthest point stays at top
+            ↓
+Whenever size > k
+            ↓
+Remove the farthest point
+            ↓
+Only k closest points remain
+
+
+
+// Comparator decides which element gets higher priority in PriorityQueue.
+
+// (a,b) -> Long.compare(a.dist,b.dist)
+//     → smaller distance gets priority
+//     → MIN HEAP
+
+// (a,b) -> Long.compare(b.dist,a.dist)
+//     → larger distance gets priority
+//     → MAX HEAP
+
+// For K Closest Points:
+// We need k SMALLEST distances,
+// so we use MAX HEAP.
+// Why?
+// Because when heap size becomes k+1,
+// we remove the LARGEST distance,
+// which is the farthest point.

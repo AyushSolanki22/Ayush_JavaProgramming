@@ -1,0 +1,55 @@
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        PriorityQueue<Integer> p=new PriorityQueue<>(Collections.reverseOrder());
+        for(int ele : stones){
+            p.add(ele);
+        }
+
+        while(p.size()>1){
+            int x=p.remove();
+            int y=p.remove();
+            if(x!=y) p.add(x-y);
+        }
+
+        if(p.size()==0) return 0; 
+        else return p.peek();
+    }
+}
+
+
+// Last Stone Weight:
+//
+// We repeatedly need the TWO LARGEST stones.
+//
+// Therefore use a MAX HEAP.
+//
+// PriorityQueue is normally a MIN HEAP,
+// so use:
+//
+// new PriorityQueue<>(Collections.reverseOrder());
+//
+// Every round:
+//
+// x = largest stone
+// y = second largest stone
+//
+// If x == y:
+//     both are destroyed
+//
+// Else:
+//     y is destroyed
+//     x becomes x-y
+//     add x-y back to heap
+//
+// Repeat until heap has <= 1 element.
+//
+// If heap is empty:
+//     answer = 0
+//
+// Otherwise:
+//     answer = heap.peek()
+//
+// Because max heap:
+//
+// remove() -> largest
+// peek()   -> largest

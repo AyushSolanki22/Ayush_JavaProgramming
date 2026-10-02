@@ -1,0 +1,27 @@
+class Solution {
+    public int minCost(int[] arr) {
+        PriorityQueue<Integer> p=new PriorityQueue<>();
+        
+        for(int ele: arr){
+            p.add(ele);
+        }
+        
+        int minCost=0; 
+        while(p.size()>1){
+            int x=p.remove();
+            int y=p.remove();
+            
+            int cost=x+y;  //cost to connect 2 ropes
+            p.add(cost);   //adding cost of 2 ropes to queue
+            minCost+=cost;  //adding cost of ropes to minCost
+
+        }
+
+        //any other order (other than adding minimum length ropes.,,) will increase the cost
+        
+        return minCost; 
+        
+    }
+}
+
+//used heap , as at every stage , we need 2 ropes with most min lengths, (continous sorting)
