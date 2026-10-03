@@ -1,0 +1,85 @@
+class Solution {
+
+    public int longestValidParentheses(String s) {
+
+        // Stack stores INDEXES, not '(' characters.
+        //
+        // It stores:
+        // 1. indexes of unmatched '('
+        // 2. index of the latest invalid ')' boundary
+        //
+        // -1 represents the boundary before the string starts.
+        
+
+        Stack<Integer> st = new Stack<>();
+        st.push(-1);
+
+        int ans = 0;
+
+        for(int i = 0; i < s.length(); ++i) {
+            // ------------------------------------------------
+            // CASE 1: current character is '('
+            // ------------------------------------------------
+
+            if(s.charAt(i) == '(') {
+                // This '(' is currently unmatched.
+                // Store its index so a future ')' can match it.
+                st.push(i);
+            }
+
+            // ------------------------------------------------
+            // CASE 2: current character is ')'
+            // ------------------------------------------------
+
+            else {
+
+                // Try to match this ')' with the latest
+                // unmatched '('.
+                st.pop();
+
+                // If stack becomes empty,
+                // there was no '(' available to match this ')'.
+                //
+                // Therefore this ')' is INVALID.
+                //
+                // It becomes a new boundary.
+                if(st.isEmpty()) {
+                    st.push(i);
+                }
+
+                // Stack is not empty.
+                // Therefore this ')' was successfully matched.
+                //
+                // The element at the top is now the boundary
+                // before the current valid substring.
+                else {
+
+                    int length = i - st.peek();
+                    ans = Math.max(ans, length);
+                }
+            }
+        }
+
+        return ans;
+    }
+}
+
+
+
+// Stack stores INDICES, not parentheses.
+//
+// '(' → push its index.
+//
+// ')' → pop the matching '('.
+//
+// If stack becomes empty:
+//     this ')' has no matching '('
+//     so it becomes a new invalid boundary.
+//
+// Otherwise:
+//     i - st.peek()
+//     gives the length of the current continuous
+//     valid parentheses substring.
+//
+// st.push(-1) initially because -1 acts as
+// the boundary before the string starts.

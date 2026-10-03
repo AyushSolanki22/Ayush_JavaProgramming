@@ -1,0 +1,23 @@
+class Solution {
+    public int countKDifference(int[] arr, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        // Store frequency of every number
+        for(int ele : arr) {
+            map.put(ele, map.getOrDefault(ele, 0) + 1);   
+        }
+
+        int count = 0;
+
+        // For every distinct number x, 
+        // look for x + k.
+        for(int x : map.keySet()) {
+
+            if(map.containsKey(x + k)) {
+                count += map.get(x) * map.get(x + k);
+            }
+        }
+
+        return count;
+    }
+}

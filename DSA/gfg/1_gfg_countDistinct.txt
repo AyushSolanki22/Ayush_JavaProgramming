@@ -1,0 +1,37 @@
+//Array Approach -- sorting, two pointer   ///another array approach is by making exists array of 2000 size 
+
+class Solution {   //0(nlogn) T.C
+    public int countDistinct(int arr[]) {
+        Arrays.sort(arr);
+        
+        int i=0; int j=0; 
+        int count=0;
+        while(i<arr.length && j<arr.length){
+            if(arr[i]==arr[j]) i++; 
+            else {
+                count++;
+                j=i;
+            }
+            
+        }
+        
+        count++;
+        return count; 
+    }
+}
+
+
+
+//Hashset approach 
+
+class Solution {   //0(n) T.C
+    public int countDistinct(int arr[]) {
+       HashSet<Integer> set=new HashSet<>();
+       
+       for(int ele : arr){
+           set.add(ele);
+       }
+       
+       return set.size();
+    }
+}
