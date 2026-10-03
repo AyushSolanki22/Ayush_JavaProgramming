@@ -654,4 +654,9 @@ gfg - kth smallest(heap approach), kth largest
 @2 Oct
 Completed 1 hr 26 mins' of heap 1
 Done 3 on leetcode - Last Stone Weight, minimum cost of buying candles with discount, k closest points to origin, Done 1 of leetcode - Find K closest elements
-gfg- nearlySorted, min cost to connect ropes (minCostRopes)
+gfg- nearlySorted, min cost to connect ropes (minCostRopes), k closest in sorted array 
+
+@3 Oct
+Completed 1 hr 2 mins' of hashmap 1
+Done 3 on leetcode - Longest Valid parantheses (daily challenge), find missing elements, count number of pairs with absolute difference K
+gfg- count distinct , two sum (using hashset approach), missing elements in range, all pairs with diff k 

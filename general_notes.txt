@@ -211,6 +211,11 @@
 4. customComparator
 
 
+#23_HashMaps_HashSets
+1. hashsets
+2. setsCollectionFramework
+
+
 ##DSA (LeetCode)
 
 gfg folder
@@ -348,11 +353,9 @@ Recursion Identification, Tower of Hanoi program
 131. minCostCandles
 132. kClosestPoints
 133. findKClosestElements
-
-
-
-
-
+134. longestValidParentheses
+135. missingElements
+136. countPairs_withK_Diff
 
 
 
