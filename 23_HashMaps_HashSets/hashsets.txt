@@ -1,0 +1,25 @@
+# HashSets [Unordered Sets] DS  ((faster))
+
+  //it is a random element storing bag   //unique elements, faster, randomly ordered (not in the order in which they are added)
+
+  //Time Complexity : insertion -- 0(1),, search -- 0(1),, removal -- 0(1)
+  //Space Complexity : 0(n)  -- set size 
+
+
+  //visual representation : array of linkedlists/nodes
+
+  //it is implemented using array, some hashing is done, and thus order in that way only (implicit hashing and all)
+
+
+# TreeSet
+  //unique elements, faster, ascending sorted in order (not in the order in which they are added)
+
+  //Time Complexity : 0(logn) for all insertion, searching, deletion
+
+
+  //it is implemented using bst (balanced binary search tree)
+
+
+# 
+
+
