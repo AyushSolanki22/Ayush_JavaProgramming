@@ -14,5 +14,9 @@ public class setsCollectionFramework {
     System.out.println(set.contains(21));
     System.out.println(set.size());
     System.out.println(set);  //(not in the order in which they are added)
+
+    // for(int ele: set) set.remove(ele);  //will throw Error: ConcurrentModificationException
+    set.clear();   //removes all elements
+    System.out.println(set);
   }
 }

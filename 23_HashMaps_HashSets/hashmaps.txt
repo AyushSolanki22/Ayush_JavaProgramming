@@ -1,0 +1,33 @@
+# HashMaps 
+
+  //it is collection of pairs --- pair is insert in it .... (built in pair class)
+  //key:(value/freq) pair it stores
+
+  //HM<Integer, Integer> map =new HM<>();   
+
+
+  //Note: HashMap, HashSets doesn't need to be only of Integer datatype    eg---  HM<String, Integer>  ,,, hashing therefore happens accordingly
+
+
+  //map.put(key,value); ---- to insert element
+
+  //map.containsKey(key)  ---- to search 
+
+  //map.get(key)  --- to access/retrieve
+
+  //map.keySet()  --- returns key set   
+
+  //map.getOrDefault(ele, 0) --- to get value of same key element
+
+
+  //all operations T.C = 0(1)
+
+
+
+  //we use for each loop to iterate through map 
+
+
+
+// TreeMaps
+
+  //all same , just difference being in T.C ,,,,,, it has T.C of 0(logn) for all operations

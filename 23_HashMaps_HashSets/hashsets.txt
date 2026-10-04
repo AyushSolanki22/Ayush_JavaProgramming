@@ -11,6 +11,9 @@
   //it is implemented using array, some hashing is done, and thus order in that way only (implicit hashing and all)
 
 
+  //we use for each loop to iterate through hashset
+
+
 # TreeSet
   //unique elements, faster, ascending sorted in order (not in the order in which they are added)
 
