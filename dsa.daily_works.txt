@@ -660,3 +660,8 @@ gfg- nearlySorted, min cost to connect ropes (minCostRopes), k closest in sorted
 Completed 1 hr 2 mins' of hashmap 1
 Done 3 on leetcode - Longest Valid parantheses (daily challenge), find missing elements, count number of pairs with absolute difference K
 gfg- count distinct , two sum (using hashset approach), missing elements in range, all pairs with diff k 
+
+@4 Oct 
+Completed 1 hr 40 mins' of hashmap 1 
+Done 1 on leetcode - koko eating Bananas, Posted 1 on leetcode - Find k closest elements
+gfg- most freq character (using hashmap), array subset, anagram (using hashmap)
