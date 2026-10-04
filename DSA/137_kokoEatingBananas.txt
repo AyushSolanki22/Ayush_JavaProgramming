@@ -1,0 +1,119 @@
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+
+        int lo = 1;
+        int hi = -1;
+
+        for(int i = 0; i < piles.length; ++i) {
+            hi = Math.max(hi, piles[i]);
+        }
+
+        int ans = hi;
+
+        while(lo <= hi) {
+
+            int mid = lo + (hi - lo) / 2;
+
+            long x = reqTime(piles, mid);
+
+            if(x <= h) {
+                // mid is a possible speed
+                // try finding an even smaller speed
+                ans = mid;
+                hi = mid - 1;
+            }
+            else {
+                // mid is too slow
+                // need a higher speed
+                lo = mid + 1;
+            }
+        }
+
+        return ans;
+    }
+
+    public long reqTime(int piles[], int mid) {
+
+        long totTime = 0;
+
+        for(int i = 0; i < piles.length; ++i) {
+            // ceil(piles[i] / mid)
+            // totTime += (piles[i] + mid - 1) / mid;
+            totTime+=Math.ceil((double)piles[i]/mid);
+        }
+
+        return totTime;
+    }
+}
+
+
+
+
+// Koko Eating Bananas:
+//
+// We have to find the MINIMUM eating speed k
+// such that Koko can finish all piles within h hours.
+//
+// This is Binary Search on Answer.
+//
+// lo = 1
+// Because minimum possible eating speed is 1.
+//
+// hi = maximum pile
+// Because if Koko eats at maxPile bananas/hour,
+// she can finish every pile in at most 1 hour.
+//
+// mid = candidate eating speed.
+//
+// Now calculate reqTime(mid):
+//
+// reqTime(mid) = total hours required to finish ALL piles
+//                when eating speed = mid.
+//
+// For every pile:
+//
+// time for current pile = ceil(pile / mid)
+//
+// Why ceil?
+// Koko cannot spend fractional hours.
+// If pile=7 and speed=3:
+//
+// Hour 1 -> 3
+// Hour 2 -> 3
+// Hour 3 -> 1
+//
+// So time = 3 = ceil(7/3).
+//
+// Add the time of every pile:
+//
+// totTime += ceil(pile/mid)
+//
+// Because Koko eats one pile at a time,
+// total time = sum of time required for every pile.
+//
+// If reqTime(mid) <= h:
+//     mid is fast enough.
+//     So mid can be an answer.
+//     Store ans = mid.
+//
+//     But we need MINIMUM speed,
+//     so search for an even smaller speed.
+//     hi = mid - 1.
+//
+// If reqTime(mid) > h:
+//     mid is too slow.
+//     Koko needs a higher speed.
+//     Search right.
+//     lo = mid + 1.
+//
+// Pattern:
+//
+// TOO SLOW | TOO SLOW | TOO SLOW | VALID | VALID | VALID
+//                                 ↑
+//                              minimum valid speed
+//
+// reqTime(k) decreases as k increases,
+// so the valid/invalid answers form a monotonic pattern.
+//
+// Time: O(n log(maxPile))
+// Space: O(1)

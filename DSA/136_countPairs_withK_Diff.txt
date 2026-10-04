@@ -14,10 +14,30 @@ class Solution {
         for(int x : map.keySet()) {
 
             if(map.containsKey(x + k)) {
-                count += map.get(x) * map.get(x + k);
+                count += map.get(x) * map.get(x + k);  //freq(x)*freq(x+k)
             }
         }
 
         return count;
     }
 }
+
+
+
+// Brute force asks:
+// "For this element, which other elements should I compare with?"
+//
+// Better approach asks:
+// "For this element x, what exact value would make
+//  |x-y| = k ?"
+//
+// Answer:
+// y = x+k OR x-k
+//
+// To avoid counting the same pair twice,
+// choose one direction:
+// y = x+k
+//
+// HashMap stores frequencies,
+// so if x occurs f1 times and x+k occurs f2 times,
+// they create f1*f2 pairs.d
