@@ -1,0 +1,146 @@
+//Concept 
+
+//just concept being, root is 0, if we move left, we decrease by 1, and if we move right, we increase by 1
+//we will pass these pos (decrease, increase) using hashmap
+
+//we will use breadth first search (bfs), passing node, level to in the queue  --- bfs naturally gives us smaller depth first
+
+//we will not be able to solve using dfs  --- we use bfs as we need top element , not down element whcih may be shadown and as that shadow can come first in casen dfs
+
+
+//0, 1, 2, -1, -2 will be somewhat horizontal distances
+
+
+//HM <Integer, Integer> ,,,,, 1st integer would be for h dist, 2nd for val in node
+
+class Pair{
+    Node node;
+    int dist; 
+    Pair(Node node, int dist){
+        this.node=node; 
+        this.dist=dist;
+    }
+}
+class Solution {
+    public ArrayList<Integer> topView(Node root) {
+        ArrayList<Integer> ans=new ArrayList<>();
+        HashMap<Integer, Integer> map=new HashMap<>();
+        
+        Queue<Pair> q=new LinkedList<>();
+        q.add(new Pair(root,0));
+        
+        int minDist=Integer.MAX_VALUE, maxDist=Integer.MIN_VALUE;
+        while(q.size()>0){
+            Pair front=q.remove();
+            Node node=front.node; 
+            int dist=front.dist;
+            minDist=Math.min(minDist, dist);
+            maxDist=Math.max(maxDist, dist);
+            if(!map.containsKey(dist)) map.put(dist, node.data);  //work
+            if(node.left!=null) q.add(new Pair(node.left, dist-1));
+            if(node.right!=null) q.add(new Pair(node.right, dist+1));
+        }
+        for(int i=minDist; i<=maxDist; i++){
+            ans.add(map.get(i));
+        }
+        
+        return ans;
+    }
+    
+    
+}
+
+
+
+
+// TOP VIEW OF BINARY TREE
+//
+// Concept:
+//
+// Imagine looking at the binary tree from the TOP.
+//
+// We assign a horizontal distance to every node:
+//
+// root = 0
+// left  = dist - 1
+// right = dist + 1
+//
+// So nodes having the same horizontal distance lie on the
+// same vertical line.
+//
+// Example:
+//
+//             1(0)
+//           /     \
+//       2(-1)     3(+1)
+//       /   \     /   \
+//    4(-2) 5(0) 6(0)  7(+2)
+//
+// For every horizontal distance, we only want the TOPMOST node.
+// Therefore:
+//
+// HD -2 -> 4
+// HD -1 -> 2
+// HD  0 -> 1       // 5 and 6 are below/shadowed
+// HD +1 -> 3
+// HD +2 -> 7
+//
+// We use BFS because BFS processes the tree level by level:
+//
+// level 0 -> root
+// level 1 -> children
+// level 2 -> grandchildren
+// ...
+//
+// Therefore, for the same horizontal distance, the first node
+// encountered by BFS is the topmost node.
+//
+// So:
+// if(!map.containsKey(dist))
+//     map.put(dist,node.data);
+//
+// means:
+// "If this horizontal distance has not been occupied yet,
+// store this node. Otherwise, this node is lower/shadowed."
+//
+// We use a Pair because while doing BFS we need both:
+//
+// Pair = (Node, Horizontal Distance)
+//
+// Queue<Pair> stores node + its horizontal distance.
+//
+// HashMap<Integer,Integer>:
+//
+// key   = horizontal distance
+// value = node value
+//
+// Example:
+// -2 -> 4
+// -1 -> 2
+//  0 -> 1
+// +1 -> 3
+// +2 -> 7
+//
+// HashMap doesn't maintain sorted order, so we maintain:
+//
+// minDist = minimum horizontal distance
+// maxDist = maximum horizontal distance
+//
+// Finally iterate:
+//
+// for(int i=minDist; i<=maxDist; i++)
+//     ans.add(map.get(i));
+//
+// This gives the top view from LEFT -> RIGHT.
+//
+// IMPORTANT:
+// BFS is preferred because top view depends on the uppermost node.
+// BFS processes shallower nodes before deeper nodes, so the first
+// node at each horizontal distance is automatically the top node.
+//
+// DFS can also solve the problem, but then we need to explicitly
+// track depth and compare which node has smaller depth.
+// With BFS, this comparison is automatically handled by traversal order.
+//
+// Time Complexity: O(n)
+// Space Complexity: O(n)

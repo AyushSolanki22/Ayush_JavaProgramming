@@ -1,0 +1,194 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        int i = 0;
+        int j = 0;
+        int maxLength = 0;
+
+        while(j < s.length()) {
+
+            char ch = s.charAt(j);
+
+            if(map.containsKey(ch)) {
+                i = Math.max(i, map.get(ch) + 1);
+            }
+
+            map.put(ch, j);
+
+            maxLength = Math.max(maxLength, j - i + 1);
+
+            j++;
+        }
+
+        return maxLength;
+    }
+}
+
+
+
+// Why Math.max()?
+// i is the LEFT boundary of our current valid window.
+// i must NEVER move backward.
+
+
+
+// I want a LONGEST window
+//         ↓
+// The window must have UNIQUE characters
+//         ↓
+// I'll use two pointers i and j
+//         ↓
+// j keeps expanding the window
+//         ↓
+// I need to know whether s[j] appeared before
+//         ↓
+// Use HashMap
+//         ↓
+// Store character → last index
+//         ↓
+// If duplicate:
+//     move i to previousIndex + 1
+//         ↓
+// But i must never move backwards
+//         ↓
+// i = Math.max(i, previousIndex + 1)
+//         ↓
+// Update latest index of character
+//         ↓
+// Calculate window length
+//         ↓
+// Update maximum
+
+
+
+
+// Longest Substring Without Repeating Characters:
+//
+// We need the LONGEST CONTIGUOUS substring
+// having NO duplicate characters.
+//
+// Use:
+//     Sliding Window + HashMap
+//
+// Window:
+//     [i ........ j]
+//
+// i = left boundary
+// j = right boundary
+//
+// Main idea:
+//     j keeps expanding the window.
+//     If a duplicate appears,
+//     move i forward to make the window valid again.
+//
+// HashMap stores:
+//     character -> LAST INDEX where it appeared
+//
+// Why store index?
+//     When a duplicate appears,
+//     we need to know where its previous occurrence was
+//     so that we can move i directly.
+//
+// Example:
+//     s = "abcabcbb"
+//
+//     a -> 0
+//     b -> 1
+//     c -> 2
+//
+// When j reaches the second 'a':
+//
+//     a b c a
+//     ↑     ↑
+//     i     j
+//
+//     Previous 'a' was at index 0.
+//
+//     So move i to:
+//         0 + 1 = 1
+//
+//     Window becomes:
+//         b c a
+//
+// Important:
+//
+//     i = Math.max(i, map.get(ch) + 1);
+//
+// Why Math.max?
+//     i must NEVER move backwards.
+//
+// Example: "abba"
+//
+//     When second 'b' is found:
+//         i moves to 2.
+//
+//     Later when 'a' is found,
+//     its previous index is 0.
+//
+//     0 + 1 = 1
+//
+//     But i is already 2.
+//
+//     We cannot do:
+//         i = 1
+//
+//     Therefore:
+//         i = Math.max(2, 1)
+//           = 2
+//
+// After processing current character:
+//
+//     map.put(ch, j);
+//
+// This updates the character's latest index.
+//
+// Current window length:
+//
+//     j - i + 1
+//
+// Update:
+//
+//     maxLength = Math.max(maxLength, j-i+1);
+//
+//
+//
+// IMPORTANT:
+//     Do NOT do:
+//
+//         i = j;
+//         map.clear();
+//
+//     That completely throws away the current window.
+//
+//     Instead, only move i enough to remove
+//     the duplicate and preserve the useful part.
+//
+//
+//
+// Algorithm:
+//
+//     i = 0
+//     j = 0
+//
+//     while(j < s.length()):
+//
+//         ch = s.charAt(j)
+//
+//         if ch already exists:
+//             i = Math.max(i, map.get(ch)+1)
+//
+//         map.put(ch, j)
+//
+//         maxLength = Math.max(maxLength, j-i+1)
+//
+//         j++
+//
+//     return maxLength
+//
+// Time: O(n)
+//     j moves from 0 to n-1 only once.
+//     HashMap operations are O(1) average.
+//
+// Space: O(min(n, character set size))

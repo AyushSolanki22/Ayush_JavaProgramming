@@ -1,0 +1,227 @@
+class Solution {
+    public int scoreOfParentheses(String s) {
+
+        Stack<Integer> st = new Stack<>();
+        st.push(0);     //parent element --- score storing element  
+
+        for(int i = 0; i < s.length(); ++i) {
+
+            if(s.charAt(i) == '(')  st.push(0);
+            else {
+
+                int insideScore = st.pop();
+
+                int currScore;
+
+                if(insideScore == 0) {
+                    currScore = 1;
+                }
+                else {
+                    currScore = 2 * insideScore;
+                }
+
+                st.push(st.pop() + currScore);  //updating parent parantheses element
+            }
+        }
+
+        return st.peek();
+    }
+}
+
+
+
+
+
+
+// Score of Parentheses:
+//
+// Rules:
+// ()      -> 1
+// AB      -> A + B
+// (A)     -> 2 * A
+//
+// Main idea:
+// Stack stores the SCORE of each parenthesis level,
+// not the indices of brackets.
+//
+// Initially push 0:
+//     This represents the score outside all parentheses.
+//
+// When '(':
+//     We enter a new parenthesis level.
+//     Push 0 because this new level currently has score 0.
+//
+// When ')':
+//     Pop the score calculated inside this pair.
+//
+//     If insideScore == 0:
+//         It means the pair is "()"
+//         So its score is 1.
+//
+//     Else:
+//         It means the pair is "(A)"
+//         So its score is 2 * insideScore.
+//
+//     Add the current expression's score to the parent level.
+//
+// --------------------------------------------------
+//
+// Example 1: s = "(())"
+//
+// Initially:
+//     [0]
+//     ↑
+//     score outside all parentheses
+//
+// First '(':
+//     [0, 0]
+//         ↑
+//         new level
+//
+// Second '(':
+//     [0, 0, 0]
+//            ↑
+//            new inner level
+//
+// First ')':
+//     Pop inner 0
+//     insideScore = 0
+//
+//     Therefore this is "()"
+//     score = 1
+//
+//     Add 1 to the parent level:
+//
+//     [0, 1]
+//
+// Final ')':
+//     Pop 1
+//     insideScore = 1
+//
+//     Therefore this is "(A)" where A = 1
+//     score = 2 * 1 = 2
+//
+//     Add 2 to the outside level:
+//
+//     [2]
+//
+// Answer = 2
+//
+//
+// --------------------------------------------------
+//
+// Example 2: s = "()()"
+//
+// Initially:
+//     [0]
+//
+// First '(':
+//     [0, 0]
+//
+// First ')':
+//     Pop 0
+//     insideScore = 0
+//     Therefore "()" = 1
+//
+//     Add 1 to parent:
+//     [1]
+//
+// Second '(':
+//     [1, 0]
+//
+// Second ')':
+//     Pop 0
+//     insideScore = 0
+//     Therefore "()" = 1
+//
+//     Add 1 to parent:
+//     [2]
+//
+// Answer = 2
+//
+// Here we DON'T break after the first "()"
+// because another expression "()" can come after it.
+//
+// --------------------------------------------------
+//
+// Example 3: s = "(()())"
+//
+// Initially:
+//     [0]
+//
+// '(':
+//     [0, 0]
+//
+// '(':
+//     [0, 0, 0]
+//
+// ')':
+//     innerScore = 0
+//     "()" = 1
+//     Add to parent:
+//     [0, 1]
+//
+// '(':
+//     [0, 1, 0]
+//
+// ')':
+//     innerScore = 0
+//     "()" = 1
+//     Add to parent:
+//     [0, 2]
+//
+// Final ')':
+//     innerScore = 2
+//     We have "(A)" where A = 2
+//
+//     score = 2 * 2 = 4
+//     Add to outside:
+//     [4]
+//
+// Answer = 4
+//
+//
+// --------------------------------------------------
+//
+// Important mental model:
+//
+// Every '(' creates a NEW SCORE LEVEL.
+// Every ')' finishes the CURRENT LEVEL.
+//
+// On ')' we:
+//
+//     1. Take the score inside.
+//     2. If score == 0:
+//            current expression = "()"
+//            score = 1
+//        Else:
+//            current expression = "(A)"
+//            score = 2 * A
+//     3. Add that score to the parent level.
+//
+//
+//
+// Why Stack?
+//
+// Because parentheses are nested.
+//
+// The most recently opened '(' must be completed first.
+// This is exactly LIFO behaviour:
+//
+//     Last In → First Out
+//
+// Therefore Stack is naturally suitable.
+//
+//
+// Important:
+// Do NOT store bracket indices.
+// We need the SCORE calculated inside each level,
+// not the position of the bracket.
+//
+//
+// Time Complexity: O(n)
+//     Every character is processed once.
+//
+// Space Complexity: O(n)
+//     In the worst case, all parentheses are nested,
+//     so the stack can contain O(n) elements.
