@@ -662,6 +662,15 @@ Done 3 on leetcode - Longest Valid parantheses (daily challenge), find missing e
 gfg- count distinct , two sum (using hashset approach), missing elements in range, all pairs with diff k 
 
 @4 Oct 
-Completed 1 hr 40 mins' of hashmap 1 
+Finished hashmap 1 (1 hr 40 mins')
 Done 1 on leetcode - koko eating Bananas, Posted 1 on leetcode - Find k closest elements
 gfg- most freq character (using hashmap), array subset, anagram (using hashmap)
+
+@5 Oct 
+0 mins (sleepy, tired)
+Posted 1 on leetcode - Score Of Parantheses (tried doing, daily challenge )
+
+@6 Oct 
+Completed 1 hr 2 mins' of HashMap 2
+Done 1 on leetcode - longest substring without repeating characters
+gfg - count equal pairs in string, top view of binary tree 

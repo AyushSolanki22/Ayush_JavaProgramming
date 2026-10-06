@@ -214,6 +214,7 @@
 #23_HashMaps_HashSets
 1. hashsets
 2. setsCollectionFramework
+3. hashMaps - .txt, .java
 
 
 ##DSA (LeetCode)
@@ -357,8 +358,8 @@ Recursion Identification, Tower of Hanoi program
 135. missingElements
 136. countPairs_withK_Diff
 137. kokoEatingBananas
-
-
+138. scoreOfParentheses
+139. longestSubstring_withoutDuplicates
 
 
 
