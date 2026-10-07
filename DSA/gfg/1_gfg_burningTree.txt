@@ -1,0 +1,61 @@
+class Pair{
+    Node node; 
+    int time; 
+    Pair(Node node, int time){
+        this.node=node; 
+        this.time=time;
+    }
+}
+
+
+
+class Solution {
+    static Node start;
+    public int minTime(Node root, int target) {
+        //understand burning of tree concept
+        //make morphed tree ---- return levels-1
+         
+        //storing parent node for all nodes in 2nd in hashmap --- using recursion, make them store in hashmap
+         
+        //we will be using bfs using queue (not conventional bfs- taking root) ,,,,,, (node, level)  --- put target node,, and put left, right ,parent repeatedly ,, && here, level will correspond to time
+        
+        //we will also maintain burnt nodes in another hashset (burned)
+        
+        
+        start=null; 
+        HashMap<Node, Node> parentMap=new HashMap<>();   // (node, parent )
+        dfs(root, target, parentMap);
+         
+        Queue<Pair> q=new LinkedList<>();  //(node, level/time)
+        q.add(new Pair(start, 0));
+        
+        HashSet<Node> burnt=new HashSet();
+        
+        int time=0;
+        while(q.size()>0){
+            Pair front=q.remove();
+            Node node=front.node;
+            time=front.time; 
+            burnt.add(node);
+            if(node.left!=null && !(burnt.contains(node.left))) q.add(new Pair(node.left, time+1));
+            if(node.right!=null && !(burnt.contains(node.right))) q.add(new Pair(node.right, time+1));
+            
+            Node parent=parentMap.get(node);
+            if(parent!=null && !(burnt.contains(parent))) q.add(new Pair(parent, time+1));
+        }
+        
+        return time; 
+    }
+    
+    private static void dfs(Node root, int target, HashMap<Node, Node> parentMap){
+        if(root==null) return; 
+        
+        if(root.data==target) start=root; 
+        
+        if(root.left!=null) parentMap.put(root.left, root);  //putting node along with its parent in hashamp
+        if(root.right!=null) parentMap.put(root.right, root);
+        
+        dfs(root.left, target, parentMap);
+        dfs(root.right, target, parentMap);
+    }
+}

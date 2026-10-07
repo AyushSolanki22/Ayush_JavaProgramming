@@ -1,0 +1,39 @@
+
+class Pair{
+    Node node; 
+    int dist; 
+    Pair(Node node, int dist){
+        this.node=node; 
+        this.dist=dist;
+    }
+}
+
+class Solution {
+    public ArrayList<Integer> bottomView(Node root) {
+        ArrayList<Integer> ans=new ArrayList<>();
+        HashMap<Integer, Integer> map=new HashMap<>();  //(dist, node value)
+        
+        Queue<Pair> q=new LinkedList<>();   //(node, dist)
+        q.add(new Pair(root, 0));
+        
+        int minDist=Integer.MAX_VALUE, maxDist=Integer.MIN_VALUE;
+        while(q.size()>0){
+            Pair front=q.remove(); 
+            Node node=front.node; 
+            int dist=front.dist; 
+            minDist=Math.min(minDist, dist);
+            maxDist=Math.max(maxDist, dist);
+            map.put(dist, node.data);    //will add bottom most element with the same distance
+            if(node.left!=null) q.add(new Pair(node.left, dist-1));
+            if(node.right!=null) q.add(new Pair(node.right, dist+1));
+        }
+        
+        for(int i=minDist; i<=maxDist; ++i){
+            ans.add(map.get(i));
+        }
+        
+        return ans;
+        
+        
+    }
+}
