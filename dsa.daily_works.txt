@@ -674,3 +674,8 @@ Posted 1 on leetcode - Score Of Parantheses (tried doing, daily challenge )
 Completed 1 hr 2 mins' of HashMap 2
 Done 1 on leetcode - longest substring without repeating characters
 gfg - count equal pairs in string, top view of binary tree 
+
+@7 Oct
+Completed 1 hr 38 mins' of HashMap 2
+Done 1 on leetcode - copy list with random pointer (hashmap approach)
+gfg- bottom view of binary tree, burning tree, clone list with next and random
