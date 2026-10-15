@@ -679,3 +679,37 @@ gfg - count equal pairs in string, top view of binary tree
 Completed 1 hr 38 mins' of HashMap 2
 Done 1 on leetcode - copy list with random pointer (hashmap approach)
 gfg- bottom view of binary tree, burning tree, clone list with next and random
+
+@8 Oct
+Finished HashMap 2 (44 mins')
+Posted 1 on leetcode - Top k frequent Elements
+gfg- count pairs divisible by k
+
+@9 Oct
+0 mins
+Reposted 1 on leetcode - Top K freq Elements
+
+@10 Oct
+0 mins
+Reposted 1 on leetcode - Top K freq Elements
+
+@11 Oct
+0 mins
+Posted 1 on leetcode - Score Validator
+
+@12 Oct
+0 mins
+Posted 1 on leetcode - Add Two numbers
+
+@13 Oct
+0 mins 
+Posted 1 on leetcode - seperate the digits in an array
+
+@14 Oct
+0 mins 
+Reposted 1 on leetcode - seperate the digits in an array 
+
+@15 Oct 
+Finished Heap 1 (18 mins'), Completed 24 mins' of Heap II
+Posted 1 on leetcode - SubArrays Distinct ELement Sum of Squares I, Done 1 on leetcode- Top K frequent Elements 
+gfg- top k frequent in array, isBinaryTree_Heap, 
