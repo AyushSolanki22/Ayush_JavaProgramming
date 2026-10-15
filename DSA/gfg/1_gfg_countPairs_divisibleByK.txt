@@ -1,0 +1,92 @@
+class Solution {
+    public int countKdivPairs(int[] arr, int k) {
+        //k=5    13 17 =30    instead of 13, 17 we in hashmap, put 13%5=3 + 17%5=2 =5  ((valid pair))
+        
+        //if sum of 2 nos. is divisible by k, then sum of nos. mod k will be equal to k
+        //edge case -- 15+35=50     0+0!=5   //special case
+            
+            
+        //modifying use of elements of array (each element%k) 
+        //create hashmap for storing elements with their freq now
+        //count pair when along before storing element
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int count = 0;
+
+        for(int i = 0; i < arr.length; ++i) {
+            int rem = arr[i] % k;
+
+            int pair = (k - rem) % k;
+
+            if(map.containsKey(pair))
+                count += map.get(pair);
+
+            map.put(rem, map.getOrDefault(rem, 0) + 1);
+        }
+
+
+        return count;
+    }
+}
+
+For every current number :
+
+1. Calculate its remainder.
+2. Calculate what remainder it needs.
+3. Ask the HashMap how many previous elements have that remainder.
+4. Add that number to answer. (count)
+5. Store the current remainder in the HashMap.
+
+
+
+
+
+// Count pairs whose sum is divisible by K:
+//
+// Don't care about actual values.
+// Only care about their remainders.
+//
+// a % k = r
+//
+// To make:
+// (a+b) % k = 0
+//
+// b must have remainder:
+// (k-r)%k
+//
+// So for every element:
+//
+// rem    = arr[i] % k
+// needed = (k-rem)%k
+//
+// Ask HashMap:
+// "How many PREVIOUS elements have remainder = needed?"
+//
+// count += frequency of needed remainder
+//
+// Then store current remainder.
+//
+// Why previous elements?
+// So every pair is counted exactly once.
+//
+// Time: O(n) average
+// Space: O(k) at most
+
+
+                    CURRENT NUMBER
+                          ↓
+                     arr[i] % k
+                          ↓
+                       remainder
+                          ↓
+              ┌───────────┴───────────┐
+              ↓                       ↓
+       What do I need?          Store myself
+              ↓                       ↓
+     (k - remainder) % k       map[remainder]++
+              ↓
+       Search previous
+       matching remainders
+              ↓
+      count += frequency

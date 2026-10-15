@@ -1,0 +1,84 @@
+/*
+class Node {
+    int data;
+    Node left,right;
+    Node(int d){
+        data=d;
+        left=right=null;
+    }
+}
+*/
+
+class Solution {
+    static int size;
+    public boolean isHeap(Node tree) {
+        size=size(tree);
+        return isMaxHeap(tree) && isCBT(tree, 1);
+    }
+    
+    public boolean isMaxHeap(Node tree){
+        if(tree==null) return true; 
+        
+        if(tree.left==null && tree.right==null) return true; 
+        
+        if(tree.left==null) return false;  //if no left, no complete too 
+        
+        if(tree.right==null){
+            if(tree.left.data>tree.data) return false; 
+            else return true; 
+        }
+        
+        if(tree.data<tree.left.data || tree.data<tree.right.data) return false; 
+        
+        return isMaxHeap(tree.left) && isMaxHeap(tree.right);
+    }
+    
+    public boolean isCBT(Node tree, int idx){  //to check if it is cbt -- through implementing heap using array ---- we can also using array, go to childs, parent without need of recursion
+         if(tree==null) return true; 
+         
+         if(idx>size) return false; 
+         
+         return isCBT(tree.left, 2*idx) && isCBT(tree.right, 2*idx+1);
+         
+         
+         
+         
+    }
+    
+    public int size(Node tree){
+        if(tree==null) return 0;
+        
+        return 1+size(tree.left)+size(tree.right);
+    }
+}
+
+
+
+// Is Binary Tree Heap
+//
+// A valid heap needs TWO properties:
+//
+// 1. COMPLETE BINARY TREE
+//    Every level is full except possibly the last.
+//    The last level is filled from LEFT to RIGHT.
+//
+// 2. MAX-HEAP PROPERTY
+//    Every parent >= its children.
+//
+// Array representation using 1-based indexing:
+//
+// left child  = 2*i
+// right child = 2*i + 1
+//
+// For a complete tree with n nodes:
+// All indices from 1 to n must be occupied.
+// No gaps are allowed.
+//
+// Approach:
+// 1. Check that the tree is complete.
+// 2. Check that every parent >= its children.
+//
+// Both conditions must be true.
+//
+// Time: O(n)
+// Space: O(n) for BFS, or O(h) recursion

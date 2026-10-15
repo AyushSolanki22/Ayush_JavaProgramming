@@ -1,0 +1,85 @@
+class Pair {
+    int val;
+    int freq;
+
+    Pair(int val, int freq) {
+        this.val = val;
+        this.freq = freq;
+    }
+}
+
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+
+        //Min-heap
+        PriorityQueue<Pair> p=new PriorityQueue<>((a,b)->{
+            if (a.freq != b.freq) {
+                 return Integer.compare(a.freq, b.freq);
+            }
+            return Integer.compare(a.val, b.val);
+        });
+
+        //frequency map
+        HashMap<Integer,Integer> map=new HashMap<>(); 
+        for(int ele: nums){
+            map.put(ele, map.getOrDefault(ele, 0)+1);
+        }
+
+        
+        for (int x : map.keySet()) {
+            p.add(new Pair(x, map.get(x)));
+
+            if (p.size()>k)  p.remove();
+        }
+
+        int ans[]=new int[k];
+        for(int i=0; i<k; ++i){
+            ans[i]=p.remove().val;
+        }
+
+        return ans;
+
+    }
+}
+
+
+
+
+// TOP K FREQUENT ELEMENTS
+//
+// Ranking:
+// 1. Higher frequency is better.
+// 2. If frequency ties, larger value is better.
+//
+// Step 1: HashMap stores element -> frequency.
+//
+// Step 2: Pair stores:
+// val  = element
+// freq = frequency
+//
+// Step 3: Min heap with custom comparator.
+//
+// Comparator:
+// First compare frequency in ascending order.
+// If frequencies tie, compare values in ascending order.
+//
+// Therefore, the worst candidate gets highest removal priority:
+// - Lowest frequency.
+// - If tied, smallest value.
+//
+// Step 4: For each unique element:
+// Add Pair(element, frequency).
+// If heap size > K, remove the top (worst candidate).
+//
+// Step 5: After processing all unique elements,
+// heap contains the K best candidates.
+//
+// Step 6: Extract Pair.val into the answer array.
+//
+// Time: O(n + u log k), where u = unique elements.
+// Space: O(u + k).
+//
+// Main mental model:
+// Keep K best candidates.
+// When a new candidate arrives, remove the worst.
+// Min heap keeps the worst at the top.
