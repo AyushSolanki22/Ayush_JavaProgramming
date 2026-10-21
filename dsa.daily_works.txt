@@ -713,3 +713,27 @@ Reposted 1 on leetcode - seperate the digits in an array
 Finished Heap 1 (18 mins'), Completed 24 mins' of Heap II
 Posted 1 on leetcode - SubArrays Distinct ELement Sum of Squares I, Done 1 on leetcode- Top K frequent Elements 
 gfg- top k frequent in array, isBinaryTree_Heap, 
+
+@16 Oct 
+0 mins 
+Posted 1 on leetcode - zig zag conversion
+
+@17 Oct
+Completed 25 mins' of Heap II
+Posted 1 on leetcode - longest palindromic substring
+gfg- BST_toMaxHeap
+
+@18 Oct
+0 mins
+Reposted 1 on leetcode- score Validator
+
+@19 Oct
+0 mins
+Posted 1 on leetcode - regular expression matching
+
+@20 Oct
+0 mins
+
+@21 Oct
+Completed 1 hr 41 mins' of Heap 2
+Done 1 on leetcode - Find median from data stream
