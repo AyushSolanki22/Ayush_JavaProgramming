@@ -1,0 +1,128 @@
+//One Approach
+//BST to special max heap (((special -- special condition --> that left subtree values should be smaller than right subtree values)))
+
+class Solution {
+    static int idx;
+    public static void convertToMaxHeap(Node root) {
+        int arr[]=new int[size(root)];
+        idx=0; 
+        inorder(root, arr);
+        
+        constructMaxHeap(root, arr, 0, arr.length-1);
+    }
+    
+    public static void constructMaxHeap(Node root, int arr[], int lo, int hi){
+        if(root==null) return; 
+        
+        // The root is arr[hi], so the remaining values are arr[lo...hi-1]. You need to divide those values according to the number of nodes in the existing left subtree, not simply use the midpoint of the whole range.
+        // Why? The existing tree's structure determines how many values belong to each subtree. If the left subtree has three nodes and the right subtree has three nodes, each needs three values. But for an uneven tree, blindly splitting at the midpoint can assign the wrong number of values.
+        
+        int leftSize = size(root.left);
+
+        // Largest value in this range becomes the root.
+        root.data = arr[hi];
+
+        // Left subtree gets the first leftSize values.
+        constructMaxHeap(root.left, arr, lo, lo + leftSize - 1);
+
+        // Right subtree gets the remaining values before hi.
+        constructMaxHeap(root.right, arr, lo + leftSize, hi - 1);
+    }
+    
+    public static int size(Node root){
+        if(root==null) return 0; 
+        
+        return 1+size(root.left)+size(root.right);
+    }
+        
+    public static void inorder(Node root, int arr[]){
+        if(root==null) return; 
+        
+        inorder(root.left, arr);
+        arr[idx++]=root.data;
+        inorder(root.right, arr);
+    }
+}
+
+
+
+
+
+
+// BST TO MAX HEAP
+//
+// Step 1:
+// Perform inorder traversal of BST.
+// Inorder = LEFT -> ROOT -> RIGHT.
+// Since it is a BST, inorder gives sorted values.
+//
+// Example:
+// [1, 2, 3, 4, 5, 6, 7]
+//
+// Step 2:
+// Choose arr[hi] as the root.
+// It is the largest element in the current segment.
+//
+// Step 3:
+// Divide the remaining elements into left and right segments.
+//
+// Step 4:
+// Recursively construct both subtrees using the same rule.
+//
+// Why does it satisfy max-heap order?
+// The root of each segment is its largest value,
+// so it is >= every value in its left and right subtrees.
+//
+// Important:
+// The output must also have the complete-binary-tree shape
+// required by a conventional binary heap.
+//
+// Time: O(n) for inorder traversal + O(n) for construction.
+// Extra space: O(n) for the array, plus recursion stack.
+
+
+
+
+
+
+//Another Approach
+
+//get inorder in one array 
+//left-right-root ((post order)) --- using post order traversal, fill on the inorder values  -----(post order wise)
+
+
+//BST to special max heap (((special -- special condition --> that left subtree values should be smaller than right subtree values)))
+
+class Solution {
+    static int idx;
+    public static void convertToMaxHeap(Node root) {
+        int arr[]=new int[size(root)];
+        idx=0; 
+        inorder(root, arr);
+        
+        idx=0;
+        postOrder(root, arr);
+    }
+    
+    public static void postOrder(Node root, int arr[]){
+        if(root==null) return; 
+        
+        postOrder(root.left, arr);
+        postOrder(root.right, arr);
+        root.data=arr[idx++];
+    }
+    
+    public static int size(Node root){
+        if(root==null) return 0; 
+        
+        return 1+size(root.left)+size(root.right);
+    }
+        
+    public static void inorder(Node root, int arr[]){
+        if(root==null) return; 
+        
+        inorder(root.left, arr);
+        arr[idx++]=root.data;
+        inorder(root.right, arr);
+    }
+}

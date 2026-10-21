@@ -16,7 +16,7 @@ class Solution {
         return isMaxHeap(tree) && isCBT(tree, 1);
     }
     
-    public boolean isMaxHeap(Node tree){
+    public boolean isMaxHeap(Node tree){   //MaxHeap Property
         if(tree==null) return true; 
         
         if(tree.left==null && tree.right==null) return true; 
@@ -34,14 +34,12 @@ class Solution {
     }
     
     public boolean isCBT(Node tree, int idx){  //to check if it is cbt -- through implementing heap using array ---- we can also using array, go to childs, parent without need of recursion
+
          if(tree==null) return true; 
          
          if(idx>size) return false; 
          
          return isCBT(tree.left, 2*idx) && isCBT(tree.right, 2*idx+1);
-         
-         
-         
          
     }
     

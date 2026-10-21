@@ -1,0 +1,87 @@
+class MedianFinder {  //we are creating some data structure
+    PriorityQueue<Integer> minHeap=new PriorityQueue<>();
+    PriorityQueue<Integer> maxHeap=new PriorityQueue<>(Collections.reverseOrder());
+   
+    public MedianFinder() {
+        
+    }
+    
+    //smaller n/2 elements - maxHeap,,,, larger n/2 elements - minHeap
+
+    //if element being added is more than max of smaller elements, then it is added to larger elements,, and vice versa
+    //after adding , remember -- if difference of size >1 ,, peek of more ele gets removed and added to another
+    public void addNum(int num) {
+        if(maxHeap.size()==0) {   //base
+            maxHeap.add(num);  
+            return;
+        }
+
+        if(num>maxHeap.peek()) minHeap.add(num); 
+        else maxHeap.add(num);
+
+        //after adding handling ((if size diff>1))
+        int maxSize=maxHeap.size();
+        int minSize=minHeap.size();
+        if(Math.abs(minSize-maxSize)>1) {
+            if(minSize>maxSize) maxHeap.add(minHeap.remove());
+            else minHeap.add(maxHeap.remove());
+        }
+
+    }
+    
+    //for finding median simultaneously, having the array divided into 2 parts, smaller elements, larger elements ,, maxHeap for smaller elements, minHeap for larger elements,,,,,, 
+    //in case of even elements, so for median, max element from smaller elements, min elemenet from larger elements to get mean 
+    //in case of odd elements, -- both heaps size are unequal, --- one with more elements' peek will be the median
+    public double findMedian() {
+        int maxSize=maxHeap.size();
+        int minSize=minHeap.size();
+        if(maxSize > minSize) return maxHeap.peek();
+        else if(minSize > maxSize) return minHeap.peek();
+        else{
+            return (minHeap.peek()+maxHeap.peek() )/2.0;
+        }
+    }
+}
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.addNum(num);
+ * double param_2 = obj.findMedian();
+ */
+
+
+
+
+// MEDIAN FROM DATA STREAM — TWO HEAPS
+//
+// CONCEPT:
+// We receive numbers one by one and need to find the median
+// at any time, without sorting the entire collection repeatedly.
+//
+// APPROACH:
+// Divide all numbers into two halves:
+//
+// 1. maxHeap -> smaller half of numbers.
+//    Its top gives the LARGEST element in the smaller half.
+//
+// 2. minHeap -> larger half of numbers.
+//    Its top gives the SMALLEST element in the larger half.
+//
+// WHY TWO HEAPS?
+// The median depends on the middle element(s) of sorted data.
+// We don't need the complete sorted order.
+// We only need the boundary between the smaller and larger halves.
+//
+// IMPORTANT INVARIANTS:
+//
+// 1. ORDERING:
+//    maxHeap.peek() <= minHeap.peek()
+//
+//    Every element in the smaller half must be <= every element
+//    in the larger half.
+//
+// 2. BALANCE:
+//    abs(maxHeap.size() - minHeap.size()) <= 1
+//
+//    The heaps
