@@ -217,6 +217,12 @@
 2. setsCollectionFramework
 3. hashMaps - .txt, .java
 
+#24_BitwiseManipulation
+1. bitwise_manipulation 
+2. bitwiseAndOrXor
+3. DataTypes
+
+
 
 ##DSA (LeetCode)
 
@@ -363,7 +369,8 @@ Recursion Identification, Tower of Hanoi program
 139. longestSubstring_withoutDuplicates
 140. topKFrequentElements
 141. medianFrom_DataStream
-
+142. smallestRange_kLists
+143. singleNumber
 
 
 

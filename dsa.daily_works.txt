@@ -737,3 +737,13 @@ Posted 1 on leetcode - regular expression matching
 @21 Oct
 Completed 1 hr 41 mins' of Heap 2
 Done 1 on leetcode - Find median from data stream
+
+@22 Oct
+Finished Heap 2 (30 mins')
+Done 1 on leetcode - smallestRange_kLists
+gfg - smallest range in k lists
+
+@23 Oct
+Completed 1 hr 27 mins' of Bitwise Manipulation
+Done 1 on leetcode - Single number
+gfg - binary_to_decimal, swap2nos
