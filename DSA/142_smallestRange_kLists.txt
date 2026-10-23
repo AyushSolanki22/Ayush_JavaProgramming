@@ -1,0 +1,116 @@
+//heap +greedy approach + Sliding the range forward.
+
+//range=[a,b]
+
+//minimise 'b-a' -- smallest range   --> increase a or decrease b
+//we cannot decrease b each time -- as it's smallest in certain list, or we have already explored prev options
+
+//we will maintain minHeap containing k elements,, and maintain max variable,,range(each time)=heap top, max ,,,,,maintain smallest range too
+
+
+class Pair {
+    int val;
+    int row;
+    int col;
+
+    Pair(int val, int row, int col) {
+        this.val = val;
+        this.row = row;
+        this.col = col;
+    }
+}
+
+class Solution {
+    public int[] smallestRange(List<List<Integer>> nums) {
+        int k = nums.size();
+
+        PriorityQueue<Pair> pq = new PriorityQueue<>(
+            (a, b) -> Integer.compare(a.val, b.val)
+        );
+
+        int max = Integer.MIN_VALUE;
+
+        // Step 1: Add the first element of every list.
+        for (int i = 0; i < k; i++) {
+            pq.add(new Pair(nums.get(i).get(0), i, 0));
+            max = Math.max(max, nums.get(i).get(0));
+        }
+
+        // Step 2: Initialize the best range.
+        int start = 0;
+        int end = Integer.MAX_VALUE;
+        long minRange = Long.MAX_VALUE;
+
+        // Step 3: Greedily advance the current minimum.
+        while (pq.size() == k) {
+
+            Pair curr = pq.remove();
+
+            int min = curr.val;
+            long range = (long) max - min;
+
+            if (range < minRange) {
+                minRange = range;
+                start = min;
+                end = max;
+            }
+
+            int nextCol = curr.col + 1;
+            int row = curr.row;
+
+            // If this list is exhausted, no valid selection
+            // of one element from every list remains.
+            if (nextCol == nums.get(row).size()) {
+                break;
+            }
+
+            int nextVal = nums.get(row).get(nextCol);
+
+            // Advance only the list that supplied the minimum.
+            pq.add(new Pair(nextVal, row, nextCol));
+
+            // Update the maximum if the new element is larger.
+            max = Math.max(max, nextVal);
+        }
+
+        int ans[] = new int[2];
+        ans[0]=start;
+        ans[1]=end;
+
+        return ans;
+    }
+}
+
+
+
+
+
+
+// Smallest Range in K Sorted Lists
+//
+// Goal: Find [a,b] containing at least one element from every list,
+// minimizing b-a.
+//
+// Greedy + Min Heap:
+//
+// 1. Put the first element of every list into a min heap.
+// 2. Track max = maximum among the currently selected elements.
+// 3. Heap top gives min = smallest currently selected element.
+// 4. Current range = [min,max].
+// 5. Update the best range if its width is smaller.
+// 6. Remove the minimum and advance to the next element
+//    in the SAME list.
+// 7. Insert that next element and update max.
+// 8. Repeat until the list supplying the minimum is exhausted.
+//
+// Why advance only the minimum?
+// Advancing any other element cannot decrease the current minimum
+// or the maximum, so it cannot improve the range.
+//
+// Pair stores:
+// val = current value
+// row = which list
+// col = index within that list
+//
+// Time: O(kn log k)
+// Space: O(k)
