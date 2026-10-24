@@ -1,0 +1,16 @@
+class Solution {
+    static int setKthBit(int n, int k) {
+        //concept of creating a bit mask 
+        
+        //we create a special binary number having zeroes at all digits except 1 at kth digit 
+        //and add or use the bitwise or operator in both numbers to get the desired result
+        
+        //a special binary number is simple 1<<k   ((1 left shift k))
+        
+        
+        int special=1<<k;
+        
+        return (n|special);
+        
+    }
+}

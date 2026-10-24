@@ -1,0 +1,10 @@
+class CheckBit {
+    static boolean checkKthBit(int n, int k) {
+        //right shift the number so that last k digits get removed (in the binary form )
+        
+        //imp concept -- lsb pe 0 h in binary form to even number hota h vo decimal form mai,,, 1 h to vo odd number hota hai decimal form mai
+
+        return ((n>>k)%2)==1;
+        
+    }
+}

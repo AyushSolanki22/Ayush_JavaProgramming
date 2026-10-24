@@ -1,0 +1,54 @@
+class Solution {
+    int replaceBit(int n, int k) {
+        int totalBits = 32 - Integer.numberOfLeadingZeros(n);
+
+        if (k > totalBits) return n;
+
+        int position = totalBits - k;
+        return n & ~(1 << position);
+    }
+    
+}
+
+
+// Replace the kth bit (1-based, counted from the left) with 0.
+//
+// 1. Find the number of significant bits in n.
+// 2. If k exceeds the number of bits, return n unchanged.
+// 3. Convert the left-based position to a right-based index:
+//    position = totalBits - k
+// 4. Create a mask with 1 at that position using (1 << position).
+// 5. Invert the mask so the target bit is 0 and all others are 1.
+// 6. AND with n to clear only the target bit.
+//
+// Example: n = 13 (1101), k = 2
+// totalBits = 4
+// position = 4 - 2 = 2
+//
+//   1101
+// & 1011
+//   ----
+//   1001 = 9
+//
+// Time: O(1)
+// Space: O(1)
+
+
+
+
+// Integer.numberOfLeadingZeros(n)
+//
+// 1. Java int always uses 32 bits.
+// 2. This method counts the zeros before the first 1,
+//    starting from the leftmost bit.
+// 3. Subtracting that count from 32 gives the number
+//    of significant bits in a positive integer.
+//
+// Example: n = 13
+// Binary = 1101
+// Leading zeros = 28
+// Total significant bits = 32 - 28 = 4
+//
+// To find the kth bit from the left (1-based):
+// position = totalBits - k
+a

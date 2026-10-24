@@ -4,8 +4,9 @@
 
 
 # Bitwise & , Bitwise |, Bitwise ^ 
-  -- 1|x = 1
-  -- 0&x = 0 
+  -- 1|x = 1    ,,,  0|x = x
+  -- 0&x = 0    ,,,  1&x = x
+
   
   -- 0^x = x, x belongs to [0,1]
   -- x^x = 0,  where x belong to integers
@@ -41,4 +42,16 @@
   -- right shift shift the digits to right ((kills the operand number of rightmost digits))
   
 
+  --2's power === 1<<n  ((**imp concept 2^0=1 , 2^1=10, 2^2=100, 2^3=1000 , and so on))
 
+
+
+# toggle kth bit 
+  -- return n^(1<<k)
+
+
+# T.C
+  -- n=2^k --> uses k+1 bits
+  -- k=logn  T.C
+
+  
