@@ -747,3 +747,8 @@ gfg - smallest range in k lists
 Completed 1 hr 27 mins' of Bitwise Manipulation
 Done 1 on leetcode - Single number
 gfg - binary_to_decimal, swap2nos
+
+@24 Oct
+Completed 1 hr 24 mins' of Bitwise Manipulation
+Done 3 on leetcode - powers of 2, Number of 1 bits, Minimum bit flips to convert number
+gfg - checkKthBit (set or not), setKthBit, unsetKthBit , set rightmost unset bit, power of 2

@@ -221,7 +221,7 @@
 1. bitwise_manipulation 
 2. bitwiseAndOrXor
 3. DataTypes
-
+4. powersOf2
 
 
 ##DSA (LeetCode)
@@ -371,7 +371,9 @@ Recursion Identification, Tower of Hanoi program
 141. medianFrom_DataStream
 142. smallestRange_kLists
 143. singleNumber
-
+144. powerof2
+145. numberOf1bits
+146. minimumBitFlips_toConvertNumber
 
 
 
