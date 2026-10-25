@@ -1,0 +1,92 @@
+class Solution {
+    public int matrixScore(int[][] arr) {
+        //Step 1. first work is to have all elements of the 0th column be 1 ((imp. of msb to be 1 for having highest possible score))
+
+        //Step 2. then, har us col ko flip kroo jisme number of zeroes are > no. of 1
+
+        //Step 3. calculate possible score using conversion of binary to decimal (col wise) from as a whole 2d array...  like for example 1 : 1*3 (3 1's) + 2*2 (2 1's) + 4*2 (2 1's) + 8*3 (3 1's)
+
+        int m=arr.length, n=arr[0].length; 
+
+        //0th col of matrix should have all 1's
+        for(int i=0; i<m; ++i){
+            if(arr[i][0]==0) {  //flip that row
+                for(int j=0; j<n; ++j){
+                    arr[i][j]^=1;    //applying bit manipulation to flip the row
+                    // arr[i][j]=1-arr[i][j];  //applying maths trick
+                }
+            }
+        }
+
+        //har us col ko flip karo jisme no. of 0's > no. of 1's
+        for(int j=0; j<n; ++j){  //col wise travel
+            int zeroes=0, ones=0;
+            for(int i=0; i<m; ++i){
+                if(arr[i][j]==0) zeroes++;
+                else ones++;
+            }
+            if(zeroes>ones){  //flip that column 
+                for(int i=0; i<m; ++i){
+                    arr[i][j]^=1;
+                }
+            }
+
+        }
+        
+        //calculating score
+        int sum=0; 
+        int pow=1;  //pow of 2
+
+        for(int j=n-1; j>=0; j--){  //col wise travel for calculating score
+            int ones=0;
+            for(int i=0; i<m; ++i){
+                if(arr[i][j]==1) ones++;
+            }
+            sum+=ones*pow;
+            pow*=2;
+        }
+
+        return sum;
+    }
+}
+
+
+
+
+
+
+
+// Score After Flipping Matrix
+// Goal: Maximize the sum of the binary numbers represented by each row.
+
+// Greedy Approach:
+// Step 1: Make the first column all 1s.
+// Why? The first column represents the MSB, which has the highest place value.
+// Making every MSB 1 maximizes the contribution of every row.
+
+// Step 2: For every remaining column, count the number of 0s and 1s.
+// If zeroes > ones, flip that column.
+// Why? Flipping makes the majority of bits in that column become 1s.
+// This maximizes the contribution of that column to the total score.
+
+// Step 3: Calculate the total score column by column.
+// The rightmost column has place value 2^0, the next has 2^1, and so on.
+// Therefore, each column contributes: numberOfOnes * placeValue.
+// Add all column contributions to obtain the maximum score.
+
+// Why does the greedy approach work?
+// Each column contributes independently to the total score.
+// The first column is always made entirely 1 because it has the highest place value.
+// For every other column, choosing the orientation with more 1s maximizes its contribution.
+
+// Time Complexity: O(m * n), where m = rows and n = columns.
+// Space Complexity: O(1), because the matrix is modified in-place.
+
+// Example:
+// Matrix:
+// 0 0 1 1
+// 1 0 1 0
+// 1 1 0 0
+//
+// After making the first column all 1s and optimally flipping other columns,
+// calculate each column's contribution using its binary place value.

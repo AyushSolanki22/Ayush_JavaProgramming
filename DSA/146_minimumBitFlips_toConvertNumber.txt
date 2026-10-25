@@ -1,4 +1,4 @@
-//One approach -- bruteforce (using for loop)
+// (using for loop)
 
 class Solution {
     public int minBitFlips(int start, int goal) {
@@ -16,4 +16,14 @@ class Solution {
 
 
 
-//Another Approach
+// Time Complexity:
+//
+// The for loop executes exactly 31 times.
+// Each iteration performs constant-time operations.
+// Since the number of iterations is fixed and does not
+// depend on the input values, time complexity is O(1).
+//
+// Space Complexity: O(1)
+// Only a fixed number of variables are used.
+
+

@@ -1,0 +1,76 @@
+//method 1: use set  0(n) time, 0(n) space
+//method 2: XOR + bucket method (to retrieve operands of XOR)  ---- using rightmost set bit of xor result
+
+//Method 2
+//get ex-or of the elemenets
+// if i need only rightmost set bit of the number n (ex-or result)-- a mask with only rightmost set digit present,,, -- u can get it by  
+// [n&(n-1)]^n
+
+//special kartab -- 
+//1. 2 buckets , b1 & b2   (ex-or buckets)
+//2. we will in a loop, check the & of each ele with mask,, if it is 0, it moves to b2, otherwise it moves to b1
+
+class Solution {
+    public int[] singleNumber(int[] nums) {
+        //exor result
+        int exor=0;
+        for(int ele: nums) exor^=ele; 
+
+        //mask creation  -- rightmost setbit mask of xor
+        int mask= (exor&(exor-1))^exor;    //[n&n-1] ^ n 
+
+        //kartab
+        int b1=0, b2=0; 
+        for(int ele : nums){
+            if((ele&mask)!=0) b1^=ele; 
+            else b2^=ele; 
+        }
+
+        int arr[]=new int[2];
+        arr[0]=b1; arr[1]=b2;
+        return arr;
+    }
+}
+
+
+
+
+// Single Number III — XOR + Two Buckets
+//
+// Goal: Find the two numbers that appear once.
+// Every other number appears exactly twice.
+//
+// Step 1: XOR all elements.
+// Why?
+// a ^ a = 0, and a ^ 0 = a.
+// Every duplicate cancels out, leaving x ^ y,
+// where x and y are the two unique numbers.
+//
+// Step 2: Find the rightmost set bit of (x ^ y).
+// Since x and y are different, x ^ y must contain at least one 1.
+// A set bit means x and y have different bits at that position.
+//
+// mask = exor & (-exor)
+// This isolates the rightmost set bit.
+// Equivalent to: (exor & (exor - 1)) ^ exor.
+//
+// Step 3: Create two buckets using this mask.
+// Bucket 1: numbers where (ele & mask) != 0.
+// Bucket 2: numbers where (ele & mask) == 0.
+//
+// Why do the buckets work?
+// The chosen bit differs between x and y.
+// Therefore, x and y must enter different buckets.
+//
+// Every duplicate enters the SAME bucket because identical numbers
+// have identical bits at every position.
+// Thus, duplicate pairs cancel out within their respective buckets.
+//
+// Step 4: XOR all numbers within each bucket.
+// Bucket 1 leaves one unique number.
+// Bucket 2 leaves the other unique number.
+//
+// Step 5: Return both unique numbers.
+//
+// Time Complexity: O(n) — three linear passes at most.
+// Space Complexity: O(1) auxiliary space, excluding the output array.
