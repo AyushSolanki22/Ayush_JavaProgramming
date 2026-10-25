@@ -374,7 +374,9 @@ Recursion Identification, Tower of Hanoi program
 144. powerof2
 145. numberOf1bits
 146. minimumBitFlips_toConvertNumber
-
+147. reverseBits
+148. scoreAfterFlippingMatrix
+149. singleNumber_III
 
 
 

@@ -752,3 +752,8 @@ gfg - binary_to_decimal, swap2nos
 Completed 1 hr 24 mins' of Bitwise Manipulation
 Done 3 on leetcode - powers of 2, Number of 1 bits, Minimum bit flips to convert number
 gfg - checkKthBit (set or not), setKthBit, unsetKthBit , set rightmost unset bit, power of 2
+
+@25 Oct
+Completed 1 hr 42 mins' of Bitwise Manipulation
+Done 3 on leetcode - reverse Bits, score after flipping matrix, singleNumber_III ,,,,,, Done 1 of leetcode - subsets (2nd approach)
+gfg - subsets, power of four, reverseBits (variation -- no leading zeroes), xor_ofNumberRange
