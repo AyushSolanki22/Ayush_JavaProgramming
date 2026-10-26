@@ -51,7 +51,7 @@ class Solution {
 
 // Koko Eating Bananas:
 //
-// We have to find the MINIMUM eating speed k
+// We have to find the MINIMUM eating speed k  (per hour eating speed)
 // such that Koko can finish all piles within h hours.
 //
 // This is Binary Search on Answer.
@@ -94,7 +94,7 @@ class Solution {
 // If reqTime(mid) <= h:
 //     mid is fast enough.
 //     So mid can be an answer.
-//     Store ans = mid.
+//     Store ans = mid.  
 //
 //     But we need MINIMUM speed,
 //     so search for an even smaller speed.

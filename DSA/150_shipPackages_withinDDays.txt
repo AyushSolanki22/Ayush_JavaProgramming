@@ -1,0 +1,94 @@
+
+class Solution {
+    public int shipWithinDays(int[] weights, int days) {
+
+        int sum = 0, max = weights[0];
+
+        for (int ele : weights) {
+            sum += ele;
+            max = Math.max(max, ele);
+        }
+
+        int start = max, end = sum;
+        int ans = sum;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            int daysTaken = 1;
+            int capacity = 0;
+
+            for (int ele : weights) {
+                if (capacity + ele > mid) {
+                    daysTaken++;
+                    capacity = ele;
+                } else {
+                    capacity += ele;
+                }
+            }
+
+            if (daysTaken>days) {
+                start = mid + 1;
+            } else {     //ans may be found, but searching for better answer
+                ans = mid;
+                end = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+}
+
+
+//binary search on answer ((ans=capacity))
+
+
+
+
+
+// Ship Packages Within D Days — Binary Search on Answer
+//
+// Goal: Find the minimum ship capacity required to ship all packages
+// within 'days' days, while preserving the original package order.
+//
+// Why can't we sort the array?
+// Packages must be shipped in the given order.
+// Sorting would change that order.
+//
+// Step 1: Find the search space.
+// Minimum capacity = maximum package weight.
+// Why? The ship must carry even the heaviest individual package.
+//
+// Maximum capacity = sum of all package weights.
+// Why? With this capacity, all packages can be shipped in one day.
+//
+// Step 2: Apply binary search on capacity.
+// lo = maximum package weight.
+// hi = sum of all package weights.
+// mid = candidate ship capacity.
+//
+// Step 3: Check how many days 'mid' capacity requires.
+// Traverse packages in their original order.
+// If the next package fits, load it onto the current day.
+// Otherwise, start a new day and load that package.
+//
+// Step 4: If required days > given days:
+// Capacity is too small.
+// Search larger capacities: lo = mid + 1.
+//
+// Step 5: If required days <= given days:
+// Capacity is valid.
+// Save it as a possible answer.
+// Search for a smaller valid capacity: hi = mid - 1.
+//
+// Step 6: Continue until lo > hi.
+// Return the smallest valid capacity.
+//
+// Why does binary search work?
+// If a capacity works, every larger capacity also works.
+// If a capacity fails, every smaller capacity also fails.
+// This monotonic property allows binary search.
+//
+// Time: O(n * log(sum(weights)))
+// Space: O(1)
+
