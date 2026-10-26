@@ -754,6 +754,10 @@ Done 3 on leetcode - powers of 2, Number of 1 bits, Minimum bit flips to convert
 gfg - checkKthBit (set or not), setKthBit, unsetKthBit , set rightmost unset bit, power of 2
 
 @25 Oct
-Completed 1 hr 42 mins' of Bitwise Manipulation
+Finished Bitwise Manipulation  (1 hr 42 mins')
 Done 3 on leetcode - reverse Bits, score after flipping matrix, singleNumber_III ,,,,,, Done 1 of leetcode - subsets (2nd approach)
 gfg - subsets, power of four, reverseBits (variation -- no leading zeroes), xor_ofNumberRange
+
+@26 Oct
+Completed 1 hr 24 mins' of Binary Search on Answer
+Done 1 on leetcode - capacity to ship packages within D Days
