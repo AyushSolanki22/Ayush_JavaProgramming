@@ -761,3 +761,8 @@ gfg - subsets, power of four, reverseBits (variation -- no leading zeroes), xor_
 @26 Oct
 Completed 1 hr 24 mins' of Binary Search on Answer
 Done 1 on leetcode - capacity to ship packages within D Days
+
+@27 Oct
+Finished Binary Search on Answer (34 mins')
+Done 1 on leetcode - smallest divisor given a threshold
+gfg- smallest divisor, aggresive cows
