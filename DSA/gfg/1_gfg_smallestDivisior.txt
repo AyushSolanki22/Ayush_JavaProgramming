@@ -1,0 +1,37 @@
+class Solution {
+    int smallestDivisor(int[] arr, int k) {
+        //binary search on answer   //binary search on smallest divisor
+        
+        int start=1, end=arr[0] ;
+        for(int ele:arr){
+            end=Math.max(end, ele);
+        }
+        
+        int ans=end;
+        
+        while(start<=end){
+            int mid=start+(end-start)/2; 
+            
+            int sum=sum(arr, mid);
+            
+            if(sum<=k){    //ans may be found, but search for better answer
+                ans=mid; 
+                end=mid-1;  
+            }
+            else {    //divisor not valid, need of larger divisor
+                start=mid+1;
+            }
+        }
+        
+        return ans;
+    }
+    
+    int sum(int arr[], int divisor){
+        int sum=0; 
+        for(int ele : arr){
+            sum+=Math.ceil((double)ele/divisor);   //double typecasting as we need decimal division
+        }
+        
+        return sum;
+    }
+}

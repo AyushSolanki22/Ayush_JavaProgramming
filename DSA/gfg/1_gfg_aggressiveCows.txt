@@ -1,0 +1,95 @@
+
+import java.util.Arrays;
+
+class Solution {
+    public int aggressiveCows(int[] arr, int k) {
+
+        Arrays.sort(arr);
+
+        int min = arr[0];
+        int max = arr[arr.length - 1];
+
+        int start = 1;
+        int end = max - min;
+        int ans = 0;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            if (canPlace(arr, k, mid)) {
+                ans = mid;          // Valid distance
+                start = mid + 1;    // Try maximizing it
+            } else {
+                end = mid - 1;      // Distance is too large
+            }
+        }
+
+        return ans;
+    }
+
+    private boolean canPlace(int[] arr, int k, int minDist) {
+
+        int cowsPlaced = 1;
+        int lastPosition = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+
+            if (arr[i] - lastPosition >= minDist) {
+                cowsPlaced++;
+                lastPosition = arr[i];
+
+                if (cowsPlaced == k) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+
+
+
+
+// Problem: Aggressive Cows
+// Goal: Place k cows in stalls such that the MINIMUM distance
+//       between any two cows is MAXIMIZED.
+
+// 1. Sort the array.
+//    Why? To place cows from left to right and calculate distances easily.
+
+// 2. Binary Search on the minimum distance (minDist).
+//    Minimum possible distance = 1
+//    Maximum possible distance = maxPosition - minPosition
+
+// 3. For each mid, check whether we can place k cows
+//    with at least mid distance between consecutive placed cows.
+
+// 4. Greedy placement:
+//    - Place the first cow in the first stall.
+//    - Traverse the remaining stalls from left to right.
+//    - Place the next cow in the earliest stall whose distance
+//      from the last placed cow is >= mid.
+//    - Continue until all stalls are checked or k cows are placed.
+
+// 5. If we can place k cows:
+//    - mid is a valid minimum distance.
+//    - Store mid as the answer.
+//    - Try a larger distance: start = mid + 1.
+
+// 6. Otherwise:
+//    - mid is too large; we cannot place all k cows.
+//    - Try a smaller distance: end = mid - 1.
+
+// Why greedy works:
+// Placing each cow in the earliest possible stall leaves
+// maximum room for the remaining cows.
+
+// Why binary search works:
+// If distance d is possible, every smaller positive distance
+// is also possible. If d is impossible, every larger distance
+// is also impossible.
+
+// Time: O(n log(maxPosition - minPosition))
+// Space: O(log n) for sorting, depending on the sorting implementation.
