@@ -766,3 +766,13 @@ Done 1 on leetcode - capacity to ship packages within D Days
 Finished Binary Search on Answer (34 mins')
 Done 1 on leetcode - smallest divisor given a threshold
 gfg- smallest divisor, aggresive cows
+
+@28 Oct
+0 mins (random psychological confusion, talk with lucky)
+Posted 1 on leetcode - house robber
+
+@29 Oct
+Completed 1 hr 13 mins' of DP 01 
+Done 1 on leetcode - fibonacci number , Done 1 of leetcode - house robber
+gfg- stickler thief
+
