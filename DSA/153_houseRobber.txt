@@ -1,3 +1,5 @@
+//One Approach -- using recursion+ Memorisation
+
 //pick or skip method -- recursion
 class Solution {
     static int dp[]; 
@@ -23,3 +25,67 @@ class Solution {
         //or simply, return dp[i]=Math.max(pick, skip);
     }
 }
+
+
+
+//Another approach -- using Tabulation
+
+//Tabulation method
+
+//dp[i] mai ith ghar tk ki maximum loot store hogi -- core concept
+class Solution {
+    public int rob(int[] arr) {   //arr is array representing money in houses
+        int n=arr.length;
+        int dp[]=new int[n];
+
+        dp[0]=arr[0]; 
+        if(n>1) dp[1]=Math.max(arr[0], arr[1]); 
+
+        for(int i=2; i<n; ++i){
+            dp[i]=Math.max(arr[i]+dp[i-2], dp[i-1]);   //pick -- arr[i]+dp[i-2] , skip - arr[i-1]
+        }
+
+        return dp[n-1];
+    }
+}
+
+//dp[i] mai right to left chori 
+
+
+
+
+
+
+
+
+// Goal: Maximize the total money robbed from houses.
+// Constraint: We cannot rob two adjacent houses.
+
+// dp[i] = Maximum money we can rob considering houses
+//         from index 0 to index i.
+
+// At every house i, we have 2 choices:
+
+// 1. PICK the current house:
+//    - We get arr[i] money.
+//    - We CANNOT rob the previous house (i-1).
+//    - So, we add the maximum loot till i-2.
+//
+//    pick = arr[i] + dp[i-2]
+
+// 2. SKIP the current house:
+//    - We don't get arr[i].
+//    - We can keep the maximum loot till the previous house.
+//
+//    skip = dp[i-1]
+
+// Take whichever gives maximum money.
+//
+// Recurrence:
+// dp[i] = max(arr[i] + dp[i-2], dp[i-1])
+
+// Base cases:
+// dp[0] = arr[0]
+// dp[1] = max(arr[0], arr[1])
+//
+// Final answer = dp[n-1]

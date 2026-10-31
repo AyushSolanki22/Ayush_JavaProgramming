@@ -1,0 +1,51 @@
+//using recursion + Memorisation
+
+class Solution {
+    static int dp[]; 
+    public int climbStairs(int n) {
+        dp = new int[n + 1];
+        Arrays.fill(dp, -1);
+
+        return count(0, n);
+    }
+
+    public int count(int i, int n) {   //count ways
+        if (i==n) return 1;
+        if (i>n) return 0;
+
+        if (dp[i]!=-1) return dp[i];
+
+        int oneStep = count(i+1, n);
+        int twoStep = count(i+2, n);
+
+        return dp[i] = oneStep+twoStep;
+    }
+}
+
+
+
+// Goal: Count the number of distinct ways to reach stair n.
+
+// At every stair i, we have 2 choices:
+
+// 1. Take 1 step -> count(i+1)
+// 2. Take 2 steps -> count(i+2)
+
+// Total ways = ways from both choices.
+
+// Recurrence:
+// count(i) = count(i+1) + count(i+2)
+
+// Base cases:
+
+// If i == n:
+// We successfully reached the destination.
+// Return 1 because we found ONE valid way.
+
+// If i > n:
+// We crossed the destination.
+// Return 0 because this is NOT a valid way.
+
+// Important:
+// We return 1 at the destination, not 0.
+// Each successful recursive path contributes exactly 1 way.

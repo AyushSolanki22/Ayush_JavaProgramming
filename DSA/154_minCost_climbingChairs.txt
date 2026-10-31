@@ -1,0 +1,119 @@
+//One approach -- using recursion+Memorisation
+class Solution {
+    static int dp[]; 
+    public int minCostClimbingStairs(int[] cost) {
+        dp=new int[cost.length];
+        Arrays.fill(dp, -1);
+        return Math.min(climb(0, cost), climb(1, cost));  //either start from 0, or 1st index  //very very imp
+    }
+
+    public int climb(int i, int cost[]){
+        if(i>=cost.length) return 0;    //base case
+        if(dp[i]!=-1) return dp[i];
+        int oneStep = cost[i] + climb(i + 1, cost);
+        int twoSteps = cost[i] + climb(i + 2, cost);
+        return dp[i] = Math.min(oneStep, twoSteps);
+    }
+}
+
+//one or two jump -- onestep or twostep  (like pick or skip)
+
+
+
+
+// Goal: Reach the top with minimum total cost.
+
+// At every stair i, we have 2 choices:
+//
+// 1. One-step jump:
+//    Pay cost[i] and move to i+1.
+//
+// 2. Two-step jump:
+//    Pay cost[i] and move to i+2.
+//
+// We need to explore both possibilities and choose
+// the one that gives minimum total cost.
+
+// Recurrence:
+// dp[i] = cost[i] + min(climb(i+1), climb(i+2))
+//
+// Base case:
+// If i >= n, we have reached or crossed the top.
+// Return 0 because no more cost is required.
+//
+// Starting point:
+// We can start from stair 0 OR stair 1.
+// So answer = min(climb(0), climb(1)).
+
+
+
+
+
+
+
+//Another approach-- Tabulation
+
+class Solution {
+    //recursion wale approach mai we were considering , i se top tak min cost kya hogi climbing ki  -- meaning (core concept)
+
+    //in tabulation method, we will have diff meaning
+    //ith stair tk aane ki min cost kitni hai -- core concept, isme ith cost included hai 
+
+    //dp[i] will store minCost upto that stair including that chair
+    //ans will be min of last stair or last second stair 
+    //(as after that it will make jump to top stair (cost=0))
+    
+    public int minCostClimbingStairs(int[] cost) {
+        int n=cost.length;
+        int dp[]=new int[n]; 
+        //min cost to reach first two stairs
+        dp[0]=cost[0];
+        dp[1]=cost[1]; 
+
+        for(int i=2; i<n; ++i){
+            // Reach current stair from previous stair
+            int oneStep = cost[i] + dp[i - 1];
+
+            // Reach current stair from two stairs back
+            int twoStep = cost[i] + dp[i - 2];
+
+            dp[i] = Math.min(oneStep, twoStep);
+        }
+        
+        // Top can be reached from either of the last two stairs
+        return Math.min(dp[n-1], dp[n-2]);
+    }
+}
+
+
+
+// Goal: Reach the top of the staircase with minimum cost.
+// We can climb either 1 or 2 steps at a time.
+
+// DP STATE:
+// dp[i] = Minimum cost required to REACH stair i
+//         from the starting stairs, including cost[i].
+
+// At every stair i, we can arrive from 2 possible stairs:
+
+// 1. From stair i-1 (1-step jump):
+//    Cost = dp[i-1] + cost[i]
+
+// 2. From stair i-2 (2-step jump):
+//    Cost = dp[i-2] + cost[i]
+
+// Choose the minimum of both.
+
+// Recurrence:
+// dp[i] = cost[i] + min(dp[i-1], dp[i-2])
+
+// BASE CASES:
+// dp[0] = cost[0]
+// dp[1] = cost[1]
+
+// FINAL ANSWER:
+// We can reach the top by jumping from either:
+// - Last stair (n-1)
+// - Second-last stair (n-2)
+//
+// So, answer = min(dp[n-1], dp[n-2])

@@ -1,0 +1,20 @@
+//pick or skip method -- recursion
+class Solution {
+    public int rob(int[] arr) {
+        //consecutive houses not allowed for robbing
+        return loot(0, arr);   //helper function as index is needed
+    }
+
+    public int loot(int i, int arr[]){  //--> i from 0 to n-1
+        if(i>=arr.length) return 0;
+
+        int pick=arr[i]+loot(i+2, arr); 
+        int skip=loot(i+1, arr); 
+        return Math.max(pick, skip); 
+    }
+}
+
+
+//will make the tle reached 
+//as loot(i) is making calls to loot(i+1). & loot(i+2) too
+//usme se max return krrha ,,  1 doo call laga rha hai to yha dp lag skta hai to optimsise

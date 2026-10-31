@@ -1,0 +1,56 @@
+# CheckList
+
+1. Memorisation & Tabulation
+2. 1D DP problems
+3. 2D DP Grid problems
+4. Knapsack & unbounded Knapsack problems
+5. DP on strings
+6. MCM Problems and DP on Trees
+
+
+
+# Dynamic Programming
+
+- it is optimised recursion
+- using smaller problem for bigger problems (basically using previous problem for next)
+- used in overlapping subproblems
+
+
+# fibonacci_recursion
+
+-- problem in it is its very bad time complexity,,,, 
+-- here , is repeating calls of a certain no. ((like if we make euler tree, there are lot of calls for fibo(1), fibo(0)))
+-- this is overlapping subproblems
+
+
+-- now using dp, we will make time complexity to 2n (almost n)
+
+
+# dp in fibonacci_recursion
+
+-- we will be using a global array of n+1 size,  filling the elements to be 0 
+-- we will do , when we will be returning , before returning, fibo(n) be stored in array 
+
+--- this whole process is Memorisation / Top down DP / Recursive DP 
+
+
+
+# General Note 
+
+- when function calls itself only once. Then DP makes no difference
+
+
+# House robber
+
+- as a function is making 2 calls, dp can be applied
+
+
+
+# Tabulation method   (asli dp) -- /bottom up dp /iterative
+
+@Fibonacci Tabulation
+  - if we need fibo(7), we will make array of size 8, purpose being storing til index 7      (storing 0, 1 at index 0,1)
+  - for i=2 to last, arr[i]=arr[i-1]+arr[i-2]
+
+  --using existing results (0,1) for solving problem -- iterative dp
+

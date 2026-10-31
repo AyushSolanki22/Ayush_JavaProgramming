@@ -1,0 +1,79 @@
+//My approach -- tle reached
+
+class Solution {
+    int ways; 
+    public int countWays(int n) {
+        ways=0;
+        count(0, n); 
+        return ways; 
+    }
+    
+    public int count(int i, int n){
+        if(i==n) {
+            ways+=1; 
+            return 0;
+        }
+        if(i>n) return 0; 
+        
+        int oneStep=1+count(i+1, n); 
+        int twoStep=1+count(i+2, n); 
+        return oneStep+twoStep; 
+    }
+}
+
+
+
+//Another approach -- using recurison+Memorisation
+
+class Solution {
+    int[] dp;
+
+    public int countWays(int n) {
+        dp = new int[n + 1];    //using Memorisation 
+        Arrays.fill(dp, -1);
+
+        return count(0, n);
+    }
+
+    public int count(int i, int n) {
+
+        if (i == n) return 1;    //return 1 when destination is reached 
+        if (i > n) return 0;   //invalid destination- invalid way
+
+        if (dp[i] != -1) return dp[i];
+
+        int oneStep = count(i + 1, n);   //counting ways after taking 1 step
+        int twoStep = count(i + 2, n);   //counting ways after taking 1 step
+
+        return dp[i] = oneStep + twoStep;
+    }
+}
+
+
+
+
+// Goal: Count the number of distinct ways to reach stair n.
+
+// At every stair i, we have 2 choices:
+
+// 1. Take 1 step -> count(i+1)
+// 2. Take 2 steps -> count(i+2)
+
+// Total ways = ways from both choices.
+
+// Recurrence:
+// count(i) = count(i+1) + count(i+2)
+
+// Base cases:
+
+// If i == n:
+// We successfully reached the destination.
+// Return 1 because we found ONE valid way.
+
+// If i > n:
+// We crossed the destination.
+// Return 0 because this is NOT a valid way.
+
+// Important:
+// We return 1 at the destination, not 0.
+// Each successful recursive path contributes exactly 1 way.
