@@ -776,3 +776,12 @@ Completed 1 hr 13 mins' of DP 01
 Done 1 on leetcode - fibonacci number , Done 1 of leetcode - house robber
 gfg- stickler thief
 
+@30 Oct
+Completed 35 mins' of DP 01
+Done 1 on leetcode -minCostClimbingStairs
+
+@31 Oct
+Completed 52 mins' of DP 01
+Done 1 on leetcode - Climbing stairs,  Done 3 of leetcode - fibonacci (Tabulation approach), house robber (Tabulation approach), minCostClimbingStairs (tabulation approach)
+gfg- ways to reach nth stair (my approach + another), 
+
