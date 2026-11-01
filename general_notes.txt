@@ -386,7 +386,8 @@ Recursion Identification, Tower of Hanoi program
 153. houseRobber
 154. minCostClimbingStairs
 155. climbingStairs
-
+156. uniquePaths
+157. minPathSum
 
 
 

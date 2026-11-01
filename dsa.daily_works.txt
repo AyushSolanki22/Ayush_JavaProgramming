@@ -785,3 +785,8 @@ Completed 52 mins' of DP 01
 Done 1 on leetcode - Climbing stairs,  Done 3 of leetcode - fibonacci (Tabulation approach), house robber (Tabulation approach), minCostClimbingStairs (tabulation approach)
 gfg- ways to reach nth stair (my approach + another), 
 
+
+@1 Nov 
+Completed 1 hr 4 mins' of DP 01
+Done 2 on leetcode - Unique Paths (4 approaches), minimum path sum
+
