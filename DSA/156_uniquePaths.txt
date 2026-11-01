@@ -1,0 +1,304 @@
+//One solution : using recursion ((tle reached))
+class Solution {
+    public int uniquePaths(int m, int n) {
+
+        // If only one row or one column remains,
+        // there is exactly one possible path.
+        if (m == 1 || n == 1) return 1;
+
+        // Choice 1: Move RIGHT
+        int right = uniquePaths(m, n - 1);
+
+        // Choice 2: Move DOWN
+        int down = uniquePaths(m - 1, n);
+
+        // Total paths = Right paths + Down paths
+        return right + down;
+    }
+}
+
+
+// Goal: Find the total number of unique paths
+// to reach the bottom-right cell from the top-left cell.
+
+// We can move in only 2 directions:
+// 1. Right
+// 2. Down
+
+// At every cell (m, n), we have 2 choices:
+
+// 1. Move RIGHT:
+//    uniquePaths(m, n-1)    
+
+// 2. Move DOWN:
+//    uniquePaths(m-1, n)
+
+// Total paths = Paths from both choices.
+
+// Recurrence:
+// uniquePaths(m,n) = uniquePaths(m,n-1)
+//                  + uniquePaths(m-1,n)
+
+// Base case:
+// If m == 1 OR n == 1:
+// Return 1.
+
+// Why?
+// If only one row or one column remains,
+// there is only ONE possible way to reach the destination.
+
+
+
+
+
+//Second solution : using recursion+Memorisation 
+
+
+class Solution {
+    static int[][] dp;
+
+    public int uniquePaths(int m, int n) {
+
+        // Create a DP array to store the number of paths
+        // dp[i][j] = number of unique paths in a grid
+        // with i rows and j columns remaining.
+        dp = new int[m + 1][n + 1];
+
+        // Initialize all states with 0 (uncomputed).
+        // Since every valid grid has at least one path,
+        // 0 can safely represent an uncomputed state.
+        for (int[] row : dp) {
+            Arrays.fill(row, 0);
+        }
+
+        return paths(m, n);
+    }
+
+    public int paths(int m, int n) {
+
+        // BASE CASE:
+        // If only one row or one column remains,
+        // there is exactly one possible path.
+        if (m == 1 || n == 1) {
+            return 1;
+        }
+
+        // If this state has already been calculated,
+        // return the stored result instead of recalculating it.
+        if (dp[m][n] != 0) {
+            return dp[m][n];
+        }
+
+        // CHOICE 1: MOVE RIGHT
+        // Moving right reduces the number of remaining columns by 1,
+        // while the number of remaining rows stays the same.
+        int right = paths(m, n - 1);
+
+        // CHOICE 2: MOVE DOWN
+        // Moving down reduces the number of remaining rows by 1,
+        // while the number of remaining columns stay the same.
+        int down = paths(m - 1, n);
+
+        // TOTAL PATHS:
+        // Every valid path must begin with either RIGHT or DOWN.
+        // Therefore, add the paths possible from both choices.
+        // Store the result in DP to avoid recomputation.
+        return dp[m][n] = right + down;
+    }
+}
+
+
+//- Time: \(O(m \times n)\) — each state is calculated only once.
+//- Space: \(O(m \times n)\) — DP array, plus recursion stack.
+
+
+
+
+//Third Solution : using Tabulation method 
+
+
+//we will create array of m*n size,,,  dp[i][j] is storing no. of paths from 0, 0 (start) to  i, j
+
+//first row, first col all cells will be storing 1 only 
+//we will do nothing, just add left & top element to put in dp[i][j]    ((except the first row & first column))
+
+ 
+class Solution {
+    public int uniquePaths(int m, int n) {
+
+      // Create a 2D DP array of size m*n.
+      // dp[i][j] stores the number of unique paths
+      // from the starting cell (0,0) to cell (i,j).
+      int[][] dp = new int[m][n];
+
+      // BASE CASE 1: FIRST COLUMN
+      // Every cell in the first column can only be reached
+      // by moving DOWN. Hence, there is exactly 1 path.
+      for (int i = 0; i < m; i++) {
+          dp[i][0] = 1;
+      }
+
+      // BASE CASE 2: FIRST ROW
+      // Every cell in the first row can only be reached
+      // by moving RIGHT. Hence, there is exactly 1 path.
+      for (int j = 0; j < n; j++) {
+          dp[0][j] = 1;
+      }
+
+      // Fill the remaining DP cells.
+      // We start from (1,1) because the first row
+      // and first column are already initialized.
+      for (int i = 1; i < m; i++) {
+          for (int j = 1; j < n; j++) {
+
+              // We can reach the current cell from:
+              // 1. TOP  -> dp[i-1][j]
+              // 2. LEFT -> dp[i][j-1]
+              //
+              // Total paths = paths from TOP + paths from LEFT.
+              dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+          }
+      }
+
+      // Return the number of paths to the destination.
+      return dp[m - 1][n - 1];
+  }
+}
+
+
+
+// PROBLEM: Unique Paths (LeetCode 62)
+
+// GOAL:
+// Find the total number of unique paths from the top-left cell
+// (0,0) to the bottom-right cell (m-1,n-1).
+// We can only move RIGHT or DOWN.
+
+// 1. DP STATE:
+// We create a 2D DP array of size m*n.
+//
+// dp[i][j] stores the number of unique paths required
+// to reach cell (i,j) from the starting cell (0,0).
+
+// 2. BASE CASE:
+// FIRST ROW:
+// Every cell in the first row can only be reached by moving RIGHT.
+// Therefore, each cell has exactly 1 possible path.
+//
+// FIRST COLUMN:
+// Every cell in the first column can only be reached by moving DOWN.
+// Therefore, each cell also has exactly 1 possible path.
+//
+// So, first row and first column are initialized with 1.
+
+// 3. TRANSITIONS:
+// For every other cell (i,j), we have two possible ways to reach it:
+//
+// CHOICE 1: COME FROM TOP
+// We can reach (i,j) by moving DOWN from (i-1,j).
+// Number of paths = dp[i-1][j]
+//
+// CHOICE 2: COME FROM LEFT
+// We can reach (i,j) by moving RIGHT from (i,j-1).
+// Number of paths = dp[i][j-1]
+//
+// TOTAL PATHS:
+// Add both possibilities because they represent distinct paths.
+//
+// dp[i][j] = dp[i-1][j] + dp[i][j-1]
+
+// 4. FINAL ANSWER:
+// The destination is the bottom-right cell (m-1,n-1).
+// Therefore, return dp[m-1][n-1].
+
+// WHY DOES THIS WORK?
+// Every path reaching a cell must come either from its TOP
+// or from its LEFT, because we can only move RIGHT or DOWN.
+// We already know the number of paths to those previous cells.
+// Hence, adding their values gives the total paths to the current cell.
+
+// TIME COMPLEXITY: O(m*n)
+// SPACE COMPLEXITY: O(m*n)
+
+
+
+
+
+
+//Final Approach : Combinatorics
+
+
+class Solution {
+    public int uniquePaths(int m, int n) {
+
+        // Total movements required:
+        // (m-1) DOWN + (n-1) RIGHT
+        int N = m + n - 2;
+
+        // We need to calculate C(N, m-1).
+        int r = Math.min(m - 1, n - 1);
+
+        // Initially, C(N,0) = 1.
+        long ans = 1;
+
+        // Calculate C(N,r) using the combination recurrence.
+        for (int i = 0; i < r; i++) {
+
+            // C(N,i+1) = C(N,i) * (N-i) / (i+1)
+            ans = ans * (N - i) / (i + 1);
+        }
+
+        return (int) ans;
+    }
+}
+
+
+
+// APPROACH: Combinatorics (nCr)
+
+// GOAL:
+// Find the number of unique paths from (0,0) to (m-1,n-1).
+// We can only move RIGHT or DOWN.
+
+// 1. TOTAL MOVEMENTS:
+// To reach the destination, we must make:
+// - (m-1) DOWN movements.
+// - (n-1) RIGHT movements.
+//
+// Total movements = (m-1) + (n-1)
+//                 = m+n-2
+
+// 2. OBSERVATION:
+// Every valid path contains exactly:
+// - (m-1) DOWN movements.
+// - (n-1) RIGHT movements.
+//
+// The only difference between paths is the ORDER
+// in which these movements are performed.
+
+// 3. APPLY COMBINATION:
+// We have (m+n-2) total positions in our movement sequence.
+//
+// We need to select (m-1) positions for DOWN movements.
+// The remaining positions will automatically be RIGHT movements.
+//
+// Therefore:
+// Answer = C(m+n-2, m-1)
+//
+// We can also select the positions for RIGHT movements:
+// Answer = C(m+n-2, n-1)
+//
+// Both give the same result.
+
+// 4. OPTIMIZATION:
+// Instead of calculating factorials, use:
+// C(N, r+1) = C(N, r) * (N-r) / (r+1)
+//
+// Start with C(N,0) = 1.
+// Calculate the next combination iteratively.
+
+// 5. FINAL ANSWER:
+// The final combination gives the total number of unique paths.
+
+// TIME COMPLEXITY: O(min(m-1, n-1))
+// SPACE COMPLEXITY: O(1)
