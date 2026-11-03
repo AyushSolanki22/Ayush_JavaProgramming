@@ -790,3 +790,10 @@ gfg- ways to reach nth stair (my approach + another),
 Completed 1 hr 4 mins' of DP 01
 Done 2 on leetcode - Unique Paths (4 approaches), minimum path sum
 
+@2 Nov 
+Completed 14 mins' of DP 01
+Done 1 on leetcode - unique Paths II
+
+@3 Nov
+Completed 53 mins' of DP 01
+Done 2 on leetcode - house Robber 2 (tabulation) , nth tribonacci (tabulation),,,,, Done 4 of leetcode - climbing stairs(tabulation approach), fibonacci number(optimised tabulation), house robber(optimised tabulation), uniquePaths (optimisation tabulation)

@@ -388,6 +388,9 @@ Recursion Identification, Tower of Hanoi program
 155. climbingStairs
 156. uniquePaths
 157. minPathSum
+158. uniquePathsII
+159. houseRobber_II
+160. nth_Tribonacci_Number
 
 
 
