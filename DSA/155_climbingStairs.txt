@@ -1,4 +1,4 @@
-//using recursion + Memorisation
+//One approach : using recursion + Memorisation
 
 class Solution {
     static int dp[]; 
@@ -49,3 +49,77 @@ class Solution {
 // Important:
 // We return 1 at the destination, not 0.
 // Each successful recursive path contributes exactly 1 way.
+
+
+
+
+
+//Another Approach : using tabulation
+
+
+class Solution {
+    public int climbStairs(int n) {
+        int dp[]=new int[n+1];
+
+        for(int i=0; i<=n; ++i){
+            if(i<=2) dp[i]=i;
+            else dp[i]=dp[i-1]+dp[i-2];
+        }
+
+        return dp[n];
+    }
+}
+
+
+
+// PROBLEM: Climbing Stairs (LeetCode 70)
+// APPROACH: Bottom-Up DP (Tabulation)
+
+// GOAL:
+// Find the total number of distinct ways to reach the nth stair.
+// At each step, we can climb either 1 stair or 2 stairs.
+
+// 1. DP STATE:
+// Create a 1D DP array of size n+1.
+//
+// dp[i] stores the total number of distinct ways
+// to reach the ith stair from the ground (stair 0).
+
+// 2. BASE CASES:
+
+// dp[0] = 1
+// There is exactly one way to stay at the ground:
+// take zero steps.
+
+// dp[1] = 1
+// There is only one way to reach stair 1:
+// take one 1-step.
+
+// dp[2] = 2
+// There are two ways to reach stair 2:
+// 1. Take two 1-steps (1 + 1).
+// 2. Take one 2-step (2).
+
+// 3. TRANSITIONS:
+
+// To reach stair i, we have two choices:
+
+// CHOICE 1: TAKE 1 STEP
+// Come from stair (i-1).
+// Number of ways = dp[i-1]
+
+// CHOICE 2: TAKE 2 STEPS
+// Come from stair (i-2).
+// Number of ways = dp[i-2]
+
+// 4. RECURRENCE:
+// Add both possibilities because they represent
+// two different ways of reaching stair i.
+//
+// dp[i] = dp[i-1] + dp[i-2]
+
+// 5. FINAL ANSWER:
+// dp[n] stores the total number of ways to reach stair n.
+
+// TIME COMPLEXITY: O(n)
+// SPACE COMPLEXITY: O(n)

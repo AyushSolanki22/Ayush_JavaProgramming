@@ -28,7 +28,8 @@ class Solution {
 
 
 
-//Another approach -- using Tabulation
+//Second approach -- using Tabulation
+
 
 //Tabulation method
 
@@ -50,7 +51,6 @@ class Solution {
 }
 
 //dp[i] mai right to left chori 
-
 
 
 
@@ -89,3 +89,32 @@ class Solution {
 // dp[1] = max(arr[0], arr[1])
 //
 // Final answer = dp[n-1]
+
+
+
+
+
+//Third Approach  -- Space optimised tabulation
+
+
+//Tabulation method
+
+//dp[i] mai ith ghar tk ki maximum loot store hogi -- core concept
+class Solution {
+    public int rob(int[] arr) {   //arr is array representing money in houses
+        int dp[]=new int[3];
+
+        dp[0]=arr[0]; 
+
+        if(arr.length>1) dp[1]=Math.max(arr[0], arr[1]); 
+
+        for(int i=2; i<arr.length; ++i){
+            dp[2]=Math.max(arr[i]+dp[0], dp[1]);   //pick -- arr[i]+arr[i-2] , skip - arr[i-1]
+            dp[0]=dp[1];
+            dp[1]=dp[2];
+        }
+
+        if(arr.length<=2) return dp[arr.length-1];
+        return dp[2];
+    }
+}

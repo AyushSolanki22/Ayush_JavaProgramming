@@ -54,3 +54,19 @@
 
   --using existing results (0,1) for solving problem -- iterative dp
 
+
+
+
+
+
+# Grid Problems
+
+1. passing through some mandatory checkpoints
+  -- combination of grids to find unique paths **** 
+
+  -- p1*p2*p3 = final ans
+
+
+# Space Optimised Tabulation
+
+  using array of size 3 only,,, and andhadhun dp[2] extracting from operations performed on dp[0], dp[1] ,,,,,,,, dp[0]=dp[1], dp[1]=dp[2];
